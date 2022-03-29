@@ -1,0 +1,150 @@
+﻿using UnityEngine;
+
+public class DamageModule
+{
+    public delegate void OnDestoryDeligate();
+    protected OnDestoryDeligate m_onDestroy;
+    protected Outline m_outLine;
+
+    protected AgentBasicData m_basicData;
+
+    private float damaged_count;
+
+    public DamageModule(AgentBasicData basicData,OnDestoryDeligate onDestroyCallback,Outline outline)
+    {
+        m_basicData = basicData;
+        m_onDestroy += onDestroyCallback;
+        m_outLine = outline;
+        m_outLine.OutlineColor = Color.green;
+    }
+
+    #region commands
+
+    public virtual void destroyCharacter()
+    {
+    }
+    #endregion
+
+    #region getters and setters
+    public virtual void resetCharacter()
+    {
+        m_outLine.enabled = true;
+        m_basicData.Health = m_basicData.MaxHealth;
+        m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
+    }
+
+    public void setHealth(float health)
+    {
+        if (m_basicData.Health == 0)
+            return;
+
+        m_basicData.Health = health;
+        m_basicData.MaxHealth = health;
+        m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
+
+        if (m_basicData.Health <= 0)
+        {
+            m_basicData.Health = 0;
+            m_outLine.enabled = false;
+            destroyCharacter();
+            m_onDestroy();
+        }
+        
+    }
+
+    public void DamageByAmount(float amount)
+    {
+        damaged_count = 5;
+        setDamageText(amount,m_basicData.getAgentTransform().position,Color.yellow);
+
+        if (m_basicData.Health == 0)
+            return;
+
+        if (amount > m_basicData.Sheild)
+        {
+            amount = amount - m_basicData.Sheild;
+            
+            m_basicData.Sheild = 0;
+            
+        }
+        else
+        {          
+            m_basicData.Sheild = m_basicData.Sheild - amount;
+            m_outLine.OutlineColor = Color.Lerp(Color.white, Color.blue, m_basicData.Sheild / m_basicData.MaxSheild);
+            //setDamageText(amount,m_basicData.getAgentTransform().position,Color.blue);
+            return;
+        }
+
+
+
+        m_basicData.Health -= amount;
+        //setDamageText(amount,m_basicData.getAgentTransform().position,Color.red);
+
+        m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
+
+        if (m_basicData.Health <= 0)
+        {
+            m_basicData.Health = 0;
+            m_outLine.enabled = false;
+            destroyCharacter();
+            m_onDestroy();
+        }
+    }
+
+    public virtual void update()
+    {
+        damaged_count -= Time.deltaTime;
+        if(damaged_count < 0)
+        {
+            damaged_count = 0;
+        }
+
+        if(damaged_count == 0)
+        {
+            if(m_basicData.Sheild < m_basicData.MaxSheild)
+            {
+                m_basicData.Sheild += Time.deltaTime * 10;
+                if(m_basicData.Sheild > m_basicData.MaxSheild)
+                {
+                    m_basicData.Sheild = m_basicData.MaxSheild;
+                }
+                m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
+            }
+        }
+    }
+
+    private void setDamageText(float damage, Vector3 position, Color color)
+    {
+        var obj = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DamageText);
+        obj.SetActive(true);
+        if(obj != null)
+        {
+            var dmg_text = obj.GetComponent<FloatingDamageText>();
+            dmg_text.SetText("+" +damage.ToString(),position,color);
+        }
+    }
+
+    public virtual bool HealthAvailable()
+    {
+        return m_basicData.Health > 0;
+    }
+
+    public Color getHealthColor()
+    {
+       return m_outLine.OutlineColor;
+    }
+
+    public float getHealthPercentage()
+    { 
+        if(m_basicData.Health != 0)
+        {
+            return m_basicData.Health / m_basicData.MaxHealth;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    #endregion
+}
