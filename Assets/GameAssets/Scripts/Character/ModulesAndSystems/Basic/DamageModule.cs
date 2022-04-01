@@ -93,7 +93,7 @@ public class DamageModule
 
     public virtual void update()
     {
-        damaged_count -= Time.deltaTime;
+        damaged_count -= Time.deltaTime*m_basicData.Regen;
         if(damaged_count < 0)
         {
             damaged_count = 0;
@@ -103,7 +103,7 @@ public class DamageModule
         {
             if(m_basicData.Sheild < m_basicData.MaxSheild)
             {
-                m_basicData.Sheild += Time.deltaTime * 10;
+                m_basicData.Sheild += Time.deltaTime * m_basicData.Regen;
                 if(m_basicData.Sheild > m_basicData.MaxSheild)
                 {
                     m_basicData.Sheild = m_basicData.MaxSheild;

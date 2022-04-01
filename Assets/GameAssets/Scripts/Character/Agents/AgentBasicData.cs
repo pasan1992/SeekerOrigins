@@ -19,6 +19,8 @@ public class AgentBasicData
     private float maxHealth;
     public float MaxSheild;
 
+    public float Regen;
+
     public enum AgentFaction { Player,Enemy3,Neutral,Enemy2,Enemy1, Allies };
     public AgentFaction m_agentFaction;
     public enum AgentBehaviorStatus {Suspicious,Neutral}
