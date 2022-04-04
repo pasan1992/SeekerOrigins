@@ -112,6 +112,7 @@ public class MouseCurserSystem : MonoBehaviour
 
     public void OnPostRender()
     {
+        /*
         CreateLineMaterial();
         lineMaterial.SetPass(0);
 
@@ -131,23 +132,6 @@ public class MouseCurserSystem : MonoBehaviour
             GL.Vertex3(m_targetLineStart.position.x,m_targetLineStart.position.y,m_targetLineStart.position.z);
             GL.Vertex3(m_targetLineEnd.position.x,m_targetLineEnd.position.y,m_targetLineEnd.position.z);
             GL.End();
-//         GL.Begin(GL.QUADS);
-
-//         if(onTarget)
-//         {
-//             GL.Color(Color.red);
-//         }
-//         else
-//         {
-//             GL.Color(Color.white);
-//         }
-
-        
-//         GL.Vertex3(m_targetLineEnd.position.x+ squreSize, m_targetLineEnd.position.y,m_targetLineEnd.position.z+ squreSize);
-//         GL.Vertex3(m_targetLineEnd.position.x+squreSize,  m_targetLineEnd.position.y,m_targetLineEnd.position.z- squreSize);
-//         GL.Vertex3(m_targetLineEnd.position.x-squreSize,  m_targetLineEnd.position.y,m_targetLineEnd.position.z -squreSize);
-//         GL.Vertex3(m_targetLineEnd.position.x -squreSize, m_targetLineEnd.position.y, m_targetLineEnd.position.z + squreSize);
-// GL.End();
 
         GL.Begin(GL.LINES);
 
@@ -180,12 +164,6 @@ public class MouseCurserSystem : MonoBehaviour
         GL.Vertex3(m_targetLineEnd.position.x -squreSize, m_targetLineEnd.position.y-1.2f, m_targetLineEnd.position.z + squreSize);
         GL.End();
         GL.PopMatrix();
-        }
-
-        /*
-        foreach (AutoHumanoidAgentController agent in agents)
-        {
-            agent.OnPostRender();
         }
         */
     }

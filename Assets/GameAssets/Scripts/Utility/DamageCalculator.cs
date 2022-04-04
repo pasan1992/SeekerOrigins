@@ -56,6 +56,7 @@ public class DamageCalculator
 
     public static void hitOnWall(Collider wall,Vector3 hitPositon)
     {
+            /*
             GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
             if(basicHitParticle !=null)
             {
@@ -63,6 +64,7 @@ public class DamageCalculator
                 basicHitParticle.transform.position = hitPositon;
                 basicHitParticle.transform.LookAt(Vector3.up);
             }
+            */
 
     }
     // public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection)
@@ -158,16 +160,17 @@ public class DamageCalculator
         }
     }
 
-    public static void checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
+    public static RaycastHit checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
     {
-        RaycastHit hit;
+        RaycastHit hit = new RaycastHit();
+        Vector3 hitPos = Vector3.zero;
         string[] layerMaskNames = { "HalfCoverObsticles","FullCoverObsticles","Enemy","Floor" };
         bool hitOnEnemy = false;
 
         // To stop firing through walls when too close
         if (checkIfFireThroughWall(startPositon, targetPositon))
         {
-            return;
+            return hit;
         }
 
         // Give offset to starting postion to avoid bullets colliding in own covers
@@ -191,7 +194,7 @@ public class DamageCalculator
                 case "Item":
                 DamageCalculator.onHitDamagableItem(hit.collider,ownersFaction,(targetPositon-startPositon).normalized);
                 break;       
-            }          
+            } 
 
         }
         
@@ -210,9 +213,12 @@ public class DamageCalculator
                 case "Head":
                 case "Chest":
                     DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage);
-                break;       
-            }                
+                break;  
+            }                 
         }
+
+        return hit;
+        
     }
 
     public static bool checkIfFireThroughWall(Vector3 startPositon, Vector3 targetPositon)

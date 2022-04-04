@@ -114,7 +114,7 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.BasicProjectile:
                 count = maxBulletCount;
-                resourcePath = "Prefab/LaserBeamProjectile";
+                resourcePath = "Prefab/LasterProjectile";
                 basicProjectilesList = new List<GameObject>();
                 effectList = basicProjectilesList;
                 break;
