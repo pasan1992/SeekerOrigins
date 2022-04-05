@@ -166,16 +166,24 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         Tempprojectile.transform.position = m_droneRigitBody.transform.position;
         Tempprojectile.transform.rotation = m_droneRigitBody.transform.rotation;
         Tempprojectile.SetActive(true);
-        Tempprojectile.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        //Tempprojectile.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
 
         Tempprojectile.transform.forward = (m_target.transform.position - this.transform.position).normalized;
-        BasicProjectile tempProjectile = Tempprojectile.GetComponent<BasicProjectile>();
-        tempProjectile.speed = 1f;
-        tempProjectile.setFiredFrom(m_agentData.m_agentFaction);
-        tempProjectile.resetToMicroBeam();
+        // BasicProjectile tempProjectile = Tempprojectile.GetComponent<BasicProjectile>();
+        // tempProjectile.speed = 1f;
+        // tempProjectile.setFiredFrom(m_agentData.m_agentFaction);
+        // tempProjectile.resetToMicroBeam();
 
-        DamageCalculator.checkFire(m_droneRigitBody.transform.position + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,1);
+        RaycastHit hitPos = DamageCalculator.checkFire(m_droneRigitBody.transform.position + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,1);
+        Tempprojectile.transform.forward = (hitPos.point - this.transform.position).normalized;
+
+        ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
+        if(hitPos.point != Vector3.zero)
+        {
+            Tempprojectile.transform.forward = (hitPos.point - this.transform.position).normalized;        
+        }
+        proj.StartFire(hitPos);
 
         m_audioSource.Play();
     }

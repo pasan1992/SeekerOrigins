@@ -199,13 +199,22 @@ public abstract class RangedWeapon : Weapon
             Tempprojectile.transform.forward = (m_target.transform.position - m_gunFireingPoint).normalized;
 
             Tempprojectile.SetActive(true);
-            BasicProjectile projetcileBasic = Tempprojectile.GetComponent<BasicProjectile>();
-            projetcileBasic.speed = 5f;
-            projetcileBasic.setFiredFrom(m_ownersFaction);
-            projetcileBasic.setTargetTransfrom(m_target.transform);
+ 
+            // BasicProjectile projetcileBasic = Tempprojectile.GetComponent<BasicProjectile>();
+            // projetcileBasic.speed = 5f;
+            // projetcileBasic.setFiredFrom(m_ownersFaction);
+            // projetcileBasic.setTargetTransfrom(m_target.transform);
 
-            DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,damage);
+            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,damage);
             EnvironmentSound.Instance.broadcastSound(this.transform.position,m_ownersFaction,SoundMaxDistance);
+
+            ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
+            if(hitPos.point != Vector3.zero)
+            {
+                Tempprojectile.transform.forward = (hitPos.point - m_gunFireingPoint).normalized;        
+            }
+            proj.StartFire(hitPos);
+
 
             m_target.transform.position = originalPos;
             if (this.isActiveAndEnabled)
