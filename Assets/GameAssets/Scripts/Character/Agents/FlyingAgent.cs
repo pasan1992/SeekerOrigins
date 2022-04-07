@@ -38,6 +38,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public Transform landingPad;
 
     private GameEvents.BasicNotifactionEvent m_onDamaged;
+    public MovmentModule.BASIC_MOVMENT_STATE m_movmentType;
 
     #region initalize
 
@@ -52,7 +53,8 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         m_droneRigitBody.Sleep();
 
         m_animationModule = new AnimationModule(this.GetComponentInChildren<Animator>());
-        m_movmentModule = new DroneMovmentModule(m_target, this.gameObject.transform,m_currentDroneState,m_droneRigitBody.transform,m_animationModule);
+        m_movmentModule = new DroneMovmentModule(m_target, this.gameObject.transform,m_currentDroneState,m_droneRigitBody.transform,m_animationModule,
+        m_movmentType);
 
     }
     #endregion
@@ -222,7 +224,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public void stopAiming()
     {
-        m_currentMovementState = MovmentModule.BASIC_MOVMENT_STATE.DIRECTIONAL_MOVMENT;
+        m_currentMovementState = MovmentModule.BASIC_MOVMENT_STATE.AIMED_MOVMENT;
     }
 
     public void disableDrone()
