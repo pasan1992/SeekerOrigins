@@ -155,6 +155,7 @@ MonoBehaviour:
     VisualAngle: 90
     maxHealth: 5
     MaxSheild: 0
+    Regen: 0
     m_agentFaction: 1
     health: 5
     Sheild: 0
@@ -163,7 +164,10 @@ MonoBehaviour:
     grenade: {fileID: 0}
     inventryItems: []
     behaviorStatus: 0
+    WeaponAmmo: []
+    drop_reward: 1
   landingPad: {fileID: 0}
+  m_movmentType: 0
 --- !u!82 &1963934576
 AudioSource:
   m_ObjectHideFlags: 0
@@ -285,9 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e9072d9920aa94ebeba2285ffd2f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_wayPoints: []
 --- !u!114 &1963934579
 MonoBehaviour:
   m_ObjectHideFlags: 0

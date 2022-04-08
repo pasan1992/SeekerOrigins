@@ -13,7 +13,11 @@ public class BaseObjective : MonoBehaviour
 
     public virtual void StartObjective()
     {
-        m_ObjectiveText.text = Objective;
+        if(m_ObjectiveText !=null)
+        {
+            m_ObjectiveText.text = Objective;
+        }
+
     }
 
     public virtual void onObjectiveComplete()

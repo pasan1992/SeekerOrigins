@@ -122,7 +122,11 @@ public class GamePlayCam : MonoBehaviour
     public void DamageEffect(int damageType)
     {
         Color tmp_color = screenDamageFilter.color;
-        tmp_color.a += 0.5f;
+        tmp_color.a += 0.2f;
+        if(tmp_color.a > 0.5f)
+        {
+            tmp_color.a = 0.5f;
+        }
         screenDamageFilter.color= tmp_color;
     }
 }

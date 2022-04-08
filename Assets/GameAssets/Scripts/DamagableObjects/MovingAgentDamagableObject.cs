@@ -125,4 +125,10 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     }
 
+    protected IEnumerator waitAndDestory(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
+    }
+
 }

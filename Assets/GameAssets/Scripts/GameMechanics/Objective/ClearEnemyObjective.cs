@@ -19,13 +19,21 @@ public class ClearEnemyObjective : BaseObjective
         {
             agent.setOnDestroyed(onUnitDestory);
         }
-        m_ObjectiveText.text = Objective.Replace("#", m_enemyCount.ToString()).Replace("*", m_enemyAgents.Length.ToString());
+        if(m_ObjectiveText !=null)
+        {
+            m_ObjectiveText.text = Objective.Replace("#", m_enemyCount.ToString()).Replace("*", m_enemyAgents.Length.ToString());
+        }
     }
 
     public void onUnitDestory()
     {
         m_enemyCount += 1;
-        m_ObjectiveText.text = Objective.Replace("#", m_enemyCount.ToString()).Replace("*", m_enemyAgents.Length.ToString());
+
+        if(m_ObjectiveText !=null)
+        {
+            m_ObjectiveText.text = Objective.Replace("#", m_enemyCount.ToString()).Replace("*", m_enemyAgents.Length.ToString());
+        }
+        
 
         if(m_enemyCount == m_enemyAgents.Length)
         {
