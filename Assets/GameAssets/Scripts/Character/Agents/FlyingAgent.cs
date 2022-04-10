@@ -7,7 +7,7 @@ using System.Collections;
 public class FlyingAgent : MonoBehaviour ,ICyberAgent
 {
     // Start is called before the first frame update
-    private MovmentModule.BASIC_MOVMENT_STATE m_currentMovementState = MovmentModule.BASIC_MOVMENT_STATE.DIRECTIONAL_MOVMENT;
+    private MovmentModule.BASIC_MOVMENT_STATE m_currentMovementState = MovmentModule.BASIC_MOVMENT_STATE.AIMED_MOVMENT;
 
     private Vector3 m_movmentDirection;
     private GameObject m_target;
@@ -38,7 +38,10 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public Transform landingPad;
 
     private GameEvents.BasicNotifactionEvent m_onDamaged;
-    public MovmentModule.BASIC_MOVMENT_STATE m_movmentType;
+
+    public Transform[] firePoints;
+
+    public Transform CharacterTransfrom;
 
     #region initalize
 
@@ -53,8 +56,14 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         m_droneRigitBody.Sleep();
 
         m_animationModule = new AnimationModule(this.GetComponentInChildren<Animator>());
+
+        if(CharacterTransfrom == null)
+        {
+            CharacterTransfrom = this.gameObject.transform;
+        }
+
         m_movmentModule = new DroneMovmentModule(m_target, this.gameObject.transform,m_currentDroneState,m_droneRigitBody.transform,m_animationModule,
-        m_movmentType);
+        m_currentMovementState);
 
     }
     #endregion
@@ -99,6 +108,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public void setTargetPoint(Vector3 position)
     {
         m_target.transform.position = position;
+        m_movmentModule.SetTargetPosition(position);
     }
 
     public Vector3 getCurrentPosition()
@@ -165,29 +175,41 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
         //.getBasicProjectie();
         GameObject Tempprojectile = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile);
-        Tempprojectile.transform.position = m_droneRigitBody.transform.position;
+        Vector3 firePos = getFirePoint();
+        Tempprojectile.transform.position = firePos;
         Tempprojectile.transform.rotation = m_droneRigitBody.transform.rotation;
         Tempprojectile.SetActive(true);
         //Tempprojectile.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
 
-        Tempprojectile.transform.forward = (m_target.transform.position - this.transform.position).normalized;
+        Tempprojectile.transform.forward = (m_target.transform.position - firePos).normalized;
         // BasicProjectile tempProjectile = Tempprojectile.GetComponent<BasicProjectile>();
         // tempProjectile.speed = 1f;
         // tempProjectile.setFiredFrom(m_agentData.m_agentFaction);
         // tempProjectile.resetToMicroBeam();
 
-        RaycastHit hitPos = DamageCalculator.checkFire(m_droneRigitBody.transform.position + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,1);
-        Tempprojectile.transform.forward = (hitPos.point - this.transform.position).normalized;
+        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,1);
+        Tempprojectile.transform.forward = (hitPos.point - firePos).normalized;
 
         ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
         if(hitPos.point != Vector3.zero)
         {
-            Tempprojectile.transform.forward = (hitPos.point - this.transform.position).normalized;        
+            Tempprojectile.transform.forward = (hitPos.point -firePos).normalized;        
         }
         proj.StartFire(hitPos);
 
         m_audioSource.Play();
+    }
+
+    public Vector3 getFirePoint()
+    {
+        if(firePoints.Length > 0)
+        {
+            int val = Random.Range(0,firePoints.Length-1);
+            return firePoints[val].position;
+        }
+
+        return this.transform.position;
     }
 
     private void DestroyCharacter()

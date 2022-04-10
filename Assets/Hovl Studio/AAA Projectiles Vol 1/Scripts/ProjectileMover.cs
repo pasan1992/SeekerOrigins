@@ -111,7 +111,6 @@ public class ProjectileMover : MonoBehaviour
 
     private void onHit(RaycastHit hit_obj)
     {
-        Debug.Log("done");
         //Lock all axes movement and rotation
         //rb.constraints = RigidbodyConstraints.FreezeAll;
         speed = 0;

@@ -80,7 +80,6 @@ public abstract class AgentController : MonoBehaviour
     }
     public virtual void OnDamage()
     {
-        Debug.Log("DAMAGIN!!!");
     }
 
 
