@@ -4685,7 +4685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6116083490843549910
 Transform:
   m_ObjectHideFlags: 0
@@ -4779,7 +4779,7 @@ PrefabInstance:
     - target: {fileID: 23888560446418572, guid: 5d40c48a597edbe4b9db9adac55501ae,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d40c48a597edbe4b9db9adac55501ae, type: 3}
@@ -4805,6 +4805,10 @@ PrefabInstance:
     - target: {fileID: 1094861630355358, guid: bc398d4e15adb594c91e2387a093b24f, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Drone_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094861630355358, guid: bc398d4e15adb594c91e2387a093b24f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4270534604104300, guid: bc398d4e15adb594c91e2387a093b24f, type: 3}
       propertyPath: m_RootOrder
@@ -4868,6 +4872,10 @@ PrefabInstance:
     - target: {fileID: 1008111210213596, guid: dbf6bcdd65b2193449fd6ca552a72b95, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Drone_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008111210213596, guid: dbf6bcdd65b2193449fd6ca552a72b95, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4598785555926140, guid: dbf6bcdd65b2193449fd6ca552a72b95, type: 3}
       propertyPath: m_RootOrder

@@ -55631,12 +55631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e567ff2d4aee24b9d89a97c853a918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimedTexture: {fileID: 2800000, guid: 930d73587456ad24294394e72f63530e, type: 3}
-  aimedOnTargetTexture: {fileID: 2800000, guid: 930d73587456ad24294394e72f63530e,
+  aimedTexture: {fileID: 2800000, guid: cbdabb241ecc74746820b3bc19b80c2a, type: 3}
+  aimedOnTargetTexture: {fileID: 2800000, guid: a15ad419e8173b044b3d7b1337925d4f,
     type: 3}
-  idleTexture: {fileID: 2800000, guid: 930d73587456ad24294394e72f63530e, type: 3}
-  fireTexture: {fileID: 2800000, guid: 930d73587456ad24294394e72f63530e, type: 3}
-  onTargetFire: {fileID: 2800000, guid: 930d73587456ad24294394e72f63530e, type: 3}
+  idleTexture: {fileID: 2800000, guid: cbdabb241ecc74746820b3bc19b80c2a, type: 3}
+  fireTexture: {fileID: 2800000, guid: cbdabb241ecc74746820b3bc19b80c2a, type: 3}
+  onTargetFire: {fileID: 2800000, guid: 6f5124d57735a7948aa4d6e0590cd293, type: 3}
   cursorMode: 0
   hotSpot: {x: 17, y: 17}
   ui_curser: {fileID: 1845584497}
@@ -55648,7 +55648,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845584491}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aa9d87f972d1714e936ab52fc2f2f8a, type: 3}
   m_Name: 
