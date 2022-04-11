@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Missions/Tutorial/Tutorial.unity
+    guid: b95134ee157a2d0438250ac0e4ae7239
+  - enabled: 1
     path: Assets/Scenes/Missions/AbandonedChargingStation/AbandonSuperCharger.unity
     guid: 285334d3719c5924185e064cdb9dfb0a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Missions/AbandonedChargingStation/AbandonSuperCharger_Part2.unity
     guid: 225b8756cda84ef469385e494be3b960
   - enabled: 0
     path: Assets/Scenes/Missions/LearningLevel/Level 01.2.unity
     guid: 2018e5adc285c0c49acb1c2440012177
   - enabled: 0
-    path: Assets/Scenes/Missions/Tutorial/Tutorial.unity
-    guid: b95134ee157a2d0438250ac0e4ae7239
-  - enabled: 1
     path: Assets/Scenes/Missions/Level 01/Level 01.unity
     guid: c241ed3c6a315fb4ca8c9bcd06b85ceb
   m_configObjects: {}

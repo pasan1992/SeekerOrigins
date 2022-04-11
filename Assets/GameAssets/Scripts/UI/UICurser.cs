@@ -57,9 +57,9 @@ public class UICurser : MonoBehaviour
         }
         else
         {
-            innerCircle.enabled = true;
-            obj.transform.localScale = starting_aim_scale *(100 - current_weapon_accuracy) *0.025f*m_aim_size + starting_aim_scale + moving_offset;
-            innerCircle.transform.localScale = starting_inner_circle_size + starting_inner_circle_size*recall_aim_offset;
+            //innerCircle.enabled = true;
+            //obj.transform.localScale = starting_aim_scale *(100 - current_weapon_accuracy) *0.025f*m_aim_size + starting_aim_scale + moving_offset;
+            //innerCircle.transform.localScale = starting_inner_circle_size + starting_inner_circle_size*recall_aim_offset;
         }
         
     }
