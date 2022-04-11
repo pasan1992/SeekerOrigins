@@ -52,8 +52,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
                     onDestroyedEvent();
                 }
                 
-
-                m_objectUI.OnDistryedObject();
+                if(m_objectUI)
+                {
+                    m_objectUI.OnDistryedObject();
+                }
+                
                 
             }
 

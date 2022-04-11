@@ -118,4 +118,9 @@ public class DroneMovmentModule : MovmentModule
     {
         m_landingPosition = position;
     }
+
+    public void SetTargetPosition(Vector3 position)
+    {
+        m_target.transform.position  = position;
+    }
 }
