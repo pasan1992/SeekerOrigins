@@ -152,7 +152,16 @@ public class ProjectileMover : MonoBehaviour
         m_particleSystem.Play();
         targetPos = hit_obj;
         travelled_time = 0;
-        max_distance = Vector3.Distance(this.transform.position,hit_obj.point);
+
+        if(hit_obj.point != Vector3.zero)
+        {
+            max_distance = Vector3.Distance(this.transform.position,hit_obj.point);
+        }
+        else
+        {
+            max_distance = float.MaxValue;
+        }
+        
         start_pos = this.transform.position;
         //rb.constraints = RigidbodyConstraints.None;
     }
