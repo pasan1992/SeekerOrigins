@@ -9,10 +9,32 @@ public class FloorPlane : MonoBehaviour
     public List<GameObject> rails;
     public List<GameObject> covers;
     private List<int> activeObject = new List<int>();
+    private int m_wall_varient = 0;
 
-
-    public bool SetActiveTiles(int id)
+    public bool SetActiveTiles(int id,int wall_variant)
     {
+        if(id > floorList.Count-1)
+        {
+            Debug.LogError("ID "+ id.ToString()+" is not available using " +  (floorList.Count - 1).ToString() +" instead");
+            id = floorList.Count -1;
+        }
+
+        var wall_type_count = rails[0].GetComponentsInChildren<TempWall>().Length;
+        if(wall_type_count == 0)
+        {
+            m_wall_varient = -1;
+        }
+        else if(wall_variant > wall_type_count-1)
+        {
+            Debug.LogError("ID "+ wall_variant.ToString()+" is not available using " +  (wall_type_count-1).ToString() +" instead");
+            m_wall_varient =  wall_type_count-1;
+        }
+        else
+        {
+            m_wall_varient = wall_variant;
+        }
+
+
         var f_id = 0;
         bool activated = false;
         foreach(GameObject floorTile in floorList)
@@ -50,8 +72,29 @@ public class FloorPlane : MonoBehaviour
 
     public void activateRails(int x, int z, int max_x , int max_z)
     {
+        // Activate wall type
         foreach (GameObject rail in rails)
         {
+            var wall_types = rail.GetComponentsInChildren<TempWall>();
+
+            if(m_wall_varient != -1)
+            {
+                int wid =0;
+                foreach(var wtype in wall_types)
+                {
+                    if(wid !=m_wall_varient)
+                    {
+                        DestroyImmediate(wtype.gameObject);
+                    }
+                    else
+                    {
+                        wtype.gameObject.SetActive(true);
+                        DestroyImmediate(wtype.GetComponent<TempWall>());
+                    }
+                    
+                    wid +=1;
+                }
+            }
             rail.SetActive(false);
         }
 
@@ -78,6 +121,11 @@ public class FloorPlane : MonoBehaviour
             rails[2].SetActive(true);
             activeObject.Add(2);
         }
+
+    }
+
+    private void activateWallID(int id)
+    {
 
     }
 

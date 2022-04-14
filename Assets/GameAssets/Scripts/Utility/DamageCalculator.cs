@@ -201,12 +201,13 @@ public class DamageCalculator
 
         }
         
-        for (int i =0; i <20;i++)
+        for (int i =-30; i <30;i++)
         {
             // Check fire for the second time for find crouched enemies.
-            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,-i/10,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
+            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/30,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
                 hitSomewhere = true;
+                Debug.Log("hit here" + hit.transform.name);
                 switch(hit.transform.tag)
                 {
                     case "Cover":
@@ -228,9 +229,10 @@ public class DamageCalculator
             }
         }
 
-        if(hitSomewhere & hit.transform.tag == "Floor")
+        if(hitSomewhere & hit.transform !=null & hit.transform.tag == "Floor")
         {
             hit.point = Vector3.zero;
+            Debug.Log(hit.transform.name);
         }
 
         return hit;

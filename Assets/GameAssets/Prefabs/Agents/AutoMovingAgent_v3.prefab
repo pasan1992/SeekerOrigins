@@ -811,9 +811,9 @@ MonoBehaviour:
   m_restrictions: 0
   target: {fileID: 0}
   preferedWeapon: 0
-  CanDodge: 0
+  CanDodge: 1
   rutine: {fileID: 1887792727}
-  max_Sound_hearing_distance: 30
+  max_Sound_hearing_distance: 10
 --- !u!114 &8851718178877291366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,14 +829,14 @@ MonoBehaviour:
   m_characterState: 3
   AgentData:
     AgentNature: 0
-    Skill: 0.3
-    VisualDistance: 12
-    VisualAngle: 90
-    maxHealth: 7
+    Skill: 1
+    VisualDistance: 10
+    VisualAngle: 180
+    maxHealth: 10
     MaxSheild: 0
     Regen: 0
     m_agentFaction: 1
-    health: 7
+    health: 10
     Sheild: 0
     primaryWeapon: {fileID: 8851718180189712949}
     secondaryWeapon: {fileID: 8851718180856099040}
