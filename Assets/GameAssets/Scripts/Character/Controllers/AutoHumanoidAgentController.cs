@@ -360,7 +360,7 @@ public class AutoHumanoidAgentController :  AgentController
         switchToCombatStage();
         m_visualSensor.forceCombatMode(position.position);
         m_forced_attack = true;
-
+        m_visualSensor.disableLook();
 
     }
 

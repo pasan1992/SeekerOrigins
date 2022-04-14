@@ -129,6 +129,14 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
 
     }
 
+    public void disableLook()
+    {
+         if(m_look_IK)
+        {
+            m_look_IK.enabled = false;
+        }       
+    }
+
     private Vector3 calculate_look_position(float angle,Vector3 headPos,float look_distance)
     {
         float x = Mathf.Cos(angle) * look_distance + headPos.x;
