@@ -9,9 +9,15 @@ public class PlatformCreator : MonoBehaviour
     public int Z_Size;
     public int Tile_Size = 5;
     public GameObject tile;
+
+    [Range(0, 10)]
     public int TileVariants;
+
+    [Range(0, 6)]
+    public int WallVariant;
     private List<GameObject> platfroms = new List<GameObject>();
     public float coverProb;
+    public bool NoRails = false;
     void Start()
     {
 
@@ -26,8 +32,12 @@ public class PlatformCreator : MonoBehaviour
             {
                 var obj = GameObject.Instantiate(tile);
                 obj.transform.position = new Vector3(x * Tile_Size, 0, z * Tile_Size) + this.transform.position;
-                bool activated = obj.GetComponent<FloorPlane>().SetActiveTiles((int)(TileVariants));
-                obj.GetComponent<FloorPlane>().activateRails(x, z, (X_Size / Tile_Size) - 1, (Z_Size / Tile_Size) - 1);
+                bool activated = obj.GetComponent<FloorPlane>().SetActiveTiles((int)(TileVariants),WallVariant);
+                if(!NoRails)
+                {
+                    obj.GetComponent<FloorPlane>().activateRails(x, z, (X_Size / Tile_Size) - 1, (Z_Size / Tile_Size) - 1);
+                }
+
                 obj.transform.parent = this.transform;
                 if (!activated)
                 {

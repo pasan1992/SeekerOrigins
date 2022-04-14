@@ -41,12 +41,23 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
                     break;
             }
 
-            if (!destroyedEventCalled && onDestroyedEvent != null)
+            
+
+            if (!destroyedEventCalled)
             {
                 destroyedEventCalled = true;
-                onDestroyedEvent();
 
-                m_objectUI.OnDistryedObject();
+                if(onDestroyedEvent != null)
+                {
+                    onDestroyedEvent();
+                }
+                
+                if(m_objectUI)
+                {
+                    m_objectUI.OnDistryedObject();
+                }
+                
+                
             }
 
         }

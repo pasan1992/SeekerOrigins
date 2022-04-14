@@ -56,6 +56,7 @@ public class DamageCalculator
 
     public static void hitOnWall(Collider wall,Vector3 hitPositon)
     {
+            /*
             GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
             if(basicHitParticle !=null)
             {
@@ -63,6 +64,7 @@ public class DamageCalculator
                 basicHitParticle.transform.position = hitPositon;
                 basicHitParticle.transform.LookAt(Vector3.up);
             }
+            */
 
     }
     // public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection)
@@ -158,22 +160,25 @@ public class DamageCalculator
         }
     }
 
-    public static void checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
+    public static RaycastHit checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
     {
-        RaycastHit hit;
+        RaycastHit hit = new RaycastHit();
+        Vector3 hitPos = Vector3.zero;
         string[] layerMaskNames = { "HalfCoverObsticles","FullCoverObsticles","Enemy","Floor" };
         bool hitOnEnemy = false;
+        bool hitSomewhere = false;
 
         // To stop firing through walls when too close
         if (checkIfFireThroughWall(startPositon, targetPositon))
         {
-            return;
+            return hit;
         }
 
         // Give offset to starting postion to avoid bullets colliding in own covers
         Vector3 offsetTargetPositon =  (targetPositon - startPositon).normalized + startPositon;
         if (Physics.Raycast(offsetTargetPositon, targetPositon - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
         {
+            hitSomewhere = true;
             switch(hit.transform.tag)
             {
                 case "Cover":
@@ -189,30 +194,49 @@ public class DamageCalculator
                 hitOnEnemy = true;
                 break;
                 case "Item":
+                hitOnEnemy = true;
                 DamageCalculator.onHitDamagableItem(hit.collider,ownersFaction,(targetPositon-startPositon).normalized);
                 break;       
-            }          
+            } 
 
         }
         
-        // Check fire for the second time for find crouched enemies.
-        if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,-1f,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
+        for (int i =-30; i <30;i++)
         {
-            switch(hit.transform.tag)
+            // Check fire for the second time for find crouched enemies.
+            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/30,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
-                case "Cover":
-                case "Wall":
-                //DamageCalculator.onHitEnemy(hit.collider,m_ownersFaction,(targetPositon-startPositon).normalized);
-                    DamageCalculator.hitOnWall(hit.collider,hit.point);
+                hitSomewhere = true;
+                Debug.Log("hit here" + hit.transform.name);
+                switch(hit.transform.tag)
+                {
+                    case "Cover":
+                    case "Wall":
+                    //DamageCalculator.onHitEnemy(hit.collider,m_ownersFaction,(targetPositon-startPositon).normalized);
+                        DamageCalculator.hitOnWall(hit.collider,hit.point);
+                    break;
+                    case "Enemy":
+                    case "Player":
+                    case "Head":
+                    case "Chest":
+                        DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage);
+                    break;  
+                }                 
+            }
+            if(hitSomewhere)
+            {
                 break;
-                case "Enemy":
-                case "Player":
-                case "Head":
-                case "Chest":
-                    DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage);
-                break;       
-            }                
+            }
         }
+
+        if(hitSomewhere & hit.transform !=null & hit.transform.tag == "Floor")
+        {
+            hit.point = Vector3.zero;
+            Debug.Log(hit.transform.name);
+        }
+
+        return hit;
+        
     }
 
     public static bool checkIfFireThroughWall(Vector3 startPositon, Vector3 targetPositon)

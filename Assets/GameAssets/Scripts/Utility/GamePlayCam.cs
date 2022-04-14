@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePlayCam : MonoBehaviour
 {
@@ -25,11 +26,18 @@ public class GamePlayCam : MonoBehaviour
     public float shake_lerp_start = 1;
     public float shake_lerp_end = 1;
 
+    public Image screenDamageFilter;
+
     //public float speedMultiplayer;
     void Start()
     {
         offset = target.transform.position - this.transform.position;
         m_cameraAimOffset = Vector3.zero;
+        var outlines = FindObjectsOfType<Outline>();
+        foreach(Outline outline in outlines)
+        {
+            outline.OutlineMode = Outline.Mode.SilhouetteOnly;
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +57,13 @@ public class GamePlayCam : MonoBehaviour
             Vector3 newPostion = target.transform.position - offset;
             //newPostion = new Vector3(newPostion.x, this.transform.position.y, target.transform.position.z);
             this.transform.position = newPostion;
+        }
+
+        if(screenDamageFilter.color.a > 0)
+        {
+            Color tmp_color = screenDamageFilter.color;
+            tmp_color.a -= Time.deltaTime*3;
+            screenDamageFilter.color= tmp_color;
         }
     }
 
@@ -102,5 +117,16 @@ public class GamePlayCam : MonoBehaviour
         yield return null;
 
         //transform.position = originalPose;
+    }
+
+    public void DamageEffect(int damageType)
+    {
+        Color tmp_color = screenDamageFilter.color;
+        tmp_color.a += 0.2f;
+        if(tmp_color.a > 0.5f)
+        {
+            tmp_color.a = 0.5f;
+        }
+        screenDamageFilter.color= tmp_color;
     }
 }

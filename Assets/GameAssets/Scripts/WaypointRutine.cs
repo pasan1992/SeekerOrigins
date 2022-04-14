@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaypointRutine : MonoBehaviour
 {
-    public List<BasicWaypoint> m_wayPoints = new List<BasicWaypoint>();
+    public List<BasicWaypoint> m_wayPoints;
 
     public static GameObject prefab;
 
@@ -26,8 +26,27 @@ public class WaypointRutine : MonoBehaviour
             }
         }*/
     }
+
+    public void clearWaypoint()
+    {
+        if( m_wayPoints != null && m_wayPoints.Count > 0)
+        {
+            foreach (var item in m_wayPoints)
+            {
+                Destroy(item);
+            }
+        }
+    }
+
     public void createWaypoint()
     {
+
+
+        if(m_wayPoints == null)
+        {
+            m_wayPoints = new List<BasicWaypoint>();
+        }
+        
         if(prefab == null)
         {
             prefab = Resources.Load<GameObject>("Prefab/BasicWaypoint");

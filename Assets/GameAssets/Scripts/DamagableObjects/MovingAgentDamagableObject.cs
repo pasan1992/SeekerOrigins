@@ -111,6 +111,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     public void damage_effect(Transform hit_transfrom)
     {
+        /*
         GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(particleEffectOnDamage);
         if (basicHitParticle == null)
         {
@@ -120,7 +121,14 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         basicHitParticle.SetActive(true);
         basicHitParticle.transform.position = hit_transfrom.position;
         basicHitParticle.transform.LookAt(Vector3.up);
-        //m_audioSource.PlayOneShot(m_soundManager.getBulletHitMetal());
+        */
+
+    }
+
+    protected IEnumerator waitAndDestory(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
     }
 
 }

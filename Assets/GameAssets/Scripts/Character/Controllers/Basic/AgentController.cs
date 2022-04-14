@@ -15,6 +15,7 @@ public abstract class AgentController : MonoBehaviour
         cyberAgent.setOnDestoryCallback(OnAgentDestroy);
         cyberAgent.setOnDisableCallback(onAgentDisable);
         cyberAgent.setOnEnableCallback(onAgentEnable);
+        cyberAgent.setOnDamagedCallback(OnDamage);
     }
 
     //public delegate void agentBasicEventDelegate();
@@ -76,6 +77,9 @@ public abstract class AgentController : MonoBehaviour
     public virtual void ForceCombatMode(Transform position)
     {
         Debug.LogError("FORCE COMBAT MODE NOT IMPLEMENTED " + this.gameObject.name);
+    }
+    public virtual void OnDamage()
+    {
     }
 
 

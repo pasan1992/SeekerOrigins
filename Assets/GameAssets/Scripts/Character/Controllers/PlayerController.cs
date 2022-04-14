@@ -34,7 +34,7 @@ public class PlayerController : AgentController
 
     private RocketPack m_rocket_pack;
 
-    
+    GamePlayCam camplayer;
 
     #region Initialize
     private void Start()
@@ -53,6 +53,7 @@ public class PlayerController : AgentController
         coverpoints = GameObject.FindObjectsOfType<CoverPoint>();
 
         m_rocket_pack = GetComponentInChildren<RocketPack>();
+        camplayer = GameObject.FindObjectOfType<GamePlayCam>();
     }
 
     private void createTargetPlane()
@@ -537,6 +538,11 @@ public class PlayerController : AgentController
     public void FindCoverPoints()
     {
         coverpoints = GameObject.FindObjectsOfType<CoverPoint>();
+    }
+
+    public override void OnDamage()
+    {
+        camplayer.DamageEffect(1);
     }
 
     #endregion

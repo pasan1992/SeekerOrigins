@@ -56,6 +56,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
         m_target = new GameObject();
         m_movmentVector = new Vector3(0, 0, 0);
+        AgentData.InitalizeAmmo();
 
         // Create Animation system.
         AimIK aimIK = this.GetComponent<AimIK>();

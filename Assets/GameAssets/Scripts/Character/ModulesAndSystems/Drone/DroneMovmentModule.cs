@@ -15,13 +15,15 @@ public class DroneMovmentModule : MovmentModule
     Transform characterTransfrom,
     GameEnums.DroneState state,
     Transform modelTransfrom,
-    AnimationModule animationSystem):base(target,characterTransfrom)
+    AnimationModule animationSystem,
+    BASIC_MOVMENT_STATE movmentType):base(target,characterTransfrom)
     {
         m_target = target;
         m_characterTransform = characterTransfrom;
         m_modelTransfrom = modelTransfrom;
         m_currentDroneState = state;
         m_animationSystem = animationSystem;
+        m_movmentType = movmentType;
     }
 
     public override void UpdateMovment(int characterMovmentState, Vector3 movmentDirection)
@@ -115,5 +117,10 @@ public class DroneMovmentModule : MovmentModule
     public void setLandPosition(Vector3 position)
     {
         m_landingPosition = position;
+    }
+
+    public void SetTargetPosition(Vector3 position)
+    {
+        m_target.transform.position  = position;
     }
 }
