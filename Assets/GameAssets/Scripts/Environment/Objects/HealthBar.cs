@@ -13,7 +13,6 @@ public class HealthBar : MonoBehaviour
     public Sprite half_sheild_image;
     public Image Sheild_icon;
 
-    public Image Nameplate;
 
     private Image Healthfill;
     #region Initialize
@@ -112,13 +111,11 @@ public class HealthBar : MonoBehaviour
     private void makeHealthBarVisible()
     {
         healthbar.gameObject.SetActive(true);
-        Nameplate.gameObject.SetActive(true);
     }
 
     private void makeHealthBarInvisible()
     {
         healthbar.gameObject.SetActive(false);
-        Nameplate.gameObject.SetActive(false);
     }
 
     public void set_full_cover()
