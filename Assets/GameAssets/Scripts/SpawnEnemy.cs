@@ -38,9 +38,36 @@ public class SpawnEnemy : BaseObjective
         }
     }
 
+
+    public void SpawnEnemyRandomLocation(int count,GameObject[] spawnPoint,Transform target,string FireEvent)
+    {
+        if(agent_count > 0)
+        {
+            Debug.LogError("You can't spawn more nemeies when previous spawn enemis are active");
+        }
+        OnObjectiveCompelteEvent = FireEvent;
+        agent_count = count;
+
+        for (int i =0; i< count ; i++)
+        {
+            var enemey = GameObject.Instantiate(AgentPrefab);
+            var agent =  enemey.GetComponent<NavMeshAgent>();
+            var sp_id = i % spawnPoint.Length;
+            var sp = spawnPoint[sp_id];
+
+            agent.Warp(sp.transform.position + Random.insideUnitSphere*1.6f);
+            agent.enabled = false;
+            agent.enabled = true;
+
+            AgentController agentCont = enemey.GetComponent<AgentController>();
+            enemey.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
+            StartCoroutine(waitAndAttack(agentCont,target));
+        }
+    }
+
     IEnumerator waitAndAttack(AgentController agent,Transform target)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(Random.Range(0,3));
         agent.ForceCombatMode(target);
     }
 
