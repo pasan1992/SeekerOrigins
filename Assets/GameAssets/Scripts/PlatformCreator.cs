@@ -58,7 +58,6 @@ public class PlatformCreator : MonoBehaviour
                 else
                 {
                     obj.GetComponent<FloorPlane>().DeleteAllCovers();
-                    obj.GetComponent
                 }
                 obj.GetComponent<FloorPlane>().RemoveParents(this.transform);
 
