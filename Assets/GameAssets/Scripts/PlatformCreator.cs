@@ -58,6 +58,7 @@ public class PlatformCreator : MonoBehaviour
                 else
                 {
                     obj.GetComponent<FloorPlane>().DeleteAllCovers();
+                    obj.GetComponent
                 }
                 obj.GetComponent<FloorPlane>().RemoveParents(this.transform);
 
@@ -68,6 +69,12 @@ public class PlatformCreator : MonoBehaviour
 
                 DestroyImmediate(obj.GetComponent<FloorPlane>());
             }
+        }
+
+        
+        foreach(var obj in this.GetComponentsInChildren<GameObject>())
+        {
+            obj.transform.parent = this.transform.parent;
         }
     }
 
