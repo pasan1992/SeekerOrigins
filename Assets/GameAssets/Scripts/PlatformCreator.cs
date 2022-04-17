@@ -71,18 +71,22 @@ public class PlatformCreator : MonoBehaviour
         }
 
         
-        foreach(var obj in this.GetComponentsInChildren<GameObject>())
+        foreach(var obj in this.GetComponentsInChildren<Transform>())
         {
-            obj.transform.parent = this.transform.parent;
+            obj.transform.parent = this.transform;
         }
     }
 
     [ContextMenu("Delete")]
     public void Delete()
     {
-        foreach(GameObject obj in platfroms)
+        foreach(var obj in this.GetComponentsInChildren<Transform>())
         {
-            DestroyImmediate(obj);
-        }
+
+            if(obj.name !=this.name)
+            {
+                DestroyImmediate(obj.gameObject);
+            }
+        }        
     }
 }
