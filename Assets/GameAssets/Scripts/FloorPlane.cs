@@ -146,4 +146,39 @@ public class FloorPlane : MonoBehaviour
     {
         covers[Random.Range(0, covers.Count)].SetActive(true);
     }
+
+    public void DeleteAllCovers()
+    {
+        foreach(var cov in covers)
+        {
+            DestroyImmediate(cov);
+        }
+        covers = new List<GameObject>();
+    }
+
+    public void RemoveParents(Transform parent)
+    {
+        foreach(var obj in rails)
+        {
+            obj.transform.parent = parent;
+        }
+
+        foreach(var obj in rails)
+        {
+            if(obj !=null)
+            {
+                obj.transform.parent = parent;
+            }
+            
+        }
+
+        foreach(var obj in floorList)
+        {
+            if(obj !=null)
+            {
+                obj.transform.parent = parent;
+            }
+            
+        }
+    }
 }
