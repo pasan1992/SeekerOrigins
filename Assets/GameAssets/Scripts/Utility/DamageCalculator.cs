@@ -209,17 +209,18 @@ public class DamageCalculator
             // Check fire for the second time for find crouched enemies.
             if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/30,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
-                acualHit = hit;
                 Debug.Log("hit here" + hit.transform.name);
                 switch(hit.transform.tag)
                 {
                     case "Wall":
                         DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        acualHit = hit;
                     break;
                     case "Cover":
                     //DamageCalculator.onHitEnemy(hit.collider,m_ownersFaction,(targetPositon-startPositon).normalized);
                         DamageCalculator.hitOnWall(hit.collider,hit.point);
                         importantHit = true;
+                        acualHit = hit;
                     break;
                     case "Enemy":
                     case "Player":
@@ -227,11 +228,10 @@ public class DamageCalculator
                     case "Chest":
                         DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage);
                         importantHit = true;
+                        acualHit = hit;
                     break; 
                     case "Floor":
-                        acualHit.point = Vector3.zero;
-                    break; 
-                    default:
+                        acualHit = hit;
                         acualHit.point = Vector3.zero;
                     break;
                 }                 
