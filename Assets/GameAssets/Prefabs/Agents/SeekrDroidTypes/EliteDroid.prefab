@@ -691,7 +691,9 @@ MonoBehaviour:
     grenade: {fileID: 0}
     inventryItems: []
     behaviorStatus: 0
-    WeaponAmmo: []
+    WeaponAmmo:
+    - AmmoType: BasicMag
+      AmmoCount: 9999
     drop_reward: 1
   AgentComponents:
     weaponAimTransform: {fileID: 8851718179661802297}
