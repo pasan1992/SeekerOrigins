@@ -204,10 +204,10 @@ public class DamageCalculator
         }
         
         bool importantHit = false;
-        for (int i =-30; i <30;i++)
+        for (int i =-3; i <3;i++)
         {
             // Check fire for the second time for find crouched enemies.
-            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/30,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
+            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/3,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
                 Debug.Log("hit here" + hit.transform.name);
                 switch(hit.transform.tag)
