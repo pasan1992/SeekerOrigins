@@ -7,7 +7,7 @@ public abstract class AgentController : MonoBehaviour
 
     public bool m_inUse = false;
     public float m_timeToReset = 2;
-    public enum AGENT_AI_RESTRICTIONS { NO_RESTRICTIONS,NO_COMBAT };
+    public enum AGENT_AI_RESTRICTIONS { NO_RESTRICTIONS,NO_COMBAT,DISABLED };
     public AGENT_AI_RESTRICTIONS m_restrictions = AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
 
     protected void intializeAgentCallbacks(ICyberAgent cyberAgent)

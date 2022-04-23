@@ -97,6 +97,11 @@ public class AutoHumanoidAgentController :  AgentController
 
     void FixedUpdate()
     {
+        if(m_restrictions == AGENT_AI_RESTRICTIONS.DISABLED)
+        {
+            return;
+        }
+
         if(m_currentState != null && m_movingAgent.IsFunctional() && !m_movingAgent.isDisabled() & isInUse())
         {
             m_currentState.updateStage();
@@ -278,7 +283,7 @@ public class AutoHumanoidAgentController :  AgentController
 
     private void switchToCombatStage()
     {
-        if(m_restrictions == AGENT_AI_RESTRICTIONS.NO_COMBAT)
+        if(m_restrictions != AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS)
         {
             return;
         }
@@ -348,6 +353,7 @@ public class AutoHumanoidAgentController :  AgentController
 
     public override void ForceCombatMode(Transform position)
     {
+        m_restrictions =  AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
         m_force_transfrom = position;
         CoverPointBasedCombatStage combat_stage = ((CoverPointBasedCombatStage)m_combatStage);
         // set self cover point

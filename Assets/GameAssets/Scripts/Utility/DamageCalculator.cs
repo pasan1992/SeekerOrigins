@@ -165,7 +165,7 @@ public class DamageCalculator
         RaycastHit hit = new RaycastHit();
         RaycastHit acualHit = new RaycastHit();
         Vector3 hitPos = Vector3.zero;
-        string[] layerMaskNames = { "HalfCoverObsticles","FullCoverObsticles","Enemy","Floor" };
+        string[] layerMaskNames = { "HalfCoverObsticles","FullCoverObsticles","Enemy","Floor", "IgnoreNavMesh" };
         bool hitOnEnemy = false;
 
         // To stop firing through walls when too close
