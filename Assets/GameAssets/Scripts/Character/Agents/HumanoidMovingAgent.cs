@@ -625,7 +625,13 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void OnThrow()
     {
-        m_equipmentModule.OnThrow();
+        //m_equipmentModule.OnThrow();
+        m_equipmentModule.GrenadeQuickThrow();
+    }
+
+    public void Throw()
+    {
+        m_animationModule.triggerThrow();
     }
     public void ReloadEnd()
     {

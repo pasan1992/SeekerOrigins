@@ -41,27 +41,39 @@ public class Grenade : Weapon
     {
         if(m_pinPulled)
         {
-            m_pinPulled = false;
-            m_tempGrenede.transform.parent = null;
-            Rigidbody rb = m_tempGrenede.GetComponent<Rigidbody>();
-            rb.isKinematic = false;
-            rb.velocity = Vector3.zero;
-            rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-            m_tempGrenede.transform.position = this.transform.position;
-            Vector3 throwVeclocity = calculateThrowVelocity(m_target.transform.position - this.transform.position - Vector3.up*1.5f);
-            m_tempGrenede.GetComponent<Rigidbody>().AddForce(throwVeclocity,ForceMode.VelocityChange);
-
-            // Temparary Disable Grenade
-            nonFunctionalProperties.magazineObjProp.SetActive(false);
-            Invoke("EnableGrenadeProp",0.5f);
-            
-
-            if(count <0)
-            {
-                Debug.LogError("G count less than zero");
-            }
+            throwGenade();
         }
 
+    }
+
+    public void ThrowGrenadeQuick()
+    {
+            pullGrenedePin();
+            throwGenade();
+    }
+
+    private void throwGenade()
+    {
+        Debug.Log("Throw");
+        m_pinPulled = false;
+        m_tempGrenede.transform.parent = null;
+        Rigidbody rb = m_tempGrenede.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.velocity = Vector3.zero;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        m_tempGrenede.transform.position = this.transform.position;
+        Vector3 throwVeclocity = calculateThrowVelocity(m_target.transform.position - this.transform.position - Vector3.up*1.5f);
+        m_tempGrenede.GetComponent<Rigidbody>().AddForce(throwVeclocity,ForceMode.VelocityChange);
+
+        // Temparary Disable Grenade
+        nonFunctionalProperties.magazineObjProp.SetActive(false);
+        Invoke("EnableGrenadeProp",0.5f);
+        
+
+        if(count <0)
+        {
+            Debug.LogError("G count less than zero");
+        }
     }
 
     private void EnableGrenadeProp()
