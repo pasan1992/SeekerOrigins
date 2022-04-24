@@ -1,218 +1,632 @@
 fileFormatVersion: 2
 guid: 87e6bba8b3ae86e4da9c84f6d832e37d
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: DummyMESH
-    100002: Head
-    100004: Hips
-    100006: LeftArm
-    100008: LeftArmRoll
-    100010: LeftFoot
-    100012: LeftForeArm
-    100014: LeftForeArmRoll
-    100016: LeftHand
-    100018: LeftHandIndex1
-    100020: LeftHandIndex2
-    100022: LeftHandIndex3
-    100024: LeftHandIndex4
-    100026: LeftHandMiddle1
-    100028: LeftHandMiddle2
-    100030: LeftHandMiddle3
-    100032: LeftHandMiddle4
-    100034: LeftHandPinky1
-    100036: LeftHandPinky2
-    100038: LeftHandPinky3
-    100040: LeftHandPinky4
-    100042: LeftHandProp
-    100044: LeftHandRing1
-    100046: LeftHandRing2
-    100048: LeftHandRing3
-    100050: LeftHandRing4
-    100052: LeftHandThumb1
-    100054: LeftHandThumb2
-    100056: LeftHandThumb3
-    100058: LeftHandThumb4
-    100060: LeftLeg
-    100062: LeftLegRoll
-    100064: LeftShoulder
-    100066: LeftToeBase
-    100068: LeftToeBase_END
-    100070: LeftUpLeg
-    100072: LeftUpLegRoll
-    100074: //RootNode
-    100076: Neck
-    100078: RightArm
-    100080: RightArmRoll
-    100082: RightFoot
-    100084: RightForeArm
-    100086: RightForeArmRoll
-    100088: RightHand
-    100090: RightHandIndex1
-    100092: RightHandIndex2
-    100094: RightHandIndex3
-    100096: RightHandIndex4
-    100098: RightHandMiddle1
-    100100: RightHandMiddle2
-    100102: RightHandMiddle3
-    100104: RightHandMiddle4
-    100106: RightHandPinky1
-    100108: RightHandPinky2
-    100110: RightHandPinky3
-    100112: RightHandPinky4
-    100114: RightHandProp
-    100116: RightHandRing1
-    100118: RightHandRing2
-    100120: RightHandRing3
-    100122: RightHandRing4
-    100124: RightHandThumb1
-    100126: RightHandThumb2
-    100128: RightHandThumb3
-    100130: RightHandThumb4
-    100132: RightLeg
-    100134: RightLegRoll
-    100136: RightShoulder
-    100138: RightToeBase
-    100140: RightToeBase_END
-    100142: RightUpLeg
-    100144: RightUpLegRoll
-    100146: Root
-    100148: Spine
-    100150: Spine1
-    400000: DummyMESH
-    400002: Head
-    400004: Hips
-    400006: LeftArm
-    400008: LeftArmRoll
-    400010: LeftFoot
-    400012: LeftForeArm
-    400014: LeftForeArmRoll
-    400016: LeftHand
-    400018: LeftHandIndex1
-    400020: LeftHandIndex2
-    400022: LeftHandIndex3
-    400024: LeftHandIndex4
-    400026: LeftHandMiddle1
-    400028: LeftHandMiddle2
-    400030: LeftHandMiddle3
-    400032: LeftHandMiddle4
-    400034: LeftHandPinky1
-    400036: LeftHandPinky2
-    400038: LeftHandPinky3
-    400040: LeftHandPinky4
-    400042: LeftHandProp
-    400044: LeftHandRing1
-    400046: LeftHandRing2
-    400048: LeftHandRing3
-    400050: LeftHandRing4
-    400052: LeftHandThumb1
-    400054: LeftHandThumb2
-    400056: LeftHandThumb3
-    400058: LeftHandThumb4
-    400060: LeftLeg
-    400062: LeftLegRoll
-    400064: LeftShoulder
-    400066: LeftToeBase
-    400068: LeftToeBase_END
-    400070: LeftUpLeg
-    400072: LeftUpLegRoll
-    400074: //RootNode
-    400076: Neck
-    400078: RightArm
-    400080: RightArmRoll
-    400082: RightFoot
-    400084: RightForeArm
-    400086: RightForeArmRoll
-    400088: RightHand
-    400090: RightHandIndex1
-    400092: RightHandIndex2
-    400094: RightHandIndex3
-    400096: RightHandIndex4
-    400098: RightHandMiddle1
-    400100: RightHandMiddle2
-    400102: RightHandMiddle3
-    400104: RightHandMiddle4
-    400106: RightHandPinky1
-    400108: RightHandPinky2
-    400110: RightHandPinky3
-    400112: RightHandPinky4
-    400114: RightHandProp
-    400116: RightHandRing1
-    400118: RightHandRing2
-    400120: RightHandRing3
-    400122: RightHandRing4
-    400124: RightHandThumb1
-    400126: RightHandThumb2
-    400128: RightHandThumb3
-    400130: RightHandThumb4
-    400132: RightLeg
-    400134: RightLegRoll
-    400136: RightShoulder
-    400138: RightToeBase
-    400140: RightToeBase_END
-    400142: RightUpLeg
-    400144: RightUpLegRoll
-    400146: Root
-    400148: Spine
-    400150: Spine1
-    4300000: DummyMESH
-    7400000: Crouch_WalkLt135_new
-    7400002: Crouch_WalkLt45_new
-    7400004: Crouch_WalkRt135_new
-    7400006: Crouch_WalkRt45_new
-    7400008: Idle2Crouch_new
-    7400010: Crouch2Idle_new
-    7400012: CrouchLoop_new
-    7400014: Crouch_Turn90R_new
-    7400016: Crouch_Turn90L_new
-    7400018: Crouch_WalkFwdStart_new
-    7400020: Crouch_WalkFwd_new
-    7400022: Crouch_WalkFwdStop_LU_new
-    7400024: Crouch_WalkFwdStop_RU_new
-    7400026: Crouch_WalkBwdStart_new
-    7400028: Crouch_WalkBwd_new
-    7400030: Crouch_WalkBwdStop_LU_new
-    7400032: Crouch_WalkBwdStop_RU_new
-    7400034: Crouch_WalkRtStart_new
-    7400036: Crouch_WalkRt_new
-    7400038: Crouch_WalkRtStop_LU_new
-    7400040: Crouch_WalkRtStop_RU_new
-    7400042: Crouch_WalkLtStart_new
-    7400044: Crouch_WalkLt_new
-    7400046: Crouch_WalkLtStop_LU_new
-    7400048: Crouch_WalkLtStop_RU_new
-    7400050: RunBwdLoop
-    7400052: RunLtLoop
-    7400054: RunRtLoop
-    7400056: RunStrafeLeft45Loop
-    7400058: RunStrafeRight135Loop
-    7400060: RunStrafeRight45Loop
-    7400062: RunStrafeLeft135Loop
-    7400064: HiddenButton
-    7400066: KickTrashcan
-    7400068: Turn180Surprised
-    7400070: PatrolFullCycleLoop
-    7400072: PatrolLoop
-    7400074: Throw_Start
-    7400076: ThrowLoop
-    7400078: ThrowEndFar
-    7400080: ThrowEndClose
-    7400082: ThrowCancel
-    7400084: ThrowSingle1
-    7400086: ThrowSingle2
-    7400088: StrafeRight45Loop
-    7400090: StrafeLeft135Loop
-    7400092: Climb1m
-    7400094: SitChairStart
-    7400096: SitChairLoop
-    7400098: SitChairEnd
-    7400100: GetUpFromBack
-    7400102: GetUpFromFace
-    9500000: //RootNode
-    13700000: DummyMESH
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: DummyMESH
+  - first:
+      1: 100002
+    second: Head
+  - first:
+      1: 100004
+    second: Hips
+  - first:
+      1: 100006
+    second: LeftArm
+  - first:
+      1: 100008
+    second: LeftArmRoll
+  - first:
+      1: 100010
+    second: LeftFoot
+  - first:
+      1: 100012
+    second: LeftForeArm
+  - first:
+      1: 100014
+    second: LeftForeArmRoll
+  - first:
+      1: 100016
+    second: LeftHand
+  - first:
+      1: 100018
+    second: LeftHandIndex1
+  - first:
+      1: 100020
+    second: LeftHandIndex2
+  - first:
+      1: 100022
+    second: LeftHandIndex3
+  - first:
+      1: 100024
+    second: LeftHandIndex4
+  - first:
+      1: 100026
+    second: LeftHandMiddle1
+  - first:
+      1: 100028
+    second: LeftHandMiddle2
+  - first:
+      1: 100030
+    second: LeftHandMiddle3
+  - first:
+      1: 100032
+    second: LeftHandMiddle4
+  - first:
+      1: 100034
+    second: LeftHandPinky1
+  - first:
+      1: 100036
+    second: LeftHandPinky2
+  - first:
+      1: 100038
+    second: LeftHandPinky3
+  - first:
+      1: 100040
+    second: LeftHandPinky4
+  - first:
+      1: 100042
+    second: LeftHandProp
+  - first:
+      1: 100044
+    second: LeftHandRing1
+  - first:
+      1: 100046
+    second: LeftHandRing2
+  - first:
+      1: 100048
+    second: LeftHandRing3
+  - first:
+      1: 100050
+    second: LeftHandRing4
+  - first:
+      1: 100052
+    second: LeftHandThumb1
+  - first:
+      1: 100054
+    second: LeftHandThumb2
+  - first:
+      1: 100056
+    second: LeftHandThumb3
+  - first:
+      1: 100058
+    second: LeftHandThumb4
+  - first:
+      1: 100060
+    second: LeftLeg
+  - first:
+      1: 100062
+    second: LeftLegRoll
+  - first:
+      1: 100064
+    second: LeftShoulder
+  - first:
+      1: 100066
+    second: LeftToeBase
+  - first:
+      1: 100068
+    second: LeftToeBase_END
+  - first:
+      1: 100070
+    second: LeftUpLeg
+  - first:
+      1: 100072
+    second: LeftUpLegRoll
+  - first:
+      1: 100074
+    second: //RootNode
+  - first:
+      1: 100076
+    second: Neck
+  - first:
+      1: 100078
+    second: RightArm
+  - first:
+      1: 100080
+    second: RightArmRoll
+  - first:
+      1: 100082
+    second: RightFoot
+  - first:
+      1: 100084
+    second: RightForeArm
+  - first:
+      1: 100086
+    second: RightForeArmRoll
+  - first:
+      1: 100088
+    second: RightHand
+  - first:
+      1: 100090
+    second: RightHandIndex1
+  - first:
+      1: 100092
+    second: RightHandIndex2
+  - first:
+      1: 100094
+    second: RightHandIndex3
+  - first:
+      1: 100096
+    second: RightHandIndex4
+  - first:
+      1: 100098
+    second: RightHandMiddle1
+  - first:
+      1: 100100
+    second: RightHandMiddle2
+  - first:
+      1: 100102
+    second: RightHandMiddle3
+  - first:
+      1: 100104
+    second: RightHandMiddle4
+  - first:
+      1: 100106
+    second: RightHandPinky1
+  - first:
+      1: 100108
+    second: RightHandPinky2
+  - first:
+      1: 100110
+    second: RightHandPinky3
+  - first:
+      1: 100112
+    second: RightHandPinky4
+  - first:
+      1: 100114
+    second: RightHandProp
+  - first:
+      1: 100116
+    second: RightHandRing1
+  - first:
+      1: 100118
+    second: RightHandRing2
+  - first:
+      1: 100120
+    second: RightHandRing3
+  - first:
+      1: 100122
+    second: RightHandRing4
+  - first:
+      1: 100124
+    second: RightHandThumb1
+  - first:
+      1: 100126
+    second: RightHandThumb2
+  - first:
+      1: 100128
+    second: RightHandThumb3
+  - first:
+      1: 100130
+    second: RightHandThumb4
+  - first:
+      1: 100132
+    second: RightLeg
+  - first:
+      1: 100134
+    second: RightLegRoll
+  - first:
+      1: 100136
+    second: RightShoulder
+  - first:
+      1: 100138
+    second: RightToeBase
+  - first:
+      1: 100140
+    second: RightToeBase_END
+  - first:
+      1: 100142
+    second: RightUpLeg
+  - first:
+      1: 100144
+    second: RightUpLegRoll
+  - first:
+      1: 100146
+    second: Root
+  - first:
+      1: 100148
+    second: Spine
+  - first:
+      1: 100150
+    second: Spine1
+  - first:
+      4: 400000
+    second: DummyMESH
+  - first:
+      4: 400002
+    second: Head
+  - first:
+      4: 400004
+    second: Hips
+  - first:
+      4: 400006
+    second: LeftArm
+  - first:
+      4: 400008
+    second: LeftArmRoll
+  - first:
+      4: 400010
+    second: LeftFoot
+  - first:
+      4: 400012
+    second: LeftForeArm
+  - first:
+      4: 400014
+    second: LeftForeArmRoll
+  - first:
+      4: 400016
+    second: LeftHand
+  - first:
+      4: 400018
+    second: LeftHandIndex1
+  - first:
+      4: 400020
+    second: LeftHandIndex2
+  - first:
+      4: 400022
+    second: LeftHandIndex3
+  - first:
+      4: 400024
+    second: LeftHandIndex4
+  - first:
+      4: 400026
+    second: LeftHandMiddle1
+  - first:
+      4: 400028
+    second: LeftHandMiddle2
+  - first:
+      4: 400030
+    second: LeftHandMiddle3
+  - first:
+      4: 400032
+    second: LeftHandMiddle4
+  - first:
+      4: 400034
+    second: LeftHandPinky1
+  - first:
+      4: 400036
+    second: LeftHandPinky2
+  - first:
+      4: 400038
+    second: LeftHandPinky3
+  - first:
+      4: 400040
+    second: LeftHandPinky4
+  - first:
+      4: 400042
+    second: LeftHandProp
+  - first:
+      4: 400044
+    second: LeftHandRing1
+  - first:
+      4: 400046
+    second: LeftHandRing2
+  - first:
+      4: 400048
+    second: LeftHandRing3
+  - first:
+      4: 400050
+    second: LeftHandRing4
+  - first:
+      4: 400052
+    second: LeftHandThumb1
+  - first:
+      4: 400054
+    second: LeftHandThumb2
+  - first:
+      4: 400056
+    second: LeftHandThumb3
+  - first:
+      4: 400058
+    second: LeftHandThumb4
+  - first:
+      4: 400060
+    second: LeftLeg
+  - first:
+      4: 400062
+    second: LeftLegRoll
+  - first:
+      4: 400064
+    second: LeftShoulder
+  - first:
+      4: 400066
+    second: LeftToeBase
+  - first:
+      4: 400068
+    second: LeftToeBase_END
+  - first:
+      4: 400070
+    second: LeftUpLeg
+  - first:
+      4: 400072
+    second: LeftUpLegRoll
+  - first:
+      4: 400074
+    second: //RootNode
+  - first:
+      4: 400076
+    second: Neck
+  - first:
+      4: 400078
+    second: RightArm
+  - first:
+      4: 400080
+    second: RightArmRoll
+  - first:
+      4: 400082
+    second: RightFoot
+  - first:
+      4: 400084
+    second: RightForeArm
+  - first:
+      4: 400086
+    second: RightForeArmRoll
+  - first:
+      4: 400088
+    second: RightHand
+  - first:
+      4: 400090
+    second: RightHandIndex1
+  - first:
+      4: 400092
+    second: RightHandIndex2
+  - first:
+      4: 400094
+    second: RightHandIndex3
+  - first:
+      4: 400096
+    second: RightHandIndex4
+  - first:
+      4: 400098
+    second: RightHandMiddle1
+  - first:
+      4: 400100
+    second: RightHandMiddle2
+  - first:
+      4: 400102
+    second: RightHandMiddle3
+  - first:
+      4: 400104
+    second: RightHandMiddle4
+  - first:
+      4: 400106
+    second: RightHandPinky1
+  - first:
+      4: 400108
+    second: RightHandPinky2
+  - first:
+      4: 400110
+    second: RightHandPinky3
+  - first:
+      4: 400112
+    second: RightHandPinky4
+  - first:
+      4: 400114
+    second: RightHandProp
+  - first:
+      4: 400116
+    second: RightHandRing1
+  - first:
+      4: 400118
+    second: RightHandRing2
+  - first:
+      4: 400120
+    second: RightHandRing3
+  - first:
+      4: 400122
+    second: RightHandRing4
+  - first:
+      4: 400124
+    second: RightHandThumb1
+  - first:
+      4: 400126
+    second: RightHandThumb2
+  - first:
+      4: 400128
+    second: RightHandThumb3
+  - first:
+      4: 400130
+    second: RightHandThumb4
+  - first:
+      4: 400132
+    second: RightLeg
+  - first:
+      4: 400134
+    second: RightLegRoll
+  - first:
+      4: 400136
+    second: RightShoulder
+  - first:
+      4: 400138
+    second: RightToeBase
+  - first:
+      4: 400140
+    second: RightToeBase_END
+  - first:
+      4: 400142
+    second: RightUpLeg
+  - first:
+      4: 400144
+    second: RightUpLegRoll
+  - first:
+      4: 400146
+    second: Root
+  - first:
+      4: 400148
+    second: Spine
+  - first:
+      4: 400150
+    second: Spine1
+  - first:
+      43: 4300000
+    second: DummyMESH
+  - first:
+      74: 7400000
+    second: Crouch_WalkLt135_new
+  - first:
+      74: 7400002
+    second: Crouch_WalkLt45_new
+  - first:
+      74: 7400004
+    second: Crouch_WalkRt135_new
+  - first:
+      74: 7400006
+    second: Crouch_WalkRt45_new
+  - first:
+      74: 7400008
+    second: Idle2Crouch_new
+  - first:
+      74: 7400010
+    second: Crouch2Idle_new
+  - first:
+      74: 7400012
+    second: CrouchLoop_new
+  - first:
+      74: 7400014
+    second: Crouch_Turn90R_new
+  - first:
+      74: 7400016
+    second: Crouch_Turn90L_new
+  - first:
+      74: 7400018
+    second: Crouch_WalkFwdStart_new
+  - first:
+      74: 7400020
+    second: Crouch_WalkFwd_new
+  - first:
+      74: 7400022
+    second: Crouch_WalkFwdStop_LU_new
+  - first:
+      74: 7400024
+    second: Crouch_WalkFwdStop_RU_new
+  - first:
+      74: 7400026
+    second: Crouch_WalkBwdStart_new
+  - first:
+      74: 7400028
+    second: Crouch_WalkBwd_new
+  - first:
+      74: 7400030
+    second: Crouch_WalkBwdStop_LU_new
+  - first:
+      74: 7400032
+    second: Crouch_WalkBwdStop_RU_new
+  - first:
+      74: 7400034
+    second: Crouch_WalkRtStart_new
+  - first:
+      74: 7400036
+    second: Crouch_WalkRt_new
+  - first:
+      74: 7400038
+    second: Crouch_WalkRtStop_LU_new
+  - first:
+      74: 7400040
+    second: Crouch_WalkRtStop_RU_new
+  - first:
+      74: 7400042
+    second: Crouch_WalkLtStart_new
+  - first:
+      74: 7400044
+    second: Crouch_WalkLt_new
+  - first:
+      74: 7400046
+    second: Crouch_WalkLtStop_LU_new
+  - first:
+      74: 7400048
+    second: Crouch_WalkLtStop_RU_new
+  - first:
+      74: 7400050
+    second: RunBwdLoop
+  - first:
+      74: 7400052
+    second: RunLtLoop
+  - first:
+      74: 7400054
+    second: RunRtLoop
+  - first:
+      74: 7400056
+    second: RunStrafeLeft45Loop
+  - first:
+      74: 7400058
+    second: RunStrafeRight135Loop
+  - first:
+      74: 7400060
+    second: RunStrafeRight45Loop
+  - first:
+      74: 7400062
+    second: RunStrafeLeft135Loop
+  - first:
+      74: 7400064
+    second: HiddenButton
+  - first:
+      74: 7400066
+    second: KickTrashcan
+  - first:
+      74: 7400068
+    second: Turn180Surprised
+  - first:
+      74: 7400070
+    second: PatrolFullCycleLoop
+  - first:
+      74: 7400072
+    second: PatrolLoop
+  - first:
+      74: 7400074
+    second: Throw_Start
+  - first:
+      74: 7400076
+    second: ThrowLoop
+  - first:
+      74: 7400078
+    second: ThrowEndFar
+  - first:
+      74: 7400080
+    second: ThrowEndClose
+  - first:
+      74: 7400082
+    second: ThrowCancel
+  - first:
+      74: 7400084
+    second: ThrowSingle1
+  - first:
+      74: 7400086
+    second: ThrowSingle2
+  - first:
+      74: 7400088
+    second: StrafeRight45Loop
+  - first:
+      74: 7400090
+    second: StrafeLeft135Loop
+  - first:
+      74: 7400092
+    second: Climb1m
+  - first:
+      74: 7400094
+    second: SitChairStart
+  - first:
+      74: 7400096
+    second: SitChairLoop
+  - first:
+      74: 7400098
+    second: SitChairEnd
+  - first:
+      74: 7400100
+    second: GetUpFromBack
+  - first:
+      74: 7400102
+    second: GetUpFromFace
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: DummyMESH
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -241,6 +655,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkLt135_new
       takeName: Crouch_WalkLt135_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -421,6 +836,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkLt45_new
       takeName: Crouch_WalkLt45_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 27
       wrapMode: 0
@@ -601,6 +1017,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkRt135_new
       takeName: Crouch_WalkRt135_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -781,6 +1198,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkRt45_new
       takeName: Crouch_WalkRt45_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 27
       wrapMode: 0
@@ -961,6 +1379,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle2Crouch_new
       takeName: Idle2Crouch_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1141,6 +1560,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch2Idle_new
       takeName: Crouch2Idle_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -1321,6 +1741,7 @@ ModelImporter:
     - serializedVersion: 16
       name: CrouchLoop_new
       takeName: CrouchLoop_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 150
       wrapMode: 0
@@ -1501,6 +1922,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_Turn90R_new
       takeName: Crouch_Turn90R_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -1681,6 +2103,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_Turn90L_new
       takeName: Crouch_Turn90L_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -1861,6 +2284,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkFwdStart_new
       takeName: Crouch_WalkFwdStart_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 18
       wrapMode: 0
@@ -2041,6 +2465,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkFwd_new
       takeName: Crouch_WalkFwd_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 27
       wrapMode: 0
@@ -2221,6 +2646,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkFwdStop_LU_new
       takeName: Crouch_WalkFwdStop_LU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -2401,6 +2827,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkFwdStop_RU_new
       takeName: Crouch_WalkFwdStop_RU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -2581,6 +3008,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkBwdStart_new
       takeName: Crouch_WalkBwdStart_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 31
       wrapMode: 0
@@ -2761,6 +3189,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkBwd_new
       takeName: Crouch_WalkBwd_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -2941,6 +3370,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkBwdStop_LU_new
       takeName: Crouch_WalkBwdStop_LU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -3121,6 +3551,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkBwdStop_RU_new
       takeName: Crouch_WalkBwdStop_RU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -3301,6 +3732,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkRtStart_new
       takeName: Crouch_WalkRtStart_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 36
       wrapMode: 0
@@ -3481,6 +3913,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkRt_new
       takeName: Crouch_WalkRt_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 22
       wrapMode: 0
@@ -3661,6 +4094,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkRtStop_LU_new
       takeName: Crouch_WalkRtStop_LU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -3841,6 +4275,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkRtStop_RU_new
       takeName: Crouch_WalkRtStop_RU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -4021,6 +4456,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkLtStart_new
       takeName: Crouch_WalkLtStart_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -4201,6 +4637,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkLt_new
       takeName: Crouch_WalkLt_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 21
       wrapMode: 0
@@ -4381,6 +4818,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkLtStop_LU_new
       takeName: Crouch_WalkLtStop_LU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -4561,6 +4999,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Crouch_WalkLtStop_RU_new
       takeName: Crouch_WalkLtStop_RU_new
+      internalID: 0
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -4741,6 +5180,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunBwdLoop
       takeName: RunBwdLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -4921,6 +5361,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunLtLoop
       takeName: RunLtLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -5101,6 +5542,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunRtLoop
       takeName: RunRtLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -5281,6 +5723,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunStrafeLeft45Loop
       takeName: RunStrafeLeft45Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -5461,6 +5904,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunStrafeRight135Loop
       takeName: RunStrafeRight135Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -5641,6 +6085,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunStrafeRight45Loop
       takeName: RunStrafeRight45Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -5821,6 +6266,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunStrafeLeft135Loop
       takeName: RunStrafeLeft135Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -6001,6 +6447,7 @@ ModelImporter:
     - serializedVersion: 16
       name: HiddenButton
       takeName: HiddenButton
+      internalID: 0
       firstFrame: 0
       lastFrame: 225
       wrapMode: 0
@@ -6181,6 +6628,7 @@ ModelImporter:
     - serializedVersion: 16
       name: KickTrashcan
       takeName: KickTrashcan
+      internalID: 0
       firstFrame: 0
       lastFrame: 92
       wrapMode: 0
@@ -6361,6 +6809,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Turn180Surprised
       takeName: Turn180Surprised
+      internalID: 0
       firstFrame: 0
       lastFrame: 77
       wrapMode: 0
@@ -6541,6 +6990,7 @@ ModelImporter:
     - serializedVersion: 16
       name: PatrolFullCycleLoop
       takeName: PatrolFullCycleLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 407
       wrapMode: 0
@@ -6721,6 +7171,7 @@ ModelImporter:
     - serializedVersion: 16
       name: PatrolLoop
       takeName: PatrolLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 56
       wrapMode: 0
@@ -6901,6 +7352,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Throw_Start
       takeName: Throw_Start
+      internalID: 0
       firstFrame: 0
       lastFrame: 9
       wrapMode: 0
@@ -7081,6 +7533,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ThrowLoop
       takeName: ThrowLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -7261,6 +7714,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ThrowEndFar
       takeName: ThrowEndFar
+      internalID: 0
       firstFrame: 0
       lastFrame: 52
       wrapMode: 0
@@ -7282,7 +7736,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000000000001000000000000000100000001000000010000000000000001000000
       curves: []
       events:
-      - time: 0.47219047
+      - time: 0.3267359
         functionName: OnThrow
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -7448,6 +7902,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ThrowEndClose
       takeName: ThrowEndClose
+      internalID: 0
       firstFrame: 0
       lastFrame: 72
       wrapMode: 0
@@ -7628,6 +8083,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ThrowCancel
       takeName: ThrowCancel
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -7808,6 +8264,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ThrowSingle1
       takeName: ThrowSingle1
+      internalID: 0
       firstFrame: 0
       lastFrame: 90
       wrapMode: 0
@@ -7988,6 +8445,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ThrowSingle2
       takeName: ThrowSingle2
+      internalID: 0
       firstFrame: 0
       lastFrame: 90
       wrapMode: 0
@@ -8168,6 +8626,7 @@ ModelImporter:
     - serializedVersion: 16
       name: StrafeRight45Loop
       takeName: StrafeRight45Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -8348,6 +8807,7 @@ ModelImporter:
     - serializedVersion: 16
       name: StrafeLeft135Loop
       takeName: StrafeLeft135Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -8528,6 +8988,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Climb1m
       takeName: Climb1m
+      internalID: 0
       firstFrame: 0
       lastFrame: 65
       wrapMode: 0
@@ -8708,6 +9169,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SitChairStart
       takeName: SitChairStart
+      internalID: 0
       firstFrame: 0
       lastFrame: 57
       wrapMode: 0
@@ -8888,6 +9350,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SitChairLoop
       takeName: SitChairLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 152
       wrapMode: 0
@@ -9068,6 +9531,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SitChairEnd
       takeName: SitChairEnd
+      internalID: 0
       firstFrame: 0
       lastFrame: 70
       wrapMode: 0
@@ -9248,6 +9712,7 @@ ModelImporter:
     - serializedVersion: 16
       name: GetUpFromBack
       takeName: GetUpFromBack
+      internalID: 0
       firstFrame: 0
       lastFrame: 103
       wrapMode: 0
@@ -9428,6 +9893,7 @@ ModelImporter:
     - serializedVersion: 16
       name: GetUpFromFace
       takeName: GetUpFromFace
+      internalID: 0
       firstFrame: 0
       lastFrame: 72
       wrapMode: 0
@@ -9612,25 +10078,28 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -9639,10 +10108,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Hips
       humanName: Hips
@@ -10444,13 +10913,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

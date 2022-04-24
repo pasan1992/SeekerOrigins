@@ -34,7 +34,7 @@ TagManager:
   - Floor
   - HalfCoverObsticles
   - FullCoverObsticles
-  - Enviornment
+  - Environment
   - ExplosionParticle
   - Weapon
   - InteractionFinder
