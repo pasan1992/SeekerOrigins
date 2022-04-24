@@ -15,8 +15,8 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
     private float maximummAllClearCount = 50;
 
 
-    public static string[] layerMaskNames ={"FullCOverObsticles","HalfCoverObsticles","Floor"};
-    public static string[] wallLayer = { "Floor" };
+    public static string[] layerMaskNames ={"FullCOverObsticles","HalfCoverObsticles","Floor", "IgnoreNavMesh"};
+    public static string[] wallLayer = { "Floor","IgnoreNavMesh","Environment"};
     
     private RaycastHit hit;
 

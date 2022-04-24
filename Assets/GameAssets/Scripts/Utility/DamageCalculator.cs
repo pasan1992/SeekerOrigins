@@ -169,9 +169,9 @@ public class DamageCalculator
         bool hitOnEnemy = false;
 
         // To stop firing through walls when too close
-        if (checkIfFireThroughWall(startPositon, targetPositon))
+        if (checkIfFireThroughWall(startPositon, targetPositon,out acualHit))
         {
-            return hit;
+            return acualHit;
         }
 
         // Give offset to starting postion to avoid bullets colliding in own covers
@@ -209,7 +209,6 @@ public class DamageCalculator
             // Check fire for the second time for find crouched enemies.
             if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/3,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
-                Debug.Log("hit here" + hit.transform.name);
                 switch(hit.transform.tag)
                 {
                     case "Wall":
@@ -245,11 +244,12 @@ public class DamageCalculator
         
     }
 
-    public static bool checkIfFireThroughWall(Vector3 startPositon, Vector3 targetPositon)
+    public static bool checkIfFireThroughWall(Vector3 startPositon, Vector3 targetPositon, out RaycastHit actualHit)
     {
         // To stop firing through walls when too close
         RaycastHit hit;
-        string[] layerMaskNames = { "HalfCoverObsticles", "FullCoverObsticles", "Enemy", "Floor" };
+        // Can't shoot through these layered objects when too close
+        string[] layerMaskNames = { "HalfCoverObsticles", "FullCoverObsticles", "Enemy", "Floor","IgnoreNavMesh","Environment" };
 
         // Give offset to starting postion to avoid bullets colliding in own covers
         Vector3 offsetTargetPositon = startPositon - (targetPositon - startPositon).normalized/2;
@@ -259,9 +259,12 @@ public class DamageCalculator
             {
                 
                 case "Wall":
+                    Debug.Log("here");
+                    actualHit = hit;
                     return true;  
             }
         }
+        actualHit = new RaycastHit();
         return false;
     }
 }
