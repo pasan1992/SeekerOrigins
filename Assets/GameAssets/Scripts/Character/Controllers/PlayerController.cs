@@ -278,7 +278,11 @@ public class PlayerController : AgentController
 
         if(Input.GetKeyDown(KeyCode.G))
         {
-            m_movingAgent.Throw();
+            if(m_movingAgent.isAimed() & m_movingAgent.isReadyToAim())
+            {
+                m_movingAgent.Throw();
+            }
+            
         }
 
 
