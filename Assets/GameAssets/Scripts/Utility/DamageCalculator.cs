@@ -207,7 +207,6 @@ public class DamageCalculator
             if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/30,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
                 hitSomewhere = true;
-                Debug.Log("hit here" + hit.transform.name);
                 switch(hit.transform.tag)
                 {
                     case "Cover":

@@ -276,6 +276,12 @@ public class PlayerController : AgentController
         }
 
 
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            m_movingAgent.Throw();
+        }
+
+
         UpdateShooting();
 
         UpdateTargetPoint();

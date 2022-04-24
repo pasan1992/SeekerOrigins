@@ -166,13 +166,12 @@ public class HumanoidRangedWeaponsModule
     public void OnThrow()
     {
         //m_inWeaponAction = false;
-        m_grenede.ThrowGrenede();
-        Debug.Log(m_grenede.count);
-        if(m_grenede.count == 0)
-        {
-            m_inWeaponAction = false;
-            toggleSecondary();
-        }
+        m_grenede.ThrowGrenadeQuick();
+        // if(m_grenede.count == 0)
+        // {
+        //     m_inWeaponAction = false;
+        //     toggleSecondary();
+        // }
 
         if(m_grenede.count < 0)
         {
@@ -920,6 +919,15 @@ public class HumanoidRangedWeaponsModule
             weapon.transform.parent = hosteringLocation;
             weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localRotation = Quaternion.identity;
+    }
+
+    public void GrenadeQuickThrow()
+    {
+        if(m_grenede != null)
+        {
+            placeWeaponinHosterLocation(m_grenede);
+            OnThrow();
+        }
     }
     public void placeWeaponInHand(Weapon weapon)
     {
