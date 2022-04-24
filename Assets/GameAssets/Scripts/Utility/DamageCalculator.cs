@@ -178,7 +178,6 @@ public class DamageCalculator
         Vector3 offsetTargetPositon =  (targetPositon - startPositon).normalized + startPositon;
         if (Physics.Raycast(offsetTargetPositon, targetPositon - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
         {
-            hitSomewhere = true;
             switch(hit.transform.tag)
             {
                 case "Cover":
