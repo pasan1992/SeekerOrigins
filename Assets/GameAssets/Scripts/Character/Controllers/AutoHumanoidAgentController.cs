@@ -87,16 +87,21 @@ public class AutoHumanoidAgentController :  AgentController
             m_healthBar.setHealthPercentage(m_movingAgent.AgentData);
         }
 
-        if(m_forced_attack)
-        {
-            ((CoverPointBasedCombatStage)m_combatStage).CenteredPosition = m_force_transfrom.position;
-        }
+        // if(m_forced_attack)
+        // {
+        //     ((CoverPointBasedCombatStage)m_combatStage).CenteredPosition = m_force_transfrom.position;
+        // }
 
 
     }
 
     void FixedUpdate()
     {
+        if(m_restrictions == AGENT_AI_RESTRICTIONS.DISABLED)
+        {
+            return;
+        }
+
         if(m_currentState != null && m_movingAgent.IsFunctional() && !m_movingAgent.isDisabled() & isInUse())
         {
             m_currentState.updateStage();
@@ -278,7 +283,7 @@ public class AutoHumanoidAgentController :  AgentController
 
     private void switchToCombatStage()
     {
-        if(m_restrictions == AGENT_AI_RESTRICTIONS.NO_COMBAT)
+        if(m_restrictions != AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS)
         {
             return;
         }
@@ -348,19 +353,20 @@ public class AutoHumanoidAgentController :  AgentController
 
     public override void ForceCombatMode(Transform position)
     {
+        m_restrictions =  AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
         m_force_transfrom = position;
         CoverPointBasedCombatStage combat_stage = ((CoverPointBasedCombatStage)m_combatStage);
         // set self cover point
-        GameObject coverpointprefab = Resources.Load<GameObject>("Prefab/SelfCoverPoint");
-        var selfCoverPoint = GameObject.Instantiate(coverpointprefab);
-        combat_stage.OwnedCoverPoint = selfCoverPoint.GetComponent<CoverPoint>();
-        combat_stage.MaxDistnaceFromCenteredPoint = 20;
-        combat_stage.CurrentMovmentType = GameEnums.MovmentBehaviorType.FIXED_POSITION;
+        //GameObject coverpointprefab = Resources.Load<GameObject>("Prefab/SelfCoverPoint");
+        //var selfCoverPoint = GameObject.Instantiate(coverpointprefab);
+        //combat_stage.OwnedCoverPoint = selfCoverPoint.GetComponent<CoverPoint>();
+        //combat_stage.MaxDistnaceFromCenteredPoint = 20;
+        //combat_stage.CurrentMovmentType = GameEnums.MovmentBehaviorType.FREE;
 
         switchToCombatStage();
         m_visualSensor.forceCombatMode(position.position);
         m_forced_attack = true;
-
+        m_visualSensor.disableLook();
 
     }
 

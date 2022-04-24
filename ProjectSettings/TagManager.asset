@@ -16,6 +16,7 @@ TagManager:
   - Ammo
   - Item
   - mini_map
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

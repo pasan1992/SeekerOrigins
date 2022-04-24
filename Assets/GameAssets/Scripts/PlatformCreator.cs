@@ -18,6 +18,8 @@ public class PlatformCreator : MonoBehaviour
     private List<GameObject> platfroms = new List<GameObject>();
     public float coverProb;
     public bool NoRails = false;
+
+    public bool deleteCover = true;
     void Start()
     {
 
@@ -44,23 +46,47 @@ public class PlatformCreator : MonoBehaviour
                     obj.GetComponent<FloorPlane>().activateAll();
                 }
                 platfroms.Add(obj);
-                if (coverProb > Random.value)
+
+
+                if(!deleteCover)
                 {
-                    obj.GetComponent<FloorPlane>().ActivateRandomCover();
+                    if (coverProb > Random.value)
+                    {
+                        obj.GetComponent<FloorPlane>().ActivateRandomCover();
+                    }
                 }
+                else
+                {
+                    obj.GetComponent<FloorPlane>().DeleteAllCovers();
+                }
+                obj.GetComponent<FloorPlane>().RemoveParents(this.transform);
+
+
+
                 obj.GetComponent<FloorPlane>().DeleteInavtive();
+
 
                 DestroyImmediate(obj.GetComponent<FloorPlane>());
             }
+        }
+
+        
+        foreach(var obj in this.GetComponentsInChildren<Transform>())
+        {
+            obj.transform.parent = this.transform;
         }
     }
 
     [ContextMenu("Delete")]
     public void Delete()
     {
-        foreach(GameObject obj in platfroms)
+        foreach(var obj in this.GetComponentsInChildren<Transform>())
         {
-            DestroyImmediate(obj);
-        }
+
+            if(obj.name !=this.name)
+            {
+                DestroyImmediate(obj.gameObject);
+            }
+        }        
     }
 }

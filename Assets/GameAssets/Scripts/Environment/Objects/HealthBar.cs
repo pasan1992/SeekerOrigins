@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour
     public Sprite half_sheild_image;
     public Image Sheild_icon;
 
+
     private Image Healthfill;
     #region Initialize
     public void Start()

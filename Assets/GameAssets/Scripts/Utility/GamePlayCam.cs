@@ -65,6 +65,12 @@ public class GamePlayCam : MonoBehaviour
             tmp_color.a -= Time.deltaTime*3;
             screenDamageFilter.color= tmp_color;
         }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            target.GetAgentData().MaxHealth = 1000;
+            target.GetAgentData().Health = 1000;
+        }
     }
 
     private Vector3 calcualteCameraAimPositon()

@@ -163,27 +163,29 @@ public class DamageCalculator
     public static RaycastHit checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
     {
         RaycastHit hit = new RaycastHit();
+        RaycastHit acualHit = new RaycastHit();
         Vector3 hitPos = Vector3.zero;
-        string[] layerMaskNames = { "HalfCoverObsticles","FullCoverObsticles","Enemy","Floor" };
+        string[] layerMaskNames = { "HalfCoverObsticles","FullCoverObsticles","Enemy","Floor", "IgnoreNavMesh" };
         bool hitOnEnemy = false;
-        bool hitSomewhere = false;
 
         // To stop firing through walls when too close
-        if (checkIfFireThroughWall(startPositon, targetPositon))
+        if (checkIfFireThroughWall(startPositon, targetPositon,out acualHit))
         {
-            return hit;
+            return acualHit;
         }
 
         // Give offset to starting postion to avoid bullets colliding in own covers
         Vector3 offsetTargetPositon =  (targetPositon - startPositon).normalized + startPositon;
         if (Physics.Raycast(offsetTargetPositon, targetPositon - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
         {
-            hitSomewhere = true;
+            acualHit = hit;
             switch(hit.transform.tag)
             {
+                case "Floor":
+                    acualHit.point = Vector3.zero;
+                break;
                 case "Cover":
                 case "Wall":
-                case "Floor":
                 DamageCalculator.hitOnWall(hit.collider,hit.point);
                 break;
                 case "Enemy":
@@ -201,49 +203,53 @@ public class DamageCalculator
 
         }
         
-        for (int i =-30; i <30;i++)
+        bool importantHit = false;
+        for (int i =-3; i <3;i++)
         {
             // Check fire for the second time for find crouched enemies.
-            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/30,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
+            if(!hitOnEnemy && Physics.Raycast(offsetTargetPositon, targetPositon + new Vector3(0,i/3,0) - startPositon, out hit,100, LayerMask.GetMask(layerMaskNames)))
             {
-                hitSomewhere = true;
-                Debug.Log("hit here" + hit.transform.name);
                 switch(hit.transform.tag)
                 {
-                    case "Cover":
                     case "Wall":
+                        DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        acualHit = hit;
+                    break;
+                    case "Cover":
                     //DamageCalculator.onHitEnemy(hit.collider,m_ownersFaction,(targetPositon-startPositon).normalized);
                         DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        importantHit = true;
+                        acualHit = hit;
                     break;
                     case "Enemy":
                     case "Player":
                     case "Head":
                     case "Chest":
                         DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage);
-                    break;  
+                        importantHit = true;
+                        acualHit = hit;
+                    break; 
+                    case "Floor":
+                        acualHit = hit;
+                        acualHit.point = Vector3.zero;
+                    break;
                 }                 
             }
-            if(hitSomewhere)
+            if(importantHit)
             {
                 break;
             }
         }
-
-        if(hitSomewhere & hit.transform !=null & hit.transform.tag == "Floor")
-        {
-            hit.point = Vector3.zero;
-            Debug.Log(hit.transform.name);
-        }
-
-        return hit;
+        return acualHit;
         
     }
 
-    public static bool checkIfFireThroughWall(Vector3 startPositon, Vector3 targetPositon)
+    public static bool checkIfFireThroughWall(Vector3 startPositon, Vector3 targetPositon, out RaycastHit actualHit)
     {
         // To stop firing through walls when too close
         RaycastHit hit;
-        string[] layerMaskNames = { "HalfCoverObsticles", "FullCoverObsticles", "Enemy", "Floor" };
+        // Can't shoot through these layered objects when too close
+        string[] layerMaskNames = { "HalfCoverObsticles", "FullCoverObsticles", "Enemy", "Floor","IgnoreNavMesh","Environment" };
 
         // Give offset to starting postion to avoid bullets colliding in own covers
         Vector3 offsetTargetPositon = startPositon - (targetPositon - startPositon).normalized/2;
@@ -253,9 +259,12 @@ public class DamageCalculator
             {
                 
                 case "Wall":
+                    Debug.Log("here");
+                    actualHit = hit;
                     return true;  
             }
         }
+        actualHit = new RaycastHit();
         return false;
     }
 }

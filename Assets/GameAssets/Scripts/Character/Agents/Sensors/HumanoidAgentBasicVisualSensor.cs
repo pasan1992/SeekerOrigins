@@ -15,8 +15,8 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
     private float maximummAllClearCount = 50;
 
 
-    public static string[] layerMaskNames ={"FullCOverObsticles","HalfCoverObsticles","Floor"};
-    public static string[] wallLayer = { "Floor" };
+    public static string[] layerMaskNames ={"FullCOverObsticles","HalfCoverObsticles","Floor", "IgnoreNavMesh"};
+    public static string[] wallLayer = { "Floor","IgnoreNavMesh","Environment"};
     
     private RaycastHit hit;
 
@@ -127,6 +127,14 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
             m_look_IK.enabled = false;
         }
 
+    }
+
+    public void disableLook()
+    {
+         if(m_look_IK)
+        {
+            m_look_IK.enabled = false;
+        }       
     }
 
     private Vector3 calculate_look_position(float angle,Vector3 headPos,float look_distance)
