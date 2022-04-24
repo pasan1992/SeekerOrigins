@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class GameDoor : MonoBehaviour
 {
-    public enum LoockStatus {LockedForPlayer,LockedForAll,OpenedForAll}
+    public enum LoockStatus {LockedForPlayer,LockedForAll,OpenedForAll,KeepOpened}
     public LoockStatus lockStatus;
     Animator m_animator;
     private bool opened =false;
-
-
-    private bool keepOpened = false;
+    public bool keepOpened = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_animator = this.GetComponent<Animator>();
     }
 
+    public void Start()
+    {
+        if(lockStatus == LoockStatus.KeepOpened)
+        {
+            m_animator.SetTrigger("Open");
+            opened = true;          
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(keepOpened)
+        if(lockStatus == LoockStatus.KeepOpened)
         {
             return;
         }
@@ -60,7 +67,7 @@ public class GameDoor : MonoBehaviour
 
     public void RemoveKeepOpened()
     {
-        keepOpened = true;
+        lockStatus = LoockStatus.KeepOpened;
         m_animator.SetTrigger("Close");
         opened = false;       
     }
