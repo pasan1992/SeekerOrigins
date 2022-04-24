@@ -832,7 +832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterState: 3
   AgentData:
-    AgentNature: 0
+    AgentNature: 3
     Skill: 0.6
     VisualDistance: 12
     VisualAngle: 90

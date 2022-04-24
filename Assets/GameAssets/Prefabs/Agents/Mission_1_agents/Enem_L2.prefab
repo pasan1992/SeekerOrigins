@@ -19485,7 +19485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterState: 3
   AgentData:
-    AgentNature: 0
+    AgentNature: 3
     Skill: 0.3
     VisualDistance: 12
     VisualAngle: 90
@@ -19616,7 +19616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 13
-  currentAvatar: {fileID: 2946627780288877443}
+  currentAvatar: {fileID: 2946487984270548619}
   avatar: []
 --- !u!114 &2946897782893476759
 MonoBehaviour:
