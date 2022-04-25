@@ -35,6 +35,12 @@ public abstract class AgentController : MonoBehaviour
             m_onDestoryEvent(this);
         }
     }
+
+    public void RemoveRestrictions()
+    {
+        m_restrictions =  AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
+    }
+
     public abstract void onAgentDisable();
     public abstract void onAgentEnable();
     public abstract void resetCharacher();

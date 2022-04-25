@@ -18,6 +18,7 @@ public class ClearEnemyObjective : BaseObjective
         foreach (DamagableObject agent in m_enemyAgents)
         {
             agent.setOnDestroyed(onUnitDestory);
+            agent.getTransfrom().GetComponent<AgentController>().RemoveRestrictions();
         }
         if(m_ObjectiveText !=null)
         {

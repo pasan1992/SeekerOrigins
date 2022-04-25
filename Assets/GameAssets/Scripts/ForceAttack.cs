@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,8 @@ public class ForceAttack : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<AgentController> m_agents;
+
+    public AgentGroup m_agentGroup;
     public Transform m_target;
     public bool m_enableCharacters = false;
     private int agent_count = 0;
@@ -16,23 +18,56 @@ public class ForceAttack : MonoBehaviour
 
     public void Start() 
     {
-        agent_count = m_agents.Count;
-        foreach(var agent in m_agents)
+        if(m_agents !=null & m_agents.Count > 0)
         {
-            agent.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
+            agent_count = m_agents.Count;
+            foreach(var agent in m_agents)
+            {
+                agent.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
+            }
         }
+        else if (m_agentGroup !=null)
+        {
+            agent_count = m_agentGroup.agents.Count;
+            foreach(var agent in m_agentGroup.agents)
+            {
+                agent.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
+            }
+        }
+        else
+        {
+            Debug.LogError("No agent list or agent group found");
+        }
+
     }
 
     public void StartForceAttack()
     {
-        foreach (AgentController agent in m_agents)
+      
+        if(m_agents !=null & m_agents.Count > 0)
         {
-            if (m_enableCharacters)
+            foreach (AgentController agent in m_agents)
             {
-                agent.gameObject.SetActive(true);
+                if (m_enableCharacters)
+                {
+                    agent.gameObject.SetActive(true);
+                }
+                StartCoroutine(waitAndSetCOmbat(agent,m_target.position));
             }
-            StartCoroutine(waitAndSetCOmbat(agent,m_target.position));
         }
+        else if(m_agentGroup !=null)
+        {
+            foreach (GameObject agentobj in m_agentGroup.agents)
+            {
+                var agent = agentobj.GetComponent<AgentController>();
+                if (m_enableCharacters)
+                {
+                    agent.gameObject.SetActive(true);
+                }
+                StartCoroutine(waitAndSetCOmbat(agent,m_target.position));
+            }           
+        }
+
     }
 
     IEnumerator waitAndSetCOmbat(AgentController agent, Vector3 target)
