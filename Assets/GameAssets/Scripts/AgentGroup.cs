@@ -9,12 +9,7 @@ public class AgentGroup : MonoBehaviour
 
     void Awake()
     {
-
-        AgentController[] ags = this.GetComponentsInChildren<AgentController>();
-        foreach(var agent in ags)
-        {
-            m_agentControllers.Add(agent);
-        }
+        m_agentControllers = new List<AgentController>(this.GetComponentsInChildren<AgentController>());
     }
     void Start()
     {
@@ -28,17 +23,6 @@ public class AgentGroup : MonoBehaviour
             else
             {
                 Debug.LogError("GIVEN AGENT HAS NO ICYBERAGENT");
-            }
-
-
-            AgentController agentcont = obj.GetComponent<AgentController>();
-            if (agent != null)
-            {
-                m_agentControllers.Add(agentcont);
-            }
-            else
-            {
-                Debug.LogError("GIVEN AGENT HAS NO AGENT CONTROLLER");
             }
         }
     }
