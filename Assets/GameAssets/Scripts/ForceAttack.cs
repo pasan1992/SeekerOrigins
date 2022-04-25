@@ -28,8 +28,8 @@ public class ForceAttack : MonoBehaviour
         }
         else if (m_agentGroup !=null)
         {
-            agent_count = m_agentGroup.agents.Count;
-            foreach(var agent in m_agentGroup.agents)
+            agent_count = m_agentGroup.getAgents().Count;
+            foreach(var agent in m_agentGroup.getAgents())
             {
                 agent.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
             }
@@ -57,9 +57,8 @@ public class ForceAttack : MonoBehaviour
         }
         else if(m_agentGroup !=null)
         {
-            foreach (GameObject agentobj in m_agentGroup.agents)
+            foreach (var agent in m_agentGroup.getAgents())
             {
-                var agent = agentobj.GetComponent<AgentController>();
                 if (m_enableCharacters)
                 {
                     agent.gameObject.SetActive(true);

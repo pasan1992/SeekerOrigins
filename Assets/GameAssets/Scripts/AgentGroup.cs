@@ -5,12 +5,20 @@ using UnityEngine;
 public class AgentGroup : MonoBehaviour
 {
     // Start is called before the first frame update
-    public List<GameObject> agents;
     private List<AgentController> m_agentControllers;
+
+    void Awake()
+    {
+
+        AgentController[] ags = this.GetComponentsInChildren<AgentController>();
+        foreach(var agent in ags)
+        {
+            m_agentControllers.Add(agent);
+        }
+    }
     void Start()
     {
-        m_agentControllers = new List<AgentController>();
-        foreach (GameObject obj in agents)
+        foreach (var obj in m_agentControllers)
         {
             ICyberAgent agent = obj.GetComponent<ICyberAgent>();
             if(agent !=null)
@@ -33,6 +41,11 @@ public class AgentGroup : MonoBehaviour
                 Debug.LogError("GIVEN AGENT HAS NO AGENT CONTROLLER");
             }
         }
+    }
+
+    public List<AgentController> getAgents()
+    {
+        return m_agentControllers;
     }
 
     public void OnDamage()
