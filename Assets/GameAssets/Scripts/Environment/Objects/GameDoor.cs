@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class GameDoor : MonoBehaviour
 {
     public enum LoockStatus {LockedForPlayer,LockedForAll,OpenedForAll,KeepOpened}
@@ -9,11 +9,13 @@ public class GameDoor : MonoBehaviour
     Animator m_animator;
     private bool opened =false;
     public bool keepOpened = false;
+    private NavMeshObstacle[] door_obsticles;
 
     // Start is called before the first frame update
     void Awake()
     {
         m_animator = this.GetComponent<Animator>();
+        door_obsticles = this.GetComponentsInChildren<NavMeshObstacle>();
     }
 
     public void Start()
@@ -27,6 +29,7 @@ public class GameDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        /*
         if(lockStatus == LoockStatus.KeepOpened)
         {
             return;
@@ -40,6 +43,7 @@ public class GameDoor : MonoBehaviour
                 opened = true;
                 Invoke("closeDoor", 2);
                 Debug.Log("Open");
+                setNavMeshObsticleStatus(false);
             }
             else if (other.tag == "Player" &&  lockStatus != LoockStatus.LockedForAll && lockStatus!=LoockStatus.LockedForPlayer )
             {
@@ -47,8 +51,22 @@ public class GameDoor : MonoBehaviour
                 opened = true;
                 Invoke("closeDoor", 2);
                 Debug.Log("Open");
-
+                setNavMeshObsticleStatus(false);
             }
+        }
+        */
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+    }
+
+    private void setNavMeshObsticleStatus(bool enabled)
+    {
+        foreach(NavMeshObstacle obs in door_obsticles)
+        {
+            obs.enabled=enabled;
         }
     }
 
@@ -56,6 +74,7 @@ public class GameDoor : MonoBehaviour
     {
         opened = false;
         m_animator.SetTrigger("Close");
+        setNavMeshObsticleStatus(true);
     }
 
     public void KeepOpened()
@@ -70,11 +89,11 @@ public class GameDoor : MonoBehaviour
         lockStatus = LoockStatus.KeepOpened;
         m_animator.SetTrigger("Close");
         opened = false;       
+        setNavMeshObsticleStatus(true);
     }
 
     public void activateForPlayer()
     {
         opened = true;
-        //m_animator.SetBool("Opened", true);
     }
 }

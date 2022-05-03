@@ -129,5 +129,11 @@ public abstract class BasicMovmentStage : ICharacterBehaviorState
     {
         m_stopStage = false;
     }
+
+
+    public virtual void OnAgentDestroyed()
+    {
+
+    }
     #endregion
 }

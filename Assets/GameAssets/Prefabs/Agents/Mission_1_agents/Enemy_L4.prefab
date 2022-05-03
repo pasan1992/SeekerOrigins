@@ -33971,12 +33971,12 @@ MonoBehaviour:
     Skill: 0.4
     VisualDistance: 12
     VisualAngle: 90
-    maxHealth: 100
-    MaxSheild: 2
+    maxHealth: 25
+    MaxSheild: 0
     Regen: 10
     m_agentFaction: 1
-    health: 50
-    Sheild: 2
+    health: 25
+    Sheild: 0
     primaryWeapon: {fileID: 972355184944688202}
     secondaryWeapon: {fileID: 1826670985997925379}
     grenade: {fileID: 0}

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -160,7 +160,8 @@ public class DamageCalculator
         }
     }
 
-    public static RaycastHit checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
+    public static RaycastHit 
+    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
     {
         RaycastHit hit = new RaycastHit();
         RaycastHit acualHit = new RaycastHit();
@@ -259,7 +260,6 @@ public class DamageCalculator
             {
                 
                 case "Wall":
-                    Debug.Log("here");
                     actualHit = hit;
                     return true;  
             }

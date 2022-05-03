@@ -19754,7 +19754,7 @@ MonoBehaviour:
     VisualAngle: 90
     maxHealth: 20
     MaxSheild: 0
-    Regen: 20
+    Regen: 0
     m_agentFaction: 1
     health: 20
     Sheild: 0

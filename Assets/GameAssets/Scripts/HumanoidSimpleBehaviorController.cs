@@ -32,7 +32,7 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
     public void START_ACTION()
     {
         actionStarted = false;
-        StartAction(1);
+        StartAction(0);
     }
 
     public void STOP_ACTION()
@@ -225,7 +225,6 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
     
     private void _changeWeaponStatus(bool armed)
     {
-
         if(!m_agent.isArmed() & armed)
         {
             m_agent.togglepSecondaryWeapon();
@@ -234,9 +233,6 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
         {
             m_agent.togglepSecondaryWeapon();
         }
-    
-
-
     }
 
     private void _goHidden(bool hidden)

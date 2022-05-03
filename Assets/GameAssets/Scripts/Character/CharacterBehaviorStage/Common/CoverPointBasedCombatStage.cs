@@ -136,7 +136,8 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
     public override void endStage()
     {
-        base.endStage();
+        OnAgentDestroyed();
+        base.endStage();     
     }
 
     public override void initalizeStage()
@@ -577,6 +578,14 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
         }
     }
 
+    public override void OnAgentDestroyed()
+    {
+        if(m_currentCoverPoint)
+        {
+            m_currentCoverPoint.setOccupent(null);
+        }
+        
+    }
     
     private void aimAtTarget()
     {

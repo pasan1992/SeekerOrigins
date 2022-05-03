@@ -142,4 +142,9 @@ public class BasicMovmentCombatStage : BasicMovmentStage
     {
         
     }
+
+    public override void OnAgentDestroyed()
+    {
+
+    }
 }

@@ -55,6 +55,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
             {
                 onDestroyedEvent();
             }
+           StartCoroutine(waitAndDestory(2));
             
         }  
         return true;  

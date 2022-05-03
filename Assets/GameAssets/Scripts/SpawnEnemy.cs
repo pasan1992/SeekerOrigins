@@ -28,7 +28,7 @@ public class SpawnEnemy : BaseObjective
             var enemey = GameObject.Instantiate(AgentPrefab);
             var agent =  enemey.GetComponent<NavMeshAgent>();
 
-            agent.Warp(spawnPoint.transform.position + Random.insideUnitSphere*1.6f);
+            agent.Warp(spawnPoint.transform.position);
             agent.enabled = false;
             agent.enabled = true;
 
@@ -38,8 +38,7 @@ public class SpawnEnemy : BaseObjective
         }
     }
 
-
-    public void SpawnEnemyRandomLocation(int count,GameObject[] spawnPoint,Transform target,string FireEvent)
+    public void SpawnGivenRandomLocation(GameObject spawnAgent, int count,GameObject[] spawnPoint,Transform target,string FireEvent)
     {
         if(agent_count > 0)
         {
@@ -50,12 +49,12 @@ public class SpawnEnemy : BaseObjective
 
         for (int i =0; i< count ; i++)
         {
-            var enemey = GameObject.Instantiate(AgentPrefab);
+            var enemey = GameObject.Instantiate(spawnAgent);
             var agent =  enemey.GetComponent<NavMeshAgent>();
             var sp_id = i % spawnPoint.Length;
             var sp = spawnPoint[sp_id];
 
-            agent.Warp(sp.transform.position + Random.insideUnitSphere*1.6f);
+            agent.Warp(sp.transform.position);
             agent.enabled = false;
             agent.enabled = true;
 
@@ -63,6 +62,11 @@ public class SpawnEnemy : BaseObjective
             enemey.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
             StartCoroutine(waitAndAttack(agentCont,target));
         }
+    }
+
+    public void SpawnEnemyRandomLocation(int count,GameObject[] spawnPoint,Transform target,string FireEvent)
+    {
+
     }
 
     IEnumerator waitAndAttack(AgentController agent,Transform target)

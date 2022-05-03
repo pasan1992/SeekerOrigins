@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -141,6 +141,7 @@ public class AutoHumanoidAgentController :  AgentController
     public override void OnAgentDestroy()
     {
         base.OnAgentDestroy();
+        EnvironmentSound.Instance.removeListen(onSoundAlert);
         m_healthBar.set_no_cover();
         m_navMeshAgent.enabled = false;
 
@@ -350,6 +351,8 @@ public class AutoHumanoidAgentController :  AgentController
     {
         ((IteractionStage)m_idleStage).SetNewWaypoints(waypoints);
     }
+
+    
 
     public override void ForceCombatMode(Transform position)
     {

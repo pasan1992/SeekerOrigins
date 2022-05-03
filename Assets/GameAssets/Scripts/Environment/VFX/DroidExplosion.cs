@@ -30,7 +30,7 @@ public class DroidExplosion : BasicExplosion
                 explodingList = legs;
             break;
             case ExplosionPart.OneHand:
-                explodingList.Add(hands[0]);
+                explodingList= hands;
             break;
             case ExplosionPart.OneLeg:
                 explodingList.Add(legs[0]);

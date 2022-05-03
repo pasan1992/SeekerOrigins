@@ -29,9 +29,9 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         }
         m_movingAgent.damageAgent(calculate_bonous_damage(-m_movingAgent.getTransfrom().forward,force,damageValue));
         m_movingAgent.reactOnHit(collider, force, point);
+
         if (getRemaningHealth() == 0)
         {
-
             switch (m_movingAgent.GetAgentData().AgentNature)
             {
                 case AgentBasicData.AGENT_NATURE.DROID:
@@ -56,7 +56,9 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
                 {
                     m_objectUI.OnDistryedObject();
                 }
+
                 
+                StartCoroutine(waitAndDestory(5));
                 
             }
 
@@ -89,20 +91,16 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         if (!destroyed)
         {
             destroyed = true;
-            GameObject explosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
-            explosion.transform.position = this.transform.position;
-            explosion.SetActive(true);
-            explosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Head);
-
-           // StartCoroutine(camplayer.cam_Shake(0.5f, 0.5f));
-            currentAvatar.SetActive(false);
-
-            if (avatar.Length > 0)
+            var random_value = 0;
+            if(!m_movingAgent.isHidden())
             {
-                avatar[0].SetActive(true);
-            }
+                random_value = Random.Range(0,4);
+            }   
+            
 
-            var random_value = Random.value;
+
+
+            randomDestroyEffect(random_value,collider);
 
             /*
             if(random_value < 0.3)
@@ -119,9 +117,92 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             
 
             Invoke("postDestoryEffect", 1);
-        }
-        else if (m_movingAgent.GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
-        {
+        }       
+    }
+
+    // private void droid_damage_effects(float damageValue, Collider collider, Vector3 force, Vector3 point)
+    // {
+    //     if (!destroyed)
+    //     {
+    //         destroyed = true;
+    //         GameObject explosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
+    //         explosion.transform.position = this.transform.position;
+    //         explosion.SetActive(true);
+    //         explosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Head);
+
+    //        // StartCoroutine(camplayer.cam_Shake(0.5f, 0.5f));
+    //         currentAvatar.SetActive(false);
+
+    //         if (avatar.Length > 0)
+    //         {
+    //             avatar[0].SetActive(true);
+    //         }
+
+    //         var random_value = Random.value;
+
+    //         /*
+    //         if(random_value < 0.3)
+    //         {
+    //             postDestroyDamage = 2;
+    //             droid_damage_effects(damageValue, collider, force, point);
+    //         }
+    //         else if(random_value < 0.5)
+    //         {
+    //             postDestroyDamage = 4;
+    //             droid_damage_effects(damageValue, collider, force, point);
+    //         }
+    //         */
+            
+
+    //         Invoke("postDestoryEffect", 1);
+    //     }
+    //     else if (m_movingAgent.GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
+    //     {
+    //         GameObject postDestoryExplosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
+    //         if (postDestoryExplosion == null)
+    //         {
+    //             Debug.LogWarning("Not enough effects");
+    //             return;
+    //         }
+                
+    //         postDestoryExplosion.transform.position = collider.transform.position;
+    //         postDestoryExplosion.SetActive(true);
+    //         m_audioSource.PlayOneShot(m_soundManager.getDroneExplosion());
+
+
+    //         GameObject postDestoryExplosion2 = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
+    //         postDestoryExplosion2.transform.position = collider.transform.position;
+    //         postDestoryExplosion2.SetActive(true);
+    //         switch (postDestroyDamage)
+    //         {
+    //             case 2:
+    //                 postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Hands);
+    //                 postDestoryExplosion2.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.OneLeg);
+    //                 //postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Legs);
+    //                 avatar[0].SetActive(false);
+    //                 avatar[1].SetActive(true);
+    //                 break;
+    //             case 4:
+    //                 postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Body);
+    //                 postDestoryExplosion2.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.OneLeg);
+    //                 avatar[1].SetActive(false);
+    //                 avatar[0].SetActive(false);
+    //                 //avatar[2].SetActive(true);
+    //                 break;
+    //                 // case 3:
+    //                 //     postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Body);
+    //                 //     headlessAvatar[2].SetActive(false);
+    //                 // break;
+    //         }
+
+    //         postDestroyDamage++;
+
+    //     }
+    // }
+
+    private void randomDestroyEffect(int destroyEffectId,Collider collider)
+    {
+            currentAvatar.SetActive(false);
             GameObject postDestoryExplosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
             if (postDestoryExplosion == null)
             {
@@ -136,32 +217,43 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
 
             GameObject postDestoryExplosion2 = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
             postDestoryExplosion2.transform.position = collider.transform.position;
-            postDestoryExplosion2.SetActive(true);
-            switch (postDestroyDamage)
+            
+            switch (destroyEffectId)
             {
+                case 0:
+                    postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Head);
+                    avatar[0].SetActive(true);
+                    avatar[1].SetActive(false);
+                    avatar[2].SetActive(false);
+                    avatar[3].SetActive(false);
+
+                break;
+                case 1:
+                    postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.OneLeg);
+                    avatar[0].SetActive(false);
+                    avatar[1].SetActive(true);
+                    avatar[2].SetActive(false);
+                    avatar[3].SetActive(false);
+                break;
                 case 2:
                     postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Hands);
                     postDestoryExplosion2.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.OneLeg);
-                    //postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Legs);
+                    postDestoryExplosion2.SetActive(true);
                     avatar[0].SetActive(false);
-                    avatar[1].SetActive(true);
-                    break;
-                case 4:
-                    postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Body);
-                    postDestoryExplosion2.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.OneLeg);
                     avatar[1].SetActive(false);
+                    avatar[2].SetActive(true);
+                    avatar[3].SetActive(false);
+                    break;
+                case 3:
+                    postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.OneHand);
+                    postDestoryExplosion2.SetActive(false);
                     avatar[0].SetActive(false);
+                    avatar[1].SetActive(false);
+                    avatar[2].SetActive(false);
+                    avatar[3].SetActive(true);
                     //avatar[2].SetActive(true);
                     break;
-                    // case 3:
-                    //     postDestoryExplosion.GetComponent<DroidExplosion>().explodePart(DroidExplosion.ExplosionPart.Body);
-                    //     headlessAvatar[2].SetActive(false);
-                    // break;
             }
-
-            postDestroyDamage++;
-
-        }
     }
 
     private void postDestoryEffect()
