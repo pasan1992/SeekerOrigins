@@ -173,10 +173,10 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
             
             stayAimed = false;
             m_hbar.set_full_cover();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(Random.Range(0.5f,2f));
             stayAimed = true;
             m_hbar.set_half_cover();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(Random.Range(0.5f,2f));
         }
         
     }
@@ -199,7 +199,7 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
             {
                 stayAimed = false;
                 m_hbar.set_full_cover();
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(Random.Range(0.5f,2f));
             }             
             
             stayAimed = true;
@@ -208,11 +208,11 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
                 m_hbar.set_half_cover();
             }
 
-            for (int l =0 ; l<7;l++)
+            for (int l =0 ; l<Random.Range(3,7);l++)
             {
             if(actionStarted)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(Random.Range(0.5f,2f));
                 m_agent.weaponFireForAI();
             }
 
