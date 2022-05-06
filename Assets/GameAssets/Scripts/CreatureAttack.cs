@@ -5,22 +5,20 @@ using UnityEngine.AI;
 
 public class CreatureAttack : MonoBehaviour
 {
+    public GameObject player;
+
     public int bitInterval;
     public int biteDistance;
     public int creatureDamage;
 
     public AgentBasicData agentBasicData;
 
+    NavMeshAgent _navMeshAgent;
+
     DamagableObject _damagableObject;
     Collider _legCollider;
 
-    NavMeshAgent _navMeshAgent;
-
-    public GameObject player;
-
     float _updateTime = 0;
-    //public static GameObject player;
-    //public static Collider playerLeftLeg;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +26,6 @@ public class CreatureAttack : MonoBehaviour
         _navMeshAgent = transform.GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = Random.Range(2, 4);
         _damagableObject = player.GetComponent<DamagableObject>();
-
-        Debug.Log(_damagableObject);
-
-        
 
         Component[] colliders = player.GetComponentsInChildren<Collider>();
 
@@ -44,34 +38,12 @@ public class CreatureAttack : MonoBehaviour
 
             }
         }
-        //if (player.GetComponentsInChildren<GameObject>())
-        //{
-        //    Debug.Log("having");
-
-        //}
-        //else
-        //{
-        //    Debug.Log("nothing");
-
-        //}
-        //Debug.Log(player.GetComponentInChildren<Collider>().name);
-        //if (player.GetComponentInChildren<Collider>().name == "LowerLeg_L")
-        //{
-        //    playerLeftLeg = player.GetComponentInChildren<Collider>();
-        //}
-
-
-        //_agentBasicData = gameObject.GetComponent<AgentBasicData>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //is ready
-        //if (_navMeshAgent.isOnNavMesh)
-        //{
         _navMeshAgent.SetDestination(player.transform.position);
-        //}
         this.transform.LookAt(player.transform.position);
         Bite();
     }
