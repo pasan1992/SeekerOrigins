@@ -25337,7 +25337,7 @@ MonoBehaviour:
           useVariable: 0
           type: 14
           floatValue: 0
-          intValue: 0
+          intValue: 3
           boolValue: 0
           stringValue: 
           vector4Value: {x: 0, y: 0, z: 0, w: 0}

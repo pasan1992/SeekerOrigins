@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RootMotion;
 
 public class HumanoidSimpleBehaviorController : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
     {
         m_agent = this.GetComponent<HumanoidMovingAgent>();
         m_hbar = this.GetComponentInChildren<HealthBar>();
+        var m_look_ik = this.GetComponent<RootMotion.FinalIK.LookAtIK>();
+        if(m_look_ik !=null)
+        {
+            m_look_ik.enabled =false;
+        }
+
         if(Target)
         {
             m_enemy = Target.GetComponent<HumanoidMovingAgent>();
@@ -210,7 +217,7 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
 
             for (int l =0 ; l<Random.Range(3,7);l++)
             {
-            if(actionStarted)
+            if(actionStarted & GamePlayCam.IsVisibleToCamera(this.transform))
             {
                 yield return new WaitForSeconds(Random.Range(0.5f,2f));
                 m_agent.weaponFireForAI();

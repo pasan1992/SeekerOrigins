@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,6 @@ public class AgentBasicData
     [SerializeField] 
     private float maxHealth;
     public float MaxSheild;
-
     public float Regen;
 
     public enum AgentFaction { Player,Enemy3,Neutral,Enemy2,Enemy1, Allies };

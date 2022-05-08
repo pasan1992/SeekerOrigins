@@ -348,6 +348,11 @@ public class HumanoidRangedWeaponsModule
     {
         if(!m_agentData.drop_reward)
         {
+            if (m_pistol)
+                m_pistol.gameObject.SetActive(false);
+
+            if(m_rifle)
+                m_rifle.gameObject.SetActive(false);           
             return;
         }
         var rand_value = Random.value;
@@ -480,6 +485,7 @@ public class HumanoidRangedWeaponsModule
                 if (m_currentWeapon.getWeaponType().Equals(RangedWeapon.WEAPONTYPE.primary))
                 {
                     m_inEquipingAction = true;
+                    Debug.Log("Unequip");
                     return m_animationSystem.unEquipEquipment();
                 }
                 // Fast toggle to weapon
@@ -527,18 +533,24 @@ public class HumanoidRangedWeaponsModule
         if (!isInEquipingAction() && !isReloading() && m_pistol && !m_inWeaponAction)
         {
             m_animationSystem.setCurretnWeapon(0);
+            Debug.Log("here1");
+            Debug.Log(m_inEquipingAction);
+            Debug.Log(isInEquipingAction());
             // Current weapon equiped
             if (m_currentWeapon != null)
             {
                 // Unequip weapon with animation
+                Debug.Log("here2");
                 if (m_currentWeapon.getWeaponType().Equals(RangedWeapon.WEAPONTYPE.secondary))
                 {
                     m_inEquipingAction = true;
+                    Debug.Log("here3");
                     return m_animationSystem.unEquipEquipment();
                 }
                 // Fast toggle weapon
                 else
                 {
+                    Debug.Log("here4");
                     // Fast toggle
                     placeWeaponinHosterLocation(m_currentWeapon);
                     m_currentWeapon = m_pistol;
@@ -583,28 +595,28 @@ public class HumanoidRangedWeaponsModule
         {
             if(m_inEquipingAction)
             {
-                Debug.Log("m_inEqupingAction is on");
+                Debug.LogError("m_inEqupingAction is on");
             }
 
             if(m_currentWeaponSubStage.Equals(WeaponSystemSubStages.Equiping))
             {
-                Debug.Log("in Equiping animation state");
+                Debug.LogError("in Equiping animation state");
             }
 
             if(m_currentWeaponSubStage.Equals(WeaponSystemSubStages.UnEquiping))
             {
-                Debug.Log("in Unequiping animation state");
+                Debug.LogError("in Unequiping animation state");
             }
         }
 
         if(m_inWeaponAction)
         {
-            Debug.Log("m_inWeaponAction flag is on");
+            Debug.LogError("m_inWeaponAction flag is on");
         }
 
         if(isReloading())
         {
-            Debug.Log("Was reloading");
+            Debug.LogError("Was reloading");
         }
     }
 
