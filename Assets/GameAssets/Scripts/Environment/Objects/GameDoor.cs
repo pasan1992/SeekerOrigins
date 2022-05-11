@@ -78,14 +78,17 @@ public class GameDoor : MonoBehaviour
 
     public void KeepOpened()
     {
-        m_animator.SetTrigger("Open");
+        m_animator.Play("Open");
+        //m_animator.SetTrigger("Open");
         setNavMeshObsticleStatus(false);
     }
 
     /// closed
     public void RemoveKeepOpened()
     {
-        m_animator.SetTrigger("Close");     
+        m_animator.Play("Close");
+
+        //m_animator.SetTrigger("Close");     
         setNavMeshObsticleStatus(true);
     }
 
