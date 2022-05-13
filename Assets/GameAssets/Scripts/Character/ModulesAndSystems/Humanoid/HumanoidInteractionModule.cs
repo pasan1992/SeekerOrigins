@@ -60,7 +60,7 @@ public class HumanoidInteractionModule
             m_currentInteractingObject = interactable;
             m_currentInteractingObject.interact();
 
-
+            Debug.Log(type);
             switch (type)
             {
                 case Interactable.InteractableProperties.InteractableType.PickupInteraction:
@@ -204,11 +204,20 @@ public class HumanoidInteractionModule
                     */
                 
                 }
+
             }
             else if(obj is AmmoPack)
             {
                 var ammo_pck = (AmmoPack)obj;
                 ConsumeAmmoPack(ammo_pck);
+            }
+            else if(obj is Grenade)
+            {
+                Debug.Log("Grenade");
+                var wp = obj.GetComponent<Grenade>();
+                m_agentData.grenade = wp;
+                m_equipmentModule.equipWeapon(m_agentData.grenade);
+                obj.OnEquipAction();                   
             }
             else
             {

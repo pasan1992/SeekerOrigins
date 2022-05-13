@@ -169,6 +169,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         
         if(obj)
         {
+            Debug.Log(obj);
             interactWith(obj,obj.properties.Type);
         }
     }
@@ -631,7 +632,10 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void Throw()
     {
-        m_animationModule.triggerThrow();
+        if(m_equipmentModule.getGrenadeCount() > 0)
+        {
+            m_animationModule.triggerThrow();
+        }     
     }
     public void ReloadEnd()
     {

@@ -15,6 +15,7 @@ public class HumanoidRangedWeaponsModule
     protected GameObject primaryHosterLocation;
     protected GameObject secondaryHosterLocation;
     protected GameObject weaponHoldLocation;
+    protected GameObject grenadeHoldLocation;
 
     protected AgentData m_agentData;
 
@@ -794,8 +795,11 @@ public class HumanoidRangedWeaponsModule
                 case WeaponProp.WeaponLocation.HOSTER_SECONDAY:
                     secondaryHosterLocation = prop.gameObject;
                     break;
-                case WeaponProp.WeaponLocation.HAND:
+                case WeaponProp.WeaponLocation.RIGHT_HAND:
                     weaponHoldLocation = prop.gameObject;
+                    break;
+                case WeaponProp.WeaponLocation.LEFT_HAND:
+                    grenadeHoldLocation = prop.gameObject;
                     break;
             }
         }
@@ -873,6 +877,15 @@ public class HumanoidRangedWeaponsModule
         return m_pistol.getAmmoCount();
     }
 
+    public int getGrenadeCount()
+    {
+        if(m_grenede == null)
+        {
+            return 0;
+        }
+        return m_grenede.count;
+    }
+
     public void setPrimayWeaponAmmoCount(int count)
     {
         m_rifle.setAmmoCount(count);
@@ -925,7 +938,7 @@ public class HumanoidRangedWeaponsModule
             }
             else if(weaponType == typeof(Grenade))
             {
-                hosteringLocation = secondaryHosterLocation.transform;
+                hosteringLocation = grenadeHoldLocation.transform;
             }
             
             weapon.transform.parent = hosteringLocation;
