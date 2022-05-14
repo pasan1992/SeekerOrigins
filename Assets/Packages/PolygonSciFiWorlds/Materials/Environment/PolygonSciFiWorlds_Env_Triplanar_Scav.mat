@@ -263,8 +263,8 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Ground_Detail_Power: 1
-    - _Ground_Detail_Scale: 0.06
-    - _Ground_Falloff: 130
+    - _Ground_Detail_Scale: 0
+    - _Ground_Falloff: 125.95
     - _Ground_Noise_Scale: 0.0181
     - _Ground_Pebble_Scale: 0
     - _MEtallic: 0.421
