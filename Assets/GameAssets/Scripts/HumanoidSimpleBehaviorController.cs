@@ -220,7 +220,11 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
             if(actionStarted & GamePlayCam.IsVisibleToCamera(this.transform))
             {
                 yield return new WaitForSeconds(Random.Range(0.5f,2f));
-                m_agent.weaponFireForAI();
+                if(m_agent.IsFunctional())
+                {
+                        m_agent.weaponFireForAI();
+                }
+                
             }
 
             }
