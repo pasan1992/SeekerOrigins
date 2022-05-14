@@ -262,6 +262,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     {
                         m_selfAgent.weaponFireForAI();
                         FireRocket();
+                        ThrowGrenade();
                     }
                         
                     setStepIntervalSize(0.3f);
@@ -386,6 +387,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     {
                         FireRocket();
                         m_selfAgent.weaponFireForAI();
+                        ThrowGrenade();
                     }
                         
                     CombatTextShower.Instance.yellMessage("Fire!", m_selfAgent, 0.3f,0.5f);
@@ -536,6 +538,16 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
         if(m_rocket_pack && Random.value > 0.5  && targetLocation)
         {
             m_rocket_pack.FireMissleLocation(targetLocation.position);
+        }
+    }
+
+    private void ThrowGrenade()
+    {
+        Debug.Log("Throww!!");
+        if(targetLocation)
+        {
+            Debug.Log("Throww22!!");
+            ((HumanoidMovingAgent)m_selfAgent).Throw();
         }
     }
 

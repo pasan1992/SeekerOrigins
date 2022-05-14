@@ -213,7 +213,6 @@ public class HumanoidInteractionModule
             }
             else if(obj is Grenade)
             {
-                Debug.Log("Grenade");
                 var wp = obj.GetComponent<Grenade>();
                 m_agentData.grenade = wp;
                 m_equipmentModule.equipWeapon(m_agentData.grenade);
