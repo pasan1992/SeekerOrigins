@@ -544,7 +544,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
     private void ThrowGrenade()
     {
         Debug.Log("Throww!!");
-        if(targetLocation)
+        if(targetLocation & Random.value > 0.85f)
         {
             Debug.Log("Throww22!!");
             ((HumanoidMovingAgent)m_selfAgent).Throw();
