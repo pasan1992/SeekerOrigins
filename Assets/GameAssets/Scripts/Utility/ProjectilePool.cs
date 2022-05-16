@@ -188,6 +188,15 @@ public class ProjectilePool : MonoBehaviour
         {
             GameObject bulletHitParticle = GameObject.Instantiate(bulletHitBasicParticlePrefab);
             bulletHitParticle.transform.parent = this.transform;
+            var basic_particle = bulletHitParticle.GetComponent<BasicParticleEffect>();
+            if (basic_particle)
+            {
+                basic_particle.SetParent(this.transform);
+            }
+            if (bulletHitParticle is BasicParticleEffect)
+            {
+
+            }
             bulletHitParticle.SetActive(false);
             effectList.Add(bulletHitParticle);
         }

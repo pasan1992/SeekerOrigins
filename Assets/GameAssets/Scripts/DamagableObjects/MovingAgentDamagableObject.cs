@@ -129,6 +129,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
     protected IEnumerator waitAndDestory(float time)
     {
         yield return new WaitForSeconds(time);
+        Debug.Log("Destory");
         Destroy(this.gameObject);
     }
 

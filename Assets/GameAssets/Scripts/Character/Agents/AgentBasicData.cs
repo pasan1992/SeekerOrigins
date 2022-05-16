@@ -14,6 +14,12 @@ public class AgentBasicData
     public float Skill;
     public float VisualDistance = 12;
     public float VisualAngle = 90;
+    public float max_Sound_hearing_distance = 5;
+
+    public bool CanDodge = false;
+    public bool ThrowGrenade = false;
+    public bool FireRocket = false;
+    public RocketPack RocketPack;
 
     [SerializeField] 
     private float maxHealth;

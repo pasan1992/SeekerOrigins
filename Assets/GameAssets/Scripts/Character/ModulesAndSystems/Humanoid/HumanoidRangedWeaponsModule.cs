@@ -534,24 +534,18 @@ public class HumanoidRangedWeaponsModule
         if (!isInEquipingAction() && !isReloading() && m_pistol && !m_inWeaponAction)
         {
             m_animationSystem.setCurretnWeapon(0);
-            Debug.Log("here1");
-            Debug.Log(m_inEquipingAction);
-            Debug.Log(isInEquipingAction());
             // Current weapon equiped
             if (m_currentWeapon != null)
             {
                 // Unequip weapon with animation
-                Debug.Log("here2");
                 if (m_currentWeapon.getWeaponType().Equals(RangedWeapon.WEAPONTYPE.secondary))
                 {
                     m_inEquipingAction = true;
-                    Debug.Log("here3");
                     return m_animationSystem.unEquipEquipment();
                 }
                 // Fast toggle weapon
                 else
                 {
-                    Debug.Log("here4");
                     // Fast toggle
                     placeWeaponinHosterLocation(m_currentWeapon);
                     m_currentWeapon = m_pistol;

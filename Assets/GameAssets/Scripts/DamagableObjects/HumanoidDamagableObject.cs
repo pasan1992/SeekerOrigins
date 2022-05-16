@@ -7,7 +7,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
 
     private bool destroyed = false;
 
-    private int postDestroyDamage = 0 ;
+    private int postDestroyDamage = 0;
 
 
     public override bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction)
@@ -96,7 +96,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             {
                 random_value = Random.Range(0,4);
             }   
-            
+            postDestoryEffect(collider.transform);
 
 
 
@@ -116,7 +116,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             */
             
 
-            Invoke("postDestoryEffect", 1);
+            // Invoke("postDestoryEffect", 1);
         }       
     }
 
@@ -202,6 +202,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
 
     private void randomDestroyEffect(int destroyEffectId,Collider collider)
     {
+        if(avatar.Length < 3)
+        {
+            return;
+        }
+
             currentAvatar.SetActive(false);
             GameObject postDestoryExplosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
             if (postDestoryExplosion == null)
@@ -218,6 +223,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             GameObject postDestoryExplosion2 = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);
             postDestoryExplosion2.transform.position = collider.transform.position;
             
+
             switch (destroyEffectId)
             {
                 case 0:
@@ -256,13 +262,15 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             }
     }
 
-    private void postDestoryEffect()
+    private void postDestoryEffect(Transform location)
     {
         GameObject smoke = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.ElectricParticleEffect);
         GameObject electricEffet = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.SmokeEffect);
         smoke.SetActive(true);
         electricEffet.SetActive(true);
-        smoke.transform.position = this.transform.position;
-        electricEffet.transform.position = this.transform.position;
+        smoke.transform.position = location.position;
+        electricEffet.transform.position = location.position;
+        smoke.transform.parent = location.transform;
+        electricEffet.transform.parent = location.transform;
     }
 }

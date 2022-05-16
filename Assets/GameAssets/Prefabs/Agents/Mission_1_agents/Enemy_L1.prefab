@@ -730,7 +730,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 69886451426456263}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.22
+  m_Radius: 0.5
   m_Speed: 1
   m_Acceleration: 5
   avoidancePriority: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_characterState: 3
   AgentData:
-    AgentNature: 3
+    AgentNature: 0
     Skill: 0.3
     VisualDistance: 12
     VisualAngle: 90
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f3d95eb3df20c42b2304787911f219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffectOnDamage: 13
+  particleEffectOnDamage: 5
   currentAvatar: {fileID: 70146114552436703}
   avatar: []
 --- !u!114 &69886451426456256
