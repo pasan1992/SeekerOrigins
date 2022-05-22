@@ -10,12 +10,13 @@ public class MouseCurserSystem : MonoBehaviour
     public Texture2D idleTexture;
     public Texture2D fireTexture;
     public Texture2D onTargetFire;
+    public Texture2D reloadTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
     private static MouseCurserSystem mouseSystem;
 
-    public enum CURSOR_STATE { IDLE,AIMED,ONTARGET,FIRE,ONTARET_FIRE,NO_AMMO}
+    public enum CURSOR_STATE { IDLE,AIMED,ONTARGET,FIRE,ONTARET_FIRE,NO_AMMO,RELOAD}
     private CURSOR_STATE m_currentState = CURSOR_STATE.IDLE;
     public UICurser ui_curser;
     
@@ -105,6 +106,9 @@ public class MouseCurserSystem : MonoBehaviour
                 break;
             case CURSOR_STATE.ONTARET_FIRE:
                 Cursor.SetCursor(onTargetFire, hotSpot, cursorMode);
+                break;
+            case CURSOR_STATE.RELOAD:
+                Cursor.SetCursor(reloadTexture, hotSpot, cursorMode);
                 break;
         }
         

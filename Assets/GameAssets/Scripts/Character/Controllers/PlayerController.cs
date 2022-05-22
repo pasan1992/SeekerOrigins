@@ -364,6 +364,11 @@ public class PlayerController : AgentController
             targetPosition = hit.point;
         }
 
+        if(m_movingAgent.is_currentWeaponEmpty())
+        {
+            MouseCurserSystem.getInstance().setMouseCurserState(MouseCurserSystem.CURSOR_STATE.RELOAD);
+        }
+
         m_movingAgent.setTargetPoint(targetPosition);
         m_currentTargetPosition = targetPosition;
     }
