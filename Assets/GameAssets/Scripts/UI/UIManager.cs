@@ -29,6 +29,16 @@ public class UIManager : MonoBehaviour
         update_ammo_count();
     }
 
+    private void update_health()
+    {
+    //    var agent_data = m_movingAgent.GetAgentData();
+    //     m_movingAgent.getCurrentWeaponAmmoCount();
+    //     m_movingAgent.getCurrentWeaponType();
+    //     m_movingAgent.grenate
+    //     agent_data.WeaponAmmo
+    //m_movingAgent.hasGrenade();
+    }
+
     private void update_ammo_count()
     {
         if(ammo_count == null)
