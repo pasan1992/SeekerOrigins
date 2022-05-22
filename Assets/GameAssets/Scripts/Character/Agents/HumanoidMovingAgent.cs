@@ -632,19 +632,19 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void Throw()
     {
-        if(hasGrenade())
+        if(m_equipmentModule.getGrenadeCount() > 0)
         {
             m_animationModule.triggerThrow();
         }     
     }
 
-    public bool hasGrenade()
+    public int GetGrenadeCount()
     {
         if (m_equipmentModule == null)
         {
-            return false;
+            return 0;
         }
-        return m_equipmentModule.getGrenadeCount() > 0;
+        return m_equipmentModule.getGrenadeCount();
     }
 
     public void ReloadEnd()
