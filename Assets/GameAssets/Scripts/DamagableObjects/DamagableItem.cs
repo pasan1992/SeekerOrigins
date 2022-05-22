@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class DamagableItem : MonoBehaviour,DamagableObject
@@ -16,6 +17,8 @@ public class DamagableItem : MonoBehaviour,DamagableObject
     // This is to make sure the on destroyed event won't get called multiple times.
     protected bool m_ondestroyEventCalled = false;
     private AudioSource m_audioSource;
+
+    public UnityEvent m_onDestroyEvent;
     public void Awake()
     {
         m_remaning_Health = Total_Health;
@@ -50,6 +53,11 @@ public class DamagableItem : MonoBehaviour,DamagableObject
                     if(onDestroyedEvent!=null)
                     {
                         onDestroyedEvent();
+                        
+                    }
+                    if(m_onDestroyEvent !=null)
+                    {
+                        m_onDestroyEvent.Invoke();
                     }
                     
                 }
