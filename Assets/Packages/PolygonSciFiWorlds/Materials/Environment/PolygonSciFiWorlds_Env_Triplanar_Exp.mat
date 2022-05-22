@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: PolygonSciFiWorlds_Env_Triplanar_Exp
   m_Shader: {fileID: 4800000, guid: 8e3a7be9db42981418988bc59e1916cb, type: 3}
   m_ShaderKeywords: 
@@ -299,12 +300,12 @@ Material:
     - _EmissiveColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissiveColor1: {r: 1, g: 1, b: 1, a: 0}
     - _GroundColour: {r: 1, g: 1, b: 1, a: 0}
-    - _Ground_Colour: {r: 0.6392157, g: 0.0627451, b: 0.2901961, a: 1}
+    - _Ground_Colour: {r: 0.23529413, g: 0.15686275, b: 0.12941177, a: 1}
     - _Ground_Detail_Colour: {r: 0.09233382, g: 0.052335635, b: 0.16176468, a: 0}
     - _RimColor: {r: 0.2555147, g: 1, b: 0.9269017, a: 0}
     - _RimColor1: {r: 0.1614143, g: 0.1380298, b: 0.8161765, a: 0}
     - _Road_Colour: {r: 0.11372549, g: 0.003921569, b: 0.13333334, a: 1}
     - _RockColour: {r: 0.17560555, g: 0.18834269, b: 0.20588237, a: 0}
-    - _Rock_Colour: {r: 0.11372549, g: 0.003921569, b: 0.13333334, a: 1}
+    - _Rock_Colour: {r: 0.060421303, g: 0.028969374, b: 0.066037714, a: 1}
     - _Rock_Colour_Primary: {r: 0.11490278, g: 0.0058390982, b: 0.13235295, a: 0}
     - _Rock_Colour_Secondary: {r: 0.11490278, g: 0.0058390982, b: 0.13235295, a: 0}
