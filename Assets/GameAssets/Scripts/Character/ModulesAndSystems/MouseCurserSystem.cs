@@ -75,8 +75,8 @@ public class MouseCurserSystem : MonoBehaviour
 
         }
 
-        var distance = Vector3.Distance(m_targetLineStart.position, m_targetLineEnd.position);
-        ui_curser.Set_aim_Size(distance / max_distance);
+        //var distance = Vector3.Distance(m_targetLineStart.position, m_targetLineEnd.position);
+        //ui_curser.Set_aim_Size(distance / max_distance);
 
     }
 
@@ -207,7 +207,7 @@ public class MouseCurserSystem : MonoBehaviour
 
     public void is_moving_player(bool moving)
     {
-        ui_curser.set_is_player_moving(moving);
+        //ui_curser.set_is_player_moving(moving);
     }
 
 
