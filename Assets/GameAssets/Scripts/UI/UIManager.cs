@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image _pistolImg;
     [SerializeField] Image _rifleImg;
     [SerializeField] Image _grenadeImg;
+    [SerializeField] TMP_Text _grenedCountTxt;
 
     [SerializeField] Image _healthBarImg;
     [SerializeField] Image _regenBarImg;
@@ -31,94 +32,108 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TMP_Text _magazinCountTxt;
     [SerializeField] Image _weaponImg;
-    [SerializeField] Image[] _weaponList;
+    [SerializeField] Sprite[] _weaponList;
 
+    [SerializeField] GameObject _activeWeapon;
+    AgentData _agentData;
 
     public void Start()
     {
-        m_player = GameObject.FindObjectOfType<PlayerController>();
-        
+        m_player = GameObject.FindObjectOfType<PlayerController>();       
         m_movingAgent = m_player.GetComponent<HumanoidMovingAgent>();
+        _agentData = m_movingAgent.GetAgentData();
+
     }
     // Update is called once per frame
     void Update()
     {
+
         updateLootText();
         update_ammo_count();
+        updateAmmo();
+        update_health();
+    }
+
+    void updateAmmo()
+    {
+        if (m_movingAgent.getCurrentWeapon() == null)
+        {
+            _activeWeapon.SetActive(false);
+        }
+        else
+        {
+            _activeWeapon.SetActive(true);
+        }
+
+        _grenedCountTxt.text = m_movingAgent.GetGrenadeCount().ToString();
+
+        if (m_movingAgent.GetGrenadeCount() <= 0)
+        {
+            _grenadeImg.color = Color.black;
+        }
+        else
+        {
+            _grenadeImg.color = Color.white;
+        }
+
+        if(m_movingAgent.GetPrimaryWeapon() == null)
+        {
+            _rifleImg.color = Color.black;
+        }
+        else if (m_movingAgent.GetPrimaryWeapon() == m_movingAgent.getCurrentWeapon())
+        {
+            _rifleImg.color = Color.yellow;
+        }
+        else
+        {
+            _rifleImg.color = Color.white;
+        }
+
+        if (m_movingAgent.GetSecondaryWeapon() == null)
+        {
+            _pistolImg.color = Color.black;
+        }
+        else if (m_movingAgent.GetSecondaryWeapon() == m_movingAgent.getCurrentWeapon())
+        {
+            _pistolImg.color = Color.yellow;
+        }
+        else
+        {
+            _pistolImg.color = Color.white;
+        }
+
+        if (m_movingAgent.getCurrentWeapon() != null)
+        {
+            _bulletCountTxt.text = m_movingAgent.getCurrentWeaponAmmoCount().ToString() + " / " + m_movingAgent.getCurrentWeaponMagazineSize().ToString();
+            _bulletsBarImg.fillAmount = ((float)m_movingAgent.getCurrentWeaponAmmoCount()) / ((float)m_movingAgent.getCurrentWeaponMagazineSize());
+
+            //_magazinCountTxt.text = (m_movingAgent.getCurrentWeaponMagazineSize() * m_movingAgent.getCurrentWeaponAmmoCount()).ToString(); //TODO
+
+            var weaponType = m_movingAgent.getCurrentWeaponType(); 
+
+            if (weaponType.ToString() == "primary")
+            {
+                _weaponImg.sprite = _weaponList[0];
+            }
+            else if (weaponType.ToString() == "secondary")
+            {
+                _weaponImg.sprite = _weaponList[1];
+            }
+        }
+        else
+        {
+            _bulletCountTxt.text = "0";
+            _bulletsBarImg.fillAmount = 0;
+        }
     }
 
     private void update_health()
     {
-        var agent_data = m_movingAgent.GetAgentData();
-        //     m_movingAgent.getCurrentWeaponAmmoCount();
-        //     m_movingAgent.getCurrentWeaponType();
-        //     m_movingAgent.grenate
-        //     agent_data.WeaponAmmo
-        //m_movingAgent.getCurrentWeapon()
-        //m_movingAgent.GetPrimaryWeapon();
-        //m_movingAgent.GetSecondaryWeapon();
+        _healthCountTxt.text = ((int)_agentData.Health).ToString();
+        _healthBarImg.fillAmount = _agentData.Health / _agentData.MaxHealth;
 
-
-        ////-----1
-        //if (!m_movingAgent.grenate)
-        //{
-        //    _grenadeImg.color = Color.black;
-        //}
-        //else
-        //{
-        //    _grenadeImg.color = Color.white;
-        //}
-        //if (!)
-        //{
-        //    _pistolImg.color = Color.black;
-        //}
-        //else
-        //{
-        //    _pistolImg.color = Color.white;
-        //}
-        //if (!)
-        //{
-        //    _rifleImg.color = Color.black;
-        //}
-        //else
-        //{
-        //    _rifleImg.color = Color.white;
-        //}
-
-
-
-        ////-----2
-        //_bulletCountTxt.text = m_movingAgent.getCurrentWeaponAmmoCount().ToString();
-
-        //_bulletsBarImg.fillAmount = 
-
-        //_healthCountTxt.text = 
-
-        //_healthBarImg.fillAmount = 
-
-        //_regenCountTxt.text =
-
-        //_regenBarImg.fillAmount = 
-
-
-
-
-
-        ////-----3
-        //_magazinCountTxt.text =
-
-        //var weaponType = m_movingAgent.getCurrentWeaponType();
-
-        //if (weaponType)
-        //{
-        //    _weaponImg.sprite = _weaponList[0].sprite;
-        //}
-        //else
-        //{
-        //    _weaponImg.sprite = _weaponList[1].sprite;
-        //}
-
-
+        _regenCountTxt.text = ((int)_agentData.Sheild).ToString();
+        _regenBarImg.fillAmount = _agentData.Sheild / _agentData.MaxSheild;
     }
 
     private void update_ammo_count()

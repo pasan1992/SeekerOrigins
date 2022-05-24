@@ -191,7 +191,7 @@ public class MouseCurserSystem : MonoBehaviour
 
     public void onBullet_Fire()
     {
-        StartCoroutine(ui_curser.recall_aim_size_change(0.6f, 0.1f));
+        //StartCoroutine(ui_curser.recall_aim_size_change(0.6f, 0.1f));
     }
 
     public void enableTargetLine(bool enable)
@@ -202,7 +202,7 @@ public class MouseCurserSystem : MonoBehaviour
     public void set_current_weapon_accuracy(int accuracy)
     {
         current_weapon_accuracy_rating = accuracy;
-        ui_curser.set_current_weapon_accuracy(accuracy);
+        //ui_curser.set_current_weapon_accuracy(accuracy);
     }
 
     public void is_moving_player(bool moving)
