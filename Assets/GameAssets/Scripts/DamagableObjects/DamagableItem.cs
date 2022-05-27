@@ -68,7 +68,12 @@ public class DamagableItem : MonoBehaviour,DamagableObject
 
                 return true;
             }
-            onDamagedEvent();
+            
+            if(onDamagedEvent !=null)
+            {
+                onDamagedEvent();
+            }
+            
 
         }
         return false;
