@@ -3,6 +3,7 @@
 public class BasicParticleEffect : MonoBehaviour
 {
     ParticleSystem m_selfParticleSystem;
+    private Transform m_parent;
 
     private void Awake()
     {
@@ -22,7 +23,15 @@ public class BasicParticleEffect : MonoBehaviour
 
     private void resetAll()
     {
+        this.transform.parent = m_parent;
         m_selfParticleSystem.Stop();
         this.gameObject.SetActive(false);
+        Debug.Log(m_parent);
+        
+    }
+
+    public void SetParent(Transform parent)
+    {
+        m_parent = parent;
     }
 }

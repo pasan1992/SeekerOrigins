@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     {
 
         public enum InteractableType {FastInteraction,PickupInteraction,TimedInteraction,ContinousInteraction,DialogInteraction,NullInteraction}
-        public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8, NotSpecified = -99}
+        public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8,Making=9, Walking_Jump=10, NotSpecified = -99}
         public InteractableType Type = InteractableType.PickupInteraction;
         public bool interactionEnabled = false;
         public string itemName = "";

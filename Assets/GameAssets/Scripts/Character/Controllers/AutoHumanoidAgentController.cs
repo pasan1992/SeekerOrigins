@@ -9,7 +9,6 @@ public class AutoHumanoidAgentController :  AgentController
     public enum WeaponType { PRIMARY,SECONDAY};
     public HumanoidMovingAgent target;
     public WeaponType preferedWeapon = WeaponType.PRIMARY;
-    public bool CanDodge = false;
 
     // public HumanoidMovingAgent followingTarget;    
     protected HumanoidMovingAgent m_movingAgent;
@@ -23,14 +22,10 @@ public class AutoHumanoidAgentController :  AgentController
     // private GameObject selfCoverPoint;
     //public float health;
     public WaypointRutine rutine;
-
-
-    public float max_Sound_hearing_distance = 30;
     private HealthBar m_healthBar;
 
     private bool m_forced_attack = false;
     private Transform m_force_transfrom = null;
-    private RocketPack m_rocket_pack;
     #region initaialize
 
     private void Awake()
@@ -38,7 +33,6 @@ public class AutoHumanoidAgentController :  AgentController
         m_movingAgent = this.GetComponent<HumanoidMovingAgent>();
         m_navMeshAgent = this.GetComponent<NavMeshAgent>();
         m_healthBar = this.GetComponentInChildren<HealthBar>();
-        m_rocket_pack = this.GetComponentInChildren<RocketPack>();
     }
 
     void Start()
@@ -65,8 +59,6 @@ public class AutoHumanoidAgentController :  AgentController
     private void inializeGuard()
     {
         m_combatStage = new CoverPointBasedCombatStage(m_movingAgent,m_navMeshAgent,GameEnums.MovmentBehaviorType.FREE);
-        ((CoverPointBasedCombatStage)m_combatStage).CanDodge = CanDodge;
-        ((CoverPointBasedCombatStage)m_combatStage).Rocket_pack = m_rocket_pack;
         m_idleStage = new IteractionStage(m_movingAgent,m_navMeshAgent,rutine.m_wayPoints.ToArray());
     }
     #endregion
@@ -229,10 +221,10 @@ public class AutoHumanoidAgentController :  AgentController
         // Check for sound distance before acting on it.
         if ( 
             // Sound is comming from a enemy
-            (dis < max_Sound_hearing_distance && GamePlayCam.IsVisibleToCamera(m_movingAgent.getTransfrom()) && !faction.Equals(m_movingAgent.AgentData.m_agentFaction))
+            (dis < m_movingAgent.GetAgentData().max_Sound_hearing_distance && GamePlayCam.IsVisibleToCamera(m_movingAgent.getTransfrom()) && !faction.Equals(m_movingAgent.AgentData.m_agentFaction))
             
             // Sound is comming from a close friend
-            || (dis < max_Sound_hearing_distance / 2 && faction.Equals(m_movingAgent.AgentData.m_agentFaction)) )
+            || (dis < m_movingAgent.GetAgentData().max_Sound_hearing_distance / 2 && faction.Equals(m_movingAgent.AgentData.m_agentFaction)) )
         {
 
             if (m_currentState != m_combatStage)

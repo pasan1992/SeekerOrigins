@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Missions/LearningLevel/LearningLevel01.2.unity
     guid: 2018e5adc285c0c49acb1c2440012177
   - enabled: 0
-    path: Assets/Scenes/Missions/LearningLevel/LearningLevel01.3.unity
-    guid: c241ed3c6a315fb4ca8c9bcd06b85ceb
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Missions/Level 01/Level 01 Old2.unity
-    guid: c3fe3eef12dabf14c922fd84f6060b70
+    path: Assets/Scenes/Tara-Scence/Acttive-level-01.unity
+    guid: 9269a79927423f648ac397a3281949b6
   m_configObjects: {}

@@ -15,6 +15,7 @@ public class HumanoidRangedWeaponsModule
     protected GameObject primaryHosterLocation;
     protected GameObject secondaryHosterLocation;
     protected GameObject weaponHoldLocation;
+    protected GameObject grenadeHoldLocation;
 
     protected AgentData m_agentData;
 
@@ -348,6 +349,11 @@ public class HumanoidRangedWeaponsModule
     {
         if(!m_agentData.drop_reward)
         {
+            if (m_pistol)
+                m_pistol.gameObject.SetActive(false);
+
+            if(m_rifle)
+                m_rifle.gameObject.SetActive(false);           
             return;
         }
         var rand_value = Random.value;
@@ -480,6 +486,7 @@ public class HumanoidRangedWeaponsModule
                 if (m_currentWeapon.getWeaponType().Equals(RangedWeapon.WEAPONTYPE.primary))
                 {
                     m_inEquipingAction = true;
+                    Debug.Log("Unequip");
                     return m_animationSystem.unEquipEquipment();
                 }
                 // Fast toggle to weapon
@@ -583,28 +590,28 @@ public class HumanoidRangedWeaponsModule
         {
             if(m_inEquipingAction)
             {
-                Debug.Log("m_inEqupingAction is on");
+                Debug.LogError("m_inEqupingAction is on");
             }
 
             if(m_currentWeaponSubStage.Equals(WeaponSystemSubStages.Equiping))
             {
-                Debug.Log("in Equiping animation state");
+                Debug.LogError("in Equiping animation state");
             }
 
             if(m_currentWeaponSubStage.Equals(WeaponSystemSubStages.UnEquiping))
             {
-                Debug.Log("in Unequiping animation state");
+                Debug.LogError("in Unequiping animation state");
             }
         }
 
         if(m_inWeaponAction)
         {
-            Debug.Log("m_inWeaponAction flag is on");
+            Debug.LogError("m_inWeaponAction flag is on");
         }
 
         if(isReloading())
         {
-            Debug.Log("Was reloading");
+            Debug.LogError("Was reloading");
         }
     }
 
@@ -782,8 +789,11 @@ public class HumanoidRangedWeaponsModule
                 case WeaponProp.WeaponLocation.HOSTER_SECONDAY:
                     secondaryHosterLocation = prop.gameObject;
                     break;
-                case WeaponProp.WeaponLocation.HAND:
+                case WeaponProp.WeaponLocation.RIGHT_HAND:
                     weaponHoldLocation = prop.gameObject;
+                    break;
+                case WeaponProp.WeaponLocation.LEFT_HAND:
+                    grenadeHoldLocation = prop.gameObject;
                     break;
             }
         }
@@ -861,6 +871,15 @@ public class HumanoidRangedWeaponsModule
         return m_pistol.getAmmoCount();
     }
 
+    public int getGrenadeCount()
+    {
+        if(m_grenede == null)
+        {
+            return 0;
+        }
+        return m_grenede.count;
+    }
+
     public void setPrimayWeaponAmmoCount(int count)
     {
         m_rifle.setAmmoCount(count);
@@ -913,7 +932,7 @@ public class HumanoidRangedWeaponsModule
             }
             else if(weaponType == typeof(Grenade))
             {
-                hosteringLocation = secondaryHosterLocation.transform;
+                hosteringLocation = grenadeHoldLocation.transform;
             }
             
             weapon.transform.parent = hosteringLocation;
@@ -927,6 +946,7 @@ public class HumanoidRangedWeaponsModule
         {
             placeWeaponinHosterLocation(m_grenede);
             OnThrow();
+            m_grenede.transform.position = new Vector3(0,-2,0);
         }
     }
     public void placeWeaponInHand(Weapon weapon)
@@ -1031,10 +1051,12 @@ public class HumanoidRangedWeaponsModule
                 if(m_grenede)
                 {
                     m_grenede.dropWeapon();
+                    ((Grenade)weapon).count +=m_grenede.count;
+                    GameObject.Destroy(m_grenede);
                     m_grenede = null;
                 }
                 m_grenede = (Grenade)weapon;
-                placeWeaponinHosterLocation(weapon);
+                weapon.transform.position = new Vector3(0,-2,0);
                 m_grenede.onWeaponEquip();
                 //m_grenede.targetPointTransfrom = m_agentComponents.lookAimTransform;
             break;

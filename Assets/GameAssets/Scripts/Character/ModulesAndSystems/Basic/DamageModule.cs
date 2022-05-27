@@ -15,7 +15,6 @@ public class DamageModule
         m_basicData = basicData;
         m_onDestroy += onDestroyCallback;
         m_outLine = outline;
-        m_outLine.OutlineColor = Color.green;
     }
 
     #region commands
@@ -70,7 +69,6 @@ public class DamageModule
         else
         {          
             m_basicData.Sheild = m_basicData.Sheild - amount;
-            m_outLine.OutlineColor = Color.Lerp(Color.white, Color.blue, m_basicData.Sheild / m_basicData.MaxSheild);
             //setDamageText(amount,m_basicData.getAgentTransform().position,Color.blue);
             return;
         }
@@ -80,12 +78,10 @@ public class DamageModule
         m_basicData.Health -= amount;
         //setDamageText(amount,m_basicData.getAgentTransform().position,Color.red);
 
-        m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
 
         if (m_basicData.Health <= 0)
         {
             m_basicData.Health = 0;
-            m_outLine.enabled = false;
             destroyCharacter();
             m_onDestroy();
         }

@@ -174,20 +174,20 @@ public class PlayerController : AgentController
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            m_movingAgent.toggleGrenede();
+        // if (Input.GetKeyDown(KeyCode.Alpha3))
+        // {
+        //     m_movingAgent.toggleGrenede();
 
-            // Set accuracy for ui
-            if (m_movingAgent.getCurrentWeapon())
-            {
-                MouseCurserSystem.getInstance().set_current_weapon_accuracy((int)m_movingAgent.getCurrentWeapon().accuracy_rating);
-            }
-            else
-            {
-                MouseCurserSystem.getInstance().set_current_weapon_accuracy(-1);
-            }
-        }
+        //     // Set accuracy for ui
+        //     if (m_movingAgent.getCurrentWeapon())
+        //     {
+        //         MouseCurserSystem.getInstance().set_current_weapon_accuracy((int)m_movingAgent.getCurrentWeapon().accuracy_rating);
+        //     }
+        //     else
+        //     {
+        //         MouseCurserSystem.getInstance().set_current_weapon_accuracy(-1);
+        //     }
+        // }
 
         if (crouch_pressed)
         {
@@ -362,6 +362,11 @@ public class PlayerController : AgentController
             }
 
             targetPosition = hit.point;
+        }
+
+        if(m_movingAgent.is_currentWeaponEmpty())
+        {
+            MouseCurserSystem.getInstance().setMouseCurserState(MouseCurserSystem.CURSOR_STATE.RELOAD);
         }
 
         m_movingAgent.setTargetPoint(targetPosition);

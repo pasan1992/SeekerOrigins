@@ -28,28 +28,6 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
     private int m_fake_agent_shoot_count = 0;
 
-    private RocketPack m_rocket_pack;
-    private bool m_can_dodge = false;
-
-
-    public RocketPack Rocket_pack
-    {
-        get => m_rocket_pack;
-        set
-        {
-            m_rocket_pack = value;
-        }
-    }
-
-    public bool CanDodge
-    {
-        get => m_can_dodge;
-        set
-        {
-            m_can_dodge = value;
-        }
-    }
-
     public override Vector3 CenteredPosition 
     { get => centeredPosition; 
      set
@@ -262,6 +240,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     {
                         m_selfAgent.weaponFireForAI();
                         FireRocket();
+                        ThrowGrenade();
                     }
                         
                     setStepIntervalSize(0.3f);
@@ -276,7 +255,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
                 if(damageAlert && Random.value <  m_selfAgent.getSkill())
                 {
-                    if(m_can_dodge)
+                    if(m_selfAgent.GetAgentData().CanDodge)
                     {
                         m_selfAgent.dodgeAttack(m_navMeshAgent.desiredVelocity);
                     }
@@ -386,6 +365,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     {
                         FireRocket();
                         m_selfAgent.weaponFireForAI();
+                        ThrowGrenade();
                     }
                         
                     CombatTextShower.Instance.yellMessage("Fire!", m_selfAgent, 0.3f,0.5f);
@@ -533,9 +513,17 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
     private void FireRocket()
     {
-        if(m_rocket_pack && Random.value > 0.5  && targetLocation)
+        if(m_selfAgent.GetAgentData().RocketPack && Random.value < m_selfAgent.getSkill()  && targetLocation)
         {
-            m_rocket_pack.FireMissleLocation(targetLocation.position);
+            m_selfAgent.GetAgentData().RocketPack.FireMissleLocation(targetLocation.position);
+        }
+    }
+
+    private void ThrowGrenade()
+    {
+        if(targetLocation & Random.value < m_selfAgent.getSkill() & m_selfAgent.GetAgentData().ThrowGrenade)
+        {
+            ((HumanoidMovingAgent)m_selfAgent).Throw();
         }
     }
 
