@@ -101,7 +101,7 @@ public class UICurser : MonoBehaviour
 
     public void set_text(string text)
     {
-        reload_text.text = text;
+        //reload_text.text = text;
     }
 
     public void set_current_weapon_accuracy(int accuracy)
