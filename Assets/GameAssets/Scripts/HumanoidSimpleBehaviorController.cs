@@ -29,10 +29,12 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
             m_look_ik.enabled =false;
         }
 
-        if(Target)
+        if(Target == null)
         {
-            m_enemy = Target.GetComponent<HumanoidMovingAgent>();
+            Target = FindObjectOfType<PlayerController>().gameObject;
         }
+
+        m_enemy = Target.GetComponent<HumanoidMovingAgent>();
     }
 
     [ContextMenu("Do START_ACTION")]

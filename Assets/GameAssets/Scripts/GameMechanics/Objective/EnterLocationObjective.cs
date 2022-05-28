@@ -13,6 +13,10 @@ public class EnterLocationObjective : BaseObjective
     {
         base.StartObjective();
         m_objectiveStarted = true;
+        if (Target == null)
+        {
+            Target = FindObjectOfType<PlayerController>().gameObject.transform;
+        }
     }
 
     public void Update()
