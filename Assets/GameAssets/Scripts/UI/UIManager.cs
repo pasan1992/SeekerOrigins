@@ -17,25 +17,35 @@ public class UIManager : MonoBehaviour
 
     public ItemStat ItemStatUI;
 
+    [SerializeField] public Image _pistolImg;
+    [SerializeField] public Image _rifleImg;
+    [SerializeField] public Image _missileImg;
+    [SerializeField] public Image _grenadeImg;
+    [SerializeField] public TMP_Text _pistolCountTxt;
+    [SerializeField] public TMP_Text _rifleCountTxt;
+    [SerializeField] public TMP_Text _missileCountTxt;
+    [SerializeField] public TMP_Text _grenedCountTxt;
 
-    [SerializeField] Image _pistolImg;
-    [SerializeField] Image _rifleImg;
-    [SerializeField] Image _grenadeImg;
-    [SerializeField] TMP_Text _grenedCountTxt;
-
-    [SerializeField] Image _healthBarImg;
-    [SerializeField] Image _regenBarImg;
-    [SerializeField] Image _bulletsBarImg;
-    [SerializeField] TMP_Text _healthCountTxt;
-    [SerializeField] TMP_Text _regenCountTxt;
-    [SerializeField] TMP_Text _bulletCountTxt;
+    [SerializeField] public Image _healthBarImg;
+    [SerializeField] public Image _regenBarImg;
+    [SerializeField] public Image _bulletsBarImg;
+    [SerializeField] public TMP_Text _healthCountTxt;
+    [SerializeField] public TMP_Text _sheildCountTxt;
+    [SerializeField] public TMP_Text _bulletCountTxt;
 
     [SerializeField] TMP_Text _magazinCountTxt;
     [SerializeField] Image _weaponImg;
     [SerializeField] Sprite[] _weaponList;
 
     [SerializeField] GameObject _activeWeapon;
-    AgentData _agentData;
+    public AgentData _agentData;
+
+    //UI Animation variable
+    float _healthTweenTime = 1f;
+    float _sheildTweenTime = 1f;
+
+    float _prevHealth = 1;
+    float _prevSheild = 1;
 
     public void Start()
     {
@@ -43,15 +53,23 @@ public class UIManager : MonoBehaviour
         m_movingAgent = m_player.GetComponent<HumanoidMovingAgent>();
         _agentData = m_movingAgent.GetAgentData();
 
+        m_movingAgent.setOnDamagedCallback(OnDamage);
+
+        update_health();
     }
     // Update is called once per frame
+    void OnDamage()
+    {
+        update_health();
+
+
+    }
     void Update()
     {
 
         updateLootText();
         update_ammo_count();
         updateAmmo();
-        update_health();
     }
 
     void updateAmmo()
@@ -130,10 +148,50 @@ public class UIManager : MonoBehaviour
     private void update_health()
     {
         _healthCountTxt.text = ((int)_agentData.Health).ToString();
-        _healthBarImg.fillAmount = _agentData.Health / _agentData.MaxHealth;
+        AnimHealth();
+        _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+        AnimSheild();
+    }
 
-        _regenCountTxt.text = ((int)_agentData.Sheild).ToString();
-        _regenBarImg.fillAmount = _agentData.Sheild / _agentData.MaxSheild;
+    public void AnimHealth()
+    {
+        LeanTween.cancel(_healthCountTxt.gameObject);
+        _healthCountTxt.gameObject.transform.localScale = Vector3.one;
+        LeanTween.scale(_healthCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
+            .setEasePunch();
+
+        //LeanTween.value(_healthCountTxt.gameObject, 0, 1, 3)
+        //    .setEasePunch()
+        //    .setOnUpdate(setHealthTxt);
+
+
+        var currentHealth = _agentData.Health / _agentData.MaxHealth;
+
+        LeanTween.value(_healthBarImg.gameObject, currentHealth, _prevHealth, _healthTweenTime)
+            .setEaseInElastic()
+            .setOnUpdate((value) =>
+            {
+                _healthBarImg.fillAmount = currentHealth == 0 ? 0 : value;
+                _prevHealth = currentHealth;
+            });
+    }
+
+    public void AnimSheild()
+    {
+        LeanTween.cancel(_sheildCountTxt.gameObject);
+        _sheildCountTxt.gameObject.transform.localScale = Vector3.one;
+        LeanTween.scale(_sheildCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
+            .setEasePunch();
+
+        var currentSheild = _agentData.Sheild / _agentData.MaxSheild;
+
+        LeanTween.value(_regenBarImg.gameObject, currentSheild, _prevSheild, _sheildTweenTime)
+            .setEaseInOutElastic()
+            .setOnUpdate((value) =>
+            {
+                _regenBarImg.fillAmount = currentSheild == 0 ? 0 : value;
+                _prevSheild = currentSheild;
+            });
     }
 
     private void update_ammo_count()
