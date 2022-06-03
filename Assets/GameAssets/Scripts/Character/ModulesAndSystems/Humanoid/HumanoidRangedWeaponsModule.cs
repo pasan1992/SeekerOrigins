@@ -973,6 +973,11 @@ public class HumanoidRangedWeaponsModule
         return m_pistol;
     }
 
+    public void SetGrenadeCount(int value)
+    {
+        m_grenede.count += value;
+    }
+
     public void equipWeapon(Weapon weapon)
     {
         bool need_to_place_in_hand = false;

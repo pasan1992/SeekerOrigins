@@ -231,10 +231,21 @@ public class HumanoidInteractionModule
 
     public void ConsumeAmmoPack(AmmoPack ammo_pck)
     {
-        int totalAmmo = 0;
-        m_agentData.weaponAmmoCount.TryGetValue(ammo_pck.AmmoType, out totalAmmo);
-        m_agentData.weaponAmmoCount[ammo_pck.AmmoType] = totalAmmo + ammo_pck.count;
-        ammo_pck.gameObject.SetActive(false);
+        foreach(AgentData.AmmoPack ammo in ammo_pck.AmmoPackData)
+        {
+            // int totalAmmo = 0;
+            // m_agentData.weaponAmmoCount.TryGetValue(ammo_pck.AmmoType, out totalAmmo);
+            // m_agentData.weaponAmmoCount[ammo_pck.AmmoType] = totalAmmo + ammo_pck.count;
+            // ammo_pck.gameObject.SetActive(false);
+
+            int totalAmmo = 0;
+            m_agentData.weaponAmmoCount.TryGetValue(ammo.AmmoType, out totalAmmo);
+            m_agentData.weaponAmmoCount[ammo.AmmoType] = totalAmmo + ammo.AmmoCount;
+        }
+        //ammo_pck.AmmoPackData = new List<AgentData.AmmoPack>();
+
+        m_agent.SetGrenateCount(ammo_pck.GrenadeCount);
+        ammo_pck.OnPickUpAction();
     }
 
     /**

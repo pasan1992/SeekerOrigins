@@ -647,6 +647,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         return m_equipmentModule.getGrenadeCount();
     }
 
+    public void SetGrenateCount(int count)
+    {
+        m_equipmentModule.SetGrenadeCount(count);
+    }
+
     public void ReloadEnd()
     {
         m_equipmentModule.ReloadEnd();

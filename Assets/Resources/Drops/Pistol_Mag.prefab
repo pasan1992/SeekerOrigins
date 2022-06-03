@@ -66,6 +66,7 @@ MonoBehaviour:
     itemName: Ammo
     interactionTime: 0
     interactionID: 0
+    InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     enablePositionRequirment: 1
@@ -75,6 +76,8 @@ MonoBehaviour:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  AmmoPackData: []
+  Grenade: {fileID: 0}
   AmmoType: PistolAmmo
   count: 10
 --- !u!114 &3803987262772430933

@@ -41,12 +41,10 @@ public class AgentData : AgentBasicData
             setDefaultAmmo();
         }
         else
-        {
-            
+        {        
             weaponAmmoCount = new Dictionary<string, int>();
             foreach (AmmoPack apack in WeaponAmmo)
-            {
-                
+            {              
                 weaponAmmoCount.Add(apack.AmmoType, apack.AmmoCount);
             }
         }
