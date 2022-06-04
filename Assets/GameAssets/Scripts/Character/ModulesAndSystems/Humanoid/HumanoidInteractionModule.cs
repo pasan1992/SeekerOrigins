@@ -7,6 +7,7 @@ public class HumanoidInteractionModule
 {
 
     public delegate void OnInteractionOver();
+    private GameEvents.OnAmmoPickupEvent onAmmoPickupEvent;
 
     private OnInteractionOver m_onInteractionOver;
 
@@ -231,6 +232,7 @@ public class HumanoidInteractionModule
 
     public void ConsumeAmmoPack(AmmoPack ammo_pck)
     {
+        
         foreach(AgentData.AmmoPack ammo in ammo_pck.AmmoPackData)
         {
             // int totalAmmo = 0;
@@ -245,6 +247,10 @@ public class HumanoidInteractionModule
         //ammo_pck.AmmoPackData = new List<AgentData.AmmoPack>();
 
         m_agent.SetGrenateCount(ammo_pck.GrenadeCount);
+        if (onAmmoPickupEvent != null)
+        {
+            onAmmoPickupEvent(ammo_pck);
+        }
         ammo_pck.OnPickUpAction();
     }
 
@@ -415,5 +421,10 @@ public class HumanoidInteractionModule
     public Interactable GetCurrentInteractable()
     {
         return m_currentInteractingObject;
+    }
+
+    public void setOnAmmoPickupCallback(GameEvents.OnAmmoPickupEvent onAmmoPickup)
+    {
+        onAmmoPickupEvent += onAmmoPickup;
     }
 }

@@ -37,6 +37,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image _weaponImg;
     [SerializeField] Sprite[] _weaponList;
 
+    [SerializeField] TMP_Text _pickupMsgTxt;
+    //[SerializeField] TMP_Text[] _pickupMsgTxtList;
+    Queue<TMP_Text> _pickupMsgTxtQueue = new Queue<TMP_Text>();
+
+    [SerializeField] Transform _pickupMsgTxtParant;
+    [SerializeField] GameObject _pickupMsgPanel;
+    [SerializeField] GameObject _ammoBox;
+
     [SerializeField] GameObject _activeWeapon;
     public AgentData _agentData;
 
@@ -47,13 +55,16 @@ public class UIManager : MonoBehaviour
     float _prevHealth = 1;
     float _prevSheild = 1;
 
+    Coroutine pickupCorouting = null;
+
     public void Start()
     {
-        m_player = GameObject.FindObjectOfType<PlayerController>();       
+        m_player = GameObject.FindObjectOfType<PlayerController>();
         m_movingAgent = m_player.GetComponent<HumanoidMovingAgent>();
         _agentData = m_movingAgent.GetAgentData();
 
         m_movingAgent.setOnDamagedCallback(OnDamage);
+        m_movingAgent.setOnAmmoPickupCallback(OnAmmoPickupEvent);
 
         update_health();
     }
@@ -61,12 +72,52 @@ public class UIManager : MonoBehaviour
     void OnDamage()
     {
         update_health();
-
-
     }
+
+    public void OnAmmoPickupEvent(AmmoPack ammoPack)
+    {
+        _pickupMsgPanel.SetActive(true);
+        StartCoroutine(CreateMsges(ammoPack));
+    }
+
+    IEnumerator CreateMsges(AmmoPack ammoPack)
+    {
+        if (ammoPack.GrenadeCount > 0)
+        {
+            var msg = "Grenade X" + ammoPack.GrenadeCount;
+            CreatePickupMsg(msg);
+        }
+
+        foreach (var ammo in ammoPack.AmmoPackData)
+        {
+            yield return new WaitForSeconds(1.5f);
+            CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount);
+        }
+    }
+
+    void CreatePickupMsg(string msg)
+    {
+        var msgLine = Instantiate(_pickupMsgTxt, _pickupMsgTxtParant);
+        msgLine.text = msg;
+
+        LeanTween.cancel(msgLine.gameObject);
+        msgLine.gameObject.transform.localScale = Vector3.one;
+        LeanTween.scale(msgLine.gameObject, new Vector3(0.2f, 0f, 0f) * 2f, 0.2f)
+            .setEasePunch();
+
+        _pickupMsgTxtQueue.Enqueue(msgLine);
+        StartCoroutine(ClosePickupMsg(msgLine));
+    }
+
+    IEnumerator ClosePickupMsg(TMP_Text msgLine)
+    {
+        yield return new WaitForSeconds(6);
+        var msg = _pickupMsgTxtQueue.Dequeue();
+        Destroy(msg.gameObject);
+    }
+
     void Update()
     {
-
         updateLootText();
         update_ammo_count();
         updateAmmo();
@@ -159,6 +210,8 @@ public class UIManager : MonoBehaviour
         _healthCountTxt.gameObject.transform.localScale = Vector3.one;
         LeanTween.scale(_healthCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
             .setEasePunch();
+
+
 
         //LeanTween.value(_healthCountTxt.gameObject, 0, 1, 3)
         //    .setEasePunch()

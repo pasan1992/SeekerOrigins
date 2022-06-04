@@ -49,6 +49,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     
 
     private Renderer m_renderer;
+
     #endregion
 
     #region Initalize
@@ -345,6 +346,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     #endregion
 
     #region Getters and Setters
+
+    public void setOnAmmoPickupCallback(GameEvents.OnAmmoPickupEvent onAmmoPickup)
+    {
+        m_interactionModule.setOnAmmoPickupCallback(onAmmoPickup);
+    }
 
     public bool isVisibleOnScreen()
     {
