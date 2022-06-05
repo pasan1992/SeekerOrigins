@@ -513,9 +513,9 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
     private void FireRocket()
     {
-        if(m_selfAgent.GetAgentData().RocketPack && Random.value < m_selfAgent.getSkill()  && targetLocation)
+        if(m_selfAgent.GetAgentData().RocketPack && Random.value < m_selfAgent.getSkill()  && targetLocation && m_selfAgent.GetAgentData().FireRocket)
         {
-            m_selfAgent.GetAgentData().RocketPack.FireMissleLocation(targetLocation.position);
+            m_selfAgent.GetAgentData().RocketPack.FireMissleLocation(targetLocation.position,m_selfAgent.GetAgentData());
         }
     }
 

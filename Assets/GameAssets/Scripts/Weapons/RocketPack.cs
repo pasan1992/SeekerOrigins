@@ -8,38 +8,52 @@ public class RocketPack : MonoBehaviour
     public List<Transform> Locations;
     private int m_current_transfrom = 0;
     public FloatingGameUI targetIcon;
-
     
-    public void FireMissleLocation(Vector3 location)
+    public void FireMissleLocation(Vector3 location, AgentData agentData)
     {
-        GameObject basicRocketObj = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicRocket);
-        var fire_transfrom = getFireTransfrom();
-        basicRocketObj.transform.position = fire_transfrom.transform.position + new Vector3(0, 0, 0);
-        basicRocketObj.transform.rotation = fire_transfrom.transform.rotation;
-        basicRocketObj.SetActive(true);
-        BasicRocket rocket = basicRocketObj.GetComponent<BasicRocket>();
-        rocket.fireRocketLocation(location);
-        rocket.rocketScale = 0.4f;
-        Time.timeScale = 1;
+
+        var ammo_count = agentData.useAmmoCount("Missile",1);
+
+        if(ammo_count > 0)
+        {
+            GameObject basicRocketObj = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicRocket);
+            var fire_transfrom = getFireTransfrom();
+            basicRocketObj.transform.position = fire_transfrom.transform.position + new Vector3(0, 0, 0);
+            basicRocketObj.transform.rotation = fire_transfrom.transform.rotation;
+            basicRocketObj.SetActive(true);
+            BasicRocket rocket = basicRocketObj.GetComponent<BasicRocket>();
+            rocket.fireRocketLocation(location);
+            rocket.rocketScale = 0.4f;
+            Time.timeScale = 1;
+        }
+
     }
 
-    public void FireMissleTransfrom(Transform transfrom)
-    {
-        GameObject basicRocketObj = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicRocket);
-        var fire_transfrom = getFireTransfrom();
-        basicRocketObj.transform.position = fire_transfrom.transform.position + new Vector3(0, 0, 0);
-        basicRocketObj.transform.rotation = fire_transfrom.transform.rotation;
-        basicRocketObj.SetActive(true);
-        BasicRocket rocket = basicRocketObj.GetComponent<BasicRocket>();
-        rocket.fireRocketTransfrom(transfrom);
-        rocket.rocketScale = 0.4f;
-        Time.timeScale = 1;
 
-        if(targetIcon)
+
+
+    public void FireMissleTransfrom(Transform transfrom, AgentData agentData)
+    {
+        var ammo_count = agentData.useAmmoCount("Missile",1);
+
+        if(ammo_count > 0)
         {
-            targetIcon.target = transfrom;
-            targetIcon.setMainImageStatus(true);
-            StartCoroutine(disableTarget(1.5f));
+            GameObject basicRocketObj = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicRocket);
+            var fire_transfrom = getFireTransfrom();
+            basicRocketObj.transform.position = fire_transfrom.transform.position + new Vector3(0, 0, 0);
+            basicRocketObj.transform.rotation = fire_transfrom.transform.rotation;
+            basicRocketObj.SetActive(true);
+            BasicRocket rocket = basicRocketObj.GetComponent<BasicRocket>();
+            rocket.fireRocketTransfrom(transfrom);
+            rocket.rocketScale = 0.4f;
+            Time.timeScale = 1;
+
+            if(targetIcon)
+            {
+                targetIcon.target = transfrom;
+                targetIcon.setMainImageStatus(true);
+                StartCoroutine(disableTarget(1.5f));
+            }
         }
     }
 

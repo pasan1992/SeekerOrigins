@@ -276,9 +276,10 @@ public class HumanoidInteractionModule
             // m_agentData.weaponAmmoCount[ammo_pck.AmmoType] = totalAmmo + ammo_pck.count;
             // ammo_pck.gameObject.SetActive(false);
 
-            int totalAmmo = 0;
-            m_agentData.weaponAmmoCount.TryGetValue(ammo.AmmoType, out totalAmmo);
-            m_agentData.weaponAmmoCount[ammo.AmmoType] = totalAmmo + ammo.AmmoCount;
+            // int totalAmmo = 0;
+            // m_agentData.weaponAmmoCount.TryGetValue(ammo.AmmoType, out totalAmmo);
+            // m_agentData.weaponAmmoCount[ammo.AmmoType] = totalAmmo + ammo.AmmoCount;
+            m_agentData.AddAmmo(ammo.AmmoType,ammo.AmmoCount);
         }
         //ammo_pck.AmmoPackData = new List<AgentData.AmmoPack>();
 

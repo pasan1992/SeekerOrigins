@@ -145,6 +145,19 @@ public class UIManager : MonoBehaviour
 
     void updateAmmo()
     {
+        int missile_count = m_movingAgent.GetAgentData().checkAvailableAmmo("Missile");
+        _missileCountTxt.text = missile_count.ToString();
+
+        if(missile_count == 0)
+        {
+            _missileImg.color = Color.black;
+        }
+        else
+        {
+            _missileImg.color = Color.white;
+        }
+
+
         if (m_movingAgent.getCurrentWeapon() == null)
         {
             _activeWeapon.SetActive(false);
@@ -303,8 +316,8 @@ public class UIManager : MonoBehaviour
 
                     
                     var agent_data = m_movingAgent.GetAgentData();
-                    int totalAmmo = 0;
-                    agent_data.weaponAmmoCount.TryGetValue(m_movingAgent.getCurrentWeapon().m_weaponAmmunitionName, out totalAmmo);
+                    int totalAmmo = agent_data.checkAvailableAmmo(m_movingAgent.getCurrentWeapon().m_weaponAmmunitionName);
+                    // agent_data.weaponAmmoCount.TryGetValue(m_movingAgent.getCurrentWeapon().m_weaponAmmunitionName, out totalAmmo);
                     ammo_count.text = loaded.ToString() + "/" + totalAmmo.ToString();
 
                     break;

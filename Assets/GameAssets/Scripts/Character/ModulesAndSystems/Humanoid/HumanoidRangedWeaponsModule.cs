@@ -186,24 +186,25 @@ public class HumanoidRangedWeaponsModule
         if(m_currentWeapon !=null && currentRangedWeapon)
         {
             currentRangedWeapon.setReloading(false);
-            int totalAmmo = 0;
-            m_agentData.weaponAmmoCount.TryGetValue(currentRangedWeapon.m_weaponAmmunitionName, out totalAmmo);
-
+            int totalAmmo = m_agentData.checkAvailableAmmo(currentRangedWeapon.m_weaponAmmunitionName);
+            // m_agentData.weaponAmmoCount.TryGetValue(currentRangedWeapon.m_weaponAmmunitionName, out totalAmmo);
             var ammo_needed = currentRangedWeapon.m_magazineSize - currentRangedWeapon.getAmmoCount();
 
-            // Enought Ammo available
-            if(totalAmmo > ammo_needed)
-            {
-                totalAmmo -= ammo_needed;
-                //  m_agentParameters.weaponAmmoCount.(m_currentWeapon.name,totalAmmo);
-                m_agentData.weaponAmmoCount[currentRangedWeapon.m_weaponAmmunitionName] = totalAmmo;
-                currentRangedWeapon.setAmmoCount(currentRangedWeapon.m_magazineSize);
-                return;
-            }
+            // // Enought Ammo available
+            // if(totalAmmo > ammo_needed)
+            // {
+            //     totalAmmo -= ammo_needed;
+            //     //  m_agentParameters.weaponAmmoCount.(m_currentWeapon.name,totalAmmo);
+            //     m_agentData.weaponAmmoCount[currentRangedWeapon.m_weaponAmmunitionName] = totalAmmo;
+            //     currentRangedWeapon.setAmmoCount(currentRangedWeapon.m_magazineSize);
+            //     return;
+            // }
 
-            // Not enough ammo
-            currentRangedWeapon.setAmmoCount(totalAmmo + currentRangedWeapon.getAmmoCount());
-            m_agentData.weaponAmmoCount[currentRangedWeapon.m_weaponAmmunitionName] = 0;
+            // // Not enough ammo
+            // currentRangedWeapon.setAmmoCount(totalAmmo + currentRangedWeapon.getAmmoCount());
+            // m_agentData.weaponAmmoCount[currentRangedWeapon.m_weaponAmmunitionName] = 0;
+            var ammo_taken = m_agentData.useAmmoCount(currentRangedWeapon.m_weaponAmmunitionName,ammo_needed);
+            currentRangedWeapon.setAmmoCount( currentRangedWeapon.getAmmoCount() + ammo_taken);
             return;
         }
     }
@@ -463,8 +464,9 @@ public class HumanoidRangedWeaponsModule
                 return false;
             }
 
-            int totalAmmo = 0;
-            m_agentData.weaponAmmoCount.TryGetValue(m_currentWeapon.m_weaponAmmunitionName, out totalAmmo);
+            // int totalAmmo = 0;
+            // m_agentData.weaponAmmoCount.TryGetValue(m_currentWeapon.m_weaponAmmunitionName, out totalAmmo);
+            int totalAmmo = m_agentData.checkAvailableAmmo(m_currentWeapon.m_weaponAmmunitionName);
             if (totalAmmo > 0)
             {
                 return true;

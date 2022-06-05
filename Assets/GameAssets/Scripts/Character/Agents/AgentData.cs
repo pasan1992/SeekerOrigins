@@ -18,7 +18,7 @@ public class AgentData : AgentBasicData
 
 
     [SerializeField]
-    public Dictionary<string,int> weaponAmmoCount;
+    private Dictionary<string,int> weaponAmmoCount;
     public PrimaryWeapon primaryWeapon;
     public SecondaryWeapon secondaryWeapon;
     public Grenade grenade;
@@ -59,5 +59,40 @@ public class AgentData : AgentBasicData
         weaponAmmoCount.Add("PistolAmmo", 10000);
         weaponAmmoCount.Add("RifleAmmo", 20);
         weaponAmmoCount.Add("Mag", 15);
+        weaponAmmoCount.Add("Missile", 3);
     }
+
+    public int useAmmoCount(string ammo_type,int count)
+    {
+        //use a given amount of ammo and return the used amount
+        int rocketAmmo = 0;
+        weaponAmmoCount.TryGetValue(ammo_type,out rocketAmmo);
+
+        if(rocketAmmo > count)
+        {
+            rocketAmmo -= count;
+            weaponAmmoCount[ammo_type] =rocketAmmo;
+            return count;
+        }
+        else
+        {
+            weaponAmmoCount[ammo_type] =0;
+            return rocketAmmo;
+        }
+    }
+
+    public int checkAvailableAmmo(string ammoName)
+    {
+        int ammo = 0;
+        weaponAmmoCount.TryGetValue(ammoName,out ammo);
+        return ammo;
+    }
+
+    public void AddAmmo(string ammoName,int addCount)
+    {
+        int currntCount = checkAvailableAmmo(ammoName);
+        weaponAmmoCount[ammoName] = currntCount + currntCount;
+    }
+
+
 }

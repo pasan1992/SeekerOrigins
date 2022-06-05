@@ -248,7 +248,7 @@ public class PlayerController : AgentController
             {
                 if(m_rocket_pack)
                 {
-                    m_rocket_pack.FireMissleTransfrom(m_raycastHit.transform);
+                    m_rocket_pack.FireMissleTransfrom(m_raycastHit.transform,m_movingAgent.GetAgentData());
                 }
             }
         }
