@@ -80,8 +80,8 @@ public class GamePlayCam : MonoBehaviour
         || (HumanoidMovingAgent.CharacterMainStates.Dodge.Equals(target.getCharacterMainStates()) && target.isArmed() && Input.GetMouseButton(1) ) )
         {
             // Smooth the motion of the camera aim offset
-            m_cameraAimOffset = Vector3.Lerp(m_cameraAimOffset,Vector3.ClampMagnitude((target.getTargetPosition() - target.transform.position)/2,UtilityConstance.CAMERA_AIM_OFFSET_MAX_DISTANCE ),UtilityConstance.CAMERA_AIM_OFFSET_CHANGE_RATE);
-            newCameraPosition = target.transform.position + Vector3.ClampMagnitude((target.getTargetPosition() - target.transform.position)/2,UtilityConstance.CAMERA_AIM_OFFSET_MAX_DISTANCE ) - offset;
+            m_cameraAimOffset = Vector3.Lerp(m_cameraAimOffset,Vector3.ClampMagnitude((target.getTargetPosition() - target.transform.position)/2,getCalculatedMaxOffset() ),UtilityConstance.CAMERA_AIM_OFFSET_CHANGE_RATE);
+            newCameraPosition = target.transform.position + Vector3.ClampMagnitude((target.getTargetPosition() - target.transform.position)/2,getCalculatedMaxOffset() ) - offset;
             aimedPlayerPositon = target.transform.position;
             return newCameraPosition;
         }
@@ -95,6 +95,29 @@ public class GamePlayCam : MonoBehaviour
            m_cameraAimOffset = Vector3.Lerp(m_cameraAimOffset,Vector3.zero,UtilityConstance.CAMERA_AIM_OFFSET_CHANGE_RATE);
            return  target.transform.position - offset + m_cameraAimOffset; 
         }
+    }
+
+    private float getCalculatedMaxOffset()
+    {
+        var screen_y = Input.mousePosition.y;
+        var gap = Screen.height/2 - screen_y;
+        if(gap <0)
+            gap = 0;
+        
+        var offset_multipler = gap/ (Screen.height/2);
+        return UtilityConstance.CAMERA_AIM_OFFSET_MAX_DISTANCE +  offset_multipler*3.5f;
+
+        // Vector3 p = Input.mousePosition;
+        // p.z = 20;
+        // var pointDirection = (Camera.main.ScreenToWorldPoint(p) - this.transform.position).normalized;
+        // var direction = Vector3.Angle(this.transform.forward,pointDirection);
+
+        // if(screen_y < Screen.height/2)
+        // {
+        // return UtilityConstance.CAMERA_AIM_OFFSET_MAX_DISTANCE + direction/2.5f;
+        // }
+        // return UtilityConstance.CAMERA_AIM_OFFSET_MAX_DISTANCE + direction/20;
+
     }
 
     public static bool IsVisibleToCamera(Transform transform)

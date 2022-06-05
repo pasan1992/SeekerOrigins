@@ -91,7 +91,7 @@ public class AgentData : AgentBasicData
     public void AddAmmo(string ammoName,int addCount)
     {
         int currntCount = checkAvailableAmmo(ammoName);
-        weaponAmmoCount[ammoName] = currntCount + currntCount;
+        weaponAmmoCount[ammoName] = currntCount + addCount;
     }
 
 

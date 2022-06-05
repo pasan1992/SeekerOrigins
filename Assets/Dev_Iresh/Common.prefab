@@ -46536,7 +46536,7 @@ MonoBehaviour:
   _pistolCountTxt: {fileID: 7027741383952993075}
   _rifleCountTxt: {fileID: 6756446378586996608}
   _missileCountTxt: {fileID: 3209784684006318074}
-  _grenedCountTxt: {fileID: 3209784684006318074}
+  _grenedCountTxt: {fileID: 7805817755334542204}
   _healthBarImg: {fileID: 8827382885008340546}
   _regenBarImg: {fileID: 8827382884431899552}
   _bulletsBarImg: {fileID: 8827382884383326352}
@@ -49411,7 +49411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4607712558383836181}
   m_LocalRotation: {x: 0.11768704, y: 0.8791066, z: -0.36413786, w: 0.28412166}
-  m_LocalPosition: {x: -19.05, y: 33.98, z: 26.4}
+  m_LocalPosition: {x: -19.3, y: 33.98, z: 26.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4607712558531728581}
@@ -61297,6 +61297,8 @@ MonoBehaviour:
       AmmoCount: 200
     - AmmoType: Mag
       AmmoCount: 36
+    - AmmoType: Missile
+      AmmoCount: 3
     drop_reward: 1
   AgentComponents:
     weaponAimTransform: {fileID: 2488987912950059111}
@@ -61314,6 +61316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 13
+  KeepOnDestory: 0
   currentAvatar: {fileID: 5983350664615572194}
   avatar: []
 --- !u!82 &8479538207808823018
