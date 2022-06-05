@@ -15,6 +15,8 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
     protected AudioSource m_audioSource;
     protected SoundManager m_soundManager;
     protected ObjectUI m_objectUI;
+    
+    public bool KeepOnDestory = false;
 
     public void Awake()
     {
@@ -128,9 +130,12 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     protected IEnumerator waitAndDestory(float time)
     {
-        yield return new WaitForSeconds(time);
-        Debug.Log("Destory");
-        Destroy(this.gameObject);
+        if(!KeepOnDestory)
+        {
+            yield return new WaitForSeconds(time);
+            Destroy(this.gameObject);
+        }
+
     }
 
 }

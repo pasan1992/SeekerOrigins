@@ -44,6 +44,7 @@ public class PlayerController : AgentController
         targetHitLayerMask = LayerMask.GetMask("Target");
         floorHitLayerMask = LayerMask.GetMask("Floor");
         m_healthBar = this.GetComponentInChildren<HealthBar>();
+        this.GetComponent<HumanoidDamagableObject>().KeepOnDestory = true;
 
         createTargetPlane();
         m_movingAgent.enableTranslateMovment(true);
