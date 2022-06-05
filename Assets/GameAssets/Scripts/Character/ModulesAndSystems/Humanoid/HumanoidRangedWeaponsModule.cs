@@ -167,7 +167,7 @@ public class HumanoidRangedWeaponsModule
     public void OnThrow()
     {
         //m_inWeaponAction = false;
-        m_grenede.ThrowGrenadeQuick();
+        m_grenede.ThrowGrenadeQuick(grenadeHoldLocation.transform);
         // if(m_grenede.count == 0)
         // {
         //     m_inWeaponAction = false;
@@ -946,7 +946,7 @@ public class HumanoidRangedWeaponsModule
         {
             placeWeaponinHosterLocation(m_grenede);
             OnThrow();
-            m_grenede.transform.position = new Vector3(0,-2,0);
+            //m_grenede.transform.position = new Vector3(0,-2,0);
         }
     }
     public void placeWeaponInHand(Weapon weapon)
@@ -1061,8 +1061,8 @@ public class HumanoidRangedWeaponsModule
                     m_grenede = null;
                 }
                 m_grenede = (Grenade)weapon;
-                weapon.transform.position = new Vector3(0,-2,0);
                 m_grenede.onWeaponEquip();
+                placeWeaponinHosterLocation(weapon);
                 //m_grenede.targetPointTransfrom = m_agentComponents.lookAimTransform;
             break;
         }

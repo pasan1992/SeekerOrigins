@@ -100,7 +100,7 @@ public class HumanoidDamageModule : DamageModule
     {
         Collider collider = m_headTransform.GetComponent<Collider>();
         collider.enabled = enable;
-    }
+    } 
     #endregion
 }
 

@@ -14,6 +14,8 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     private GameEvents.BasicNotifactionEvent m_onDisableCallback;
     private GameEvents.BasicNotifactionEvent m_onEnableCallback;
 
+    private GameEvents.BasicNotifactionEvent m_onHeal;
+
     // Main Modules
     protected HumanoidRangedWeaponsModule m_equipmentModule;
     protected HumanoidAnimationModule m_animationModule;
@@ -135,6 +137,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
                     || type == Interactable.InteractableProperties.InteractableType.TimedInteraction || 
                     type == Interactable.InteractableProperties.InteractableType.DialogInteraction) )
                 {
+                    m_interactionModule.setPreviousWeapon();
                     hosterWeapon();
                 }
                 //togglepSecondaryWeapon();
@@ -170,7 +173,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         
         if(obj)
         {
-            Debug.Log(obj);
             interactWith(obj,obj.properties.Type);
         }
     }
@@ -394,6 +396,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void setOnEnableCallback(GameEvents.BasicNotifactionEvent callback)
     {
         m_onEnableCallback += callback;
+    }
+
+    public void setOnHealCallback(GameEvents.BasicNotifactionEvent callback)
+    {
+        m_onHeal +=callback;
     }
 
     public bool IsFunctional()
@@ -722,6 +729,29 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_equipmentModule.pullTrigger();
         yield return new WaitForSeconds(Random.Range(0.4f,0.7f));
         m_equipmentModule.releaseTrigger();
+    }
+
+    public void Heal()
+    {
+        if(AgentData.Health > 0 & AgentData.HealInjectionCount > 0)
+        {
+            AgentData.Health += AgentData.HealPerInjection;
+            if(AgentData.Health > AgentData.MaxHealth)
+            {
+                AgentData.Health = AgentData.MaxHealth;
+            }
+            AgentData.HealInjectionCount -=1;
+
+            if(m_onHeal !=null)
+            {
+                m_onHeal();
+            }
+        }
+    }
+
+    public int GetHeadCount()
+    {
+        return AgentData.HealInjectionCount;
     }
 
     private Transform findHeadTransfrom()

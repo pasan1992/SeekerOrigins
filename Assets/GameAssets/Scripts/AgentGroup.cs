@@ -19,6 +19,7 @@ public class AgentGroup : MonoBehaviour
             if(agent !=null)
             {
                 agent.setOnDamagedCallback(OnDamage);
+                agent.setOnDestoryCallback(OnDestoryed);
             }
             else
             {
@@ -32,12 +33,21 @@ public class AgentGroup : MonoBehaviour
         return m_agentControllers;
     }
 
+    public void OnDestoryed()
+    {
+
+    }
+
     public void OnDamage()
     {
         foreach(AgentController agentCont in m_agentControllers)
         {
-            agentCont.SwitchToCombat();
-            agentCont.BeAlert();         
+            if(agentCont !=null)
+            {
+                agentCont.SwitchToCombat();
+                agentCont.BeAlert(); 
+            }
+        
         }
     }
 }

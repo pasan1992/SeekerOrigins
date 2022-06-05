@@ -28,6 +28,8 @@ public class HumanoidInteractionModule
     private Interactable m_currentInteractingObject;
     private Transform m_handTransfrom;
 
+    private RangedWeapon.WEAPONTYPE previouse_hold_weponType = Weapon.WEAPONTYPE.Common;
+
     public HumanoidInteractionModule(HumanoidAnimationModule animationModule, 
     HumanoidMovmentModule movmenetModule,
     AgentData agentData,
@@ -51,6 +53,18 @@ public class HumanoidInteractionModule
         m_handTransfrom = handTransfrom;
     }
 
+    public void setPreviousWeapon()
+    {
+            var current_weapon = m_agent.getCurrentWeapon();
+            if(current_weapon !=null)
+            {
+                previouse_hold_weponType = current_weapon.getWeaponType();
+            }
+            else
+            {
+                previouse_hold_weponType = Weapon.WEAPONTYPE.Common;
+            }
+    }
     public IEnumerator interactWith(Interactable interactable,Interactable.InteractableProperties.InteractableType type)
     {
         if(!m_interacting)
@@ -61,7 +75,8 @@ public class HumanoidInteractionModule
             m_currentInteractingObject = interactable;
             m_currentInteractingObject.interact();
 
-            Debug.Log(type);
+
+
             switch (type)
             {
                 case Interactable.InteractableProperties.InteractableType.PickupInteraction:
@@ -104,12 +119,15 @@ public class HumanoidInteractionModule
                     break;
                 case Interactable.InteractableProperties.InteractableType.TimedInteraction:
                     yield return onTimedInteraction(interactable);
+                    
                     break;
                 case Interactable.InteractableProperties.InteractableType.ContinousInteraction:
                     yield return onContinousInteraction(interactable);
+                    
                     break;
                 case Interactable.InteractableProperties.InteractableType.DialogInteraction:
                     yield return DialogInteraction(interactable);
+                    
                     break;
             }
 
@@ -121,10 +139,25 @@ public class HumanoidInteractionModule
                 m_interacting = false;
                 m_onInteractionOver();
                 m_navMesAgent.enabled = true;
+                goBackToPreviousWeapon();
             }
 
         }
         yield return null;
+    }
+
+    private void goBackToPreviousWeapon()
+    {
+        switch(previouse_hold_weponType)
+        {
+            case Weapon.WEAPONTYPE.primary:
+            m_agent.togglePrimaryWeapon();
+            break;
+            case Weapon.WEAPONTYPE.secondary:
+            m_agent.togglepSecondaryWeapon();
+            break;
+        }
+        previouse_hold_weponType = Weapon.WEAPONTYPE.Common;
     }
 
     public void cancleInteraction()
@@ -135,12 +168,14 @@ public class HumanoidInteractionModule
             m_animationModule.setInteraction(false,0);
             m_onInteractionOver();
             
+            
             if(m_currentInteractingObject != null)
             {
                 m_currentInteractingObject.stopInteraction();
             }
             
             m_navMesAgent.enabled = true;
+            goBackToPreviousWeapon();
         }
     }
 
@@ -151,6 +186,7 @@ public class HumanoidInteractionModule
         m_unCancleableInstruction = true;
 
         m_animationModule.setUpperAnimationLayerWeight(0.2f);
+        obj.OnInteractionStart();
         yield return new WaitForSeconds(waitTime);
         m_animationModule.setUpperAnimationLayerWeight(1);
 
@@ -247,6 +283,7 @@ public class HumanoidInteractionModule
         //ammo_pck.AmmoPackData = new List<AgentData.AmmoPack>();
 
         m_agent.SetGrenateCount(ammo_pck.GrenadeCount);
+        m_agent.GetAgentData().HealInjectionCount += ammo_pck.HealthInjectionCount;
         if (onAmmoPickupEvent != null)
         {
             onAmmoPickupEvent(ammo_pck);

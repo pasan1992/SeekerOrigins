@@ -23,6 +23,9 @@ public class AgentData : AgentBasicData
     public SecondaryWeapon secondaryWeapon;
     public Grenade grenade;
 
+    public int HealInjectionCount = 1;
+    public int HealPerInjection = 20;
+
     public List<Interactable> inventryItems;
     public AgentBehaviorStatus behaviorStatus = AgentBehaviorStatus.Suspicious;
     public List<AmmoPack> WeaponAmmo = new List<AmmoPack>();

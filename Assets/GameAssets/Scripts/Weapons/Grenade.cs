@@ -41,18 +41,18 @@ public class Grenade : Weapon
     {
         if(m_pinPulled)
         {
-            throwGenade();
+            //throwGenade();
         }
 
     }
 
-    public void ThrowGrenadeQuick()
+    public void ThrowGrenadeQuick(Transform location)
     {
             pullGrenedePin();
-            throwGenade();
+            throwGenade(location);
     }
 
-    private void throwGenade()
+    private void throwGenade(Transform location)
     {
         Debug.Log("Throw");
         m_pinPulled = false;
@@ -61,7 +61,7 @@ public class Grenade : Weapon
         rb.isKinematic = false;
         rb.velocity = Vector3.zero;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-        m_tempGrenede.transform.position = this.transform.position;
+        m_tempGrenede.transform.position = location.position;
         Vector3 throwVeclocity = calculateThrowVelocity(m_target.transform.position - this.transform.position - Vector3.up*1.5f);
         m_tempGrenede.GetComponent<Rigidbody>().AddForce(throwVeclocity,ForceMode.VelocityChange);
 

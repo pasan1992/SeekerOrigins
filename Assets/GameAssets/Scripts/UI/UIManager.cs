@@ -64,13 +64,14 @@ public class UIManager : MonoBehaviour
         m_movingAgent = m_player.GetComponent<HumanoidMovingAgent>();
         _agentData = m_movingAgent.GetAgentData();
 
-        m_movingAgent.setOnDamagedCallback(OnDamage);
+        m_movingAgent.setOnDamagedCallback(onHealthChange);
         m_movingAgent.setOnAmmoPickupCallback(OnAmmoPickupEvent);
+        m_movingAgent.setOnHealCallback(onHealthChange);
 
         update_health();
     }
     // Update is called once per frame
-    void OnDamage()
+    void onHealthChange()
     {
         update_health();
     }
@@ -84,17 +85,32 @@ public class UIManager : MonoBehaviour
     IEnumerator CreateMsges(AmmoPack ammoPack)
     {
         List<TMP_Text> _pickupMsgTxtQueue = new List<TMP_Text>();
-        if (ammoPack.GrenadeCount > 0)
+        var ammo_data = ammoPack.AmmoPackData;
+
+        foreach (var ammo in ammo_data)
         {
-            var msg = "Grenade X" + ammoPack.GrenadeCount;
-            CreatePickupMsg(msg,_pickupMsgTxtQueue);
+            Debug.Log("adding");
+            CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount,_pickupMsgTxtQueue);
+            yield return new WaitForSeconds(0.5f);
         }
 
-        foreach (var ammo in ammoPack.AmmoPackData)
+        if (ammoPack.GrenadeCount > 0)
         {
+            //
+            var msg = "Grenade X" + ammoPack.GrenadeCount;
+            CreatePickupMsg(msg,_pickupMsgTxtQueue);
             yield return new WaitForSeconds(0.5f);
-            CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount,_pickupMsgTxtQueue);
         }
+
+        if (ammoPack.HealthInjectionCount > 0)
+        {
+            
+            var msg = "HealthInjection X" + ammoPack.HealthInjectionCount;
+            CreatePickupMsg(msg,_pickupMsgTxtQueue);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+
         
         yield return new WaitForSeconds(2f);
         _pickupMsgTxtQueue.Reverse();
@@ -202,23 +218,28 @@ public class UIManager : MonoBehaviour
 
     private void update_health()
     {
-        if (_agentData.Sheild > 0)
-        {
-            _havingSheald = true;
-            _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
-            AnimSheild();
-        }
-        else if(_agentData.Sheild == 0 && _havingSheald)
-        {
-            _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
-            AnimSheild();
-            _havingSheald = false;
-        }
-        else
-        {
-            _healthCountTxt.text = ((int)_agentData.Health).ToString();
-            AnimHealth();
-        }
+        // if (_agentData.Sheild > 0)
+        // {
+        //     _havingSheald = true;
+        //     _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+        //     AnimSheild();
+        // }
+        // else if(_agentData.Sheild == 0 && _havingSheald)
+        // {
+        //     _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+        //     AnimSheild();
+        //     _havingSheald = false;
+        // }
+        // else
+        // {
+        //     _healthCountTxt.text = ((int)_agentData.Health).ToString();
+        //     AnimHealth();
+        // }
+
+        _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+        _healthCountTxt.text = ((int)_agentData.Health).ToString();
+        AnimHealth();
+        AnimSheild();
     }
 
     public void AnimHealth()

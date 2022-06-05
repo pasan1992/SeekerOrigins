@@ -141,6 +141,11 @@ public class Interactable : MonoBehaviour
         resetObject();
     }
 
+    public virtual void OnInteractionStart()
+    {
+        
+    }
+
     public void resetObject()
     {
         if(properties.placeObjectInHand && properties.actualObject !=null)

@@ -128,6 +128,11 @@ public class PlayerController : AgentController
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            m_movingAgent.Heal();
+        }
+
         // Setting Character Aiming.
         if ( /*Input.GetMouseButton(1) &&*/!crouch_pressed && !Input.GetKey(KeyCode.LeftShift) && !m_movingAgent.isEquipingWeapon() 
             && m_movingAgent.isReadyToAim()

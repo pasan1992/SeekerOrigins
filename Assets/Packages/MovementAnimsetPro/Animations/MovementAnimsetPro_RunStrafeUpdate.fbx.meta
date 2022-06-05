@@ -7736,7 +7736,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000000000001000000000000000100000001000000010000000000000001000000
       curves: []
       events:
-      - time: 0.3267359
+      - time: 0.44155073
         functionName: OnThrow
         data: 
         objectReferenceParameter: {instanceID: 0}
