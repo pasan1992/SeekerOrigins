@@ -7,7 +7,6 @@ public class ItemStat : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private LineRenderer m_line_rendere;
 
     public Vector3 offset;
     public Transform cornerPoint;
@@ -17,11 +16,6 @@ public class ItemStat : MonoBehaviour
     public StatBar m_fireRateBar;
 
     public Transform[] OtherComponents;
-    void Start()
-    {
-        m_line_rendere = this.GetComponent<LineRenderer>();
-    }
-
     public void setDamage(float new_stat,float old_Stat)
     {
         m_damageBar.setCompareStat(new_stat,old_Stat);
@@ -51,7 +45,5 @@ public class ItemStat : MonoBehaviour
     public void setItem(Transform itemLocation)
     {
         this.transform.position = itemLocation.transform.position + offset;
-        m_line_rendere.SetPosition(0,cornerPoint.position);
-        m_line_rendere.SetPosition(1,itemLocation.position);
     }
 }

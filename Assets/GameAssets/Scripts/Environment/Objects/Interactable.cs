@@ -107,10 +107,12 @@ public class Interactable : MonoBehaviour
             if(state)
             {
                 m_outLine.OutlineWidth = 0.7F;
+                m_outLine.OutlineColor = Color.blue;
             }
             else
             {
-                m_outLine.OutlineWidth = 0;
+                m_outLine.OutlineWidth = 0.2f;
+                m_outLine.OutlineColor = Color.white;
             }
             
         }
@@ -143,7 +145,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnInteractionStart()
     {
-        
+
     }
 
     public void resetObject()
