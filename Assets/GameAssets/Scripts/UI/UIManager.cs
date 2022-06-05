@@ -56,6 +56,8 @@ public class UIManager : MonoBehaviour
 
     Coroutine pickupCorouting = null;
 
+    bool _havingSheald = true;
+
     public void Start()
     {
         m_player = GameObject.FindObjectOfType<PlayerController>();
@@ -200,10 +202,23 @@ public class UIManager : MonoBehaviour
 
     private void update_health()
     {
-        _healthCountTxt.text = ((int)_agentData.Health).ToString();
-        AnimHealth();
-        _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
-        AnimSheild();
+        if (_agentData.Sheild > 0)
+        {
+            _havingSheald = true;
+            _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+            AnimSheild();
+        }
+        else if(_agentData.Sheild == 0 && _havingSheald)
+        {
+            _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+            AnimSheild();
+            _havingSheald = false;
+        }
+        else
+        {
+            _healthCountTxt.text = ((int)_agentData.Health).ToString();
+            AnimHealth();
+        }
     }
 
     public void AnimHealth()
