@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -39,7 +39,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TMP_Text _pickupMsgTxt;
     //[SerializeField] TMP_Text[] _pickupMsgTxtList;
-    Queue<TMP_Text> _pickupMsgTxtQueue = new Queue<TMP_Text>();
 
     [SerializeField] Transform _pickupMsgTxtParant;
     [SerializeField] GameObject _pickupMsgPanel;
@@ -82,20 +81,32 @@ public class UIManager : MonoBehaviour
 
     IEnumerator CreateMsges(AmmoPack ammoPack)
     {
+        List<TMP_Text> _pickupMsgTxtQueue = new List<TMP_Text>();
         if (ammoPack.GrenadeCount > 0)
         {
             var msg = "Grenade X" + ammoPack.GrenadeCount;
-            CreatePickupMsg(msg);
+            CreatePickupMsg(msg,_pickupMsgTxtQueue);
         }
 
         foreach (var ammo in ammoPack.AmmoPackData)
         {
-            yield return new WaitForSeconds(1.5f);
-            CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount);
+            yield return new WaitForSeconds(0.5f);
+            CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount,_pickupMsgTxtQueue);
+        }
+        
+        yield return new WaitForSeconds(2f);
+        _pickupMsgTxtQueue.Reverse();
+        foreach (var msg in _pickupMsgTxtQueue)
+        {
+            yield return new WaitForSeconds(0.2f);
+            LeanTween.scale(msg.gameObject, new Vector3(0.001f, 0f, 0f), 0.2f)
+            .setEasePunch();
+            yield return new WaitForSeconds(0.1f);
+            Destroy(msg.gameObject);
         }
     }
 
-    void CreatePickupMsg(string msg)
+    void CreatePickupMsg(string msg,List<TMP_Text>_pickupMsgTxtQueue)
     {
         var msgLine = Instantiate(_pickupMsgTxt, _pickupMsgTxtParant);
         msgLine.text = msg;
@@ -105,17 +116,8 @@ public class UIManager : MonoBehaviour
         LeanTween.scale(msgLine.gameObject, new Vector3(0.2f, 0f, 0f) * 2f, 0.2f)
             .setEasePunch();
 
-        _pickupMsgTxtQueue.Enqueue(msgLine);
-        StartCoroutine(ClosePickupMsg(msgLine));
+        _pickupMsgTxtQueue.Add(msgLine);
     }
-
-    IEnumerator ClosePickupMsg(TMP_Text msgLine)
-    {
-        yield return new WaitForSeconds(6);
-        var msg = _pickupMsgTxtQueue.Dequeue();
-        Destroy(msg.gameObject);
-    }
-
     void Update()
     {
         updateLootText();

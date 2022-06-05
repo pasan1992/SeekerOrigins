@@ -32,9 +32,10 @@ public class AmmoPack : Interactable
 
     void AmmoPackAnimation()
     {
-        LeanTween.cancel(gameObject);
-        gameObject.transform.localScale = Vector3.one;
-        LeanTween.scale(gameObject, new Vector3(0.1f, 0.1f, 0.1f) * 0.5f, 0.3f)
-            .setEasePunch();
+        var seq = LeanTween.sequence();
+        seq.append(LeanTween.moveY(gameObject,gameObject.transform.position.y + 0.02f,0.1f));
+        seq.append( LeanTween.rotateAroundLocal(gameObject,Vector3.up,Random.value*100,0.1f).setEaseInCirc() );
+        seq.append( LeanTween.rotateAroundLocal(gameObject,Vector3.up,-Random.value*100,0.1f).setEaseInCirc()  );
+        seq.append(LeanTween.moveY(gameObject,gameObject.transform.position.y - 0.02f,0.1f));
     }
 }
