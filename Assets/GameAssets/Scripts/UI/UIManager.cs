@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _ammoBox;
 
     [SerializeField] GameObject _activeWeapon;
-    public AgentData _agentData;
+    private AgentData _agentData;
 
     //UI Animation variable
     float _healthTweenTime = 0.5f;
@@ -223,7 +223,7 @@ public class UIManager : MonoBehaviour
         // Set Primary Weapon Count
         if (m_movingAgent.GetPrimaryWeapon() != null)
         {
-            var val = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName);
+            var val = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getPrimaryWeaponAmmoCount();
             _rifleCountTxt.text = val.ToString();
         }
         else
@@ -246,7 +246,7 @@ public class UIManager : MonoBehaviour
         // Set Secondary Weapon Count
         if (m_movingAgent.GetSecondaryWeapon() != null)
         {
-            var val = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName);
+            var val = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getSecondaryWeaponAmmoCount();
             _pistolCountTxt.text = val.ToString();
         }
         else
