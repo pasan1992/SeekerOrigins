@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] public Image _pistolImg;
     [SerializeField] public Image _rifleImg;
+
     [SerializeField] public Image _missileImg;
     [SerializeField] public Image _grenadeImg;
     [SerializeField] public Image _injectionImg;
@@ -51,6 +52,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _activeWeapon;
     private AgentData _agentData;
 
+    int _primaryWeaponAmmo;
+    int _secondryWeaponAmmo;
+
     //UI Animation variable
     float _healthTweenTime = 0.5f;
     float _sheildTweenTime = 0.5f;
@@ -75,12 +79,15 @@ public class UIManager : MonoBehaviour
         
         update_health();
     }
-    // Update is called once per frame
-    void onHealthChange()
+
+    void Update()
     {
-        update_health();
+        updateLootText();
+        update_ammo_count();
+        updateAmmo();
     }
 
+    #region Pickups
     public void OnAmmoPickupEvent(AmmoPack ammoPack)
     {
         _pickupMsgPanel.SetActive(true);
@@ -141,131 +148,12 @@ public class UIManager : MonoBehaviour
 
         _pickupMsgTxtQueue.Add(msgLine);
     }
+    #endregion
 
-    void Update()
+    #region Health
+    void onHealthChange()
     {
-        updateLootText();
-        update_ammo_count();
-        updateAmmo();
-    }
-
-    void updateAmmo()
-    {
-        //if (m_movingAgent.getCurrentWeapon() == null)
-        //{
-        //    _activeWeapon.SetActive(false);
-        //}
-        //else
-        //{
-        //    _activeWeapon.SetActive(true);
-        //}
-
-        if (m_movingAgent.getCurrentWeapon() != null)
-        {
-            _bulletCountTxt.text = m_movingAgent.getCurrentWeaponAmmoCount().ToString() + " / " + m_movingAgent.getCurrentWeaponMagazineSize().ToString();
-            _bulletsBarImg.fillAmount = ((float)m_movingAgent.getCurrentWeaponAmmoCount()) / ((float)m_movingAgent.getCurrentWeaponMagazineSize());
-
-            //_magazinCountTxt.text = (m_movingAgent.getCurrentWeaponMagazineSize() * m_movingAgent.getCurrentWeaponAmmoCount()).ToString(); //TODO
-
-            //var weaponType = m_movingAgent.getCurrentWeaponType(); 
-
-            //if (weaponType.ToString() == "primary")
-            //{
-            //    _weaponImg.sprite = _weaponList[0];
-            //}
-            //else if (weaponType.ToString() == "secondary")
-            //{
-            //    _weaponImg.sprite = _weaponList[1];
-            //}
-        }
-        else
-        {
-            _bulletCountTxt.text = "0";
-            _bulletsBarImg.fillAmount = 0;
-        }
-
-        // Set Injection Count
-        _injectionCountTxt.text = m_movingAgent.GetAgentData().HealInjectionCount.ToString();
-        if (m_movingAgent.GetAgentData().HealInjectionCount <= 0)
-        {
-            _injectionImg.color = Color.black;
-        }
-        else
-        {
-            _injectionImg.color = Color.white;
-        }
-
-        // Set Missile Count
-        int missile_count = m_movingAgent.GetAgentData().checkAvailableAmmo("Missile");
-        _missileCountTxt.text = missile_count.ToString();
-
-        if(missile_count == 0)
-        {
-            _missileImg.color = Color.black;
-        }
-        else
-        {
-            _missileImg.color = Color.white;
-        }
-
-        // Set Grened Count
-        _grenedCountTxt.text = m_movingAgent.GetGrenadeCount().ToString();
-
-        if (m_movingAgent.GetGrenadeCount() <= 0)
-        {
-            _grenadeImg.color = Color.black;
-        }
-        else
-        {
-            _grenadeImg.color = Color.white;
-        }
-
-        // Set Primary Weapon Count
-        if (m_movingAgent.GetPrimaryWeapon() != null)
-        {
-            var val = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getPrimaryWeaponAmmoCount();
-            _rifleCountTxt.text = val.ToString();
-        }
-        else
-        {
-            _rifleCountTxt.text = "0";
-        }
-        if (m_movingAgent.GetPrimaryWeapon() == null)
-        {
-            _rifleImg.color = Color.black;
-        }
-        else if (m_movingAgent.GetPrimaryWeapon() == m_movingAgent.getCurrentWeapon())
-        {
-            _rifleImg.color = Color.yellow;
-        }
-        else
-        {
-            _rifleImg.color = Color.white;
-        }
-
-        // Set Secondary Weapon Count
-        if (m_movingAgent.GetSecondaryWeapon() != null)
-        {
-            var val = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getSecondaryWeaponAmmoCount();
-            _pistolCountTxt.text = val.ToString();
-        }
-        else
-        {
-            _pistolCountTxt.text = "0";
-        }
-
-        if (m_movingAgent.GetSecondaryWeapon() == null)
-        {
-            _pistolImg.color = Color.black;
-        }
-        else if (m_movingAgent.GetSecondaryWeapon() == m_movingAgent.getCurrentWeapon())
-        {
-            _pistolImg.color = Color.yellow;
-        }
-        else
-        {
-            _pistolImg.color = Color.white;
-        }
+        update_health();
     }
 
     private void update_health()
@@ -395,6 +283,198 @@ public class UIManager : MonoBehaviour
             });
         }
     }
+    #endregion
+
+    #region Ammo
+    void updateAmmo()
+    {
+        //if (m_movingAgent.getCurrentWeapon() == null)
+        //{
+        //    _activeWeapon.SetActive(false);
+        //}
+        //else
+        //{
+        //    _activeWeapon.SetActive(true);
+        //}
+
+        if (m_movingAgent.getCurrentWeapon() != null)
+        {
+            _bulletCountTxt.text = m_movingAgent.getCurrentWeaponAmmoCount().ToString() + " / " + m_movingAgent.getCurrentWeaponMagazineSize().ToString();
+            _bulletsBarImg.fillAmount = ((float)m_movingAgent.getCurrentWeaponAmmoCount()) / ((float)m_movingAgent.getCurrentWeaponMagazineSize());
+
+            //_magazinCountTxt.text = (m_movingAgent.getCurrentWeaponMagazineSize() * m_movingAgent.getCurrentWeaponAmmoCount()).ToString(); //TODO
+
+            //var weaponType = m_movingAgent.getCurrentWeaponType(); 
+
+            //if (weaponType.ToString() == "primary")
+            //{
+            //    _weaponImg.sprite = _weaponList[0];
+            //}
+            //else if (weaponType.ToString() == "secondary")
+            //{
+            //    _weaponImg.sprite = _weaponList[1];
+            //}
+        }
+        else
+        {
+            _bulletCountTxt.text = "0";
+            _bulletsBarImg.fillAmount = 0;
+        }
+
+        #region Injection
+        _injectionCountTxt.text = m_movingAgent.GetAgentData().HealInjectionCount.ToString();
+        if (m_movingAgent.GetAgentData().HealInjectionCount <= 0)
+        {
+            _injectionImg.color = Color.black;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                _injectionImg.color = Color.yellow;
+
+                LeanTween.cancel(_injectionImg.gameObject);
+                LeanTween.scale(_injectionImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 1)
+                .setEasePunch();
+            }
+            else if (Input.GetKey(KeyCode.H))
+            {
+                _injectionImg.color = Color.yellow;
+            }
+            else
+            {
+                _injectionImg.color = Color.white;
+            }
+        }
+        _injectionImg.gameObject.transform.localScale = Vector3.one;
+
+        #endregion
+
+        #region Missile
+        int missile_count = m_movingAgent.GetAgentData().checkAvailableAmmo("Missile");
+        _missileCountTxt.text = missile_count.ToString();
+
+        if (missile_count == 0)
+        {
+            _missileImg.color = Color.black;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                _missileImg.color = Color.yellow;
+
+                LeanTween.cancel(_missileImg.gameObject);
+                LeanTween.scale(_missileImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 1)
+                .setEasePunch();
+            }
+            else if (Input.GetKey(KeyCode.Q))
+            {
+                _missileImg.color = Color.yellow;
+            }
+            else
+            {
+                _missileImg.color = Color.white;
+            }
+            _missileImg.gameObject.transform.localScale = Vector3.one;
+        }
+        #endregion
+
+        #region Grened
+        _grenedCountTxt.text = m_movingAgent.GetGrenadeCount().ToString();
+
+        if (m_movingAgent.GetGrenadeCount() <= 0)
+        {
+            _grenadeImg.color = Color.black;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                _grenadeImg.color = Color.yellow;
+
+                LeanTween.cancel(_grenadeImg.gameObject);
+                LeanTween.scale(_grenadeImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 1)
+                .setEasePunch();
+            }
+            else if (Input.GetKey(KeyCode.G))
+            {
+                _grenadeImg.color = Color.yellow;
+            }
+            else
+            {
+                _grenadeImg.color = Color.white;
+            }
+            _grenadeImg.gameObject.transform.localScale = Vector3.one;
+        }
+        #endregion
+
+        #region Primary Weapon
+        if (m_movingAgent.GetPrimaryWeapon() != null)
+        {
+            _primaryWeaponAmmo = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getPrimaryWeaponAmmoCount();
+            _rifleCountTxt.text = _primaryWeaponAmmo.ToString();
+
+            //LeanTween.cancel(_rifleImg.gameObject);
+            //LeanTween.scale(_rifleImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 0.5f)
+            //.setEasePunch();
+        }
+
+        LeanTween.cancel(_rifleImg.gameObject);
+
+        if (_primaryWeaponAmmo == 0 || m_movingAgent.GetPrimaryWeapon() == null)
+        {
+            _rifleImg.color = Color.black;
+            LeanTween.scale(_rifleImg.gameObject, Vector3.one, 0.3f);
+        }
+        else
+        {
+            if (m_movingAgent.GetPrimaryWeapon() == m_movingAgent.getCurrentWeapon())
+            {
+                _rifleImg.color = Color.yellow;
+                LeanTween.scale(_rifleImg.gameObject, new Vector3(1.4f, 1.4f, 1f), 0.2f);
+            }
+            else
+            {
+                _rifleImg.color = Color.white;
+                LeanTween.scale(_rifleImg.gameObject, Vector3.one, 0.1f);
+            }
+        }
+        #endregion
+
+        #region Secondary Weapon
+        if (m_movingAgent.GetSecondaryWeapon() != null)
+        {
+            _secondryWeaponAmmo = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getSecondaryWeaponAmmoCount();
+            _pistolCountTxt.text = _secondryWeaponAmmo.ToString();
+
+            //LeanTween.cancel(_pistolImg.gameObject);
+            //LeanTween.scale(_pistolImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 0.5f)
+            //.setEasePunch();
+        }
+
+        LeanTween.cancel(_pistolImg.gameObject);
+
+        if (_secondryWeaponAmmo == 0 || m_movingAgent.GetSecondaryWeapon() == null)
+        {
+            _pistolImg.color = Color.black;
+            LeanTween.scale(_pistolImg.gameObject, Vector3.one, 0.3f);
+        }
+        else
+        {
+            if (m_movingAgent.GetSecondaryWeapon() == m_movingAgent.getCurrentWeapon())
+            {
+                _pistolImg.color = Color.yellow;
+                LeanTween.scale(_pistolImg.gameObject, new Vector3(1.4f, 1.4f, 1f), 0.2f);
+            }
+            else
+            {
+                _pistolImg.color = Color.white;
+                LeanTween.scale(_pistolImg.gameObject, Vector3.one, 0.1f);
+            }
+        }
+        #endregion
+    }
 
     private void update_ammo_count()
     {
@@ -496,4 +576,5 @@ public class UIManager : MonoBehaviour
 
 
     }
+    #endregion
 }
