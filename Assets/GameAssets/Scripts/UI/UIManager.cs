@@ -326,7 +326,7 @@ public class UIManager : MonoBehaviour
             .setEaseInElastic()
             .setOnUpdate((value) =>
             {
-                _healthBarImg.fillAmount = currentHealth == 0 ? 0 : value;
+                _healthBarImg.fillAmount = currentHealth == 1 ? 1 : value;
                 _prevHealth = currentHealth;
             });
         }
@@ -390,7 +390,7 @@ public class UIManager : MonoBehaviour
             .setEaseInElastic()
             .setOnUpdate((value) =>
             {
-                _regenBarImg.fillAmount = currentSheild == 0 ? 0 : value;
+                _regenBarImg.fillAmount = currentSheild == 1 ? 1 : value;
                 _prevSheild = currentSheild;
             });
         }
