@@ -7,7 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public FloatingInfoText lootText;
+    public Text lootText;
     public Transform playerTransfrom;
     public Text ammo_count;
 
@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
         m_movingAgent.setOnDamagedCallback(onHealthChange);
         m_movingAgent.setOnAmmoPickupCallback(OnAmmoPickupEvent);
         m_movingAgent.setOnHealCallback(onHealthChange);
-
+        m_movingAgent.setOnWeaponPickupEvent(onWeaponPickupEvent);
         
         update_health();
     }
@@ -87,11 +87,25 @@ public class UIManager : MonoBehaviour
         updateAmmo();
     }
 
+    public void onWeaponPickupEvent(Interactable obj)
+    {
+        StartCoroutine(CreateWeaponPickupMsg(obj));
+    }
+
     #region Pickups
     public void OnAmmoPickupEvent(AmmoPack ammoPack)
     {
         _pickupMsgPanel.SetActive(true);
         StartCoroutine(CreateMsges(ammoPack));
+    }
+
+    IEnumerator CreateWeaponPickupMsg(Interactable obj)
+    {
+        var msg = obj.name + " X1";
+        List<TMP_Text> _pickupMsgTxtQueue = new List<TMP_Text>();
+        CreatePickupMsg(msg,_pickupMsgTxtQueue);
+        yield return new WaitForSeconds(2f);       
+        yield return deleteMsgQueue(_pickupMsgTxtQueue);
     }
 
     IEnumerator CreateMsges(AmmoPack ammoPack)
@@ -101,7 +115,6 @@ public class UIManager : MonoBehaviour
 
         foreach (var ammo in ammo_data)
         {
-            Debug.Log("adding");
             CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount,_pickupMsgTxtQueue);
             yield return new WaitForSeconds(0.5f);
         }
@@ -126,6 +139,11 @@ public class UIManager : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
         _pickupMsgTxtQueue.Reverse();
+        yield return deleteMsgQueue(_pickupMsgTxtQueue);
+    }
+
+    IEnumerator deleteMsgQueue(List<TMP_Text> _pickupMsgTxtQueue)
+    {
         foreach (var msg in _pickupMsgTxtQueue)
         {
             yield return new WaitForSeconds(0.2f);
@@ -522,14 +540,15 @@ public class UIManager : MonoBehaviour
 
         if(m_currentInteractable)
         {
-            lootText.setInteratableObject(m_currentInteractable);
+            //lootText.setInteratableObject(m_currentInteractable);
             m_currentInteractable.setOutLineState(true);
-            updateWeaponStat(m_currentInteractable);
+            lootText.text = m_currentInteractable.name + ": Press E to Interact";
+            //updateWeaponStat(m_currentInteractable);
         }
         else
         {
             
-            lootText.resetText();
+            lootText.text = "";
         }
     }
 

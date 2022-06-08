@@ -11,4 +11,5 @@ public class GameEvents
     public delegate void BasicSoundEvent(Vector3 position,AgentBasicData.AgentFaction faction,float maxDistance);
 
     public delegate void OnAmmoPickupEvent(AmmoPack ammoPack);
+    public delegate void OnInteractionEvent(Interactable obj);
 }

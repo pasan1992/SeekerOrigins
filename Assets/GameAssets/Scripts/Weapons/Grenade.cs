@@ -54,7 +54,6 @@ public class Grenade : Weapon
 
     private void throwGenade(Transform location)
     {
-        Debug.Log("Throw");
         m_pinPulled = false;
         m_tempGrenede.transform.parent = null;
         Rigidbody rb = m_tempGrenede.GetComponent<Rigidbody>();

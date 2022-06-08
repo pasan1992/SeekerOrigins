@@ -26,8 +26,6 @@ public class BasicParticleEffect : MonoBehaviour
         this.transform.parent = m_parent;
         m_selfParticleSystem.Stop();
         this.gameObject.SetActive(false);
-        Debug.Log(m_parent);
-        
     }
 
     public void SetParent(Transform parent)

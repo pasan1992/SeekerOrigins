@@ -359,8 +359,6 @@ public class AutoHumanoidAgentController :  AgentController
         //combat_stage.CurrentMovmentType = GameEnums.MovmentBehaviorType.FREE;
 
         switchToCombatStage();
-        Debug.Log(m_visualSensor);
-        Debug.Log(position);
         m_visualSensor.forceCombatMode(position.position);
         m_forced_attack = true;
         m_visualSensor.disableLook();

@@ -8,6 +8,7 @@ public class HumanoidInteractionModule
 
     public delegate void OnInteractionOver();
     private GameEvents.OnAmmoPickupEvent onAmmoPickupEvent;
+    private GameEvents.OnInteractionEvent onWeaponPickupEvent;
 
     private OnInteractionOver m_onInteractionOver;
 
@@ -201,6 +202,10 @@ public class HumanoidInteractionModule
                     m_agentData.primaryWeapon = wp;
                     m_equipmentModule.equipWeapon(m_agentData.primaryWeapon);
                     obj.OnEquipAction();
+                    if(onWeaponPickupEvent !=null)
+                    {
+                        onWeaponPickupEvent(m_agent.GetPrimaryWeapon());
+                    }
                     /*
                     if (!m_agentData.primaryWeapon)
                     {
@@ -224,7 +229,10 @@ public class HumanoidInteractionModule
                     m_agentData.secondaryWeapon = wp;
                     m_equipmentModule.equipWeapon(m_agentData.secondaryWeapon);
                     obj.OnEquipAction();
-
+                    if(onWeaponPickupEvent !=null)
+                    {
+                        onWeaponPickupEvent(m_agent.GetSecondaryWeapon());
+                    }
                     /*
                     if (!m_agentData.secondaryWeapon)
                     {
@@ -253,7 +261,11 @@ public class HumanoidInteractionModule
                 var wp = obj.GetComponent<Grenade>();
                 m_agentData.grenade = wp;
                 m_equipmentModule.equipWeapon(m_agentData.grenade);
-                obj.OnEquipAction();                   
+                obj.OnEquipAction();   
+                if(onWeaponPickupEvent !=null)
+                {
+                    onWeaponPickupEvent(m_agentData.grenade);
+                }                
             }
             else
             {
@@ -464,5 +476,10 @@ public class HumanoidInteractionModule
     public void setOnAmmoPickupCallback(GameEvents.OnAmmoPickupEvent onAmmoPickup)
     {
         onAmmoPickupEvent += onAmmoPickup;
+    }
+
+    public void setOnWeaponPickupEvent(GameEvents.OnInteractionEvent weapon)
+    {
+        onWeaponPickupEvent += weapon;
     }
 }

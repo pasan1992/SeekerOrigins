@@ -354,6 +354,10 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_interactionModule.setOnAmmoPickupCallback(onAmmoPickup);
     }
 
+    public void setOnWeaponPickupEvent(GameEvents.OnInteractionEvent wp_event)
+    {
+        m_interactionModule.setOnWeaponPickupEvent(wp_event);
+    }
     public bool isVisibleOnScreen()
     {
         return m_renderer.isVisible;
@@ -589,7 +593,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
         if((m_characterState.Equals(CharacterMainStates.Armed_not_Aimed) || m_characterState.Equals(CharacterMainStates.Aimed)) && !m_equipmentModule.isInEquipingAction() && !m_equipmentModule.isReloading())
         {
-            Debug.Log(m_equipmentModule.getCurrentWeapon().getWeaponType());
             switch (m_equipmentModule.getCurrentWeapon().getWeaponType())
             {
                 case RangedWeapon.WEAPONTYPE.grenede:

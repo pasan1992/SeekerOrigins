@@ -488,7 +488,6 @@ public class HumanoidRangedWeaponsModule
                 if (m_currentWeapon.getWeaponType().Equals(RangedWeapon.WEAPONTYPE.primary))
                 {
                     m_inEquipingAction = true;
-                    Debug.Log("Unequip");
                     return m_animationSystem.unEquipEquipment();
                 }
                 // Fast toggle to weapon
