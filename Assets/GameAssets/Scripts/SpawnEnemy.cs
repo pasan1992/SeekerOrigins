@@ -71,7 +71,7 @@ public class SpawnEnemy : BaseObjective
 
     IEnumerator waitAndAttack(AgentController agent,Transform target)
     {
-        yield return new WaitForSeconds(Random.Range(0,3));
+        yield return new WaitForSeconds(1);
         agent.ForceCombatMode(target);
     }
 

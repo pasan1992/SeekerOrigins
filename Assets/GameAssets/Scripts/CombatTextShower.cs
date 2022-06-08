@@ -43,15 +43,15 @@ public class CombatTextShower : MonoBehaviour
 
     public void yellMessage(string message,ICyberAgent agent)
     {
-        if(!yellActive)
-        {
-            currentAgent = agent;
-            currentMessage = message;
-            yellText.gameObject.SetActive(true);
-            yellText.setTarget(currentAgent.getTransfrom(), Vector3.up * 1);
-            yellText.setText(message);
-            yellActive = true;
-        }
+        // if(!yellActive)
+        // {
+        //     currentAgent = agent;
+        //     currentMessage = message;
+        //     yellText.gameObject.SetActive(true);
+        //     yellText.setTarget(currentAgent.getTransfrom(), Vector3.up * 1);
+        //     yellText.setText(message);
+        //     yellActive = true;
+        // }
     }
 
     public void yellMessage(string message, ICyberAgent agent,float time,float prob)
