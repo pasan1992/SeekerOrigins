@@ -71,7 +71,7 @@ public class ForceAttack : MonoBehaviour
 
     IEnumerator waitAndSetCOmbat(AgentController agent, Vector3 target)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         agent.ForceCombatMode(m_target);
     }
 
