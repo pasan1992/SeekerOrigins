@@ -10,6 +10,8 @@ public class Level
     public string LevelDescription;
     public string levelImagePath;
 }
+
+[System.Serializable]
 public class LevelListObject
 {
     //public List<Level> levelList { get; set; }

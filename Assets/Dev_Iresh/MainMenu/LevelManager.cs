@@ -23,37 +23,49 @@ public class LevelManager : MonoBehaviour
         
     }
 
+
+    public void CreateTempLevelListObj()
+    {
+        var lbl_obj = new LevelListObject();
+        lbl_obj.levelList = new List<Level>();
+        Level lvl1 = new Level();
+        lvl1.LevelDescription = "This is test level";
+        lvl1.levelImagePath = "Test Image path";
+        lvl1.levelMainText = "sdsd";
+        lvl1.levelSubText = "sdsd";
+        lbl_obj.levelList.Add(lvl1);
+        string json = JsonUtility.ToJson(lbl_obj);
+        Debug.Log(json);
+    }
+
     public void SetLevels()
     {
-        //Level level = new Level();
-        //level.levelMainText = "Level 04";
-        //level.levelSubText = "Fourvl";
-        //level.LevelDescription = "Level 04 description";
-        //level.levelImagePath = "path";
-
-        //string json = JsonUtility.ToJson(level);
-        //print(json);
-
-        //File.WriteAllText(Application.dataPath + "/Dev_Iresh/MainMenu/levelData.json", json);
 
 
-        //_levelListObject = JsonUtility.FromJson<LevelListObject>(Application.dataPath + "/LavelFile.json");
-        //LevelRoot level1LoadedData = JsonUtility.FromJson<LevelRoot>(_levelListObject);
 
-        //print(_levelListObject);
-        //print(_levelListObject.levelList);
 
-        //foreach (Level level in _levelListObject.levelList)
-        //{
-        //    print(level.levelMainText);
-        //}
 
         string jsonRead = File.ReadAllText(Application.dataPath + "/LavelFile.json");
-        print(jsonRead);
         _levelListObject = JsonUtility.FromJson<LevelListObject>(jsonRead);
-        //LevelRoot level1LoadedData = (LevelRoot)JsonConvert.DeserializeObject(jsonRead);
         print(_levelListObject);
-        print(_levelListObject.levelList.Count);
+        print(_levelListObject.levelList[0].LevelDescription);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //LevelRoot level1LoadedData = (LevelRoot)JsonConvert.DeserializeObject(jsonRead);
+        // print(_levelListObject.levelList.Count);
+        // Debug.Log(_levelListObject);
 
         //foreach (Level level in level1LoadedData.levels)
         //{
