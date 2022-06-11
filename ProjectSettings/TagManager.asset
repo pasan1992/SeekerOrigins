@@ -17,6 +17,8 @@ TagManager:
   - Item
   - mini_map
   - SpawnPoint
+  - DontDistroyManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

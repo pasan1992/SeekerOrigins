@@ -16,4 +16,8 @@ public class GameEnums
     public enum Cover_based_combat_stages {IN_COVER,SHOOT}
     #endregion
 
+    #region Main UI
+    public enum Scence {Main_Menu, Tutorial, Level_1, Level_2 }
+    #endregion
+
 }
