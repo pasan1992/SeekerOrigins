@@ -140,6 +140,8 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _pickupMsgTxtQueue.Reverse();
         yield return deleteMsgQueue(_pickupMsgTxtQueue);
+        _pickupMsgPanel.SetActive(false);
+
     }
 
     IEnumerator deleteMsgQueue(List<TMP_Text> _pickupMsgTxtQueue)

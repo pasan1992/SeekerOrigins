@@ -13,18 +13,28 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] GameObject _splashScreen, _loading, _manu;
 
     #region Option Feild
-    [SerializeField] Slider _musicSlider, _sfxSlider;
-    [SerializeField] TMP_Dropdown _resulotionDropdown, _qualityDropdown;
-    [SerializeField] Toggle _fullScreenToggle;
+        [SerializeField] Slider _musicSlider, _sfxSlider;
+        [SerializeField] TMP_Dropdown _resulotionDropdown, _qualityDropdown;
+        [SerializeField] Toggle _fullScreenToggle;
 
-    Resolution[] _resolutions;
+        Resolution[] _resolutions;
 
-    const string MIXER_MUSIC = "MusicVolume";
-    const string MIXER_SFX = "SFXVolume";
-
-   
+        const string MIXER_MUSIC = "MusicVolume";
+        const string MIXER_SFX = "SFXVolume";
     #endregion
 
+    #region Level Feild
+        [SerializeField] List<Sprite> _bgList;
+
+        [SerializeField] Image _levelBackground;
+        [SerializeField] TMP_Text _levelMainTitle;
+        [SerializeField] TMP_Text _levelSubTitle;
+        [SerializeField] TMP_Text _levelDescription;
+
+        [SerializeField] GameObject _levelIcon;
+        [SerializeField] Image _levelIconImage;
+        [SerializeField] TMP_Text _levelMIconTitle;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +73,11 @@ public class MainMenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         _loading.SetActive(false);
         _manu.SetActive(true);
+    }
+
+    public void SetLevels()
+    {
+
     }
 
     public void PlayGame()
