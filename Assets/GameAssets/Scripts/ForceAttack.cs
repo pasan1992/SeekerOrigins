@@ -15,6 +15,7 @@ public class ForceAttack : MonoBehaviour
     public string OnObjectiveCompelteEvent = "";
 
     public PlayMakerFSM externalFSM;
+    public PlayMakerFSM storyFSM;
 
     public void Start() 
     {
@@ -89,6 +90,11 @@ public class ForceAttack : MonoBehaviour
                 else
                 {
                     externalFSM.Fsm.Event(OnObjectiveCompelteEvent);
+                }
+
+                if(storyFSM != null)
+                {
+                    storyFSM.Fsm.Event(OnObjectiveCompelteEvent);
                 }
             }
 

@@ -9,6 +9,7 @@ public class BaseObjective : MonoBehaviour
     public string Objective;
     public Text m_ObjectiveText;
     public PlayMakerFSM externalFSM;
+    public PlayMakerFSM storyFSM;
     public string OnObjectiveCompelteEvent;
 
     public virtual void StartObjective()
@@ -29,6 +30,11 @@ public class BaseObjective : MonoBehaviour
         else
         {
             externalFSM.Fsm.Event(OnObjectiveCompelteEvent);
+        }
+
+        if(storyFSM != null)
+        {
+            storyFSM.Fsm.Event(OnObjectiveCompelteEvent);
         }
         this.enabled = false;
     }
