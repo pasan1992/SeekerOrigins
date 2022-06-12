@@ -68,7 +68,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.0733414
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401a701d688aaf04bb923f7422d4a37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Total_Health: 2
+  Total_Health: 1
   particleEffectOnDestroy: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   m_onDestroyEvent:

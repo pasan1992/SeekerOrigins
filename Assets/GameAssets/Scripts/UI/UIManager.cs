@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Transform _pickupMsgTxtParant;
     [SerializeField] GameObject _pickupMsgPanel;
+    private FloatingGameUI m_onPickupMsgPanelUI;
     [SerializeField] GameObject _ammoBox;
 
     [SerializeField] GameObject _activeWeapon;
@@ -71,6 +72,7 @@ public class UIManager : MonoBehaviour
         m_player = GameObject.FindObjectOfType<PlayerController>();
         m_movingAgent = m_player.GetComponent<HumanoidMovingAgent>();
         _agentData = m_movingAgent.GetAgentData();
+        m_onPickupMsgPanelUI = _pickupMsgPanel.GetComponent<FloatingGameUI>();
 
         m_movingAgent.setOnDamagedCallback(onHealthChange);
         m_movingAgent.setOnAmmoPickupCallback(OnAmmoPickupEvent);
@@ -95,6 +97,7 @@ public class UIManager : MonoBehaviour
     #region Pickups
     public void OnAmmoPickupEvent(AmmoPack ammoPack)
     {
+        m_onPickupMsgPanelUI.target = ammoPack.gameObject.transform;
         _pickupMsgPanel.SetActive(true);
         StartCoroutine(CreateMsges(ammoPack));
     }
