@@ -34,8 +34,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Image _healthBarImg;
     [SerializeField] public Image _regenBarImg;
     [SerializeField] public Image _bulletsBarImg;
-    [SerializeField] public TMP_Text _healthCountTxt;
-    [SerializeField] public TMP_Text _sheildCountTxt;
+    //[SerializeField] public TMP_Text _healthCountTxt;
+    //[SerializeField] public TMP_Text _sheildCountTxt;
     [SerializeField] public TMP_Text _bulletCountTxt;
 
     [SerializeField] TMP_Text _magazinCountTxt;
@@ -49,6 +49,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _pickupMsgPanel;
     private FloatingGameUI m_onPickupMsgPanelUI;
     [SerializeField] GameObject _ammoBox;
+
+    [SerializeField] Transform _taskMsgTxtParant;
+    [SerializeField] GameObject _taskMsgPanel;
+
+    [SerializeField] Transform _targetParant;
+    [SerializeField] Image _target;
 
     [SerializeField] GameObject _activeWeapon;
     private AgentData _agentData;
@@ -87,6 +93,11 @@ public class UIManager : MonoBehaviour
         updateLootText();
         update_ammo_count();
         updateAmmo();
+        //if (target.CompareTag("Target"))
+        //{
+        Vector3 mousePos = Input.mousePosition;
+        _targetParant.position = mousePos;
+        //}
     }
 
     public void onWeaponPickupEvent(Interactable obj)
@@ -184,36 +195,36 @@ public class UIManager : MonoBehaviour
          if (_agentData.Sheild > 0)
          {
              _havingSheald = true;
-             _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+            // _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
              AnimSheild();
          }
          else if(_agentData.Sheild == 0 && _havingSheald)
          {
-             _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+            // _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
              AnimSheild();
              _havingSheald = false;
          }
          else
          {
-             _healthCountTxt.text = ((int)_agentData.Health).ToString();
+            // _healthCountTxt.text = ((int)_agentData.Health).ToString();
              AnimHealth();
          }
         if (_agentData.Health <= 0)
         {
             _gameOverTxt.gameObject.SetActive(true);
         }
-        _sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
-        _healthCountTxt.text = ((int)_agentData.Health).ToString();
+        //_sheildCountTxt.text = ((int)_agentData.Sheild).ToString();
+       // _healthCountTxt.text = ((int)_agentData.Health).ToString();
         //AnimHealth();
         //AnimSheild();
     }
 
     public void AnimHealth()
     {
-        LeanTween.cancel(_healthCountTxt.gameObject);
-        _healthCountTxt.gameObject.transform.localScale = Vector3.one;
-        LeanTween.scale(_healthCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
-            .setEasePunch();
+        //LeanTween.cancel(_healthCountTxt.gameObject);
+        //_healthCountTxt.gameObject.transform.localScale = Vector3.one;
+        //LeanTween.scale(_healthCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
+        //    .setEasePunch();
 
         //LeanTween.value(_healthCountTxt.gameObject, 0, 1, 3)
         //    .setEasePunch()
@@ -270,10 +281,10 @@ public class UIManager : MonoBehaviour
 
     public void AnimSheild()
     {
-        LeanTween.cancel(_sheildCountTxt.gameObject);
-        _sheildCountTxt.gameObject.transform.localScale = Vector3.one;
-        LeanTween.scale(_sheildCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
-            .setEasePunch();
+       // LeanTween.cancel(_sheildCountTxt.gameObject);
+       // _sheildCountTxt.gameObject.transform.localScale = Vector3.one;
+       // LeanTween.scale(_sheildCountTxt.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 2)
+       //     .setEasePunch();
 
         var currentSheild = _agentData.Sheild / _agentData.MaxSheild;
 
@@ -324,6 +335,7 @@ public class UIManager : MonoBehaviour
         {
             _bulletCountTxt.text = m_movingAgent.getCurrentWeaponAmmoCount().ToString() + " / " + m_movingAgent.getCurrentWeaponMagazineSize().ToString();
             _bulletsBarImg.fillAmount = ((float)m_movingAgent.getCurrentWeaponAmmoCount()) / ((float)m_movingAgent.getCurrentWeaponMagazineSize());
+            _target.fillAmount = ((float)m_movingAgent.getCurrentWeaponAmmoCount()) / ((float)m_movingAgent.getCurrentWeaponMagazineSize());
 
             //_magazinCountTxt.text = (m_movingAgent.getCurrentWeaponMagazineSize() * m_movingAgent.getCurrentWeaponAmmoCount()).ToString(); //TODO
 
@@ -342,6 +354,7 @@ public class UIManager : MonoBehaviour
         {
             _bulletCountTxt.text = "0";
             _bulletsBarImg.fillAmount = 0;
+            _target.fillAmount = 0;
         }
 
         #region Injection
@@ -455,11 +468,13 @@ public class UIManager : MonoBehaviour
             if (m_movingAgent.GetPrimaryWeapon() == m_movingAgent.getCurrentWeapon())
             {
                 _rifleImg.color = Color.yellow;
+                LeanTween.moveLocal(_rifleImg.gameObject, new Vector3(-137, -30f, 0f), 0.2f);
                 LeanTween.scale(_rifleImg.gameObject, new Vector3(1.4f, 1.4f, 1f), 0.2f);
             }
             else
             {
                 _rifleImg.color = Color.white;
+                LeanTween.moveLocal(_rifleImg.gameObject, new Vector3(-117, -20, 0), 0.1f);
                 LeanTween.scale(_rifleImg.gameObject, Vector3.one, 0.1f);
             }
         }
@@ -488,11 +503,13 @@ public class UIManager : MonoBehaviour
             if (m_movingAgent.GetSecondaryWeapon() == m_movingAgent.getCurrentWeapon())
             {
                 _pistolImg.color = Color.yellow;
+                LeanTween.moveLocal(_pistolImg.gameObject, new Vector3(-137, 55, 0f), 0.2f);
                 LeanTween.scale(_pistolImg.gameObject, new Vector3(1.4f, 1.4f, 1f), 0.2f);
             }
             else
             {
                 _pistolImg.color = Color.white;
+                LeanTween.moveLocal(_pistolImg.gameObject, new Vector3(-117, 35, 0), 0.1f);
                 LeanTween.scale(_pistolImg.gameObject, Vector3.one, 0.1f);
             }
         }

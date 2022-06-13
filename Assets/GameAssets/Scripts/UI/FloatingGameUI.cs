@@ -22,6 +22,7 @@ public class FloatingGameUI : MonoBehaviour
 
     void Update()
     {
+
         if (target)
         {
             transform.position = Camera.main.WorldToScreenPoint(target.position) + m_offset;
