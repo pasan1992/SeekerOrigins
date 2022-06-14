@@ -92,7 +92,7 @@ public class MouseCurserSystem : MonoBehaviour
         }
 
         var total_ammo_count_ticks = TargetWithAmmoCount.Count;
-        var ammo_tick_index =  (int)(((float)player.getCurrentWeaponAmmoCount() /player.getCurrentWeaponMagazineSize()) * total_ammo_count_ticks) -1;
+        var ammo_tick_index =  (int)(((float)player.getCurrentWeaponAmmoCount() /player.getCurrentWeaponMagazineSize()) * (total_ammo_count_ticks-1));
         Cursor.SetCursor(TargetWithAmmoCount[ammo_tick_index], hotSpot, cursorMode);
         
 
