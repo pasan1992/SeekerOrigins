@@ -71777,11 +71777,23 @@ MonoBehaviour:
   onTargetFire: {fileID: 2800000, guid: 297d5b9af3f27a444a5ffe17b58b190c, type: 3}
   reloadTexture: {fileID: 2800000, guid: 68f6f848873a3ed41b4ea8272da3f562, type: 3}
   TargetWithAmmoCount:
-  - {fileID: 2800000, guid: 07cc5fed173905744934fdf8e6662283, type: 3}
-  - {fileID: 2800000, guid: 105edf59192ab9e428479a9a76f2efa3, type: 3}
-  - {fileID: 2800000, guid: 959679bf5313fd640a857e46f854a01a, type: 3}
-  - {fileID: 2800000, guid: 76bf5986abcac5d4b86daa8a8270f373, type: 3}
-  - {fileID: 2800000, guid: d40a1b3a237d61245a0404b2ce200864, type: 3}
+  - {fileID: 2800000, guid: 51ac93a2b8fe6a4478bafa0af20e6516, type: 3}
+  - {fileID: 2800000, guid: 27c98255461469c49b3378d0a46f7649, type: 3}
+  - {fileID: 2800000, guid: c27d4b9c7580a4448b018833d5247f17, type: 3}
+  - {fileID: 2800000, guid: 6bc77354406b2de42ba9cf8702aeaeee, type: 3}
+  - {fileID: 2800000, guid: 3b876f185e6af5d49b43aa714461a697, type: 3}
+  - {fileID: 2800000, guid: ef336946063193f449398c93d7415767, type: 3}
+  - {fileID: 2800000, guid: 474834d3466bd9a4c9c87108559ff7b3, type: 3}
+  - {fileID: 2800000, guid: 959e00b4ca36710438cb2a1342794630, type: 3}
+  - {fileID: 2800000, guid: 2c19b4e035c918f48acc9a71d86fff49, type: 3}
+  - {fileID: 2800000, guid: ec5cdc88a309d174ca4af0e85042826a, type: 3}
+  - {fileID: 2800000, guid: 5658f019b064d1b47bb5e52b331b0b3b, type: 3}
+  - {fileID: 2800000, guid: a9d43e273e0af1e46af9135e4c82ad09, type: 3}
+  - {fileID: 2800000, guid: 9ec1c88245e1b3844b03e8f4ae6653d9, type: 3}
+  - {fileID: 2800000, guid: 69f6502a8d8aee4499821d1ee9f23314, type: 3}
+  - {fileID: 2800000, guid: 77db6c21e74ef5f47b3bddf9aaaa850b, type: 3}
+  - {fileID: 2800000, guid: c93395d2549a0d648a11021587f400fc, type: 3}
+  - {fileID: 2800000, guid: 7e72ba1ba47c7bb4db7e5dd94949403f, type: 3}
   cursorMode: 0
   hotSpot: {x: 17, y: 17}
   ui_curser: {fileID: 8144595129775001602}
