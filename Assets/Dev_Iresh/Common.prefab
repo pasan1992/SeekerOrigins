@@ -43741,7 +43741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1864808749227271471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44051,7 +44051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1864808749523622427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56443,7 +56443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.8, y: 14.999878}
+  m_AnchoredPosition: {x: 30.8, y: 14.999908}
   m_SizeDelta: {x: 738.4, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3209784682215806024
@@ -71776,6 +71776,12 @@ MonoBehaviour:
   fireTexture: {fileID: 2800000, guid: 9799d51f1d5dfd0488e3fc7334c636b0, type: 3}
   onTargetFire: {fileID: 2800000, guid: 297d5b9af3f27a444a5ffe17b58b190c, type: 3}
   reloadTexture: {fileID: 2800000, guid: 68f6f848873a3ed41b4ea8272da3f562, type: 3}
+  TargetWithAmmoCount:
+  - {fileID: 2800000, guid: 07cc5fed173905744934fdf8e6662283, type: 3}
+  - {fileID: 2800000, guid: 105edf59192ab9e428479a9a76f2efa3, type: 3}
+  - {fileID: 2800000, guid: 959679bf5313fd640a857e46f854a01a, type: 3}
+  - {fileID: 2800000, guid: 76bf5986abcac5d4b86daa8a8270f373, type: 3}
+  - {fileID: 2800000, guid: d40a1b3a237d61245a0404b2ce200864, type: 3}
   cursorMode: 0
   hotSpot: {x: 17, y: 17}
   ui_curser: {fileID: 8144595129775001602}

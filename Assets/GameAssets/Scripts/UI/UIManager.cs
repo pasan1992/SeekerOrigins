@@ -96,7 +96,7 @@ public class UIManager : MonoBehaviour
         //if (target.CompareTag("Target"))
         //{
         Vector3 mousePos = Input.mousePosition;
-        _targetParant.position = mousePos;
+        //_targetParant.position = mousePos;
         //}
     }
 

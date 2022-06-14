@@ -11,6 +11,7 @@ public class MouseCurserSystem : MonoBehaviour
     public Texture2D fireTexture;
     public Texture2D onTargetFire;
     public Texture2D reloadTexture;
+    public List<Texture2D> TargetWithAmmoCount;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
@@ -82,8 +83,20 @@ public class MouseCurserSystem : MonoBehaviour
 
     private void Update()
     {
+        var currentWeapon = player.getCurrentWeapon();
 
+        if(currentWeapon == null)
+        {
+            Cursor.SetCursor(idleTexture, hotSpot, cursorMode);
+            return;
+        }
 
+        var total_ammo_count_ticks = TargetWithAmmoCount.Count;
+        var ammo_tick_index =  (int)(((float)player.getCurrentWeaponAmmoCount() /player.getCurrentWeaponMagazineSize()) * total_ammo_count_ticks) -1;
+        Cursor.SetCursor(TargetWithAmmoCount[ammo_tick_index], hotSpot, cursorMode);
+        
+
+        /*
         switch (m_currentState)
         {
             case CURSOR_STATE.IDLE:
@@ -111,6 +124,8 @@ public class MouseCurserSystem : MonoBehaviour
                 Cursor.SetCursor(reloadTexture, hotSpot, cursorMode);
                 break;
         }
+        */
+        
         
     }
 
