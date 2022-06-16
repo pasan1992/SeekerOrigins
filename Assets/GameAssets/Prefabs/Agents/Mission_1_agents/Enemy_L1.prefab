@@ -106,9 +106,7 @@ MonoBehaviour:
   m_restrictions: 0
   target: {fileID: 0}
   preferedWeapon: 1
-  CanDodge: 1
   rutine: {fileID: 8100557664498112023}
-  max_Sound_hearing_distance: 20
 --- !u!114 &71862779117567214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,9 +756,14 @@ MonoBehaviour:
   m_characterState: 3
   AgentData:
     AgentNature: 0
-    Skill: 0.3
+    Skill: 0.1
     VisualDistance: 12
     VisualAngle: 90
+    max_Sound_hearing_distance: 5
+    CanDodge: 0
+    ThrowGrenade: 0
+    FireRocket: 0
+    RocketPack: {fileID: 0}
     maxHealth: 5
     MaxSheild: 0
     Regen: 0
@@ -770,6 +773,8 @@ MonoBehaviour:
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 7410864591502989375}
     grenade: {fileID: 7976312218801588240}
+    HealInjectionCount: 1
+    HealPerInjection: 20
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
@@ -888,6 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 5
+  KeepOnDestory: 0
   currentAvatar: {fileID: 70146114552436703}
   avatar: []
 --- !u!114 &69886451426456256
@@ -13822,7 +13828,7 @@ MonoBehaviour:
     handPlacementOffset: {x: 0, y: 0, z: 0}
     weaponRecoilOffset: {x: 0, y: 7, z: 0}
   m_ownersFaction: 0
-  accuracy_rating: 30
+  accuracy_rating: 15
   damage: 2
   m_weaponAmmunitionName: BasicMag
   gunMuzzle: {fileID: 238591041619310059}

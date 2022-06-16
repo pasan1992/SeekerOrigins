@@ -109,6 +109,7 @@ public class PlayerController : AgentController
                 }
                 
             }
+            m_movingAgent.moveCharacter(Vector3.zero);
             return;
         }
 
@@ -120,12 +121,13 @@ public class PlayerController : AgentController
         {
             if(m_movingAgent.isInteracting())
             {
-                m_movingAgent.cancleInteraction();
+                //m_movingAgent.cancleInteraction();
             }
             else
             {
                 m_movingAgent.stopAiming();
                 m_movingAgent.Interact();
+                m_movingAgent.StopMovment();
             }
         }
 

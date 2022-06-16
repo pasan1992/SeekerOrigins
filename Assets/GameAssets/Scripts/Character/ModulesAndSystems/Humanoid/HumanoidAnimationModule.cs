@@ -189,6 +189,11 @@ public partial class HumanoidAnimationModule : AnimationModule
         return m_animator.GetBool("crouched");
     }
 
+    public void Stop()
+    {
+        setMovment(0,0);
+    }
+
 
 
 

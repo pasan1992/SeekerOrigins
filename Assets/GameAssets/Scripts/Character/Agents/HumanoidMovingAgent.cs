@@ -845,6 +845,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_onWeaponUnEquipCallback += callback;
     }
 
+    public void StopMovment()
+    {
+        m_animationModule.Stop();
+    }
+
 
     public void setBasicCallbacks(
         GameEvents.BasicNotifactionEvent onEquip,
