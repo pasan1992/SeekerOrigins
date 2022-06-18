@@ -2,6 +2,7 @@
 
 public class SecondaryWeapon : RangedWeapon
 {
+    
     public override void Awake()
     {
         base.Awake();
@@ -53,6 +54,5 @@ public class SecondaryWeapon : RangedWeapon
     {
         return WEAPONTYPE.secondary;
     }
-
     #endregion
 }

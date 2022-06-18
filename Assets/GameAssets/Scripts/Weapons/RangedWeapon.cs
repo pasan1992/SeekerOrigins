@@ -46,6 +46,7 @@ public abstract class RangedWeapon : Weapon
     protected GamePlayCam camplayer;
 
     private float POSSIBLE_MAX_RANGE = 40;
+    public Light m_weaponLight;
     public override void Awake()
     {
         base.Awake();
@@ -56,6 +57,10 @@ public abstract class RangedWeapon : Weapon
         m_projectilePool = GameObject.FindObjectOfType<ProjectilePool>();
         hitLayerMask = LayerMask.NameToLayer("Enemy");
         m_ammoCount = m_magazineSize;
+        m_weaponLight = this.GetComponentInChildren<Light>();
+
+        if(m_weaponLight != null)
+            m_weaponLight.intensity = 0;
     }
 
 
@@ -346,6 +351,22 @@ public abstract class RangedWeapon : Weapon
             //m_rigidbody = this.GetComponent<Rigidbody>();
         }
         m_rigidbody.isKinematic = true;
+
+    }
+
+    public override void OnPlaceOnHoster()
+    {
+        base.OnPlaceOnHoster();
+
+        if(m_weaponLight !=null)
+            m_weaponLight.intensity = 0;
+    }
+
+    public override void OnPlaceOnHand()
+    {
+        base.OnPlaceOnHand();
+        if(m_weaponLight !=null)
+           m_weaponLight.intensity = 1.3f;
     }
 
     // private void checkFire(Vector3 startPositon, Vector3 targetPositon)

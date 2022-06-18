@@ -92,6 +92,16 @@ public class Interactable : MonoBehaviour
         properties.interactionEnabled = false;
         setOutLineState(false);
     }
+    
+    public virtual void OnPlaceOnHoster()
+    {
+
+    }
+
+    public virtual void OnPlaceOnHand()
+    {
+
+    }
 
     public virtual void OnItemDrop()
     {

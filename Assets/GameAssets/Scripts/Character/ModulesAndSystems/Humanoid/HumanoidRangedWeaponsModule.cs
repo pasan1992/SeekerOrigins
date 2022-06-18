@@ -939,6 +939,7 @@ public class HumanoidRangedWeaponsModule
             weapon.transform.parent = hosteringLocation;
             weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localRotation = Quaternion.identity;
+            weapon.OnPlaceOnHoster();
     }
 
     public void GrenadeQuickThrow()
@@ -956,7 +957,8 @@ public class HumanoidRangedWeaponsModule
         weapon.transform.localPosition = Vector3.zero + weapon.nonFunctionalProperties.handPlacementOffset;
         weapon.transform.localRotation = Quaternion.identity;
         m_recoil.handRotationOffset = weapon.nonFunctionalProperties.weaponRecoilOffset;  
-        weapon.transform.localScale = Vector3.one;     
+        weapon.transform.localScale = Vector3.one;  
+        weapon.OnPlaceOnHand();   
     }
 
     public Transform getWeaponHoldTransfrom()
