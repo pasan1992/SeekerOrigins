@@ -78,6 +78,15 @@ public class UIManager : MonoBehaviour
 
     bool _havingSheald = true;
 
+    [System.Serializable]
+    public class PickupIcons
+    {
+        public string PickupName;
+        public Sprite PickupImage;
+    }
+    public List<PickupIcons> _pickupIcons;
+    private Dictionary<string,Sprite> _pickupIconDict = new Dictionary<string, Sprite>();
+
     public void Start()
     {
         m_player = GameObject.FindObjectOfType<PlayerController>();
@@ -91,6 +100,11 @@ public class UIManager : MonoBehaviour
         m_movingAgent.setOnWeaponPickupEvent(onWeaponPickupEvent);
         
         update_health();
+
+        foreach(PickupIcons icon in _pickupIcons)
+        {
+            _pickupIconDict.Add(icon.PickupName,icon.PickupImage);
+        }
     }
 
     void Update()
@@ -120,9 +134,8 @@ public class UIManager : MonoBehaviour
 
     IEnumerator CreateWeaponPickupMsg(Interactable obj)
     {
-        var msg = obj.name + " X1";
         List<GameObject> _pickupMsgTxtQueue = new List<GameObject>();
-        CreatePickupMsg(msg,_pickupMsgTxtQueue);
+        CreatePickupMsg(obj.name,1,_pickupMsgTxtQueue);
         yield return new WaitForSeconds(2f);       
         yield return deleteMsgQueue(_pickupMsgTxtQueue);
     }
@@ -134,23 +147,23 @@ public class UIManager : MonoBehaviour
 
         foreach (var ammo in ammo_data)
         {
-            CreatePickupMsg(ammo.AmmoType + " X" + ammo.AmmoCount,_pickupMsgTxtQueue);
+            CreatePickupMsg(ammo.AmmoType,ammo.AmmoCount,_pickupMsgTxtQueue);
             yield return new WaitForSeconds(0.5f);
         }
 
         if (ammoPack.GrenadeCount > 0)
         {
             //
-            var msg = "Grenade X" + ammoPack.GrenadeCount;
-            CreatePickupMsg(msg,_pickupMsgTxtQueue);
+            //var msg = "Grenade X" + ammoPack.GrenadeCount;
+            CreatePickupMsg("Grenade", ammoPack.GrenadeCount,_pickupMsgTxtQueue);
             yield return new WaitForSeconds(0.5f);
         }
 
         if (ammoPack.HealthInjectionCount > 0)
         {
             
-            var msg = "HealthInjection X" + ammoPack.HealthInjectionCount;
-            CreatePickupMsg(msg,_pickupMsgTxtQueue);
+            //var msg = "HealthInjection X" + ammoPack.HealthInjectionCount;
+            CreatePickupMsg("HealthInjection",ammoPack.HealthInjectionCount,_pickupMsgTxtQueue);
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -175,10 +188,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void CreatePickupMsg(string msg,List<GameObject> _pickupMsgTxtQueue)
+    void CreatePickupMsg(string item_name,int item_count,List<GameObject> _pickupMsgTxtQueue)
     {
         var msgLine = Instantiate(_pickupMsgTxt, _pickupMsgTxtParant);
-        msgLine.GetComponentInChildren<TMP_Text>().text = msg;
+        msgLine.GetComponentInChildren<TMP_Text>().text = item_name.ToString() + " X " + item_count.ToString();
+        var pickupImage = _pickupIconDict["Default"];
+        _pickupIconDict.TryGetValue(item_name,out pickupImage);
+        msgLine.GetComponentsInChildren<Image>()[1].sprite = pickupImage;
 
         LeanTween.cancel(msgLine.gameObject);
         msgLine.gameObject.transform.localScale = Vector3.one;
