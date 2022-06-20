@@ -484,7 +484,7 @@ public class UIManager : MonoBehaviour
         if (_primaryWeaponAmmo == 0 || m_movingAgent.GetPrimaryWeapon() == null)
         {
             _rifleImg.transform.GetChild(1).GetComponent<Image>().color = Color.black;
-            LeanTween.moveY(_rifleImg.gameObject, 85, 0.1f);
+            LeanTween.moveLocalY(_rifleImg.gameObject, 90, 0.1f);
             LeanTween.scale(_rifleImg.gameObject, Vector3.one, 0.3f);
         }
         else
@@ -492,17 +492,13 @@ public class UIManager : MonoBehaviour
             if (m_movingAgent.GetPrimaryWeapon() == m_movingAgent.getCurrentWeapon())
             {
                 _rifleImg.transform.GetChild(1).GetComponent<Image>().color = Color.yellow;
-                //LeanTween.moveLocal(_rifleImg.gameObject, new Vector3(-100, -20f, 0f), 0.2f);
-                LeanTween.moveY(_rifleImg.gameObject, 100, 0.2f);
-
+                LeanTween.moveLocalY(_rifleImg.gameObject, 100, 0.1f);
                 LeanTween.scale(_rifleImg.gameObject, new Vector3(1.4f, 1.4f, 1f), 0.2f);
             }
             else
             {
                 _rifleImg.transform.GetChild(1).GetComponent<Image>().color = Color.white;
-                //LeanTween.moveLocal(_rifleImg.gameObject, new Vector3(-117, 0, 0), 0.1f);
-                //LeanTween.moveLocalY(_rifleImg.gameObject, 80, 0.1f);
-                LeanTween.moveY(_rifleImg.gameObject, 85, 0.1f);
+                LeanTween.moveLocalY(_rifleImg.gameObject, 90, 0.1f);
                 LeanTween.scale(_rifleImg.gameObject, Vector3.one, 0.1f);
             }
         }
@@ -524,7 +520,7 @@ public class UIManager : MonoBehaviour
         if (_secondryWeaponAmmo == 0 || m_movingAgent.GetSecondaryWeapon() == null)
         {
             _pistolImg.transform.GetChild(1).GetComponent<Image>().color = Color.black;
-            LeanTween.moveY(_pistolImg.gameObject, 85, 0.2f);
+            LeanTween.moveLocalY(_pistolImg.gameObject, 90, 0.1f);
             LeanTween.scale(_pistolImg.gameObject, Vector3.one, 0.3f);
         }
         else
@@ -532,15 +528,13 @@ public class UIManager : MonoBehaviour
             if (m_movingAgent.GetSecondaryWeapon() == m_movingAgent.getCurrentWeapon())
             {
                 _pistolImg.transform.GetChild(1).GetComponent<Image>().color = Color.yellow;
-                //LeanTween.moveLocal(_pistolImg.gameObject, new Vector3(-100, 35, 0f), 0.2f);
-                LeanTween.moveY(_pistolImg.gameObject, 100, 0.2f);
+                LeanTween.moveLocalY(_pistolImg.gameObject, 100, 0.1f);
                 LeanTween.scale(_pistolImg.gameObject, new Vector3(1.4f, 1.4f, 1f), 0.2f);
             }
             else
             {
                 _pistolImg.transform.GetChild(1).GetComponent<Image>().color = Color.white;
-                //LeanTween.moveLocal(_pistolImg.gameObject, new Vector3(-117, 0, 0), 0.1f);
-                LeanTween.moveY(_pistolImg.gameObject, 85, 0.2f);
+                LeanTween.moveLocalY(_pistolImg.gameObject, 90, 0.1f);
                 LeanTween.scale(_pistolImg.gameObject, Vector3.one, 0.1f);
             }
         }
