@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AgentItemFinder
 {
-    public static Interactable findNearItem(Vector3 currentPosition)
+    public static Interactable findNearItem(Vector3 currentPosition, bool isPlayer)
     {
         Collider[] nearObjects = Physics.OverlapSphere(currentPosition, 1.4f);
         List<Interactable> pickableObjects = new List<Interactable>();
@@ -15,7 +15,12 @@ public class AgentItemFinder
             
             if(interactableObject && interactableObject.properties.interactionEnabled && nearObject.tag == "Item")
             {
-                pickableObjects.Add(interactableObject);
+                bool appropriate = !isPlayer | !interactableObject.properties.PlayerRestricted;
+                if(appropriate)
+                {
+                    pickableObjects.Add(interactableObject);
+                }
+               
             }
         }
         return findTheNearst(pickableObjects,currentPosition);

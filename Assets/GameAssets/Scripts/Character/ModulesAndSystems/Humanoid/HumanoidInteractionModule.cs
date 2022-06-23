@@ -97,6 +97,11 @@ public class HumanoidInteractionModule
                     {
                         interactionID = -2;
                     }
+
+                    if(m_agent.isHidden())
+                    {
+                        m_agent.toggleHide();
+                    }
                     //yield return onPickup(interactable,0);
                     //m_animationModule.triggerPickup(interactionID);
 
@@ -119,14 +124,26 @@ public class HumanoidInteractionModule
                     }
                     break;
                 case Interactable.InteractableProperties.InteractableType.TimedInteraction:
+                    if(m_agent.isHidden())
+                    {
+                        m_agent.toggleHide();
+                    }
                     yield return onTimedInteraction(interactable);
                     
                     break;
                 case Interactable.InteractableProperties.InteractableType.ContinousInteraction:
+                    if(m_agent.isHidden())
+                    {
+                        m_agent.toggleHide();
+                    }
                     yield return onContinousInteraction(interactable);
                     
                     break;
                 case Interactable.InteractableProperties.InteractableType.DialogInteraction:
+                    if(m_agent.isHidden())
+                    {
+                        m_agent.toggleHide();
+                    }
                     yield return DialogInteraction(interactable);
                     
                     break;

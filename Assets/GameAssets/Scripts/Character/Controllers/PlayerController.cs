@@ -126,7 +126,7 @@ public class PlayerController : AgentController
             else
             {
                 m_movingAgent.stopAiming();
-                m_movingAgent.Interact();
+                m_movingAgent.Interact(true);
                 m_movingAgent.StopMovment();
             }
         }
@@ -407,7 +407,7 @@ public class PlayerController : AgentController
             cp.setCoverHighlightStatus(false);
             if (Vector3.Distance(cp.transform.position,this.transform.position)<2f && m_movingAgent.getMovmentDirection() == Vector3.zero)
             {
-                if(!m_movingAgent.isHidden())
+                if(!m_movingAgent.isHidden() & !m_movingAgent.isInteracting())
                 {
                     m_movingAgent.toggleHide();
                 }
