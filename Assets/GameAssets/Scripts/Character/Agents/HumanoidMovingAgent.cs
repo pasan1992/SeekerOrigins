@@ -167,9 +167,9 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
         m_interactionModule.SkipDialog();
     }
-    public void Interact()
+    public void Interact(bool isPlayer)
     {
-        Interactable obj = AgentItemFinder.findNearItem(getCurrentPosition());
+        Interactable obj = AgentItemFinder.findNearItem(getCurrentPosition(),isPlayer);
         
         if(obj)
         {

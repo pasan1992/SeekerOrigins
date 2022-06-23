@@ -21,6 +21,7 @@ public class Interactable : MonoBehaviour
         public bool enablePositionRequirment = true;
         public bool placeObjectInHand = false;
         public Transform actualObject = null;
+        public bool PlayerRestricted = false;
     }
 
     [System.Serializable]

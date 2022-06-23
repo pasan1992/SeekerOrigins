@@ -583,7 +583,7 @@ public class UIManager : MonoBehaviour
             ItemStatUI.setVisibility(false);
         }
 
-        m_currentInteractable = AgentItemFinder.findNearItem(playerTransfrom.position);
+        m_currentInteractable = AgentItemFinder.findNearItem(playerTransfrom.position,true);
 
         if(m_currentInteractable)
         {
