@@ -9025,6 +9025,8 @@ MonoBehaviour:
     primaryWeapon: {fileID: 8983508029485851418}
     secondaryWeapon: {fileID: 6084180398861735201}
     grenade: {fileID: 3274647324356188763}
+    HealInjectionCount: 1
+    HealPerInjection: 20
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
@@ -9051,6 +9053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 13
+  KeepOnDestory: 0
   currentAvatar: {fileID: 448389647795680780}
   avatar: []
 --- !u!82 &2350173853212006916
@@ -47357,6 +47360,7 @@ MonoBehaviour:
   fireTexture: {fileID: 2800000, guid: 9799d51f1d5dfd0488e3fc7334c636b0, type: 3}
   onTargetFire: {fileID: 2800000, guid: 297d5b9af3f27a444a5ffe17b58b190c, type: 3}
   reloadTexture: {fileID: 2800000, guid: 7e10d78fcd35f8342962bceff234d670, type: 3}
+  TargetWithAmmoCount: []
   cursorMode: 0
   hotSpot: {x: 17, y: 17}
   ui_curser: {fileID: 2609637687087158508}
@@ -47559,7 +47563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7692644665940709418}
   m_LocalRotation: {x: 0, y: -0.7040147, z: 0, w: 0.71018535}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalPosition: {x: -54.6, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7692644663970490622}
@@ -57867,6 +57871,7 @@ MonoBehaviour:
   m_magazineSize: 12
   full_auto: 0
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!114 &8786449414727665849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59139,6 +59144,7 @@ MonoBehaviour:
   m_magazineSize: 30
   full_auto: 0
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!114 &7701987919221956721
 MonoBehaviour:
   m_ObjectHideFlags: 0
