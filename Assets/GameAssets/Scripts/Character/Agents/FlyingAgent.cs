@@ -71,7 +71,6 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public void Start()
     {
         m_damageModule= new DroneDamageModule(m_agentData, this.GetComponentInChildren<Outline>(), DestroyCharacter,this.transform);
-        //disableDrone();
     }
 
     #region update

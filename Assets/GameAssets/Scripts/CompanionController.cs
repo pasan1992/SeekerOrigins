@@ -327,6 +327,7 @@ public class CompanionController : AgentController
     public override void OnAgentDestroy()
     {
         base.OnAgentDestroy();
+        EnvironmentSound.Instance.removeListen(onSoundAlert);
         m_navMeshAgent.enabled = false;
 
         if (m_currentState == m_combatStage)
