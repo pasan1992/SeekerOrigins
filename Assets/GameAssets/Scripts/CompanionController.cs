@@ -54,6 +54,7 @@ public class CompanionController : AgentController
         // Register Events
         m_visualSensor.setOnEnemyDetectionEvent(onEnemyDetection);
         m_visualSensor.setOnAllClear(onAllClear);
+        m_visualSensor.enable_allclear=true;
         m_companionAgent.setOnDamagedCallback(onDamaged);
         m_companionAgent.setOnDestoryCallback(OnAgentDestroy);
         m_followingTarget.setOnDamagedCallback(onDamaged);
@@ -222,7 +223,6 @@ public class CompanionController : AgentController
 
     public void onAllClear()
     {
-        Debug.LogError("On CLEARN DISABLED");
         if(m_onForceAlert)
         {
             m_combatStage.setTargets(null);

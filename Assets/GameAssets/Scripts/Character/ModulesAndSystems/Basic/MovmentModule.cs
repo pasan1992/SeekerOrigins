@@ -18,8 +18,6 @@ public class MovmentModule
     public virtual void UpdateMovment(int characterMovmentState, Vector3 movmentDirection)
     {
         m_movmentType = (BASIC_MOVMENT_STATE)characterMovmentState;
-        Debug.Log(m_target);
-        Debug.Log(m_movmentType);
 
         switch (m_movmentType)
         {
@@ -29,7 +27,6 @@ public class MovmentModule
                     Vector3 lookPosition = new Vector3(m_target.transform.position.x, this.m_characterTransform.position.y, m_target.transform.position.z);
                     m_lookPosition = Vector3.Lerp(m_lookPosition, lookPosition, 0.05f);
                     m_characterTransform.LookAt(m_lookPosition, Vector3.up);
-                    Debug.Log(m_target.transform.position);
                 }
                 break;
             case BASIC_MOVMENT_STATE.DIRECTIONAL_MOVMENT:

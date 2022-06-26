@@ -12,7 +12,7 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
     GameEvents.BasicNotifactionEvent onAllClear;
 
     private float allClearCount = 0;
-    private float maximummAllClearCount = 50;
+    private float maximummAllClearCount = 20;
 
 
     public static string[] layerMaskNames ={"FullCOverObsticles","HalfCoverObsticles","Floor", "IgnoreNavMesh"};
@@ -42,6 +42,8 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
 
     // Idle state paramteres
     private float look_angle;
+
+    public bool enable_allclear = false;
 
     private HashSet<ICyberAgent> m_rememberEnemyList = new HashSet<ICyberAgent>();
     
@@ -230,6 +232,11 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
                 //onEnemyDetection(m_fakeAgent);
                 //allClearCount = 0;
                 //eye_pos_obj.transform.position = m_fakeAgent.getTopPosition();
+                if(enable_allclear)
+                {
+                    allClearCount +=1;
+                    Debug.Log(allClearCount);
+                }
 
             }
             else
@@ -241,6 +248,11 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
                 //onEnemyDetection(m_fakeAgent);
                 //allClearCount = 0;
                 //eye_pos_obj.transform.position = m_fakeAgent.getTopPosition();
+                if(enable_allclear)
+                {
+                    allClearCount +=1;
+                    Debug.Log(allClearCount);
+                }
             }
         }
         else
