@@ -11,6 +11,7 @@ public class DialogInteratable : Interactable
     [System.Serializable]
     public class DialogStatment
     {
+        public float startWaitTime;
         public string text;
         public AudioClip audio;
         public string charName;
@@ -18,19 +19,18 @@ public class DialogInteratable : Interactable
         public DialogActions action = DialogActions.No_Action;
     }
 
+    public bool disableOnEnd = false;
     public List<DialogStatment> Dialogs;
+    public AudioSource m_audioSource;
+    public Animator m_animator;
+
     private int m_nextDialogID = 0;
     private DialogStatment m_currentDialog;
-
     private float m_currentDialogTime = 0;
-
-    private AudioSource m_audioSource;
-
-    public Animator m_animator;
 
     public void Start()
     {
-        m_audioSource = this.GetComponent<AudioSource>();
+        //m_audioSource = m_audioSource ? this.GetComponent<AudioSource>() : m_audioSource;
     }
 
     private bool getNextDialog()
@@ -56,10 +56,11 @@ public class DialogInteratable : Interactable
     {
         while(getNextDialog())
         {
-            DialogTextPanel.getInstance().setText(m_currentDialog.charName + ": " + m_currentDialog.text);
+            //DialogTextPanel.getInstance().setText(m_currentDialog.charName + ": " + m_currentDialog.text);
             m_currentDialogTime=0;
             if(m_currentDialog.audio !=null)
             {
+                yield return new WaitForSeconds(m_currentDialog.startWaitTime);
                 m_audioSource.PlayOneShot(m_currentDialog.audio);
             }
             if(m_animator != null)
@@ -77,7 +78,11 @@ public class DialogInteratable : Interactable
                 m_currentDialogTime += Time.deltaTime;
             }
         }
-        DialogTextPanel.getInstance().setText("");
+        
+        this.properties.interactionEnabled = disableOnEnd? false : true;
+        this.enabled = disableOnEnd? false : true;
+        gameObject.GetComponent<Interactable>().enabled = disableOnEnd ? true : false;
+        //DialogTextPanel.getInstance().setText("");
         m_nextDialogID = 0;
     }
 
