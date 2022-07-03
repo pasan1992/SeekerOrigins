@@ -383,6 +383,10 @@ public class PlayerController : AgentController
 
     private void Update()
     {
+        if(!m_enabled)
+        {
+            return;
+        }
         controllerUpdate();
         //CoverFinder();
 
