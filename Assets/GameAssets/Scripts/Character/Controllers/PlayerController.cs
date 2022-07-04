@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(HumanoidMovingAgent))]
 public class PlayerController : AgentController
 {
-    private bool m_enabled;
+    private bool m_enabled = true;
     protected HumanoidMovingAgent m_movingAgent;
 
     private LayerMask enemyHitLayerMask;
