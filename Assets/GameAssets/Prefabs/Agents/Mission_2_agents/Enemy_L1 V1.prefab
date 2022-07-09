@@ -64,6 +64,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
         type: 3}
+      propertyPath: AgentData.AgentNature
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
       propertyPath: AgentData.VisualDistance
       value: 17
       objectReference: {fileID: 0}
@@ -71,6 +76,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AgentData.max_Sound_hearing_distance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 69886451426456258, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
+      propertyPath: particleEffectOnDamage
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 69886451426456263, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
         type: 3}
