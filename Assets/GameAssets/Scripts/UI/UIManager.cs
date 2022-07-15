@@ -579,7 +579,7 @@ public class UIManager : MonoBehaviour
     {
         if(m_currentInteractable)
         {
-            m_currentInteractable.setOutLineState(false);
+            m_currentInteractable.setOutLineState(Interactable.outLineState.white);
             ItemStatUI.setVisibility(false);
         }
 
@@ -588,7 +588,7 @@ public class UIManager : MonoBehaviour
         if(m_currentInteractable)
         {
             //lootText.setInteratableObject(m_currentInteractable);
-            m_currentInteractable.setOutLineState(true);
+            m_currentInteractable.setOutLineState(Interactable.outLineState.Blue);
             _lootText.text = m_currentInteractable.name + ": Press E to Interact";
             //lootText.text = m_currentInteractable.name + ": Press E to Interact";
 

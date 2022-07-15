@@ -104,6 +104,8 @@ public class DamageModule
                 {
                     m_basicData.Sheild = m_basicData.MaxSheild;
                 }
+
+                if(m_outLine)
                 m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
             }
         }

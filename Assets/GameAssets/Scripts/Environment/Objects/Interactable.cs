@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     {
 
         public enum InteractableType {FastInteraction,PickupInteraction,TimedInteraction,ContinousInteraction,DialogInteraction,NullInteraction}
-        public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8,Making=9, Walking_Jump=10,Prayer1=11,Anger=12,Prayer2=13, NotSpecified = -99}
+        public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8,Making=9, Walking_Jump=10,Prayer1=11,Anger=12,Prayer2=13,Typing=14, NotSpecified = -99}
         public InteractableType Type = InteractableType.PickupInteraction;
         public bool interactionEnabled = false;
         public string itemName = "";
@@ -64,10 +64,12 @@ public class Interactable : MonoBehaviour
     }
     }
 
+    public enum outLineState {Disabled,white,Blue};
+
     public virtual void Awake()
     {
         m_outLine = this.GetComponent<Outline>();
-        setOutLineState(false);
+        setOutLineState(outLineState.white);
         
         if(properties.actualObject != null)
         {
@@ -85,13 +87,14 @@ public class Interactable : MonoBehaviour
     {
         properties.interactionEnabled = false;
         this.gameObject.SetActive(false);
-        setOutLineState(false);
+        setOutLineState(outLineState.Disabled);
     }
 
     public virtual void OnEquipAction()
     {
         properties.interactionEnabled = false;
-        setOutLineState(false);
+        setOutLineState(outLineState.Disabled);
+        
     }
     
     public virtual void OnPlaceOnHoster()
@@ -108,22 +111,31 @@ public class Interactable : MonoBehaviour
     {
         properties.interactionEnabled = true;
         interacting = false;
-        setOutLineState(true);
+        setOutLineState(outLineState.white);
     }
 
-    public virtual void setOutLineState(bool state)
+    public virtual void setOutLineState(outLineState state)
     {
+        if(!properties.interactionEnabled)
+        {
+            state = outLineState.Disabled;
+        }   
+
         if(m_outLine)
         {
-            if(state)
+            switch(state)
             {
-                m_outLine.OutlineWidth = 0.7F;
-                m_outLine.OutlineColor = Color.blue;
-            }
-            else
-            {
-                m_outLine.OutlineWidth = 0.2f;
-                m_outLine.OutlineColor = Color.white;
+                case outLineState.Disabled:
+                    m_outLine.OutlineWidth = 0;
+                break;
+                case outLineState.white:
+                        m_outLine.OutlineWidth = 0.2f;
+                        m_outLine.OutlineColor = Color.white;
+                break;
+                case outLineState.Blue:
+                        m_outLine.OutlineWidth = 0.7f;
+                        m_outLine.OutlineColor = Color.blue;
+                break;
             }
             
         }
