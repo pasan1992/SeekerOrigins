@@ -101,6 +101,10 @@ public class PlayerController : AgentController
                     {
                         m_movingAgent.skipInteraction();
                     }
+                    else if(int_type == Interactable.InteractableProperties.InteractableType.FixedContinousInteraction)
+                    {
+                        // pass, player cannot cancle it from outside
+                    }
                     else
                     {
                         m_movingAgent.cancleInteraction();

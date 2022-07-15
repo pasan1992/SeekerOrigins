@@ -132,6 +132,7 @@ public class HumanoidInteractionModule
                     
                     break;
                 case Interactable.InteractableProperties.InteractableType.ContinousInteraction:
+                case Interactable.InteractableProperties.InteractableType.FixedContinousInteraction:
                     if(m_agent.isHidden())
                     {
                         m_agent.toggleHide();
