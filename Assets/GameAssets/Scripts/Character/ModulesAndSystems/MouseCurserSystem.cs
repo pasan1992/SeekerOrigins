@@ -12,7 +12,7 @@ public class MouseCurserSystem : MonoBehaviour
     public Texture2D onTargetFire;
     public Texture2D reloadTexture;
     public List<Texture2D> TargetWithAmmoCount;
-    public CursorMode cursorMode = CursorMode.Auto;
+    public CursorMode cursorMode = CursorMode.ForceSoftware;
     public Vector2 hotSpot = Vector2.zero;
 
     private static MouseCurserSystem mouseSystem;

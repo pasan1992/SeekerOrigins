@@ -135,7 +135,8 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
             {
                 if(isArmed() && (type == Interactable.InteractableProperties.InteractableType.ContinousInteraction 
                     || type == Interactable.InteractableProperties.InteractableType.TimedInteraction || 
-                    type == Interactable.InteractableProperties.InteractableType.DialogInteraction) )
+                    type == Interactable.InteractableProperties.InteractableType.DialogInteraction
+                    || type == Interactable.InteractableProperties.InteractableType.FixedContinousInteraction) )
                 {
                     m_interactionModule.setPreviousWeapon();
                     hosterWeapon();

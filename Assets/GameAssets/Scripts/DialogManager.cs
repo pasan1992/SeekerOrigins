@@ -25,6 +25,7 @@ public class DialogManager : MonoBehaviour
 
     public GameEvents.BasicNotifactionEvent onDialogEndCallback;
     public TMP_Text DialogText;
+    public TMP_Text ObjectiveText;
 
     private bool pause = false;
     void Awake()
@@ -58,6 +59,11 @@ public class DialogManager : MonoBehaviour
         }
     }
 
+    public void SetObjectiveText(string text)
+    {
+        ObjectiveText.text = text;
+    }
+
     public void StartDialog(DialogStatment[] dialogList, GameEvents.BasicNotifactionEvent endCallback)
     {
         currentDialog = null;
@@ -84,6 +90,7 @@ public class DialogManager : MonoBehaviour
             if(onDialogEndCallback !=null)
             {
                 onDialogEndCallback();
+                DialogText.text = "";
                 onDialogEndCallback = null;
             }
             return;
