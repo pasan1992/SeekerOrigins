@@ -10,6 +10,7 @@ public class ClearEnemyAction : FsmStateAction
 {
     private DamagableObject[] m_enemyAgents;
     private int destroyedEnemyCount = 0;
+    private int fullEnemyCount = 0;
     public GameObject EnemySet;
     public FsmEvent finishEvent;
     public override void OnEnter()
@@ -22,6 +23,7 @@ public class ClearEnemyAction : FsmStateAction
             var agent_cont = agent.getTransfrom().GetComponent<AgentController>();
             if(agent_cont!=null)
             {
+                fullEnemyCount +=1;
                 agent_cont.RemoveRestrictions();
             }
         }
@@ -30,7 +32,7 @@ public class ClearEnemyAction : FsmStateAction
     public void onUnitDestory()
     {
         destroyedEnemyCount += 1;
-        if(destroyedEnemyCount == m_enemyAgents.Length)
+        if(destroyedEnemyCount >= fullEnemyCount)
         {
             Fsm.Event(finishEvent);
             Finish();
