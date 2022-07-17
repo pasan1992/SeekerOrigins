@@ -8,7 +8,7 @@ namespace HutongGames.PlayMaker.Actions
 
 public class ClearEnemyAction : FsmStateAction
 {
-    public DamagableObject[] m_enemyAgents;
+    private DamagableObject[] m_enemyAgents;
     private int destroyedEnemyCount = 0;
     private int fullEnemyCount = 0;
     public GameObject EnemySet;
