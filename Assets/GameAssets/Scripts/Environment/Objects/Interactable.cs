@@ -69,6 +69,10 @@ public class Interactable : MonoBehaviour
     public virtual void Awake()
     {
         m_outLine = this.GetComponent<Outline>();
+        if(m_outLine ==null)
+        {
+            m_outLine = this.GetComponentInChildren<Outline>();
+        }
         setOutLineState(outLineState.white);
         
         if(properties.actualObject != null)
