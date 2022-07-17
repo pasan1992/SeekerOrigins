@@ -238,13 +238,9 @@ public class DamageCalculator
             }
             if(importantHit)
             {
-                Debug.Log("Important hit");
-                Debug.Log(hit.collider.gameObject.name);
                 break;
             }
         }
-        Debug.Log("Other hit");
-        Debug.Log(hit.collider.gameObject.name);
         return acualHit;
         
     }
