@@ -8,11 +8,14 @@ namespace HutongGames.PlayMaker.Actions
 
 public class ClearEnemyAction : FsmStateAction
 {
-    private DamagableObject[] m_enemyAgents;
+    public DamagableObject[] m_enemyAgents;
     private int destroyedEnemyCount = 0;
     private int fullEnemyCount = 0;
     public GameObject EnemySet;
     public FsmEvent finishEvent;
+
+    private bool m_started = false;
+
     public override void OnEnter()
     {
         m_enemyAgents = EnemySet.GetComponentsInChildren<DamagableObject>();
@@ -25,6 +28,30 @@ public class ClearEnemyAction : FsmStateAction
             {
                 fullEnemyCount +=1;
                 agent_cont.RemoveRestrictions();
+            }
+        }
+        m_started = true;
+    }
+
+    public override void OnUpdate()
+    {
+        if(m_started)
+        {
+            bool agent_exist = false;
+            foreach(var agent in m_enemyAgents)
+            {
+                if(!agent.isDestroyed())
+                {
+                    Debug.Log(agent.getRemaningHealth());
+                    agent_exist = true;
+                    break;
+                }
+            }
+
+            if(!agent_exist)
+            {
+                Fsm.Event(finishEvent);
+                Finish();                
             }
         }
     }
