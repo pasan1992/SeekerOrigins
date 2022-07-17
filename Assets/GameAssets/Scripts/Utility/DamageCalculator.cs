@@ -238,9 +238,13 @@ public class DamageCalculator
             }
             if(importantHit)
             {
+                Debug.Log("Important hit");
+                Debug.Log(hit.collider.gameObject.name);
                 break;
             }
         }
+        Debug.Log("Other hit");
+        Debug.Log(hit.collider.gameObject.name);
         return acualHit;
         
     }
@@ -254,12 +258,15 @@ public class DamageCalculator
 
         // Give offset to starting postion to avoid bullets colliding in own covers
         Vector3 offsetTargetPositon = startPositon - (targetPositon - startPositon).normalized/2;
-        if (Physics.Raycast(offsetTargetPositon, targetPositon - startPositon, out hit, 100, LayerMask.GetMask(layerMaskNames)))
+        if (Physics.Raycast(offsetTargetPositon, targetPositon - startPositon, out hit, 2, LayerMask.GetMask(layerMaskNames)))
         {
             switch (hit.transform.tag)
             {
                 
                 case "Wall":
+                case "Environment":
+                case "IgnoreNavMesh":
+                    Debug.Log("Close Hit");
                     actualHit = hit;
                     return true;  
             }

@@ -83,6 +83,11 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        setOutLineState(outLineState.white);
+    }
+
     public virtual void OnPickUpAction()
     {
         properties.interactionEnabled = false;
@@ -129,11 +134,11 @@ public class Interactable : MonoBehaviour
                     m_outLine.OutlineWidth = 0;
                 break;
                 case outLineState.white:
-                        m_outLine.OutlineWidth = 0.2f;
+                        m_outLine.OutlineWidth = 0.9f;
                         m_outLine.OutlineColor = Color.white;
                 break;
                 case outLineState.Blue:
-                        m_outLine.OutlineWidth = 0.7f;
+                        m_outLine.OutlineWidth = 0.9f;
                         m_outLine.OutlineColor = Color.blue;
                 break;
             }
