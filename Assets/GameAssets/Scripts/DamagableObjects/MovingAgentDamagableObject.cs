@@ -18,12 +18,29 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
     
     public bool KeepOnDestory = false;
 
+
+    private Outline m_outline;
+
     public void Awake()
     {
         m_movingAgent = this.GetComponent<ICyberAgent>();
         m_audioSource = this.GetComponent<AudioSource>();
         m_soundManager = GameObject.FindObjectOfType<SoundManager>();
         m_objectUI = this.GetComponent<ObjectUI>();
+        m_outline = this.GetComponentInChildren<Outline>();
+        StartCoroutine(waitAndEnable());
+    }
+
+    IEnumerator waitAndEnable()
+    {
+        if(m_outline)
+        {
+            m_outline.enabled = false;
+            yield return new WaitForSeconds(6);
+            m_outline.enabled = true;
+        }
+        
+
     }
     public virtual bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction)
     {
