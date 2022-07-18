@@ -76,3 +76,5 @@ MonoBehaviour:
   - PLYER_DEAD
   - DONE_CYLINDER
   - ST03_DONE
+  - TOP_CLEARED
+  - BOTTOM_CLEARED
