@@ -333,7 +333,7 @@ public class HumanoidInteractionModule
         Transform transform = m_movementModule.getCharacterTransfrom();
 
         // Place agent in the intaraction position.
-        while((Vector3.Distance(transform.position,intendedPosition) > 0.3f ||
+        while((Vector3.Distance(transform.position,intendedPosition) > 0.01f ||
          Mathf.Abs(intentedRotation.eulerAngles.y - transform.rotation.eulerAngles.y) > 5f) &&
          m_interacting)
         {
@@ -384,7 +384,7 @@ public class HumanoidInteractionModule
         Transform transform = m_movementModule.getCharacterTransfrom();
 
         // Place agent in the intaraction position.
-        while((Vector3.Distance(transform.position,intendedPosition) > 0.3f ||
+        while((Vector3.Distance(transform.position,intendedPosition) > 0.01f ||
          Mathf.Abs(intentedRotation.eulerAngles.y - transform.rotation.eulerAngles.y) > 5f) &&
          m_interacting)
         {
@@ -424,7 +424,7 @@ public class HumanoidInteractionModule
         Transform transform = m_movementModule.getCharacterTransfrom();
 
         // Place agent in the interaction position
-        while((Vector3.Distance(transform.position,intendedPosition) > 0.3f || 
+        while((Vector3.Distance(transform.position,intendedPosition) > 0.01f || 
         Mathf.Abs(intentedRotation.eulerAngles.y - transform.rotation.eulerAngles.y) > 5f) &&
         m_interacting && interactableObj.properties.enablePositionRequirment)
         {

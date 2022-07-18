@@ -78298,13 +78298,13 @@ MonoBehaviour:
     behaviorStatus: 0
     WeaponAmmo:
     - AmmoType: PistolAmmo
-      AmmoCount: 36
+      AmmoCount: 90
     - AmmoType: RifleAmmo
       AmmoCount: 20
     - AmmoType: Mag
       AmmoCount: 10
     - AmmoType: Missile
-      AmmoCount: 3
+      AmmoCount: 0
     drop_reward: 1
   AgentComponents:
     weaponAimTransform: {fileID: 3099284218228644232}
