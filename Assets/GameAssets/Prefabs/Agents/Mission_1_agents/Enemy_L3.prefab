@@ -16711,7 +16711,7 @@ Transform:
   m_Children:
   - {fileID: 2525044560365119802}
   m_Father: {fileID: 2524972572732181270}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2522198320564179056
 GameObject:
@@ -18214,7 +18214,7 @@ Transform:
   m_Children:
   - {fileID: 2524916857037956632}
   m_Father: {fileID: 2524972572732181270}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2522450551755785232
 GameObject:
@@ -18245,7 +18245,7 @@ Transform:
   m_Children:
   - {fileID: 2524998305005813744}
   m_Father: {fileID: 2524972572732181270}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2522472730118265534
 GameObject:
@@ -19097,9 +19097,7 @@ MonoBehaviour:
   m_restrictions: 0
   target: {fileID: 0}
   preferedWeapon: 0
-  CanDodge: 1
   rutine: {fileID: 6021325208775149694}
-  max_Sound_hearing_distance: 30
 --- !u!114 &2523621043491332743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19752,6 +19750,11 @@ MonoBehaviour:
     Skill: 0.3
     VisualDistance: 10
     VisualAngle: 90
+    max_Sound_hearing_distance: 5
+    CanDodge: 0
+    ThrowGrenade: 0
+    FireRocket: 0
+    RocketPack: {fileID: 0}
     maxHealth: 20
     MaxSheild: 0
     Regen: 0
@@ -19761,6 +19764,8 @@ MonoBehaviour:
     primaryWeapon: {fileID: 5838230017868944927}
     secondaryWeapon: {fileID: 4981635612706719318}
     grenade: {fileID: 0}
+    HealInjectionCount: 1
+    HealPerInjection: 20
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
@@ -19879,6 +19884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 13
+  KeepOnDestory: 0
   currentAvatar: {fileID: 2523080822833678774}
   avatar: []
 --- !u!114 &2522777192647978154
@@ -23006,6 +23012,7 @@ Transform:
   m_LocalPosition: {x: -0.27114528, y: 0, z: -0.00038136425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2846756054954848659}
   - {fileID: 2528136948863491570}
   - {fileID: 2525247466855630076}
   - {fileID: 2524876155244422112}
@@ -23970,6 +23977,7 @@ MonoBehaviour:
     enablePositionRequirment: 1
     placeObjectInHand: 0
     actualObject: {fileID: 0}
+    PlayerRestricted: 0
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
@@ -23992,6 +24000,7 @@ MonoBehaviour:
   m_magazineSize: 12
   full_auto: 0
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!114 &4051857463535490110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39487,6 +39496,52 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &6104479064099178998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2846756054954848659}
+  - component: {fileID: 8549011223855196210}
+  m_Layer: 9
+  m_Name: WeaponHoldPoistion (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2846756054954848659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104479064099178998}
+  m_LocalRotation: {x: 0.5123714, y: 0.5330776, z: 0.47428232, w: 0.4778704}
+  m_LocalPosition: {x: -0.062, y: -0.027, z: 0.005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 803507749155614116}
+  m_Father: {fileID: 2524972572732181270}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8549011223855196210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104479064099178998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7d63b802ab71c47865cf8867592c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponLocationType: 3
+  PropEnabled: 0
 --- !u!1 &6806251097116756389
 GameObject:
   m_ObjectHideFlags: 0
@@ -39661,6 +39716,7 @@ MonoBehaviour:
     enablePositionRequirment: 1
     placeObjectInHand: 0
     actualObject: {fileID: 0}
+    PlayerRestricted: 0
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
@@ -39683,6 +39739,7 @@ MonoBehaviour:
   m_magazineSize: 30
   full_auto: 1
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!82 &5579288912413653833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -40143,6 +40200,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &8084114428944377473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803507749155614116}
+  m_Layer: 9
+  m_Name: WeaponAimTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &803507749155614116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084114428944377473}
+  m_LocalRotation: {x: 0.043480348, y: -0.03406496, z: 0.05567386, w: -0.99692}
+  m_LocalPosition: {x: 0.045412667, y: 0.13667382, z: 0.30837664}
+  m_LocalScale: {x: 1.0336162, y: 1.0333349, z: 0.96778244}
+  m_Children: []
+  m_Father: {fileID: 2846756054954848659}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8249262094341196741
 GameObject:
   m_ObjectHideFlags: 0

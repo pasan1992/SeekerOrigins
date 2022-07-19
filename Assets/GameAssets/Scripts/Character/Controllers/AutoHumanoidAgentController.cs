@@ -18,6 +18,7 @@ public class AutoHumanoidAgentController :  AgentController
     protected HumanoidAgentBasicVisualSensor m_visualSensor;
     protected NavMeshAgent m_navMeshAgent;
 
+    public bool PetrolArmed = false;
 
     // private GameObject selfCoverPoint;
     //public float health;
@@ -49,6 +50,11 @@ public class AutoHumanoidAgentController :  AgentController
         m_movingAgent.setOnDamagedCallback(onDamaged);
         m_currentState = m_idleStage;
         EnvironmentSound.Instance.listenToSound(onSoundAlert);
+
+        if(PetrolArmed)
+        {
+            armWeapon();
+        }
     }
 
     public void forceStart()
@@ -288,6 +294,19 @@ public class AutoHumanoidAgentController :  AgentController
             m_currentState = m_combatStage;
         }
         
+    }
+
+    private void armWeapon()
+    {
+        switch (preferedWeapon)
+        {
+            case AutoHumanoidAgentController.WeaponType.PRIMARY:
+                ((HumanoidMovingAgent)m_movingAgent).togglePrimaryWeapon();
+                break;
+            case AutoHumanoidAgentController.WeaponType.SECONDAY:
+                ((HumanoidMovingAgent)m_movingAgent).togglepSecondaryWeapon();
+                break;
+        }             
     }
 
     private IEnumerator switchFromCombatStageToIteractionStage()

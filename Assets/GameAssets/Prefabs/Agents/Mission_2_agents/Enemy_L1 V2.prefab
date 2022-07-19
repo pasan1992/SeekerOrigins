@@ -52,6 +52,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3110480197942281923, guid: f5ce7bbf77b1e9243982e2b5a556edc0,
         type: 3}
+      propertyPath: gunMuzzle
+      value: 
+      objectReference: {fileID: 3480936077942254901}
+    - target: {fileID: 3110480197942281923, guid: f5ce7bbf77b1e9243982e2b5a556edc0,
+        type: 3}
       propertyPath: accuracy_rating
       value: 55
       objectReference: {fileID: 0}
@@ -475,3 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a813352f60d8c0a4086adf8a99d69cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &3480936077942254901 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 105976634213836419, guid: f5ce7bbf77b1e9243982e2b5a556edc0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3546098466853243830}
+  m_PrefabAsset: {fileID: 0}

@@ -128,15 +128,20 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
     public void initalizeStage(AutoHumanoidAgentController.WeaponType type)
     {
         base.initalizeStage();
-        switch (type)
+        
+        if(!m_selfAgent.isArmed())
         {
-            case AutoHumanoidAgentController.WeaponType.PRIMARY:
-                ((HumanoidMovingAgent)m_selfAgent).togglePrimaryWeapon();
-                break;
-            case AutoHumanoidAgentController.WeaponType.SECONDAY:
-                ((HumanoidMovingAgent)m_selfAgent).togglepSecondaryWeapon();
-                break;
-        }    
+            switch (type)
+            {
+                case AutoHumanoidAgentController.WeaponType.PRIMARY:
+                    ((HumanoidMovingAgent)m_selfAgent).togglePrimaryWeapon();
+                    break;
+                case AutoHumanoidAgentController.WeaponType.SECONDAY:
+                    ((HumanoidMovingAgent)m_selfAgent).togglepSecondaryWeapon();
+                    break;
+            }          
+        }
+   
         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
     }
 
