@@ -82,13 +82,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
         type: 3}
+      propertyPath: AgentData.Skill
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
+      propertyPath: AgentData.CanDodge
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
       propertyPath: AgentData.AgentNature
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
         type: 3}
+      propertyPath: AgentData.VisualAngle
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
       propertyPath: AgentData.VisualDistance
-      value: 17
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 69886451426456252, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
         type: 3}
@@ -364,6 +379,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410864591502989375, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
+      propertyPath: fireRate
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410864591502989375, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
+      propertyPath: m_magazineSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410864591502989375, guid: 5fcec5e7e5824ac4ba7f237395e37f53,
+        type: 3}
+      propertyPath: accuracy_rating
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fcec5e7e5824ac4ba7f237395e37f53, type: 3}
