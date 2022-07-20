@@ -225,7 +225,7 @@ PrefabInstance:
     - target: {fileID: 5552695272678963798, guid: c2bbcbdf8110fed41b7f9e37812fd796,
         type: 3}
       propertyPath: m_Name
-      value: Common
+      value: Common Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5756133208110580072, guid: c2bbcbdf8110fed41b7f9e37812fd796,
         type: 3}
