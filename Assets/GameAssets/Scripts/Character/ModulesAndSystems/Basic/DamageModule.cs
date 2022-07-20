@@ -9,6 +9,7 @@ public class DamageModule
     protected AgentBasicData m_basicData;
 
     private float damaged_count;
+    private GameEvents.BasicNotifactionEvent m_onHeal;
 
     public DamageModule(AgentBasicData basicData,OnDestoryDeligate onDestroyCallback,Outline outline)
     {
@@ -53,7 +54,7 @@ public class DamageModule
 
     public void DamageByAmount(float amount)
     {
-        damaged_count = 5;
+        damaged_count = m_basicData.HealthRegenWait;
         setDamageText(amount,m_basicData.getAgentTransform().position,Color.yellow);
 
         if (m_basicData.Health == 0)
@@ -88,6 +89,38 @@ public class DamageModule
     }
 
     public virtual void update()
+    {
+        regen_sheid();
+        regen_health();
+    }
+
+    private void regen_health()
+    {
+         damaged_count -= Time.deltaTime;
+        if(damaged_count < 0)
+        {
+            damaged_count = 0;
+        }
+
+        if(true)
+        {
+            if(damaged_count < m_basicData.HealthRegenWait/2)
+            {
+                m_basicData.Health += Time.deltaTime * m_basicData.HealthRegen * ( (m_basicData.HealthRegenWait - damaged_count)/m_basicData.HealthRegenWait);
+                if(m_basicData.Health > m_basicData.MaxHealth)
+                {
+                    m_basicData.Health = m_basicData.MaxHealth;
+                }
+
+                if(m_onHeal !=null)
+                {
+                    m_onHeal();
+                }
+            }
+        }       
+    }
+
+    private void regen_sheid()
     {
         damaged_count -= Time.deltaTime*m_basicData.Regen;
         if(damaged_count < 0)
@@ -143,6 +176,12 @@ public class DamageModule
             return 0;
         }
     }
+
+    public void setOnHealCallback(GameEvents.BasicNotifactionEvent callback)
+    {
+        m_onHeal +=callback;
+    }
+
 
     #endregion
 }

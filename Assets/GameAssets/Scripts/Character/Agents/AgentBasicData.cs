@@ -25,6 +25,9 @@ public class AgentBasicData
     private float maxHealth;
     public float MaxSheild;
     public float Regen;
+    public float HealthRegen;
+
+    public float HealthRegenWait=10;
 
     public enum AgentFaction { Player,Enemy3,Neutral,Enemy2,Enemy1, Allies };
     public AgentFaction m_agentFaction;

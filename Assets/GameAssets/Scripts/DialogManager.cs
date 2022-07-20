@@ -117,7 +117,7 @@ public class DialogManager : MonoBehaviour
     {
         m_audioSource.Stop();
         m_audioSource.PlayOneShot(statement.audio);
-        DialogText.text = statement.charName + " : " + statement.text;
+        DialogText.text = statement.charName + " : " + statement.text + " (ENTER:SKIP)";
     }
 
     public int getRemaningLines()

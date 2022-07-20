@@ -11,7 +11,27 @@ public class Interactable : MonoBehaviour
         public enum InteractableType {FastInteraction,PickupInteraction,TimedInteraction,ContinousInteraction,DialogInteraction,FixedContinousInteraction,NullInteraction}
         public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8,Making=9, Walking_Jump=10,Prayer1=11,Anger=12,Prayer2=13,Typing=14, NotSpecified = -99}
         public InteractableType Type = InteractableType.PickupInteraction;
-        public bool interactionEnabled = false;
+        private bool _interactionEnabled = true;
+
+        public bool ObjectiveInteratable = false;
+
+        public bool interactionEnabled {
+                    get
+        {
+            return _interactionEnabled;
+        }
+
+        set
+        {
+            _interactionEnabled = value;
+            if(interatabilityChange !=null & ObjectiveInteratable)
+            {
+                interatabilityChange(value);
+            }
+            
+
+        }
+        }
         public string itemName = "";
         public float interactionTime;
         public int interactionID;
@@ -22,6 +42,7 @@ public class Interactable : MonoBehaviour
         public bool placeObjectInHand = false;
         public Transform actualObject = null;
         public bool PlayerRestricted = false;
+        public GameEvents.BasicEnableDisableEvent interatabilityChange; 
     }
 
     [System.Serializable]
@@ -45,6 +66,8 @@ public class Interactable : MonoBehaviour
     // To Reset the actual object loaction after interaction
     private Vector3 m_relativePosition;
     private Vector3 m_relativeRotation;
+
+    private GameObject m_indicator;
 
     
     private GameEvents.BasicNotifactionEvent onInteractionStartCallback;
@@ -85,6 +108,9 @@ public class Interactable : MonoBehaviour
         {
             properties.interactionID = (int)properties.InteractionAnim;
         }
+
+        // set event on interatability change
+        properties.interatabilityChange +=setInteratableIndicator;
     }
 
     public void Start()
@@ -193,5 +219,28 @@ public class Interactable : MonoBehaviour
     public static bool IsValidIntearction(Interactable.InteractableProperties.InteractableType type)
     {
         return (type != InteractableProperties.InteractableType.NullInteraction);
+    }
+
+    private void setInteratableIndicator(bool int_enabled)
+    {
+        if(int_enabled)
+        {
+            m_indicator = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.Obj_Indicator);
+            m_indicator.SetActive(true);
+            m_indicator.transform.position = this.transform.position;
+            setOutLineState(outLineState.white);
+            return;
+        }
+        if(m_indicator!=null)
+        {
+            m_indicator.SetActive(false);
+            m_indicator = null;
+        }
+        setOutLineState(outLineState.Disabled);     
+    }
+
+    public void SetInteratable(bool int_enabled)
+    {
+        properties.interactionEnabled = int_enabled;
     }
 }

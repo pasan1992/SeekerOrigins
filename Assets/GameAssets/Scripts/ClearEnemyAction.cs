@@ -42,7 +42,6 @@ public class ClearEnemyAction : FsmStateAction
             {
                 if(!agent.isDestroyed())
                 {
-                    Debug.Log(agent.getRemaningHealth());
                     agent_exist = true;
                     break;
                 }

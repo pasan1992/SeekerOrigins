@@ -20,7 +20,8 @@ public class ProjectilePool : MonoBehaviour
         DroidExplosionParticleEffect,
         GlassParticleEffect,
         BloodSplatterEffect,
-        DamageText
+        DamageText,
+        Obj_Indicator
     }
 
     // Basic Projectile 
@@ -46,6 +47,8 @@ public class ProjectilePool : MonoBehaviour
     public int maxExplosions = 10;
     public int donreExplosions = 10;
 
+    public int GameIndicatorCount = 5;
+
     private static ProjectilePool thisProjectilePool;
 
     public int ammoCount = 5;
@@ -61,10 +64,19 @@ public class ProjectilePool : MonoBehaviour
 
     private List<GameObject> damage_text;
 
+    private List<GameObject> inicator_list;
+
     private GameObject m_player;
 
     #region initialize
 
+    public void Awake()
+    {
+        foreach (POOL_OBJECT_TYPE type in System.Enum.GetValues(typeof(POOL_OBJECT_TYPE)))
+        {
+            initalziePool(type);
+        }
+    }
     void Start()
     {
         //initalizeBulletHitBasicParticleList();
@@ -72,10 +84,7 @@ public class ProjectilePool : MonoBehaviour
         //initalizeBasicExplosionParticle();
         //initalizeDroneExplosions();
 
-        foreach (POOL_OBJECT_TYPE type in System.Enum.GetValues(typeof(POOL_OBJECT_TYPE)))
-        {
-            initalziePool(type);
-        }
+
 
         m_player = GameObject.FindObjectOfType<PlayerController>().gameObject;
     }
@@ -178,7 +187,13 @@ public class ProjectilePool : MonoBehaviour
                 count = maxBulletCount;
                 damage_text = new List<GameObject>();
                 effectList = damage_text;
-                break;           
+                break;  
+            case POOL_OBJECT_TYPE.Obj_Indicator:
+                 resourcePath = "Prefab/Indicator_General";
+                count = GameIndicatorCount;
+                inicator_list = new List<GameObject>();
+                effectList = inicator_list;
+                break;                          
 
         }
 
@@ -193,10 +208,10 @@ public class ProjectilePool : MonoBehaviour
             {
                 basic_particle.SetParent(this.transform);
             }
-            if (bulletHitParticle is BasicParticleEffect)
-            {
+            // if (bulletHitParticle is BasicParticleEffect)
+            // {
 
-            }
+            // }
             bulletHitParticle.SetActive(false);
             effectList.Add(bulletHitParticle);
         }
@@ -319,6 +334,9 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.DamageText:
                 effectList = damage_text;
+                break;
+            case POOL_OBJECT_TYPE.Obj_Indicator:
+                effectList = inicator_list;
                 break;
         }
 

@@ -36,6 +36,8 @@ public class PlayerController : AgentController
 
     GamePlayCam camplayer;
 
+    private bool is_slowmo = false;
+
     #region Initialize
     private void Start()
     {
@@ -55,6 +57,7 @@ public class PlayerController : AgentController
 
         m_rocket_pack = GetComponentInChildren<RocketPack>();
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
+        m_movingAgent.setOnHealCallback(OnDamage);
     }
 
     private void createTargetPlane()
@@ -117,7 +120,8 @@ public class PlayerController : AgentController
             return;
         }
 
-        bool crouch_pressed = Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(1);
+
+        bool crouch_pressed = Input.GetMouseButton(1);
         verticleSpeed = Mathf.Lerp(verticleSpeed, Input.GetAxis("Vertical"),1);
         horizontalSpeed = Mathf.Lerp(horizontalSpeed, Input.GetAxis("Horizontal"), 1);
 
@@ -573,7 +577,9 @@ public class PlayerController : AgentController
 
     public override void OnDamage()
     {
-        camplayer.DamageEffect(1);
+        var agen_data = m_movingAgent.GetAgentData();
+        var health_perc = (agen_data.Health / agen_data.MaxHealth);
+        camplayer.DamageEffect(health_perc);
     }
 
     #endregion

@@ -406,6 +406,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void setOnHealCallback(GameEvents.BasicNotifactionEvent callback)
     {
         m_onHeal +=callback;
+        m_damageModule.setOnHealCallback(callback);
     }
 
     public bool IsFunctional()

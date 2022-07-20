@@ -59,12 +59,12 @@ public class GamePlayCam : MonoBehaviour
             this.transform.position = newPostion;
         }
 
-        if(screenDamageFilter.color.a > 0)
-        {
-            Color tmp_color = screenDamageFilter.color;
-            tmp_color.a -= Time.deltaTime*3;
-            screenDamageFilter.color= tmp_color;
-        }
+        // if(screenDamageFilter.color.a > 0)
+        // {
+        //     Color tmp_color = screenDamageFilter.color;
+        //     tmp_color.a -= Time.deltaTime*3;
+        //     screenDamageFilter.color= tmp_color;
+        // }
 
         if(Input.GetKeyDown(KeyCode.M))
         {
@@ -148,14 +148,14 @@ public class GamePlayCam : MonoBehaviour
         //transform.position = originalPose;
     }
 
-    public void DamageEffect(int damageType)
+    public void DamageEffect(float healthValue)
     {
         Color tmp_color = screenDamageFilter.color;
-        tmp_color.a += 0.2f;
-        if(tmp_color.a > 0.5f)
-        {
-            tmp_color.a = 0.5f;
-        }
+        tmp_color.a = (1 - healthValue)/4;
+        // if(tmp_color.a > 0.5f)
+        // {
+        //     tmp_color.a = 0.5f;
+        // }
         screenDamageFilter.color= tmp_color;
     }
 }
