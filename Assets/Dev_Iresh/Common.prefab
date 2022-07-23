@@ -10279,7 +10279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Pistol
     interactionTime: 0
     interactionID: 0
@@ -11426,7 +11426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Revolver
     interactionTime: 0
     interactionID: 0
@@ -38111,7 +38111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Rifle
     interactionTime: 0
     interactionID: 0
@@ -52146,7 +52146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 0
+    ObjectiveInteratable: 0
     itemName: 
     interactionTime: 0
     interactionID: 0
@@ -55882,7 +55882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 0
+    ObjectiveInteratable: 0
     itemName: 
     interactionTime: 0
     interactionID: 0
@@ -70648,6 +70648,7 @@ MonoBehaviour:
   maxBulletCount: 100
   maxExplosions: 50
   donreExplosions: 50
+  GameIndicatorCount: 5
   ammoCount: 50
   grenadeList: []
   minorPartilceCount: 5
@@ -78286,6 +78287,8 @@ MonoBehaviour:
     maxHealth: 100
     MaxSheild: 50
     Regen: 0
+    HealthRegen: 0
+    HealthRegenWait: 10
     m_agentFaction: 0
     health: 100
     Sheild: 20
@@ -118371,7 +118374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 1
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Grenade
     interactionTime: 0
     interactionID: 0
