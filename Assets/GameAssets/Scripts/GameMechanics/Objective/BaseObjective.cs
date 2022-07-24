@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class BaseObjective : MonoBehaviour
 {
     // Start is called before the first frame update
     public string Objective;
-    public Text m_ObjectiveText;
+    public TMP_Text m_ObjectiveText;
     public PlayMakerFSM externalFSM;
     public PlayMakerFSM storyFSM;
     public string OnObjectiveCompelteEvent;

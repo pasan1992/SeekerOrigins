@@ -12,6 +12,8 @@ public class InteractionAction : FsmStateAction
     public FsmEvent finishEvent;
     public FsmEvent onStartEvent;
 
+    private bool finished = false;
+
     public override void OnEnter()
     {
         m_interactable.properties.PlayerRestricted = false;
@@ -24,19 +26,23 @@ public class InteractionAction : FsmStateAction
 
     public void OnInteractionStart()
     {
-        if(FinishOnState == InteractObjectObjective.InteractionState.OnStart)
+        if(FinishOnState == InteractObjectObjective.InteractionState.OnStart && !finished)
         {
-            Fsm.Event(onStartEvent);
+            //Fsm.Event(onStartEvent);
+            finished = true;
             Finish();
+            finished = true;
         }
     }
 
     public void OnInteractionEnd()
     {
-        if(FinishOnState == InteractObjectObjective.InteractionState.OnComplete)
+        if(FinishOnState == InteractObjectObjective.InteractionState.OnComplete && !finished)
         {
-            Fsm.Event(finishEvent);
+            //Fsm.Event(finishEvent);
+            finished = true;
             Finish();
+
         }
     }
 
