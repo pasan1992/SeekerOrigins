@@ -591,17 +591,14 @@ public class HumanoidRangedWeaponsModule
         {
             if(m_inEquipingAction)
             {
-                Debug.LogError("m_inEqupingAction is on");
             }
 
             if(m_currentWeaponSubStage.Equals(WeaponSystemSubStages.Equiping))
             {
-                Debug.LogError("in Equiping animation state");
             }
 
             if(m_currentWeaponSubStage.Equals(WeaponSystemSubStages.UnEquiping))
             {
-                Debug.LogError("in Unequiping animation state");
             }
         }
 

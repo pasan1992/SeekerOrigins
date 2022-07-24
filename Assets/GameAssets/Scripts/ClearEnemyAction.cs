@@ -24,9 +24,10 @@ public class ClearEnemyAction : FsmStateAction
         {
             agent.setOnDestroyed(onUnitDestory);
             var agent_cont = agent.getTransfrom().GetComponent<AgentController>();
+            fullEnemyCount +=1;
             if(agent_cont!=null)
             {
-                fullEnemyCount +=1;
+                
                 agent_cont.RemoveRestrictions();
             }
         }
