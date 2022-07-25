@@ -194,13 +194,7 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
         _changeWeaponStatus(true);
         actionStarted = true;
 
-        if(crouched)
-        {
-            _goHidden(true);
-        }
-        else{
-            _goHidden(false);
-        }
+        _goHidden(crouched);
         
         while(actionStarted)
         { 
@@ -208,8 +202,9 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
             {
                 stayAimed = false;
                 m_hbar.set_full_cover();
-                yield return new WaitForSeconds(Random.Range(0.5f,2f));
-            }             
+                
+            }    
+            yield return new WaitForSeconds(Random.Range(0.5f,2f));         
             
             stayAimed = true;
             if(crouched)
