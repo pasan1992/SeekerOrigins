@@ -15,7 +15,13 @@ MonoBehaviour:
   variables:
     floatVariables: []
     intVariables: []
-    boolVariables: []
+    boolVariables:
+    - useVariable: 1
+      name: isBDone
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 0
     stringVariables: []
     vector2Variables: []
     vector3Variables: []
@@ -43,7 +49,7 @@ MonoBehaviour:
     enumVariables: []
     categories:
     - 
-    variableCategoryIDs: 00000000
+    variableCategoryIDs: 0000000000000000
   events:
   - ON_SIT_ON_COUCH
   - ON_START_INTERACTION
@@ -78,3 +84,4 @@ MonoBehaviour:
   - ST03_DONE
   - TOP_CLEARED
   - BOTTOM_CLEARED
+  - B_IS_DONE
