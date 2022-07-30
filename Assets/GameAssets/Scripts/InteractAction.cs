@@ -42,7 +42,7 @@ public class InteractionAction : FsmStateAction
             //Fsm.Event(finishEvent);
             finished = true;
             Finish();
-
+            m_interactable.SetInteratable(false);
         }
     }
 

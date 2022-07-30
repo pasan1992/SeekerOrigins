@@ -117,6 +117,11 @@ public class Interactable : MonoBehaviour
     public void Start()
     {
         setOutLineState(outLineState.white);
+
+        if(properties.ObjectiveInteratable)
+        {
+            SetInteratable(false);
+        }
     }
 
     public virtual void OnPickUpAction()
