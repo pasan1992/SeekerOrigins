@@ -19,4 +19,16 @@ public class SimpleAgentBehaviorGroup : MonoBehaviour
             agen.START_ACTION();
         }
     }
+
+    public void SetTarget(GameObject target)
+    {
+        var cagent = target.GetComponent<ICyberAgent>();
+        Debug.Log(cagent);
+        foreach(var agen in m_agentControllers)
+        {
+            
+            
+            agen.SetTarget(cagent);
+        }        
+    }
 }

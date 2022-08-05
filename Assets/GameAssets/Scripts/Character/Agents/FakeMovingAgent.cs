@@ -209,6 +209,11 @@ public class FakeMovingAgent : ICyberAgent
         throw new System.NotImplementedException();
     }
 
+    public Transform getHeadTransfrom()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public bool isArmed()
     {
         return false;

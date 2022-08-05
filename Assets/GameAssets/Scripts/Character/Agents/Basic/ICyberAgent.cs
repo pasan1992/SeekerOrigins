@@ -44,4 +44,5 @@ public interface ICyberAgent
     void setOnDamagedCallback(GameEvents.BasicNotifactionEvent callback);
     IEnumerator waitTillUnarmed();
     void cancleInteraction();
+    Transform getHeadTransfrom();
 }

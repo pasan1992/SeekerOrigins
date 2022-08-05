@@ -16,7 +16,7 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
 
     // aim variable
     private bool stayAimed = false;
-    private HumanoidMovingAgent m_enemy;
+    private ICyberAgent m_enemy;
 
     private Vector3 m_targetPosition;
     void Start()
@@ -35,6 +35,11 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
         }
 
         m_enemy = Target.GetComponent<HumanoidMovingAgent>();
+    }
+
+    public void SetTarget(ICyberAgent target)
+    {
+        m_enemy = target;
     }
 
     [ContextMenu("Do START_ACTION")]

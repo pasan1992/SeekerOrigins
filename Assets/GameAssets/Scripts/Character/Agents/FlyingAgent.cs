@@ -43,6 +43,8 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public Transform CharacterTransfrom;
 
+    public float WeaponDamage = 0.1f;
+
     #region initalize
 
     public void Awake()
@@ -187,7 +189,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         // tempProjectile.setFiredFrom(m_agentData.m_agentFaction);
         // tempProjectile.resetToMicroBeam();
 
-        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,1);
+        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,WeaponDamage);
         Tempprojectile.transform.forward = (hitPos.point - firePos).normalized;
 
         ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
@@ -461,6 +463,11 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public bool isArmed()
     {
         return true;
+    }
+
+    public Transform  getHeadTransfrom()
+    {
+        return this.transform;
     }
     #endregion
 }
