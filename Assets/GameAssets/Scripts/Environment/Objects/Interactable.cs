@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
 
         public enum InteractableType {FastInteraction,PickupInteraction,TimedInteraction,ContinousInteraction,DialogInteraction,FixedContinousInteraction,NullInteraction}
    
-        public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8,Making=9, Walking_Jump=10,Prayer1=11,Anger=12,Prayer2=13,Typing=14, Leaning=15, KneelingInspecting=16, SillyDancing = 17, SittingAngry =18, SittingClap =19, SittingDazed = 20, NotSpecified = -99}
+        public enum InteractionAction { LookAround = 1,Sit = 2,UseObject =3,Drinking = 4,Deativated=5,Crouching=6,Tracking=7,Idle=8,Making=9, Walking_Jump=10,Prayer1=11,Anger=12,Prayer2=13,Typing=14, Leaning=15, KneelingInspecting=16, SillyDancing = 17, SittingAngry =18, SittingClap =19, SittingDazed = 20, Defeted = 21, NotSpecified = -99}
         public InteractableType Type = InteractableType.PickupInteraction;
         private bool _interactionEnabled = true;
 
