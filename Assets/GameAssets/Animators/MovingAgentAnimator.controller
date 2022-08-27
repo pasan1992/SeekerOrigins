@@ -542,9 +542,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: timedInteraction
     m_EventTreshold: 0
-  - m_ConditionMode: 3
+  - m_ConditionMode: 6
     m_ConditionEvent: interactionID
-    m_EventTreshold: 23
+    m_EventTreshold: 22
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6789201758270364414}
   m_Solo: 0
@@ -8334,7 +8334,7 @@ AnimatorStateMachine:
     m_Position: {x: 204, y: 36, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107645544718068666}
-    m_Position: {x: -96, y: -84, z: 0}
+    m_Position: {x: -120, y: -70, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
@@ -9378,7 +9378,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.398111
   m_TransitionOffset: 0
   m_ExitTime: 0.85294116
   m_HasExitTime: 0
