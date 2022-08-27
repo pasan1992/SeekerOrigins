@@ -170,12 +170,20 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     }
     public void Interact(bool isPlayer)
     {
+        Debug.Log("Interact");
         Interactable obj = AgentItemFinder.findNearItem(getCurrentPosition(),isPlayer);
-        
+        Debug.Log(obj);
         if(obj)
         {
             interactWith(obj,obj.properties.Type);
         }
+    }
+
+    public void InteractWith(Interactable obj) {
+         if(obj)
+        {
+            interactWith(obj,obj.properties.Type);
+        }       
     }
 
     public void damageAgent(float amount)
