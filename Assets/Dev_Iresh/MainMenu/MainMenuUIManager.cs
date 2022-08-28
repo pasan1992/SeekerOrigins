@@ -64,16 +64,18 @@ public class MainMenuUIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         _splashScreen.SetActive(false);
-        _loading.SetActive(true);
-        StartCoroutine(CloseLoading());
+        _manu.SetActive(true);
+
+        //_loading.SetActive(true);
+        //StartCoroutine(CloseLoading());
     }
 
-    IEnumerator CloseLoading()
-    {
-        yield return new WaitForSeconds(3);
-        _loading.SetActive(false);
-        _manu.SetActive(true);
-    }
+    //IEnumerator CloseLoading()
+    //{
+    //    yield return new WaitForSeconds(3);
+    //    _loading.SetActive(false);
+    //    _manu.SetActive(true);
+    //}
 
     public void SetLevels()
     {
@@ -82,7 +84,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(GameEnums.Scence.Level_1.ToString());
+        SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
     }
 
     public void QuitGame()

@@ -17,7 +17,7 @@ public class GameEnums
     #endregion
 
     #region Main UI
-    public enum Scence {Main_Menu, Tutorial, Level_1, Level_2 }
+    public enum Scence {Main_Menu, Tutorial, Mission_00_ep1, Mission_01, Mission_02 }
     #endregion
 
 }

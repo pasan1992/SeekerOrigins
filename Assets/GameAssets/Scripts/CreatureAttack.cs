@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class CreatureAttack : MonoBehaviour
 {
+    private Animator _creatureAnim;
     public GameObject player;
 
     public int bitInterval;
@@ -23,6 +24,7 @@ public class CreatureAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _creatureAnim = GetComponentInChildren<Animator>();
         _navMeshAgent = transform.GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = Random.Range(2, 4);
         _damagableObject = player.GetComponent<DamagableObject>();
@@ -45,6 +47,15 @@ public class CreatureAttack : MonoBehaviour
     {
         _navMeshAgent.SetDestination(player.transform.position);
         this.transform.LookAt(player.transform.position);
+
+        if (Vector3.Distance(this.transform.position, player.transform.position) > biteDistance)
+        {
+            _creatureAnim.SetBool("isWorking", true);
+        }
+        else
+        {
+            _creatureAnim.SetBool("isWorking", false);
+        }
         Bite();
     }
 
@@ -56,9 +67,16 @@ public class CreatureAttack : MonoBehaviour
         {
             if (Vector3.Distance(this.transform.position, player.transform.position) < biteDistance)
             {
-                player.GetComponent<HumanoidDamagableObject>().damage(creatureDamage, _legCollider, Random.insideUnitSphere, _legCollider.transform.position, agentBasicData.m_agentFaction);
+                _creatureAnim.SetTrigger("Attack");
+                Invoke("Damaging", 1);
             }
             _updateTime = 0;
         }
     }
+
+    void Damaging()
+    {
+        player.GetComponent<HumanoidDamagableObject>().damage(creatureDamage, _legCollider, Random.insideUnitSphere, _legCollider.transform.position, agentBasicData.m_agentFaction);
+    }
+
 }
