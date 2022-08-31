@@ -84,7 +84,25 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
+        //SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
+
+        //if (true)
+        //{
+        //    GameEnums.Scence.Mission_00_ep1.ToString());
+        //}
+        if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 0)
+        {
+            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
+        }
+        else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
+        {
+            SceneManager.LoadScene(GameEnums.Scence.Mission_02.ToString());
+        }
+        else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 2)
+        {
+            SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
+        }
     }
 
     public void QuitGame()
