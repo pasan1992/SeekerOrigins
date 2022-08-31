@@ -187,6 +187,7 @@ public class UILevelsHandler : MonoBehaviour
         public string levelSubText;
         public string LevelDescription;
         public string levelImagePath;
+        public string levelIsPlayed;
     }
 
     [System.Serializable]
