@@ -7,24 +7,25 @@ using UnityEngine.UI;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-    public DontDistroyManager dontDistroyManager;
-    public AudioManager audioManager;
+    //public DontDistroyManager dontDistroyManager;
+    //public AudioManager audioManager;
 
-    [SerializeField] GameObject _splashScreen, _loading, _manu;
+    [SerializeField] GameObject _sceneLoader;
 
-    #region Option Feild
-        [SerializeField] Slider _musicSlider, _sfxSlider;
-        [SerializeField] TMP_Dropdown _resulotionDropdown, _qualityDropdown;
-        [SerializeField] Toggle _fullScreenToggle;
+    //#region Option Feild
+    //    [SerializeField] Slider _musicSlider, _sfxSlider;
+    //    [SerializeField] TMP_Dropdown _resulotionDropdown, _qualityDropdown;
+    //    [SerializeField] Toggle _fullScreenToggle;
 
-        Resolution[] _resolutions;
+    //    Resolution[] _resolutions;
 
-        const string MIXER_MUSIC = "MusicVolume";
-        const string MIXER_SFX = "SFXVolume";
-    #endregion
+    //    const string MIXER_MUSIC = "MusicVolume";
+    //    const string MIXER_SFX = "SFXVolume";
+    //#endregion
 
     #region Level Feild
-        [SerializeField] List<Sprite> _bgList;
+
+    [SerializeField] List<Sprite> _bgList;
 
         [SerializeField] Image _levelBackground;
         [SerializeField] TMP_Text _levelMainTitle;
@@ -37,22 +38,22 @@ public class MainMenuUIManager : MonoBehaviour
     #endregion
 
     // Start is called before the first frame update
-    void Start()
-    {
-       StartCoroutine(OpenSplash());
+    //void Start()
+    //{
+    //   //StartCoroutine(OpenSplash());
 
-        dontDistroyManager = GameObject.FindGameObjectWithTag("DontDistroyManager").GetComponent<DontDistroyManager>();
-        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    //    dontDistroyManager = GameObject.FindGameObjectWithTag("DontDistroyManager").GetComponent<DontDistroyManager>();
+    //    audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 
-        if (SceneManager.GetActiveScene().name.ToString() == GameEnums.Scence.Main_Menu.ToString())
-        {
-            if (!dontDistroyManager.isGameRunning)
-            {
-                SetSettings();
-                dontDistroyManager.isGameRunning = true;
-            }
-        }
-    }
+    //    if (SceneManager.GetActiveScene().name.ToString() == GameEnums.Scence.Main_Menu.ToString())
+    //    {
+    //        if (!dontDistroyManager.isGameRunning)
+    //        {
+    //            SetSettings();
+    //            dontDistroyManager.isGameRunning = true;
+    //        }
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -60,15 +61,15 @@ public class MainMenuUIManager : MonoBehaviour
 
     }
 
-    IEnumerator OpenSplash()
-    {
-        yield return new WaitForSeconds(5);
-        _splashScreen.SetActive(false);
-        _manu.SetActive(true);
+    //IEnumerator OpenSplash()
+    //{
+    //    yield return new WaitForSeconds(5);
+    //    _splashScreen.SetActive(false);
+    //    _manu.SetActive(true);
 
-        //_loading.SetActive(true);
-        //StartCoroutine(CloseLoading());
-    }
+    //    //_loading.SetActive(true);
+    //    //StartCoroutine(CloseLoading());
+    //}
 
     //IEnumerator CloseLoading()
     //{
@@ -84,6 +85,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void PlayGame()
     {
+        _sceneLoader.SetActive(true);
         //SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
 
         //if (true)
@@ -93,15 +95,20 @@ public class MainMenuUIManager : MonoBehaviour
         if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 0)
         {
             //SceneManager.LoadScene(0);
-            SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
+            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(3);
+            //SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {
-            SceneManager.LoadScene(GameEnums.Scence.Mission_02.ToString());
+            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(6);
+
+            //SceneManager.LoadScene(GameEnums.Scence.Mission_02.ToString());
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 2)
         {
-            SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
+            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(5);
+
+            //SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
         }
     }
 
@@ -110,93 +117,93 @@ public class MainMenuUIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void SetSettings()
-    {
-        _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
-        _sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
-        _fullScreenToggle.isOn = GetFullScreen();
-        GetResolution();
-        GetQuality();
-    }
+    //public void SetSettings()
+    //{
+    //    _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
+    //    _sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
+    //    _fullScreenToggle.isOn = GetFullScreen();
+    //    GetResolution();
+    //    GetQuality();
+    //}
 
-    public void SetMusicVolume(float volume)
-    {
-        //audioManager.audioMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("MusicVolume", volume);
-    }
+    //public void SetMusicVolume(float volume)
+    //{
+    //    //audioManager.audioMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(volume) * 20);
+    //    PlayerPrefs.SetFloat("MusicVolume", volume);
+    //}
      
-    public void SetSfxVolume(float volume)
-    {
-        //audioManager.audioMixer.SetFloat(MIXER_SFX, Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("SFXVolume", volume);
-    }
+    //public void SetSfxVolume(float volume)
+    //{
+    //    //audioManager.audioMixer.SetFloat(MIXER_SFX, Mathf.Log10(volume) * 20);
+    //    PlayerPrefs.SetFloat("SFXVolume", volume);
+    //}
 
-    public void SetFullScreen(bool isFullScreen)
-    {
-        Screen.fullScreen = isFullScreen;
+    //public void SetFullScreen(bool isFullScreen)
+    //{
+    //    Screen.fullScreen = isFullScreen;
 
-        if (isFullScreen)
-        {
-            PlayerPrefs.SetInt("isFullScreen", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("isFullScreen", 0);
-        }
-    }
-    public bool GetFullScreen()
-    {
-        int isFullScreen = PlayerPrefs.GetInt("isFullScreen", 1);
-        return isFullScreen == 1 ? true : false;
-    }
+    //    if (isFullScreen)
+    //    {
+    //        PlayerPrefs.SetInt("isFullScreen", 1);
+    //    }
+    //    else
+    //    {
+    //        PlayerPrefs.SetInt("isFullScreen", 0);
+    //    }
+    //}
+    //public bool GetFullScreen()
+    //{
+    //    int isFullScreen = PlayerPrefs.GetInt("isFullScreen", 1);
+    //    return isFullScreen == 1 ? true : false;
+    //}
 
-    public void SetResolution(int resolutionIndex)
-    {
-        Resolution resolution = _resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, GetFullScreen());
-    }
+    //public void SetResolution(int resolutionIndex)
+    //{
+    //    Resolution resolution = _resolutions[resolutionIndex];
+    //    Screen.SetResolution(resolution.width, resolution.height, GetFullScreen());
+    //}
 
-    public void GetResolution()
-    {
-        _resolutions = Screen.resolutions;
-        _resulotionDropdown.ClearOptions();
-        List<string> options = new List<string>();
+    //public void GetResolution()
+    //{
+    //    _resolutions = Screen.resolutions;
+    //    _resulotionDropdown.ClearOptions();
+    //    List<string> options = new List<string>();
 
-        int currentResolutionIndex = 0;
+    //    int currentResolutionIndex = 0;
 
-        for (int i = 0; i < _resolutions.Length; i++)
-        {
-            string option = _resolutions[i].width + " x " + _resolutions[i].height + " @ " + _resolutions[i].refreshRate + "hz";
-            options.Add(option);
+    //    for (int i = 0; i < _resolutions.Length; i++)
+    //    {
+    //        string option = _resolutions[i].width + " x " + _resolutions[i].height + " @ " + _resolutions[i].refreshRate + "hz";
+    //        options.Add(option);
 
-            if (GetFullScreen())
-            {
-                if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
-                {
-                    currentResolutionIndex = i;
-                }
-            }
-            else
-            {
-                if (_resolutions[i].width == Screen.width && _resolutions[i].height == Screen.height)
-                {
-                    currentResolutionIndex = i;
-                }
-            }
-        }
-        _resulotionDropdown.AddOptions(options);
-        _resulotionDropdown.value = currentResolutionIndex;
-        _resulotionDropdown.RefreshShownValue();
-    }
+    //        if (GetFullScreen())
+    //        {
+    //            if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
+    //            {
+    //                currentResolutionIndex = i;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            if (_resolutions[i].width == Screen.width && _resolutions[i].height == Screen.height)
+    //            {
+    //                currentResolutionIndex = i;
+    //            }
+    //        }
+    //    }
+    //    _resulotionDropdown.AddOptions(options);
+    //    _resulotionDropdown.value = currentResolutionIndex;
+    //    _resulotionDropdown.RefreshShownValue();
+    //}
 
-    public void SetQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-    }
+    //public void SetQuality(int qualityIndex)
+    //{
+    //    QualitySettings.SetQualityLevel(qualityIndex);
+    //}
 
-    public void GetQuality()
-    {
-        int value = QualitySettings.GetQualityLevel();
-        _qualityDropdown.value = value;
-    }
+    //public void GetQuality()
+    //{
+    //    int value = QualitySettings.GetQualityLevel();
+    //    _qualityDropdown.value = value;
+    //}
 }

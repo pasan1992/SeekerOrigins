@@ -12,8 +12,6 @@ public class UILevelsHandler : MonoBehaviour
 
     [SerializeField] GameObject _objectThumb; 
     [SerializeField] Transform _objectParentThumb; 
-    [SerializeField] GameObject _imageThumb; 
-    [SerializeField] Text _titleThumb;     
     
     [SerializeField] GameObject _imageMain; 
     [SerializeField] Text _LevelNoMain; 
@@ -51,11 +49,16 @@ public class UILevelsHandler : MonoBehaviour
         //print("description: " + loadedPlayerData.description);
         //print("imagePath: " + loadedPlayerData.imagePath);
 
+        string jsonData = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "levelData.json"));
+        //string jsonData = File.ReadAllText(Path.Combine(Application.persistentDataPath, "levelData.json"));
 
-        string jsonData = File.ReadAllText(Application.dataPath + "/levelData.json");
+        //string jsonData = File.ReadAllText(Application.streamingAssetsPath + "levelData.json");
+        //string jsonData = File.ReadAllText(System.IO.Directory.GetCurrentDirectory() + "/levelData.json");
+        //string jsonData = File.ReadAllText(Application.persistentDataPath + "/levelData.json");
+        //string jsonData = File.ReadAllText(Application.dataPath + "/levelData.json");
         //LevelObject loadedPlayerData = JsonUtility.FromJson<LevelObject>(jsonData);
 
-        
+
         object obj = _loadedlevelDataList;
         JsonUtility.FromJsonOverwrite(jsonData, obj);
         _loadedlevelDataList = (levelDataList)obj;
