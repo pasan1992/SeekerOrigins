@@ -17,7 +17,7 @@ public class InGameMenuManager : MonoBehaviour
     {
         if (_isPEnable)
         {
-            if (Input.GetKey(KeyCode.P))
+            if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
             {
                 _isPEnable = false;
                 Time.timeScale = 0;
