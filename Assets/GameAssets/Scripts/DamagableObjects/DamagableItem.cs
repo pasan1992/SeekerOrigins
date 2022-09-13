@@ -39,7 +39,8 @@ public class DamagableItem : MonoBehaviour,DamagableObject
                     basicHitParticle.SetActive(true);
                     basicHitParticle.transform.position = point;
                     basicHitParticle.transform.LookAt(Vector3.up);
-                    basicHitParticle.transform.localScale = new Vector3(0.6f,0.6f,0.6f);
+                    basicHitParticle.transform.localScale = new Vector3(0.6f,0.6f, 0.6f);
+                    //basicHitParticle.transform.localScale = new Vector3(1f,1f,1f);
                 }
 
 
@@ -58,23 +59,14 @@ public class DamagableItem : MonoBehaviour,DamagableObject
                     if(m_onDestroyEvent !=null)
                     {
                         m_onDestroyEvent.Invoke();
-                    }
-                    
+                    }                    
                 }
                 
                 Destroy(this.gameObject);
 
-
-
                 return true;
             }
-            
-            if(onDamagedEvent !=null)
-            {
-                onDamagedEvent();
-            }
-            
-
+            onDamagedEvent?.Invoke();
         }
         return false;
     }

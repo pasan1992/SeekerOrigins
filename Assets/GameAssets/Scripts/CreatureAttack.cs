@@ -50,11 +50,13 @@ public class CreatureAttack : MonoBehaviour
 
         if (Vector3.Distance(this.transform.position, player.transform.position) > biteDistance)
         {
-            _creatureAnim.SetBool("isWorking", true);
+            //_creatureAnim.SetBool("isWorking", true);
+            _creatureAnim.SetBool("Run Forward", true);
         }
         else
         {
-            _creatureAnim.SetBool("isWorking", false);
+            //_creatureAnim.SetBool("isWorking", false);
+            _creatureAnim.SetBool("Run Forward", false);
         }
         Bite();
     }
@@ -67,7 +69,8 @@ public class CreatureAttack : MonoBehaviour
         {
             if (Vector3.Distance(this.transform.position, player.transform.position) < biteDistance)
             {
-                _creatureAnim.SetTrigger("Attack");
+                //_creatureAnim.SetTrigger("Attack");
+                _creatureAnim.SetTrigger("Stab Attack");
                 Invoke("Damaging", 1);
             }
             _updateTime = 0;
