@@ -109,6 +109,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1439605135398164711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6196886506713942898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d89fd5301d625478af3dbd2b1cb0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Total_Health: 2
+  particleEffectOnDestroy: 9
+  color: {r: 0.06007475, g: 0.8490566, b: 0.14892133, a: 0}
+  m_onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &4189861047584767713
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -165,24 +183,6 @@ MonoBehaviour:
     m_agentFaction: 0
     health: 0
     Sheild: 0
---- !u!114 &5593072254392209004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6196886506713942898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 401a701d688aaf04bb923f7422d4a37c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Total_Health: 3
-  particleEffectOnDestroy: 5
-  color: {r: 0.006007465, g: 0.4245283, b: 0.03561093, a: 0}
-  m_onDestroyEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &6195146959972538982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1783563462218004, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: m_Name
-      value: Polygonal Metalon Green (1)
+      value: Polygonal Metalon Green
       objectReference: {fileID: 0}
     - target: {fileID: 1783563462218004, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: m_Layer
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4215789226532830, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4994798
+      value: 1.8004168
       objectReference: {fileID: 0}
     - target: {fileID: 4215789226532830, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: m_LocalPosition.y
@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4215789226532830, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -75.56106
+      value: -74.06711
       objectReference: {fileID: 0}
     - target: {fileID: 4215789226532830, guid: 7f931d4b5c97d194d8726ddf5acdd440, type: 3}
       propertyPath: m_LocalRotation.w

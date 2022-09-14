@@ -20,6 +20,7 @@ public class CreatureAttack : MonoBehaviour
     Collider _legCollider;
 
     float _updateTime = 0;
+    bool isDie = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,10 @@ public class CreatureAttack : MonoBehaviour
         _creatureAnim = GetComponentInChildren<Animator>();
         _navMeshAgent = transform.GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = Random.Range(2, 4);
-        _damagableObject = player.GetComponent<DamagableObject>();
+        //_damagableObject = player.GetComponent<DamagableObject>();
+        _damagableObject = gameObject.GetComponent<CreatureDamagableObject>();
+
+        _damagableObject.setOnDestroyed(OnDestory);
 
         Component[] colliders = player.GetComponentsInChildren<Collider>();
 
@@ -45,20 +49,24 @@ public class CreatureAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _navMeshAgent.SetDestination(player.transform.position);
-        this.transform.LookAt(player.transform.position);
+        if (!isDie)
+        {
+            _navMeshAgent.SetDestination(player.transform.position);
+            this.transform.LookAt(player.transform.position);
 
-        if (Vector3.Distance(this.transform.position, player.transform.position) > biteDistance)
-        {
-            //_creatureAnim.SetBool("isWorking", true);
-            _creatureAnim.SetBool("Run Forward", true);
+            if (Vector3.Distance(this.transform.position, player.transform.position) > biteDistance)
+            {
+                //_creatureAnim.SetBool("isWorking", true);
+                _creatureAnim.speed = _navMeshAgent.speed;
+                _creatureAnim.SetBool("Run Forward", true);
+            }
+            else
+            {
+                //_creatureAnim.SetBool("isWorking", false);
+                _creatureAnim.SetBool("Run Forward", false);
+            }
+            Bite();
         }
-        else
-        {
-            //_creatureAnim.SetBool("isWorking", false);
-            _creatureAnim.SetBool("Run Forward", false);
-        }
-        Bite();
     }
 
     void Bite()
@@ -82,4 +90,25 @@ public class CreatureAttack : MonoBehaviour
         player.GetComponent<HumanoidDamagableObject>().damage(creatureDamage, _legCollider, Random.insideUnitSphere, _legCollider.transform.position, agentBasicData.m_agentFaction);
     }
 
+    public void OnDestory()
+    {
+        isDie = true;
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
+        _creatureAnim.SetTrigger("Die");
+
+        StartCoroutine(DieCompete());
+    }
+
+    IEnumerator DieCompete()
+    {
+        yield return new WaitForSeconds(4);
+        GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.SmokeEffect);
+        basicHitParticle.SetActive(true);
+        basicHitParticle.transform.localScale = new Vector3(5f, 5f, 5f);
+        basicHitParticle.transform.position = transform.position;
+
+        yield return new WaitForSeconds(3);
+        _damagableObject.damage_effect(transform);
+        Destroy(this.gameObject);
+    }
 }
