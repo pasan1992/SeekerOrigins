@@ -7330,7 +7330,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 98803375749433458}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.999999
+  m_Size: 0.9999991
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10606,7 +10606,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOV-NER
+  m_Text: GOV-NOR
 --- !u!1 &7657548213063207047
 GameObject:
   m_ObjectHideFlags: 0

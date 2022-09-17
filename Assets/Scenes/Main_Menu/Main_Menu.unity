@@ -3277,7 +3277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOV-NER
+  m_Text: GOV-NOR
 --- !u!222 &387535107
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12297,22 +12297,17 @@ PrefabInstance:
     - target: {fileID: 1083295622321320220, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1866238458970820665, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1866238458970820665, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3314347456403070269, guid: bbb85bc2e43674b49a8bb486234dc2b5,
-        type: 3}
-      propertyPath: m_Text
-      value: GOV-NER
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5830184181480423188, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
@@ -16520,7 +16515,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOV-NER
+  m_Text: GOV-NOR
 --- !u!222 &1960890375
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16843,7 +16838,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 650273264}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19087,7 +19082,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOV-NER
+  m_Text: GOV-NOR
 --- !u!114 &1332087916155022406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19135,7 +19130,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOV-NER
+  m_Text: GOV-NOR
 --- !u!114 &1332682142589914370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20267,7 +20262,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GOV-NER
+  m_Text: GOV-NOR
 --- !u!224 &6315594400740298848
 RectTransform:
   m_ObjectHideFlags: 0
