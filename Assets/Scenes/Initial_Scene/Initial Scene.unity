@@ -314,6 +314,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_Loading
       objectReference: {fileID: 0}
+    - target: {fileID: 687160947190129238, guid: bbb85bc2e43674b49a8bb486234dc2b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1083295622321320220, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.y
