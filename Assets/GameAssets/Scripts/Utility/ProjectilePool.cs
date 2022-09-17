@@ -98,7 +98,8 @@ public class ProjectilePool : MonoBehaviour
         switch (typeofEffect)
         {
             case POOL_OBJECT_TYPE.FireEXplosionParticle:
-                resourcePath = "ParticleEffects/Explosion_fire";
+                //resourcePath = "ParticleEffects/Explosion_fire";
+                resourcePath = "ParticleEffects/FX_Explosion_Large_Dark_01 Variant";
                 count = maxExplosions;
                 basicFireExplosionParticlesList = new List<GameObject>();
                 effectList = basicFireExplosionParticlesList;
