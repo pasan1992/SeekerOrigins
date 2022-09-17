@@ -10946,19 +10946,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneLoader: {fileID: 1495581719}
-  _bgList:
-  - {fileID: 21300000, guid: af36da62c7c0aa44cbecfcaa3672d5f8, type: 3}
-  - {fileID: 21300000, guid: 0bc42e84faa79e441b6728f1030b3143, type: 3}
-  - {fileID: 21300000, guid: f2ace30981d8d5245b79e5c999d18dc4, type: 3}
-  - {fileID: 21300000, guid: 6e15e943ee1b41c428bcd27ec251d7ed, type: 3}
-  - {fileID: 21300000, guid: 2ccf8c64d8c01934c8246b088fb581de, type: 3}
-  _levelBackground: {fileID: 0}
-  _levelMainTitle: {fileID: 0}
-  _levelSubTitle: {fileID: 0}
-  _levelDescription: {fileID: 0}
-  _levelIcon: {fileID: 0}
-  _levelIconImage: {fileID: 0}
-  _levelMIconTitle: {fileID: 0}
 --- !u!4 &1303020400
 Transform:
   m_ObjectHideFlags: 0
@@ -10986,11 +10973,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _imageList:
-  - {fileID: 21300000, guid: af36da62c7c0aa44cbecfcaa3672d5f8, type: 3}
+  - {fileID: 21300000, guid: 4e8cf067ddc0ebf4c80a72aea91a1490, type: 3}
   - {fileID: 21300000, guid: 0bc42e84faa79e441b6728f1030b3143, type: 3}
   - {fileID: 21300000, guid: f2ace30981d8d5245b79e5c999d18dc4, type: 3}
-  - {fileID: 21300000, guid: 6e15e943ee1b41c428bcd27ec251d7ed, type: 3}
-  - {fileID: 21300000, guid: 2ccf8c64d8c01934c8246b088fb581de, type: 3}
+  - {fileID: 21300000, guid: e1ea8c14d2c98334b9fce83867bfb252, type: 3}
+  - {fileID: 21300000, guid: e1ea8c14d2c98334b9fce83867bfb252, type: 3}
   _objectThumb: {fileID: 1111112168968537517, guid: fe35d302936358d49846e4a4fa5fc0fb,
     type: 3}
   _objectParentThumb: {fileID: 1415170880}

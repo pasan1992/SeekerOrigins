@@ -23,19 +23,19 @@ public class MainMenuUIManager : MonoBehaviour
     //    const string MIXER_SFX = "SFXVolume";
     //#endregion
 
-    #region Level Feild
+    //#region Level Feild
 
-    [SerializeField] List<Sprite> _bgList;
+    //[SerializeField] List<Sprite> _bgList;
 
-        [SerializeField] Image _levelBackground;
-        [SerializeField] TMP_Text _levelMainTitle;
-        [SerializeField] TMP_Text _levelSubTitle;
-        [SerializeField] TMP_Text _levelDescription;
+    //    [SerializeField] Image _levelBackground;
+    //    [SerializeField] TMP_Text _levelMainTitle;
+    //    [SerializeField] TMP_Text _levelSubTitle;
+    //    [SerializeField] TMP_Text _levelDescription;
 
-        [SerializeField] GameObject _levelIcon;
-        [SerializeField] Image _levelIconImage;
-        [SerializeField] TMP_Text _levelMIconTitle;
-    #endregion
+    //    [SerializeField] GameObject _levelIcon;
+    //    [SerializeField] Image _levelIconImage;
+    //    [SerializeField] TMP_Text _levelMIconTitle;
+    //#endregion
 
     // Start is called before the first frame update
     //void Start()
@@ -100,13 +100,19 @@ public class MainMenuUIManager : MonoBehaviour
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(6);
+            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(5);
 
             //SceneManager.LoadScene(GameEnums.Scence.Mission_02.ToString());
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 2)
         {
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(5);
+            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(6);
+
+            //SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
+        }
+        else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 3)
+        {
+            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(7);
 
             //SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
         }
