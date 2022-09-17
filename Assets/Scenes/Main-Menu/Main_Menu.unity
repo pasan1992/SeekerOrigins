@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3277,7 +3277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SEEKER: ORIGINS'
+  m_Text: GOV-NER
 --- !u!222 &387535107
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4257,7 +4257,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1829162582}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.999999
+  m_Size: 0.9999991
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10974,9 +10974,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _imageList:
   - {fileID: 21300000, guid: 4e8cf067ddc0ebf4c80a72aea91a1490, type: 3}
-  - {fileID: 21300000, guid: 0bc42e84faa79e441b6728f1030b3143, type: 3}
-  - {fileID: 21300000, guid: f2ace30981d8d5245b79e5c999d18dc4, type: 3}
-  - {fileID: 21300000, guid: e1ea8c14d2c98334b9fce83867bfb252, type: 3}
+  - {fileID: 21300000, guid: c406f1c238b98ab489338bc285719ccf, type: 3}
+  - {fileID: 21300000, guid: 6ad246674804ba546a5d5babd51b8523, type: 3}
   - {fileID: 21300000, guid: e1ea8c14d2c98334b9fce83867bfb252, type: 3}
   _objectThumb: {fileID: 1111112168968537517, guid: fe35d302936358d49846e4a4fa5fc0fb,
     type: 3}
@@ -12298,17 +12297,22 @@ PrefabInstance:
     - target: {fileID: 1083295622321320220, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1866238458970820665, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1866238458970820665, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314347456403070269, guid: bbb85bc2e43674b49a8bb486234dc2b5,
+        type: 3}
+      propertyPath: m_Text
+      value: GOV-NER
       objectReference: {fileID: 0}
     - target: {fileID: 5830184181480423188, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
@@ -16516,7 +16520,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SEEKER: ORIGINS'
+  m_Text: GOV-NER
 --- !u!222 &1960890375
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16839,7 +16843,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 650273264}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19083,7 +19087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SEEKER: ORIGINS'
+  m_Text: GOV-NER
 --- !u!114 &1332087916155022406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19131,7 +19135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SEEKER: ORIGINS'
+  m_Text: GOV-NER
 --- !u!114 &1332682142589914370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20263,7 +20267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SEEKER: ORIGINS'
+  m_Text: GOV-NER
 --- !u!224 &6315594400740298848
 RectTransform:
   m_ObjectHideFlags: 0
