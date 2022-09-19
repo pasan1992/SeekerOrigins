@@ -13,9 +13,11 @@ public class BasicExplodingObject : MonoBehaviour
     public float BaseDamage { get => m_baseDamage; set => m_baseDamage = value; }
     public float Range { get => m_range; set => m_range = value; }
 
+    public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
+
     public void explode()
     {
-        explode(ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle);
+        explode(explosionType);
     }   
 
     public void explode(ProjectilePool.POOL_OBJECT_TYPE explosionType)

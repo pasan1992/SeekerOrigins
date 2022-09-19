@@ -9,6 +9,7 @@ public class BasicExplosion : MonoBehaviour
     #region Initialize
 
     protected Rigidbody[] explosionParticles;
+    public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
     //ParticleSystem m_particleSystem;
     void Awake()
     {
@@ -63,7 +64,7 @@ public class BasicExplosion : MonoBehaviour
     protected virtual void getExplosionParticleEffect()
     {
         //.getBasicFireExplosionParticle();
-        GameObject explosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle);
+        GameObject explosion = ProjectilePool.getInstance().getPoolObject(explosionType);
         explosion.SetActive(true);
         explosion.transform.position = this.transform.position;
     }
