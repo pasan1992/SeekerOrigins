@@ -21,7 +21,8 @@ public class ProjectilePool : MonoBehaviour
         GlassParticleEffect,
         BloodSplatterEffect,
         DamageText,
-        Obj_Indicator
+        Obj_Indicator,
+        Granade_Explosion
     }
 
     // Basic Projectile 
@@ -33,6 +34,8 @@ public class ProjectilePool : MonoBehaviour
 
     // Particle effects
     private List<GameObject> basicFireExplosionParticlesList;
+
+    private List<GameObject> basicGrenadeExplosionParticlesList;
 
     private List<GameObject> basicRocketExplosionParticleList;
     private List<GameObject> bulletHitBasicParticleList;
@@ -105,7 +108,7 @@ public class ProjectilePool : MonoBehaviour
                 effectList = basicFireExplosionParticlesList;
                 break;
             case POOL_OBJECT_TYPE.RocketExplosionParticle:
-                resourcePath = "ParticleEffects/RocketExplosionParticle";
+                resourcePath = "ParticleEffects/Grenade_Explosive";
                 count = maxExplosions;
                 basicRocketExplosionParticleList = new List<GameObject>();
                 effectList = basicRocketExplosionParticleList;
@@ -194,7 +197,14 @@ public class ProjectilePool : MonoBehaviour
                 count = GameIndicatorCount;
                 inicator_list = new List<GameObject>();
                 effectList = inicator_list;
-                break;                          
+                break;  
+            case POOL_OBJECT_TYPE.Granade_Explosion:
+                //resourcePath = "ParticleEffects/Explosion_fire";
+                resourcePath = "ParticleEffects/Grenade_Explosive";
+                count = maxExplosions;
+                basicGrenadeExplosionParticlesList = new List<GameObject>();
+                effectList = basicGrenadeExplosionParticlesList;
+                break;                        
 
         }
 
@@ -338,6 +348,9 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.Obj_Indicator:
                 effectList = inicator_list;
+                break;
+            case POOL_OBJECT_TYPE.Granade_Explosion:
+                effectList = basicGrenadeExplosionParticlesList;
                 break;
         }
 
