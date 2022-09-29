@@ -102,14 +102,14 @@ public class ProjectilePool : MonoBehaviour
         {
             case POOL_OBJECT_TYPE.FireEXplosionParticle:
                 //resourcePath = "ParticleEffects/Explosion_fire";
-                resourcePath = "ParticleEffects/FX_Grenade_Explosive_01 Variant";
+                resourcePath = "ParticleEffects/Grenade_Explosive";
                 count = maxExplosions;
                 basicFireExplosionParticlesList = new List<GameObject>();
                 effectList = basicFireExplosionParticlesList;
                 break;
             case POOL_OBJECT_TYPE.RocketExplosionParticle:
                 //resourcePath = "ParticleEffects/Grenade_Explosive";
-                resourcePath = "ParticleEffects/RocketExplosionParticle Variant";
+                resourcePath = "ParticleEffects/Grenade_Explosive";
                 count = maxExplosions;
                 basicRocketExplosionParticleList = new List<GameObject>();
                 effectList = basicRocketExplosionParticleList;

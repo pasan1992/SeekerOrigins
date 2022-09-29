@@ -33,6 +33,11 @@ public class DamageModule
         m_outLine.OutlineColor = Color.Lerp(Color.red, Color.green, m_basicData.Health / m_basicData.MaxHealth);
     }
 
+    public  virtual void stun(float duration)
+    {
+
+    }
+
     public void setHealth(float health)
     {
         if (m_basicData.Health == 0)
