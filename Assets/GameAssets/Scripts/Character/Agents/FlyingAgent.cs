@@ -45,7 +45,11 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public float WeaponDamage = 0.1f;
 
+    private IEnumerator m_previousCorutine;
+
     #region initalize
+
+
 
     public void Awake()
     {
@@ -469,5 +473,28 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
         return this.transform;
     }
+
+    public void setStunned(float duration)
+    {
+
+        if(m_previousCorutine !=null)
+        {
+            StopCoroutine(m_previousCorutine);
+        }
+        
+        m_previousCorutine = waitAndRemoveStun(duration);
+        StartCoroutine(m_previousCorutine);
+    }
+
+    IEnumerator waitAndRemoveStun(float waitDuration)
+    {
+        yield return new WaitForSeconds(waitDuration);
+        removeStun();
+    }
+    public void removeStun()
+    {
+
+    }
+
     #endregion
 }

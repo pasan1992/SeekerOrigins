@@ -35,6 +35,9 @@ public partial class HumanoidAnimationModule : AnimationModule
             case HumanoidMovingAgent.CharacterMainStates.Dodge:
                 m_aimIK.solver.IKPositionWeight = Mathf.Lerp(m_aimIK.solver.IKPositionWeight, 0, Time.deltaTime * m_aimSpeed);
                 break;
+            case HumanoidMovingAgent.CharacterMainStates.Stunned:
+                m_aimIK.solver.IKPositionWeight = Mathf.Lerp(m_aimIK.solver.IKPositionWeight, 0, Time.deltaTime * m_aimSpeed);
+                break;            
             default:
                 m_aimIK.solver.IKPositionWeight = Mathf.Lerp(m_aimIK.solver.IKPositionWeight, 0, Time.deltaTime * m_aimSpeed);
                 break;
@@ -192,6 +195,11 @@ public partial class HumanoidAnimationModule : AnimationModule
     public void Stop()
     {
         setMovment(0,0);
+    }
+
+    public void setStun(bool enabled)
+    {
+        m_animator.SetBool("stun",enabled);
     }
 
 

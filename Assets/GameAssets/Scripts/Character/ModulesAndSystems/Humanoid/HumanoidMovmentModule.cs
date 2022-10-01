@@ -114,6 +114,9 @@ public class HumanoidMovmentModule : MovmentModule
                 //     this.m_characterTransform.Translate(Vector3.forward * movmentDirection.magnitude * crouchSpeedMultiplayer / divider);
                 // }
                 break;
+            case HumanoidMovingAgent.CharacterMainStates.Stunned:
+                m_animationSystem.setMovment(0, 0);
+                break;
             default:
                 // No neet of movment in other states.
                 // Dodge roll, interaction
@@ -178,6 +181,11 @@ public class HumanoidMovmentModule : MovmentModule
     public void LookAtObject(Vector3 position)
     {
         m_characterTransform.LookAt(position,Vector3.up);
+    }
+
+    public void setMovment(bool movmentEnabled)
+    {
+        m_navMeshAgent.isStopped = !movmentEnabled;
     }
 
     #endregion

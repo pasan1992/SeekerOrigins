@@ -45,4 +45,7 @@ public interface ICyberAgent
     IEnumerator waitTillUnarmed();
     void cancleInteraction();
     Transform getHeadTransfrom();
+
+    void setStunned(float duration);
+    void removeStun();
 }

@@ -145,6 +145,11 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     }
 
+    public void Stun(float duration)
+    {
+        m_movingAgent.setStunned(duration);
+    }
+
     protected IEnumerator waitAndDestory(float time)
     {
         if(!KeepOnDestory)

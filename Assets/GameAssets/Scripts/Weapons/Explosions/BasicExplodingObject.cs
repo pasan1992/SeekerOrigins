@@ -120,6 +120,12 @@ public class BasicExplodingObject : MonoBehaviour
 
                 // Neeed to improve it exploding objects must not have faction
                 damagableObject.damage(m_baseDamage*damagePropotion,other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
+                var mvdamage = (MovingAgentDamagableObject)damagableObject;
+                if(mvdamage !=null)
+                {
+                    mvdamage.Stun(3f);
+                }
+
             }           
         }
       }

@@ -218,5 +218,13 @@ public class FakeMovingAgent : ICyberAgent
     {
         return false;
     }
+
+    public void setStunned(float duration)
+    {
+    }
+    public void removeStun()
+    {
+
+    }
 }
 
