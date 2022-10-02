@@ -11,19 +11,29 @@ public class InGameMenuManager : MonoBehaviour
     [SerializeField] GameObject _menu;
     [SerializeField] int _btnNo = 0;
 
-    bool _isPEnable = true;
+    bool _isOpenMenu = false;
 
     private void Update()
     {
-        if (_isPEnable)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
-            {
-                _isPEnable = false;
-                Time.timeScale = 0;
+            GamePaused();
+        }
+    }
 
-                _menu.SetActive(true);
-            }
+    public void GamePaused()
+    {
+        if (!_isOpenMenu)
+        {
+            Time.timeScale = 0;
+            _menu.SetActive(true);
+            _isOpenMenu = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            _menu.SetActive(false);
+            _isOpenMenu = false;
         }
     }
 
@@ -34,13 +44,7 @@ public class InGameMenuManager : MonoBehaviour
 
     public void LoadScene(int index)
     {
-        Time.timeScale = 1;
-
-        if (index == -1) {
-            _isPEnable = true;
-        }
-
-        else if(index == -3){
+        if(index == -3){
             _sceneLoader.SetActive(true);
 
             if (_btnNo == -2)
@@ -55,6 +59,5 @@ public class InGameMenuManager : MonoBehaviour
             _sceneLoader.SetActive(true);
             _sceneLoader.GetComponent<SceneLoader>().LoadLevel(index);
         }
-
     }
 }

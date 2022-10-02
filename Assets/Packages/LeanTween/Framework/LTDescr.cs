@@ -72,7 +72,10 @@ public class LTDescr
 	public bool hasUpdateCallback;
 
 	public EaseTypeDelegate easeMethod;
-	public ActionMethodDelegate easeInternal {get; set; }
+
+
+
+    public ActionMethodDelegate easeInternal {get; set; }
 	public ActionMethodDelegate initInternal {get; set; }
 	public delegate Vector3 EaseTypeDelegate();
 	public delegate void ActionMethodDelegate();

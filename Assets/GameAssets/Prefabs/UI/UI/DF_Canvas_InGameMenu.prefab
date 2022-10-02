@@ -6914,8 +6914,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7657548212887302139}
-        m_MethodName: LoadScene
-        m_Mode: 3
+        m_MethodName: GamePaused
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
