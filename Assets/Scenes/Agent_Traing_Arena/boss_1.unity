@@ -67063,6 +67063,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4607712558383836179, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: field of view
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4607712558531728581, guid: c2bbcbdf8110fed41b7f9e37812fd796,
         type: 3}
       propertyPath: m_LocalPosition.x
