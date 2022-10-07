@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
         updateAmmo();
         //if (target.CompareTag("Target"))
         //{
-        Vector3 mousePos = Input.mousePosition;
+        //Vector3 mousePos = Input.mousePosition;
         //_targetParant.position = mousePos;
         //}
     }

@@ -56,10 +56,10 @@ public class MainMenuUIManager : MonoBehaviour
     //}
 
     // Update is called once per frame
-    void Update()
-    {
+    //void Update()
+    //{
 
-    }
+    //}
 
     //IEnumerator OpenSplash()
     //{

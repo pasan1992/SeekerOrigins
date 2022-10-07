@@ -86,3 +86,4 @@ MonoBehaviour:
   - BOTTOM_CLEARED
   - B_IS_DONE
   - C_IS_DONE
+  - isDone_A

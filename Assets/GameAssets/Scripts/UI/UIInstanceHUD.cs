@@ -26,6 +26,7 @@ public class UIInstanceHUD : MonoBehaviour
         //_endPosition.localPosition = new Vector3(0, 600f,1);   
     }
 
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Tab))
