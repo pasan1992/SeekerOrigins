@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
 using UnityEngine;
 
 public class SaveGameManager : MonoBehaviour
 {
     //[SerializeField] GameObject _playerStrat;
+    [SerializeField] TMP_Text _Messgae;
+
     [SerializeField] GameObject _player;
-    int _checkPoint = 0;
+     public int checkPoint;
+
 
     //// Start is called before the first frame update
     //void Start()
@@ -25,7 +29,7 @@ public class SaveGameManager : MonoBehaviour
 
     public void SaveGame(int val)
     {
-        _checkPoint = val;
+        checkPoint = val;
         SaveGame saveGame = CreateSaveGameObject();
 
         SurrogateSelector surrogateSelector = new SurrogateSelector();
@@ -37,14 +41,14 @@ public class SaveGameManager : MonoBehaviour
 
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
-
-        print("Game Saved!");
+        _Messgae.text = "CheckPoint " + checkPoint + "  Saved!";
+        print("CheckPoint "+ checkPoint + "  Saved!");
     }
 
     SaveGame CreateSaveGameObject()
     {
         SaveGame saveGame = new SaveGame();
-        saveGame.latestCheckPoint = _checkPoint;
+        saveGame.latestCheckPoint = checkPoint;
         saveGame.playerPos= _player.transform.position;
         saveGame.playerRotaion = _player.transform.rotation.eulerAngles;
 
@@ -53,7 +57,7 @@ public class SaveGameManager : MonoBehaviour
 
     public void ResetGame(int val)
     {
-        _checkPoint = val;
+        checkPoint = val;
         SaveGame saveGame = ResetSaveGameObject();
 
         SurrogateSelector surrogateSelector = new SurrogateSelector();
@@ -66,7 +70,9 @@ public class SaveGameManager : MonoBehaviour
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
 
-        print("Game Reset Done!");
+        _Messgae.text = "CheckPoint Reset Success!";
+
+        print("CheckPoint Reset Success!");
 
     }
 
@@ -95,13 +101,15 @@ public class SaveGameManager : MonoBehaviour
             SaveGame saveGame = (SaveGame)binaryFormatter.Deserialize(file);
             file.Close();
 
-            _checkPoint = saveGame.latestCheckPoint;
+            checkPoint = saveGame.latestCheckPoint;
             _player.transform.position = saveGame.playerPos;
             _player.transform.rotation = Quaternion.Euler(saveGame.playerRotaion);
 
             //_player.transform.position = saveGame.playerPos;
             //_player.GetComponent<AgentData>().grenade.count = 20;
-            print("Game Load Success!");
+            _Messgae.text = "CheckPoint " + checkPoint + " Load Success!";
+
+            print("CheckPoint "+ checkPoint + " Load Success!");
 
         }
     }

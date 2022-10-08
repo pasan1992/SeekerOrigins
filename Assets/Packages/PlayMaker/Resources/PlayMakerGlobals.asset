@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   variables:
     floatVariables: []
-    intVariables: []
+    intVariables:
+    - useVariable: 1
+      name: checkPointValue
+      tooltip: 
+      showInInspector: 0
+      networkSync: 0
+      value: 0
     boolVariables:
     - useVariable: 1
       name: isBDone
@@ -49,7 +55,7 @@ MonoBehaviour:
     enumVariables: []
     categories:
     - 
-    variableCategoryIDs: 0000000000000000
+    variableCategoryIDs: 000000000000000000000000
   events:
   - ON_SIT_ON_COUCH
   - ON_START_INTERACTION
@@ -87,3 +93,5 @@ MonoBehaviour:
   - B_IS_DONE
   - C_IS_DONE
   - isDone_A
+  - CHECK_POINT
+  - Check_Point_Loaded
