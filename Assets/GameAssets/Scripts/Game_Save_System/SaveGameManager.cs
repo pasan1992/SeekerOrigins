@@ -8,24 +8,9 @@ using UnityEngine;
 
 public class SaveGameManager : MonoBehaviour
 {
-    //[SerializeField] GameObject _playerStrat;
     [SerializeField] TMP_Text _Messgae;
-
     [SerializeField] GameObject _player;
-     public int checkPoint;
-
-
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    public int checkPoint;
 
     public void SaveGame(int val)
     {
@@ -42,14 +27,14 @@ public class SaveGameManager : MonoBehaviour
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
         _Messgae.text = "CheckPoint " + checkPoint + "  Saved!";
-        print("CheckPoint "+ checkPoint + "  Saved!");
+        print("CheckPoint " + checkPoint + "  Saved!");
     }
 
     SaveGame CreateSaveGameObject()
     {
         SaveGame saveGame = new SaveGame();
         saveGame.latestCheckPoint = checkPoint;
-        saveGame.playerPos= _player.transform.position;
+        saveGame.playerPos = _player.transform.position;
         saveGame.playerRotaion = _player.transform.rotation.eulerAngles;
 
         return saveGame;
@@ -81,7 +66,7 @@ public class SaveGameManager : MonoBehaviour
         SaveGame saveGame = new SaveGame();
         saveGame.latestCheckPoint = 0;
         saveGame.playerPos = saveGame.df_l2_playerPos;
-        saveGame.playerRotaion = new Vector3(0, saveGame.df_l2_playerDirection,0);
+        saveGame.playerRotaion = new Vector3(0, saveGame.df_l2_playerDirection, 0);
 
         return saveGame;
     }
@@ -97,7 +82,7 @@ public class SaveGameManager : MonoBehaviour
 
             binaryFormatter.SurrogateSelector = surrogateSelector;
 
-            FileStream file = File.Open(Application.streamingAssetsPath + "/gameSave.save" , FileMode.Open);
+            FileStream file = File.Open(Application.streamingAssetsPath + "/gameSave.save", FileMode.Open);
             SaveGame saveGame = (SaveGame)binaryFormatter.Deserialize(file);
             file.Close();
 
@@ -109,32 +94,8 @@ public class SaveGameManager : MonoBehaviour
             //_player.GetComponent<AgentData>().grenade.count = 20;
             _Messgae.text = "CheckPoint " + checkPoint + " Load Success!";
 
-            print("CheckPoint "+ checkPoint + " Load Success!");
+            print("CheckPoint " + checkPoint + " Load Success!");
 
         }
     }
-
-    //public void ResetGame()
-    //{
-    //    if (File.Exists(Application.persistentDataPath + "/gameSave.save"))
-    //    {
-    //        SurrogateSelector surrogateSelector = new SurrogateSelector();
-    //        surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new Vector3SerializationSurrogate());
-
-    //        BinaryFormatter binaryFormatter = new BinaryFormatter();
-
-    //        binaryFormatter.SurrogateSelector = surrogateSelector;
-
-    //        FileStream file = File.Open(Application.persistentDataPath + "/gameSave.save", FileMode.Open);
-    //        SaveGame saveGame = (SaveGame)binaryFormatter.Deserialize(file);
-    //        //file.Close();
-
-    //        saveGame.latestCheckPoint = 0;
-    //        saveGame.playerPos = Vector3.zero;
-
-    //        binaryFormatter.Serialize(file, saveGame);
-    //        file.Close();
-    //        //_player.GetComponent<AgentData>().grenade.count = 20;
-    //    }
-    //}
 }
