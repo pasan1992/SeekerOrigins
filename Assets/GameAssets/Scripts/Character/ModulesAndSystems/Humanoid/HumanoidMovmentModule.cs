@@ -116,6 +116,9 @@ public class HumanoidMovmentModule : MovmentModule
                 break;
             case HumanoidMovingAgent.CharacterMainStates.Stunned:
                 m_animationSystem.setMovment(0, 0);
+                m_navMeshAgent.isStopped = false;
+                m_navMeshAgent.velocity = Vector3.zero;
+                this.m_characterTransform.Translate(Vector3.zero);
                 break;
             default:
                 // No neet of movment in other states.
@@ -185,7 +188,12 @@ public class HumanoidMovmentModule : MovmentModule
 
     public void setMovment(bool movmentEnabled)
     {
-        m_navMeshAgent.isStopped = !movmentEnabled;
+        if (m_navMeshAgent.isActiveAndEnabled & m_navMeshAgent.isOnNavMesh)
+        {
+            m_navMeshAgent.isStopped = !movmentEnabled;  
+            m_navMeshAgent.velocity = Vector3.zero;          
+        }
+
     }
 
     #endregion

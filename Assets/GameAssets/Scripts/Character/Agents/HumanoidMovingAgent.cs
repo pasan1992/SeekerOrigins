@@ -108,14 +108,10 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
         if (m_characterEnabled)
         {
-            if(m_characterState != CharacterMainStates.Stunned)
-            {
                 // Update Systems.
-                m_animationModule.UpdateAnimationState(m_characterState);
-                m_movmentModule.UpdateMovment((int)m_characterState, m_movmentVector);
-                m_equipmentModule.UpdateSystem(m_characterState);
-            }
-
+            m_animationModule.UpdateAnimationState(m_characterState);
+            m_movmentModule.UpdateMovment((int)m_characterState, m_movmentVector);
+            m_equipmentModule.UpdateSystem(m_characterState);
             m_damageModule.update();
         }
     }
@@ -260,8 +256,12 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // Move character
     public virtual void moveCharacter(Vector3 movmentDirection)
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(m_characterState == HumanoidMovingAgent.CharacterMainStates.Stunned )
+        {
+            Debug.Log("Stuned");
             return;
+        }
+            
 
         m_movmentVector = movmentDirection;
 
@@ -565,7 +565,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public bool isDisabled()
     {
-        return m_isDisabled;
+        return m_isDisabled || m_characterState == CharacterMainStates.Stunned;
     }
 
     public int getPrimaryWeaponAmmoCount()
@@ -911,6 +911,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_previousCorutine = waitAndRemoveStun(duration);
         StartCoroutine(m_previousCorutine);
         m_movmentModule.setMovment(false);
+        m_movmentVector = Vector3.zero;
     }
 
     IEnumerator waitAndRemoveStun(float waitDuration)

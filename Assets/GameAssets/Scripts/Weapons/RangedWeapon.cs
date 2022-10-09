@@ -8,8 +8,19 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public abstract class RangedWeapon : Weapon
 {
-    
+    public class AmmunitionType
+    {
+        public float damage;
+        public ProjectilePool.POOL_OBJECT_TYPE particleType;
+        public float fireRate;
+        public bool is_dot;
+        public float dot_time;
+    }
+
+    protected List<AmmunitionType> posibleAmmoTypes;
+
     public delegate void WeaponFireDeligaet(float weight);
+
 
 
     [Header("Fire Effects")]
