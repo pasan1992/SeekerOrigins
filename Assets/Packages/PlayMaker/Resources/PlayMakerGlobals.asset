@@ -93,5 +93,9 @@ MonoBehaviour:
   - B_IS_DONE
   - C_IS_DONE
   - isDone_A
-  - CHECK_POINT
   - Check_Point_Loaded
+  - CHECK_POINT
+  - Load_A
+  - Load_B
+  - Load_C
+  - Load_D
