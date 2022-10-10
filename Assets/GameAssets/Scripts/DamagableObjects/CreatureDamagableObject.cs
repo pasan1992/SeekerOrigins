@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,7 +25,7 @@ public class CreatureDamagableObject : MonoBehaviour, DamagableObject
         m_remaning_Health = Total_Health;
         m_audioSource = this.GetComponent<AudioSource>();
     }
-    public bool damage(float damageValue, Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction)
+    public bool damage(float damageValue, Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
     {
         if (!isDestroyed())
         {

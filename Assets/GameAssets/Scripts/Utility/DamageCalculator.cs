@@ -126,7 +126,7 @@ public class DamageCalculator
         }
     }
 
-    public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,float damage)
+    public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,float damage,float dot_time=0)
     {
         DamagableObject damagableObject = other.transform.GetComponentInParent<DamagableObject>();
         if (damagableObject != null)
@@ -161,7 +161,7 @@ public class DamageCalculator
     }
 
     public static RaycastHit 
-    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage)
+    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage,float dot_time=0)
     {
         RaycastHit hit = new RaycastHit();
         RaycastHit acualHit = new RaycastHit();
@@ -193,7 +193,7 @@ public class DamageCalculator
                 case "Player":
                 case "Head":
                 case "Chest":
-                DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized,weapon_damage);
+                DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized,weapon_damage,dot_time);
                 hitOnEnemy = true;
                 break;
                 case "Item":
@@ -226,7 +226,7 @@ public class DamageCalculator
                     case "Player":
                     case "Head":
                     case "Chest":
-                        DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage);
+                        DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage,dot_time);
                         importantHit = true;
                         acualHit = hit;
                     break; 

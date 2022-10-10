@@ -42,7 +42,19 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         
 
     }
-    public virtual bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction)
+
+    public IEnumerator DotDamage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction,int count)
+    {
+
+        for (int i=0;i<count; i++)
+        {
+            this.damage(damageValue,collider,force,point,fromFaction,0);
+            yield return new WaitForSeconds(1);
+        }
+
+    }
+
+    public virtual bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
     {
         /*
         if (!GamePlayCam.IsVisibleToCamera(m_movingAgent.getTransfrom()))
@@ -51,6 +63,13 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
             Debug.Log("Not damaging");
             return false;
         }*/
+
+        if (dot_time > 0)
+        {
+            var per_damage = damageValue / dot_time;
+            StartCoroutine(DotDamage(per_damage,collider,force,point,fromFaction,(int)dot_time));
+            return false;
+        }
 
         m_movingAgent.damageAgent(damageValue);
         
