@@ -21,6 +21,9 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     private Outline m_outline;
 
+    private GameObject fireEffect;
+    private int dotCount = 0;
+
     public void Awake()
     {
         m_movingAgent = this.GetComponent<ICyberAgent>();
@@ -43,15 +46,32 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     }
 
-    public IEnumerator DotDamage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction,int count)
+    public IEnumerator DotDamage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction,int duration)
     {
+        float damage_frequancy_seconds = 0.5f;
+        float damage_count = duration / damage_frequancy_seconds;
+        damageValue = damageValue/ damage_count;
 
-        for (int i=0;i<count; i++)
+
+        if(dotCount == 0)
+        {
+            SetFireEffect(true,collider.transform);
+        }
+        dotCount +=1;
+        
+
+        for (int i=0;i<damage_count; i++)
         {
             this.damage(damageValue,collider,force,point,fromFaction,0);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(damage_frequancy_seconds);
         }
 
+
+        dotCount -=1;
+        if(dotCount == 0)
+        {
+            SetFireEffect(false,null);
+        }
     }
 
     public virtual bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
@@ -66,8 +86,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
         if (dot_time > 0)
         {
-            var per_damage = damageValue / dot_time;
-            StartCoroutine(DotDamage(per_damage,collider,force,point,fromFaction,(int)dot_time));
+            StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)dot_time));
             return false;
         }
 
@@ -174,7 +193,34 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         if(!KeepOnDestory)
         {
             yield return new WaitForSeconds(time);
+            SetFireEffect(false,null);
             Destroy(this.gameObject);
+        }
+
+    }
+
+    
+    private void SetFireEffect(bool stats,Transform location)
+    {
+
+        if (stats)
+        {
+        Debug.Log("making fire");
+        GameObject fireEffet = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.SmallFireEffect);
+        fireEffet.SetActive(true);
+        fireEffet.transform.position = location.position;
+        fireEffet.transform.parent = location.transform;  
+        fireEffect = fireEffet; 
+        }
+        else
+        {
+            if(fireEffect !=null)
+            {
+            Debug.Log("removing fire");
+            fireEffect.GetComponent<BasicParticleEffect>().resetAll();
+            fireEffect = null;
+            }
+
         }
 
     }

@@ -68,7 +68,7 @@ public abstract class RangedWeapon : Weapon
     protected ProjectilePool m_projectilePool;
     protected bool triggerPulled = false;
     protected bool m_realoding = false;
-    protected int m_ammoCount = 0;
+    protected IDictionary<string,int> m_ammoCount = new Dictionary<string,int>();
     protected GamePlayCam camplayer;
 
     private float POSSIBLE_MAX_RANGE = 40;
@@ -82,7 +82,7 @@ public abstract class RangedWeapon : Weapon
         m_soundManager = GameObject.FindObjectOfType<SoundManager>();
         m_projectilePool = GameObject.FindObjectOfType<ProjectilePool>();
         hitLayerMask = LayerMask.NameToLayer("Enemy");
-        m_ammoCount = m_magazineSize;
+        m_ammoCount[m_weaponAmmunitionName] = m_magazineSize;
         m_weaponLight = this.GetComponentInChildren<Light>();
 
         if(m_weaponLight != null)
@@ -115,6 +115,7 @@ public abstract class RangedWeapon : Weapon
         this.fireRate = ammoType.fireRate;
         this.dotTime = ammoType.dot_time;
         this.projectile = ammoType.particleType;
+        m_weaponAmmunitionName = ammoType.ammo_name;
     }
 
     protected void updateContinouseFire()
@@ -185,17 +186,17 @@ public abstract class RangedWeapon : Weapon
 
     public int getAmmoCount()
     {
-        return m_ammoCount;
+        return m_ammoCount[m_weaponAmmunitionName];
     }
 
     public void setAmmoCount(int count)
     {
-        m_ammoCount = count;
+        m_ammoCount[m_weaponAmmunitionName] = count;
     }
 
     public bool isWeaponEmpty()
     {
-        return m_ammoCount == 0;
+        return m_ammoCount[m_weaponAmmunitionName] == 0;
     }
 
     #endregion
@@ -229,7 +230,7 @@ public abstract class RangedWeapon : Weapon
         {
             var originalPos = m_target.transform.position;
             m_target.transform.position += Random.onUnitSphere* calculate_recall_offset() + new Vector3(0,Random.Range(-0.2f,0f),0);
-            m_ammoCount--;
+            m_ammoCount[m_weaponAmmunitionName] -=1;
             // GameObject Tempprojectile = GameObject.Instantiate(projectile, m_gunFireingPoint, this.transform.rotation);
             GameObject Tempprojectile = m_projectilePool.getPoolObject(this.projectile);
             Tempprojectile.transform.position = m_gunFireingPoint;

@@ -21,11 +21,9 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             return false;
         }
         */
-
         if (dot_time > 0)
         {
-            var per_damage = damageValue / dot_time;
-            StartCoroutine(DotDamage(per_damage,collider,force,point,fromFaction,(int)dot_time));
+            StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)dot_time));
             return false;
         }
 

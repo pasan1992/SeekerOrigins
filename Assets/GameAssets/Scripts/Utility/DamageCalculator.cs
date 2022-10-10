@@ -137,7 +137,7 @@ public class DamageCalculator
 
                // cyberAgent.reactOnHit(other, (hitDirection) * 3f, other.transform.position);
                 //cyberAgent.damageAgent(1);
-               movingDamagableObject.damage(damage, other,(hitDirection) * 1f,other.transform.position,m_fireFrom);
+               movingDamagableObject.damage(damage, other,(hitDirection) * 1f,other.transform.position,m_fireFrom,dot_time);
             
                 //GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
                 //basicHitParticle.SetActive(true);
