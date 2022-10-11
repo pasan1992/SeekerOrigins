@@ -173,7 +173,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
         if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
             return;
-        Debug.Log("Interact");
         Interactable obj = AgentItemFinder.findNearItem(getCurrentPosition(),isPlayer);
         Debug.Log(obj);
         if(obj)

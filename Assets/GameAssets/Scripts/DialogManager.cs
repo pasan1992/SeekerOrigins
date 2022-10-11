@@ -26,6 +26,7 @@ public class DialogManager : MonoBehaviour
     public GameEvents.BasicNotifactionEvent onDialogEndCallback;
     public TMP_Text DialogText;
     public TMP_Text ObjectiveText;
+    public GameObject dialogUI;
 
     private bool pause = false;
     void Awake()
@@ -43,6 +44,7 @@ public class DialogManager : MonoBehaviour
     {
         m_audioSource = this.GetComponent<AudioSource>();
         currentDialogStatments = new Queue<DialogStatment>();
+        dialogUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -80,7 +82,7 @@ public class DialogManager : MonoBehaviour
     public void SkipDialog()
     {
         m_audioSource.Stop();
-        DialogText.text = "";
+        //DialogText.text = "";
         NextDialog();
     }
     private void NextDialog()
@@ -93,9 +95,10 @@ public class DialogManager : MonoBehaviour
                 DialogText.text = "";
                 onDialogEndCallback = null;
             }
+            dialogUI.SetActive(false);
             return;
         }
-
+        dialogUI.SetActive(true);
         pause=true;
         DialogText.text = "";
         StopAllCoroutines();
