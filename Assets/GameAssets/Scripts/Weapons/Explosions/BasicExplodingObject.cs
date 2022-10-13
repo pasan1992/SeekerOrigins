@@ -29,6 +29,11 @@ public class BasicExplodingObject : MonoBehaviour
        this.gameObject.SetActive(false);
     }
 
+    public virtual void activateExplosionMechanisum()
+    {
+        
+    }
+
     private void damgeAround()
     {
 

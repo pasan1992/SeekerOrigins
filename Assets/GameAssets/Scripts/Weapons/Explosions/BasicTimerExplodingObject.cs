@@ -75,4 +75,12 @@ public class BasicTimerExplodingObject : BasicExplodingObject
         yield return new WaitForSeconds( (ExplosionCountDown - CurrentCownDown) / 20 );
     }
 
+    public override void activateExplosionMechanisum()
+    {
+        base.activateExplosionMechanisum();
+        resetAll();
+        startCountDown();
+
+    }
+
 }
