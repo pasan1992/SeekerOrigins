@@ -10,7 +10,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
     private int postDestroyDamage = 0;
 
 
-    public override bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction)
+    public override bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
     {
         // fromFaction is not used atm
         /*
@@ -21,6 +21,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             return false;
         }
         */
+        if (dot_time > 0)
+        {
+            StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)dot_time));
+            return false;
+        }
 
 
         if (collider.name == "Head")

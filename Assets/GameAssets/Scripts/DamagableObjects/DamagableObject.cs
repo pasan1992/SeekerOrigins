@@ -6,7 +6,7 @@ public interface DamagableObject
 
     // Return true if destroyed
     // fromFaction is not used atm
-    bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point,AgentBasicData.AgentFaction fromFaction);
+    bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point,AgentBasicData.AgentFaction fromFaction,float dot_time = 0);
 
     bool isDestroyed();
 

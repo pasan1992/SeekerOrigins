@@ -8,6 +8,29 @@ public class Grenade : Weapon
     private bool m_pinPulled = false;
     public int count = 5;
 
+    [System.Serializable]
+    public class GrenadeType
+    {
+        public GrenadeType(ProjectilePool.POOL_OBJECT_TYPE objectType,float damage)
+        {
+            this.damage = damage;
+            this.objectType = objectType;
+        }
+        public ProjectilePool.POOL_OBJECT_TYPE objectType;
+        public float damage;
+    }
+
+    public IDictionary<string,GrenadeType> GrenadeTypes;
+    private GrenadeType currentGrenadeType;
+
+    public void Awake()
+    {
+        base.Awake();
+        GrenadeTypes = new Dictionary<string,GrenadeType>();
+        GrenadeTypes.Add("Ordinary",new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3));
+        currentGrenadeType = GrenadeTypes["Ordinary"];
+    }
+
     public override WEAPONTYPE getWeaponType()
     {
         return WEAPONTYPE.grenede;
@@ -22,19 +45,39 @@ public class Grenade : Weapon
         count -= 1;
 
 
-        m_tempGrenede = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.Grenade);
+
+        m_tempGrenede = ProjectilePool.getInstance().getPoolObject(currentGrenadeType.objectType);
         m_tempGrenede.SetActive(true);
 
-        var basic_timer = m_tempGrenede.GetComponent<BasicTimerExplodingObject>();
-        basic_timer.resetAll();
-        basic_timer.BaseDamage = damage;
+        // var basic_timer = m_tempGrenede.GetComponent<BasicTimerExplodingObject>();
+        // basic_timer.resetAll();
+        // basic_timer.BaseDamage = damage;
+        // Rigidbody rb = m_tempGrenede.GetComponent<Rigidbody>();
+        // rb.isKinematic = true;
+        // rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+        // m_tempGrenede.transform.parent = this.transform;
+        // m_tempGrenede.transform.localPosition =Vector3.zero;
+        // basic_timer.startCountDown();
+        // m_pinPulled = true;
+
+
+        m_pinPulled = true;
+
+
+        // reset rigidbody
         Rigidbody rb = m_tempGrenede.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+
+        // reset transform
         m_tempGrenede.transform.parent = this.transform;
         m_tempGrenede.transform.localPosition =Vector3.zero;
-        basic_timer.startCountDown();
-        m_pinPulled = true;
+
+        // reset exploding object
+        var baseGrenade = m_tempGrenede.GetComponent<BasicExplodingObject>();
+        baseGrenade.BaseDamage = currentGrenadeType.damage;
+        baseGrenade.activateExplosionMechanisum();
+
     }
 
     public void ThrowGrenede()
@@ -100,5 +143,10 @@ public class Grenade : Weapon
     public bool isPinPulled()
     {
         return m_pinPulled;
+    }
+
+    public void SwitchGrenadeType(string type)
+    {
+        currentGrenadeType = GrenadeTypes[type];
     }
 }

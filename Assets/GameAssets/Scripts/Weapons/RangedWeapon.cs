@@ -10,14 +10,29 @@ public abstract class RangedWeapon : Weapon
 {
     public class AmmunitionType
     {
+        public string name;
         public float damage;
         public ProjectilePool.POOL_OBJECT_TYPE particleType;
         public float fireRate;
-        public bool is_dot;
         public float dot_time;
+        public string ammo_name;
+
+        public AmmunitionType(string name,float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float dot_time,string ammo_name)
+        {
+            this.name = name;
+            this.damage = damage;
+            this.particleType = particleType;
+            this.fireRate = fireRate;
+            this.dot_time = dot_time;
+            this.ammo_name = ammo_name;
+        }
     }
 
-    protected List<AmmunitionType> posibleAmmoTypes;
+    public ProjectilePool.POOL_OBJECT_TYPE projectile = ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile;
+
+    public IDictionary<string, AmmunitionType> posibleAmmoTypes = new Dictionary<string, AmmunitionType>();
+
+    public float dotTime = 0;
 
     public delegate void WeaponFireDeligaet(float weight);
 
@@ -53,7 +68,7 @@ public abstract class RangedWeapon : Weapon
     protected ProjectilePool m_projectilePool;
     protected bool triggerPulled = false;
     protected bool m_realoding = false;
-    protected int m_ammoCount = 0;
+    protected IDictionary<string,int> m_ammoCount = new Dictionary<string,int>();
     protected GamePlayCam camplayer;
 
     private float POSSIBLE_MAX_RANGE = 40;
@@ -67,7 +82,7 @@ public abstract class RangedWeapon : Weapon
         m_soundManager = GameObject.FindObjectOfType<SoundManager>();
         m_projectilePool = GameObject.FindObjectOfType<ProjectilePool>();
         hitLayerMask = LayerMask.NameToLayer("Enemy");
-        m_ammoCount = m_magazineSize;
+        m_ammoCount[m_weaponAmmunitionName] = m_magazineSize;
         m_weaponLight = this.GetComponentInChildren<Light>();
 
         if(m_weaponLight != null)
@@ -91,6 +106,16 @@ public abstract class RangedWeapon : Weapon
         {
             update_single_Fire();
         }
+    }
+
+    public void SwitchAmmoType(string ammoTypeName)
+    {
+        var ammoType =  posibleAmmoTypes[ammoTypeName];
+        this.damage = ammoType.damage;
+        this.fireRate = ammoType.fireRate;
+        this.dotTime = ammoType.dot_time;
+        this.projectile = ammoType.particleType;
+        m_weaponAmmunitionName = ammoType.ammo_name;
     }
 
     protected void updateContinouseFire()
@@ -161,17 +186,17 @@ public abstract class RangedWeapon : Weapon
 
     public int getAmmoCount()
     {
-        return m_ammoCount;
+        return m_ammoCount[m_weaponAmmunitionName];
     }
 
     public void setAmmoCount(int count)
     {
-        m_ammoCount = count;
+        m_ammoCount[m_weaponAmmunitionName] = count;
     }
 
     public bool isWeaponEmpty()
     {
-        return m_ammoCount == 0;
+        return m_ammoCount[m_weaponAmmunitionName] == 0;
     }
 
     #endregion
@@ -205,9 +230,9 @@ public abstract class RangedWeapon : Weapon
         {
             var originalPos = m_target.transform.position;
             m_target.transform.position += Random.onUnitSphere* calculate_recall_offset() + new Vector3(0,Random.Range(-0.2f,0f),0);
-            m_ammoCount--;
+            m_ammoCount[m_weaponAmmunitionName] -=1;
             // GameObject Tempprojectile = GameObject.Instantiate(projectile, m_gunFireingPoint, this.transform.rotation);
-            GameObject Tempprojectile = m_projectilePool.getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile);
+            GameObject Tempprojectile = m_projectilePool.getPoolObject(this.projectile);
             Tempprojectile.transform.position = m_gunFireingPoint;
             Tempprojectile.transform.rotation = this.transform.rotation;
 
@@ -221,7 +246,7 @@ public abstract class RangedWeapon : Weapon
             // projetcileBasic.setFiredFrom(m_ownersFaction);
             // projetcileBasic.setTargetTransfrom(m_target.transform);
 
-            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,damage);
+            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,damage,this.dotTime);
             EnvironmentSound.Instance.broadcastSound(this.transform.position,m_ownersFaction,SoundMaxDistance);
 
             ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  

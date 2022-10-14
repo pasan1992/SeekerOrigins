@@ -709,6 +709,11 @@ public class HumanoidRangedWeaponsModule
         return m_currentWeapon;
     }
 
+    public void SetWeaponAmmoType(string type)
+    {
+        m_rifle.SwitchAmmoType(type);
+    }
+
 
     public int getCurrentWeaponAmmoCount()
     {

@@ -8,6 +8,9 @@ public class SecondaryWeapon : RangedWeapon
         base.Awake();
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
+        posibleAmmoTypes.Add("Incindeary",new RangedWeapon.AmmunitionType("Incindeary",2,ProjectilePool.POOL_OBJECT_TYPE.IncendearyProjectile,1,3,"IncendearyAmmo"));
+        posibleAmmoTypes.Add("Ordinary",new RangedWeapon.AmmunitionType("Ordinary",this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,1,"RifleAmmo"));
+        m_ammoCount["IncendearyAmmo"] = 0;
     }
 
     public void Start()

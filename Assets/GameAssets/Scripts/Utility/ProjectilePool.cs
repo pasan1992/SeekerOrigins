@@ -11,6 +11,8 @@ public class ProjectilePool : MonoBehaviour
         DroneExplosion,
         HitBasicParticle,
         BasicProjectile,
+
+        IncendearyProjectile,
         ElectricParticleEffect,
         SmokeEffect,
         PistolAmmo,
@@ -22,11 +24,16 @@ public class ProjectilePool : MonoBehaviour
         BloodSplatterEffect,
         DamageText,
         Obj_Indicator,
+        SmallFireEffect,
         Granade_Explosion
     }
 
     // Basic Projectile 
     private List<GameObject> basicProjectilesList;
+
+    private List<GameObject> IncendiaryProjectilesList;
+
+    private List<GameObject> smallFireEffect;
     public int maxBulletCount = 20;
 
     // Explosions
@@ -132,6 +139,12 @@ public class ProjectilePool : MonoBehaviour
                 basicProjectilesList = new List<GameObject>();
                 effectList = basicProjectilesList;
                 break;
+            case POOL_OBJECT_TYPE.IncendearyProjectile:
+                count = maxBulletCount;
+                resourcePath = "Prefab/FireProjectile";
+                IncendiaryProjectilesList = new List<GameObject>();
+                effectList = IncendiaryProjectilesList;
+                break;
             case POOL_OBJECT_TYPE.ElectricParticleEffect:
                 count = maxExplosions;
                 resourcePath = "ParticleEffects/ElectricShock";
@@ -205,7 +218,15 @@ public class ProjectilePool : MonoBehaviour
                 count = maxExplosions;
                 basicGrenadeExplosionParticlesList = new List<GameObject>();
                 effectList = basicGrenadeExplosionParticlesList;
-                break;                        
+                break;    
+
+            case POOL_OBJECT_TYPE.SmallFireEffect:
+                //resourcePath = "ParticleEffects/Explosion_fire";
+                resourcePath = "ParticleEffects/FireEffect";
+                count = maxExplosions;
+                smallFireEffect = new List<GameObject>();
+                effectList = smallFireEffect;
+                break;                     
 
         }
 
@@ -352,6 +373,12 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.Granade_Explosion:
                 effectList = basicGrenadeExplosionParticlesList;
+                break;
+            case POOL_OBJECT_TYPE.IncendearyProjectile:
+                effectList = IncendiaryProjectilesList;
+                break;
+            case POOL_OBJECT_TYPE.SmallFireEffect:
+                effectList = smallFireEffect;
                 break;
         }
 

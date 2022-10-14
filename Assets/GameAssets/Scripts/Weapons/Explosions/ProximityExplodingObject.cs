@@ -20,6 +20,7 @@ public class ProximityExplodingObject : BasicExplodingObject
 
     public GameObject indicator;
 
+
     public void Awake()
     {
         if (indicator)

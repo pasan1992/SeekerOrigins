@@ -249,6 +249,10 @@ public class PlayerController : AgentController
             m_movingAgent.reloadCurretnWeapon();
         }
 
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            m_movingAgent.SwitchAmmoType("Incindeary");
+        }
 
 
         RaycastHit m_raycastHit;
