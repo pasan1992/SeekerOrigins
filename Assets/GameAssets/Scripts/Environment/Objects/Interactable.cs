@@ -35,7 +35,6 @@ public class Interactable : MonoBehaviour
         }
         public string itemName = "";
         public float interactionTime;
-        public int interactionID;
         public InteractionAction InteractionAnim = InteractionAction.NotSpecified;
         public Vector3 offset = Vector3.zero;
         public Vector3 rotation = Vector3.zero;
@@ -105,10 +104,10 @@ public class Interactable : MonoBehaviour
             m_relativeRotation = properties.actualObject.localRotation.eulerAngles;
         }
 
-        if(properties.InteractionAnim !=InteractableProperties.InteractionAction.NotSpecified)
-        {
-            properties.interactionID = (int)properties.InteractionAnim;
-        }
+        // if(properties.InteractionAnim !=InteractableProperties.InteractionAction.NotSpecified)
+        // {
+        //     properties.interactionID = (int)properties.InteractionAnim;
+        // }
 
         // set event on interatability change
         properties.interatabilityChange +=setInteratableIndicator;

@@ -5,25 +5,29 @@ using UnityEngine;
 public class DroneMovmentModule : MovmentModule
 {
     // Start is called before the first frame update
-    private Transform m_modelTransfrom;
+    private Transform m_MovmentTransfrom;
     private Vector3 m_landingPosition;
     private GameEnums.DroneState m_currentDroneState;
     private Vector3 m_hoverPosition;
     private AnimationModule m_animationSystem;
+    private Transform m_modelTransform;
+
 
     public DroneMovmentModule(GameObject target,
     Transform characterTransfrom,
     GameEnums.DroneState state,
-    Transform modelTransfrom,
+    Transform movmentTransfrom,
     AnimationModule animationSystem,
-    BASIC_MOVMENT_STATE movmentType):base(target,characterTransfrom)
+    BASIC_MOVMENT_STATE movmentType,
+    Transform modelTransfrom = null):base(target,characterTransfrom)
     {
         m_target = target;
         m_characterTransform = characterTransfrom;
-        m_modelTransfrom = modelTransfrom;
+        m_MovmentTransfrom = movmentTransfrom;
         m_currentDroneState = state;
         m_animationSystem = animationSystem;
         m_movmentType = movmentType;
+        m_modelTransform = modelTransfrom;
     }
 
     public override void UpdateMovment(int characterMovmentState, Vector3 movmentDirection)
@@ -43,6 +47,14 @@ public class DroneMovmentModule : MovmentModule
             break;
             case GameEnums.DroneState.Flying:
                 base.UpdateMovment(characterMovmentState,movmentDirection);
+                if(m_movmentType == BASIC_MOVMENT_STATE.AIMED_MOVMENT)
+                {
+                    m_modelTransform.LookAt(m_target.transform.position);
+                }
+                else
+                {
+                    m_modelTransform.LookAt(m_modelTransform.position + movmentDirection*10);
+                }
             break;
             case GameEnums.DroneState.Landed:
             break;
@@ -66,10 +78,10 @@ public class DroneMovmentModule : MovmentModule
              m_animationSystem.enableAnimationSystem();
         }
 
-        if((Vector3.Distance(m_modelTransfrom.position,m_hoverPosition) > 0.3f))
+        if((Vector3.Distance(m_MovmentTransfrom.position,m_hoverPosition) > 0.3f))
         {
             state = GameEnums.DroneState.TakeOff;
-            m_modelTransfrom.position = Vector3.Lerp(m_modelTransfrom.position,m_hoverPosition,0.1f);
+            m_MovmentTransfrom.position = Vector3.Lerp(m_MovmentTransfrom.position,m_hoverPosition,0.1f);
         }
         // Landed
         else
@@ -84,14 +96,14 @@ public class DroneMovmentModule : MovmentModule
         if(m_currentDroneState != GameEnums.DroneState.Landing)
         {
             m_currentDroneState = state;
-            m_hoverPosition = m_modelTransfrom.position;
+            m_hoverPosition = m_MovmentTransfrom.position;
         }
 
         // Still Landing
-        if((Vector3.Distance(m_modelTransfrom.position,m_landingPosition) > 0.3f))
+        if((Vector3.Distance(m_MovmentTransfrom.position,m_landingPosition) > 0.3f))
         {
             state = GameEnums.DroneState.Landing;
-            m_modelTransfrom.position = Vector3.Lerp(m_modelTransfrom.position,m_landingPosition,0.1f);
+            m_MovmentTransfrom.position = Vector3.Lerp(m_MovmentTransfrom.position,m_landingPosition,0.1f);
         }
         // Landed
         else

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -80,7 +80,6 @@ public class BasicTimerExplodingObject : BasicExplodingObject
         base.activateExplosionMechanisum();
         resetAll();
         startCountDown();
-
     }
 
 }

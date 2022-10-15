@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
@@ -23,6 +23,8 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     private GameObject fireEffect;
     private int dotCount = 0;
+
+    public UnityEvent m_onDestroyEvent;
 
     public void Awake()
     {
@@ -103,16 +105,28 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
             return false;
         }
 
+
+
         // Not functional - If the Object is destroyed 
         if (!destroyedEventCalled & getRemaningHealth() == 0)
         {           
             destroyedEventCalled = true;
 
+
+            if(m_onDestroyEvent !=null)
+            {
+                m_onDestroyEvent.Invoke();
+            }
+            else{
+                StartCoroutine(waitAndDestory(2));
+            }
+
             if(onDestroyedEvent !=null)
             {
                 onDestroyedEvent();
             }
-           StartCoroutine(waitAndDestory(2));
+
+           
             
         }  
         return true;  
@@ -195,6 +209,8 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
             yield return new WaitForSeconds(time);
             SetFireEffect(false,null);
             Destroy(this.gameObject);
+
+
         }
 
     }

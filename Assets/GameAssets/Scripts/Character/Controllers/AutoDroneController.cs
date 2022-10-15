@@ -16,6 +16,7 @@ public class AutoDroneController :  AgentController
     private ICharacterBehaviorState m_itearationState;
     private HumanoidAgentBasicVisualSensor m_visualSensor;
     private bool inStateTransaction = false;
+    private HealthBar m_healthbar;
 
     #region initalize
     void Awake()
@@ -29,6 +30,7 @@ public class AutoDroneController :  AgentController
         m_currentBehaviorState  = m_itearationState;
 
         m_visualSensor = new HumanoidAgentBasicVisualSensor(m_selfAgent);
+        m_selfAgent.stopAiming();
     }
 
     private void Start()
@@ -40,6 +42,7 @@ public class AutoDroneController :  AgentController
         m_visualSensor.setOnAllClear(onAllClear);
         
         EnvironmentSound.Instance.listenToSound(onSoundAlert);  
+        m_healthbar = this.GetComponentInChildren<HealthBar>();
     }
 
     #endregion
@@ -56,6 +59,11 @@ public class AutoDroneController :  AgentController
             if(!m_selfAgent.isInteracting())
             {
                 m_visualSensor.UpdateSensor();
+            }
+
+            if (m_healthbar)
+            {
+                m_healthbar.setHealthPercentage(m_selfAgent.GetAgentData());
             }
             
         }
@@ -89,11 +97,12 @@ public class AutoDroneController :  AgentController
 
     private void switchToCombatStage()
     {
-        if(m_currentBehaviorState !=m_combatState && !inStateTransaction)
+        if(m_currentBehaviorState !=m_combatState && !inStateTransaction && m_restrictions !=AGENT_AI_RESTRICTIONS.NO_COMBAT)
         {
             m_selfAgent.cancleInteraction();
             inStateTransaction = true;
             StartCoroutine(waitTillInteractionStopAndSwitchToCombat());
+            m_selfAgent.aimWeapon();
         }  
     }
 
@@ -129,8 +138,12 @@ public class AutoDroneController :  AgentController
 
     public void onEnemyDetection(ICyberAgent opponent)
     {
+        if (!CommonFunctions.isAllies(opponent,m_selfAgent))
+        {
          m_combatState.setTargets(opponent);
-        switchToCombatStage();
+         switchToCombatStage();
+        }
+
     }
 
     IEnumerator waitTillInteractionStopAndSwitchToCombat()
@@ -151,6 +164,7 @@ public class AutoDroneController :  AgentController
     public override void OnAgentDestroy()
     {
         //TEst
+        EnvironmentSound.Instance.removeListen(onSoundAlert);
         base.OnAgentDestroy();
         if(m_navMeshAgent.isOnNavMesh && m_navMeshAgent.isStopped)
         {
@@ -159,8 +173,8 @@ public class AutoDroneController :  AgentController
 
         m_navMeshAgent.enabled = false;
 
-        this.transform.position = new Vector3(3.18f, 3.27f, 52.93f);
-        setInUse(false);
+        //this.transform.position = new Vector3(3.18f, 3.27f, 52.93f);
+        setInUse(false);     
     }
 
 

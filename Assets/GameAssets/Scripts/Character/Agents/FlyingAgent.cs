@@ -39,13 +39,22 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     private GameEvents.BasicNotifactionEvent m_onDamaged;
 
-    public Transform[] firePoints;
+    [System.Serializable]
+    public struct FireLocation
+    {
+        public Transform firePoint;
+        public ParticleSystem fireParticle;
+    } 
 
-    public Transform CharacterTransfrom;
+    public FireLocation[] firePoints;
+
+    // public Transform CharacterTransfrom;
 
     public float WeaponDamage = 0.1f;
 
     private IEnumerator m_previousCorutine;
+
+    public Transform m_DroneModel;
 
     #region initalize
 
@@ -63,13 +72,13 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
         m_animationModule = new AnimationModule(this.GetComponentInChildren<Animator>());
 
-        if(CharacterTransfrom == null)
-        {
-            CharacterTransfrom = this.gameObject.transform;
-        }
+        // if(CharacterTransfrom == null)
+        // {
+        //     CharacterTransfrom = this.gameObject.transform;
+        // }
 
         m_movmentModule = new DroneMovmentModule(m_target, this.gameObject.transform,m_currentDroneState,m_droneRigitBody.transform,m_animationModule,
-        m_currentMovementState);
+        m_currentMovementState,m_DroneModel);
 
     }
     #endregion
@@ -210,8 +219,10 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
         if(firePoints.Length > 0)
         {
-            int val = Random.Range(0,firePoints.Length-1);
-            return firePoints[val].position;
+            int val = Random.Range(0,firePoints.Length);
+            var fp = firePoints[val];
+            fp.fireParticle.Play();
+            return fp.firePoint.position;
         }
 
         return this.transform.position;
@@ -251,7 +262,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public void stopAiming()
     {
-        m_currentMovementState = MovmentModule.BASIC_MOVMENT_STATE.AIMED_MOVMENT;
+        m_currentMovementState = MovmentModule.BASIC_MOVMENT_STATE.DIRECTIONAL_MOVMENT;
     }
 
     public void disableDrone()
@@ -425,7 +436,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public void interactWith(Interactable interactableObj,Interactable.InteractableProperties.InteractableType type)
     {
-        if(type == Interactable.InteractableProperties.InteractableType.TimedInteraction && interactableObj.properties.interactionID == (int)GameEnums.Interaction.LAND ){
+        if(type == Interactable.InteractableProperties.InteractableType.TimedInteraction){
             landDrone(interactableObj.transform.position);
             float interactionTime= interactableObj.properties.interactionTime;
             StartCoroutine(waitCoroutine(interactionTime));

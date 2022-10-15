@@ -8,7 +8,7 @@ public class BasicExplodingObject : MonoBehaviour
     protected float m_baseDamage;
 
      [SerializeField] 
-    protected float m_range;
+    protected float m_range = 7;
 
     public float BaseDamage { get => m_baseDamage; set => m_baseDamage = value; }
     public float Range { get => m_range; set => m_range = value; }
@@ -37,12 +37,18 @@ public class BasicExplodingObject : MonoBehaviour
     private void damgeAround()
     {
 
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 7);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, m_range);
 
         for(int i =0; i<5 ;i++)
         {
             foreach (Collider hitCollider in hitColliders)
             {
+                // var explodingObj = hitCollider.GetComponentInParent<BasicExplodingObject>();
+                // if (explodingObj !=null && explodingObj !=this)
+                // {
+                //     explodingObj.explode();
+                // }
+                
                 switch (hitCollider.tag)
                 {
                     case "Enemy":
@@ -78,6 +84,7 @@ public class BasicExplodingObject : MonoBehaviour
             {   
                 if(!DamageCalculator.isSafeFromTarget(this.transform.position,other.transform.position,m_range))
                 {
+
                     agent.damageAgent(m_baseDamage*damagePropotion);
                 }           
             }
@@ -85,7 +92,6 @@ public class BasicExplodingObject : MonoBehaviour
         else
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
-            
             float chance = Random.value;
 
             if(rb && chance >0.5f)
@@ -122,9 +128,12 @@ public class BasicExplodingObject : MonoBehaviour
         {   
             if(!DamageCalculator.isSafeFromTarget(this.transform.position,other.transform.position,m_range))
             {
+                Debug.Log("12131");
 
                 // Neeed to improve it exploding objects must not have faction
                 damagableObject.damage(m_baseDamage*damagePropotion,other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
+                Debug.Log(damagableObject);
+                Debug.Log(damagePropotion);
                 var mvdamage = (MovingAgentDamagableObject)damagableObject;
                 if(mvdamage !=null)
                 {

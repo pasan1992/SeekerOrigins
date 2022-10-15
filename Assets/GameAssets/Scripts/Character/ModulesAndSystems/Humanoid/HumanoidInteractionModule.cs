@@ -363,7 +363,7 @@ public class HumanoidInteractionModule
          */
         if(m_interacting)
         {
-            m_animationModule.setInteraction(true,interactableObj.properties.interactionID);
+            m_animationModule.setInteraction(true,(int)interactableObj.properties.InteractionAnim);
 
             // Wait until intereaction is cancled.
             while(m_interacting)
@@ -401,7 +401,7 @@ public class HumanoidInteractionModule
          */
         if(m_interacting)
         {
-            m_animationModule.setInteraction(true,interactableObj.properties.interactionID);
+            m_animationModule.setInteraction(true,(int)interactableObj.properties.InteractionAnim);
             var dialog_interaction = interactableObj.GetComponent<DialogInteratable>();
             yield return dialog_interaction.PlayDialog();      
 
@@ -441,7 +441,7 @@ public class HumanoidInteractionModule
          */
         if(m_interacting)
         {
-            m_animationModule.setInteraction(true,interactableObj.properties.interactionID);
+            m_animationModule.setInteraction(true,(int)interactableObj.properties.InteractionAnim);
             float waitTime = interactableObj.properties.interactionTime;
             float currentWaitedTime = 0;
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using RootMotion.FinalIK;
 
 public class HumanoidDamageModule : DamageModule
@@ -77,6 +77,11 @@ public class HumanoidDamageModule : DamageModule
 
     }
 
+    public override void stun(float duration)
+    {
+        
+    }
+
     #endregion
 
     #region getters and setters
@@ -94,6 +99,11 @@ public class HumanoidDamageModule : DamageModule
     public Transform getChestTransfrom()
     {
         return m_chestTransform;
+    }
+
+    public void setStun()
+    {
+        
     }
 
     public void toggleHeadTransfromCollider(bool enable)

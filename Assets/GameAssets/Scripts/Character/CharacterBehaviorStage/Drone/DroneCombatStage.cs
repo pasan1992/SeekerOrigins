@@ -138,7 +138,7 @@ public class DroneCombatStage : BasicMovmentCombatStage
 
     public void findTargetLocationToFire()
     {
-
+        
         if (Random.value > m_selfAgent.getSkill())
         {
             m_randomTargetOffset = Random.insideUnitSphere * 1;
@@ -152,6 +152,7 @@ public class DroneCombatStage : BasicMovmentCombatStage
         {
             m_randomTargetOffset += Random.insideUnitSphere * 1;
         }
+        m_randomTargetOffset = Vector3.zero;
     }
     #endregion
 
