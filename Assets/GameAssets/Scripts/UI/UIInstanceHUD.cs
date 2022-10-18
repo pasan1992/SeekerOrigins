@@ -42,42 +42,60 @@ public class UIInstanceHUD : MonoBehaviour
     [SerializeField] TMP_Text _rifleTypeCount_IGF;
 
     // Tab Menu Feilds
-    [Header("Tab Menu Fields - Base objects")]
-    [SerializeField] GameObject _missileTypeBaseObj_TMF;
-    [SerializeField] GameObject _grenadeTypeBaseObj_TMF;
-    [SerializeField] GameObject _healthPackTypeBaseObj_TMF;
-    [SerializeField] GameObject _pistolTypeBaseObj_TMF;
-    [SerializeField] GameObject _rifleTypeBaseObj_TMF;
+    //[Header("Tab Menu Fields - Base objects")]
+    //[SerializeField] GameObject _missileTypeBaseObj_TMF;
+    //[SerializeField] GameObject _grenadeTypeBaseObj_TMF;
+    //[SerializeField] GameObject _healthPackTypeBaseObj_TMF;
+    //[SerializeField] GameObject _pistolTypeBaseObj_TMF;
+    //[SerializeField] GameObject _rifleTypeBaseObj_TMF;
 
-    [Header("Tab Menu Fields - Sub objects")]
-    [SerializeField] GameObject _missileTypeObj_TMF_1;
+    [Header("Tab Menu Fields")]
+    [SerializeField] Toggle _missileTypeObj_TMF_1;
     [SerializeField] TMP_Text _missileTypeCount_TMF_1;
-    [SerializeField] GameObject _missileTypeObj_TMF_2;
+    [SerializeField] Toggle _missileTypeObj_TMF_2;
     [SerializeField] TMP_Text _missileTypeCount_TMF_2;
 
-    [SerializeField] GameObject _grenadeTypeObj_TMF_1;
+    [SerializeField] Toggle _grenadeTypeObj_TMF_1;
     [SerializeField] TMP_Text _grenadeTypeCount_TMF_1;
-    [SerializeField] GameObject _grenadeTypeObj_TMF_2;
-    [SerializeField] TMP_Text _grenadeTypeCount_TMF_2;
+    [SerializeField] Toggle _grenadeTypeObj_TMF_2;
+    [SerializeField] TMP_Text _grenadeTypeCount_TMF_2;    
+    [SerializeField] Toggle _grenadeTypeObj_TMF_3;
+    [SerializeField] TMP_Text _grenadeTypeCount_TMF_3;
 
-    [SerializeField] GameObject _healthPackTypeObj_TMF_1;
+    [SerializeField] Toggle _healthPackTypeObj_TMF_1;
     [SerializeField] TMP_Text _healthPackTypeCount_TMF_1;
 
-    [SerializeField] GameObject _pistolTypeObj_TMF_1;
+    [SerializeField] Toggle _pistolTypeObj_TMF_1;
     [SerializeField] TMP_Text _pistolTypeCount_TMF_1;
-    [SerializeField] GameObject _pistolTypeObj_TMF_2;
-    [SerializeField] TMP_Text _pistolTypeCount_TMF_2;
+    [SerializeField] Toggle _pistolTypeObj_TMF_2;
+    [SerializeField] TMP_Text _pistolTypeCount_TMF_2;    
+    [SerializeField] Toggle _pistolTypeObj_TMF_3;
+    [SerializeField] TMP_Text _pistolTypeCount_TMF_3;
 
-    [SerializeField] GameObject _rifleTypeObj_TMF_1;
+    [SerializeField] Toggle _rifleTypeObj_TMF_1;
     [SerializeField] TMP_Text _rifleTypeCount_TMF_1;
-    [SerializeField] GameObject _rifleTypeObj_TMF_2;
-    [SerializeField] TMP_Text _rifleTypeCount_TMF_2;
+    [SerializeField] Toggle _rifleTypeObj_TMF_2;
+    [SerializeField] TMP_Text _rifleTypeCount_TMF_2;    
+    [SerializeField] Toggle _rifleTypeObj_TMF_3;
+    [SerializeField] TMP_Text _rifleTypeCount_TMF_3;
 
     [SerializeField] List<Sprite> _grenadesSpriteList = new List<Sprite>();
 
     [SerializeField] List<Sprite> _pistolsSpriteList = new List<Sprite>();
 
     List<AgentData.AmmoPack> _weaponAmmoList = new List<AgentData.AmmoPack>();
+
+    string _dfMissile = AmmoTypeEnums.Missile.DroneBusters_Missile.ToString();
+    string _dfGrenade = AmmoTypeEnums.Grenade.Regular_Grenade.ToString();
+    string _dfHealthPack = "Regular_HealthPack";
+    string _dfPistolAmmo = AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString();
+    string _dfRifleAmmo = AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString();
+
+    string _selectedMissile = "";
+    string _selectedGrenade = "";
+    string _selectedHealthPack = "";
+    string _selectedPistolAmmo = "";
+    string _selectedRifleAmmo = "";
 
     AgentData _agentData;
 
@@ -88,21 +106,20 @@ public class UIInstanceHUD : MonoBehaviour
     //RectTransform _endPosition;
     bool _isHUDOpen = false;
 
-    void Awake()
-    {
-        _initialPosition = _instanceHUD.transform.position;
-        _endPosition = new Vector3(_initialPosition.x, 500f, 0f);
+    //void Awake()
+    //{
 
-        //_initialPosition = _instanceHUD.GetComponent<RectTransform>().localPosition;
-        //_endPosition = new Vector3(0, 600f, _TMF_1);
-
-        //_initialPosition = _instanceHUD.GetComponent<RectTransform>();
-        //_endPosition.localPosition = new Vector3(0, 600f,_TMF_1);   
-    }
+    //}
 
     void Start()
     {
-        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
+        //_weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
+        _selectedMissile = _dfMissile;
+        _selectedGrenade = _dfGrenade;
+        _selectedHealthPack = _dfHealthPack;
+        _selectedPistolAmmo = _dfPistolAmmo;
+        _selectedRifleAmmo = _dfRifleAmmo;
+
     }
 
     void Update()
@@ -110,7 +127,7 @@ public class UIInstanceHUD : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             HudOpen();
-            UpdateTabMenuUIData();
+            SetTabMenuUIData();
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
@@ -122,6 +139,8 @@ public class UIInstanceHUD : MonoBehaviour
 
     void UpdateInGameUIData()
     {
+        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
+
         if (_weaponAmmoList.Count() > 0)
         {
             foreach (var weaponAmmo in _weaponAmmoList)
@@ -133,13 +152,28 @@ public class UIInstanceHUD : MonoBehaviour
                     _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                     _grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
                     _grenadeTypeObj_IGF.SetActive(true);
+
+                    _grenadeTypeObj_TMF_1.interactable = true;
+                    _grenadeTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
                 }
 
-                else if(weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.Stealth_Grenade.ToString())
+                else if(weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.EMP_Grenade.ToString())
                 {
                     _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
-                    _grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Stealth_Grenade];
+                    _grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.EMP_Grenade];
                     _grenadeTypeObj_IGF.SetActive(true);
+
+                    _grenadeTypeObj_TMF_2.interactable = true;
+                    _grenadeTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                }
+                else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
+                {
+                    _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                    _grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.ProximityTrap_Grenade];
+                    _grenadeTypeObj_IGF.SetActive(true);
+
+                    _grenadeTypeObj_TMF_3.interactable = true;
+                    _grenadeTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
                 }
                 else
                 {
@@ -147,17 +181,32 @@ public class UIInstanceHUD : MonoBehaviour
                     _grenadeTypeObj_IGF.SetActive(false);
                 }
 
-                if (weaponAmmo.AmmoType == AmmoTypeEnums.Ammo.Stun_Ammo.ToString())
+                if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString())
                 {
                     _pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
-                    _pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.Ammo.Stun_Ammo];
+                    _pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
                     _pistolTypeObj_IGF.SetActive(true);
+
+                    _pistolTypeObj_TMF_1.interactable = true;
+                    _pistolTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
                 }
-                else if (weaponAmmo.AmmoType == AmmoTypeEnums.Ammo.Tracking_Ammo.ToString())
+                else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString())
                 {
                     _pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
-                    _pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.Ammo.Tracking_Ammo];
+                    _pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
                     _pistolTypeObj_IGF.SetActive(true);
+
+                    _pistolTypeObj_TMF_2.interactable = true;
+                    _pistolTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                }
+                else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString())
+                {
+                    _pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                    _pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
+                    _pistolTypeObj_IGF.SetActive(true);
+
+                    _pistolTypeObj_TMF_3.interactable = true;
+                    _pistolTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
                 }
                 else
                 {
@@ -167,8 +216,69 @@ public class UIInstanceHUD : MonoBehaviour
         }
     }
 
-    void UpdateTabMenuUIData()
+    void SetTabMenuUIData()
     {
+        //Missile
+        if (_selectedMissile == AmmoTypeEnums.Missile.DroneBusters_Missile.ToString())
+        {
+            _missileTypeObj_TMF_1.isOn = true;
+        }
+        else if (_selectedMissile == AmmoTypeEnums.Missile.MiniNuke_Missile.ToString())
+        {
+            _missileTypeObj_TMF_2.isOn = true;
+        }
+
+        //Grenade
+        if (_selectedGrenade == AmmoTypeEnums.Grenade.Regular_Grenade.ToString())
+        {
+            _grenadeTypeObj_TMF_1.isOn = true;
+        }
+        else if (_selectedGrenade == AmmoTypeEnums.Grenade.EMP_Grenade.ToString())
+        {
+            _grenadeTypeObj_TMF_2.isOn = true;
+        }        
+        else if (_selectedGrenade == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
+        {
+            _grenadeTypeObj_TMF_3.isOn = true;
+        }
+
+        //HealthPack
+        if (_selectedHealthPack == AmmoTypeEnums.HealthPack.Regular_HealthPack.ToString())
+        {
+            _healthPackTypeObj_TMF_1.isOn = true;
+        }
+
+        //PistolAmmo
+        if (_selectedPistolAmmo == AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString())
+        {
+            _pistolTypeObj_TMF_1.isOn = true;
+        }
+        else if (_selectedPistolAmmo == AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString())
+        {
+            _pistolTypeObj_TMF_2.isOn = true;
+        }
+        if (_selectedPistolAmmo == AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString())
+        {
+            _pistolTypeObj_TMF_3.isOn = true;
+        }
+
+        //RifleAmmo
+        if (_selectedRifleAmmo == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString())
+        {
+            _rifleTypeObj_TMF_1.isOn = true;
+        }        
+        else if (_selectedRifleAmmo == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString())
+        {
+            _rifleTypeObj_TMF_2.isOn = true;
+        }
+        else if (_selectedRifleAmmo == AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString())
+        {
+            _rifleTypeObj_TMF_3.isOn = true;
+        }
+
+
+
+
         //if (_weaponAmmoList.Count() > 0)
         //{
         //    foreach (var weaponAmmo in _weaponAmmoList)
@@ -198,8 +308,82 @@ public class UIInstanceHUD : MonoBehaviour
         //}
     }
 
+    public void UpdateMissileType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                _selectedMissile = AmmoTypeEnums.Missile.DroneBusters_Missile.ToString();
+                break;
+            case 2:
+                _selectedMissile = AmmoTypeEnums.Missile.MiniNuke_Missile.ToString();
+                break;
+        }
+    }
+
+    public void UpdateGrenadeType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                _selectedGrenade = AmmoTypeEnums.Grenade.Regular_Grenade.ToString();
+                break;            
+            case 2:
+                _selectedGrenade = AmmoTypeEnums.Grenade.EMP_Grenade.ToString();
+                break;          
+            case 3:
+                _selectedGrenade = AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString();
+                break;
+        }
+    }
+
+    public void UpdateHealthPackType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                _selectedHealthPack = _dfHealthPack;
+                break;
+        }
+    }
+
+    public void UpdatePistolAmmoType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString();
+                break;
+            case 2:
+                _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString();
+                break;            
+            case 3:
+                _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString();
+                break;
+        }
+    }
+
+    public void UpdateRifleAmmoType(int type)
+    {
+        switch (type)
+        {
+            case 1:
+                _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString();
+                break;
+            case 2:
+                _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString();
+                break;
+            case 3:
+                _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString();
+                break;
+        }
+    }
+
     void HudOpen()
     {
+        _initialPosition = new Vector3(Screen.width / 2, Screen.height * -1, 0);
+        _endPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0f);
+
         if (!_isHUDOpen)
         {
             _isHUDOpen = true;

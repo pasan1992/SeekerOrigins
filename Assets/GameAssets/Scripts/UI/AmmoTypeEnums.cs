@@ -1,30 +1,36 @@
 ﻿public class AmmoTypeEnums
 {
+    public enum Missile
+    {
+        DroneBusters_Missile,
+        MiniNuke_Missile,
+    }
+
     public enum Grenade
     {
         Regular_Grenade,
         EMP_Grenade,
-        Stealth_Grenade,
         ProximityTrap_Grenade,
     }
-    public enum Ammo
+
+    public enum HealthPack
     {
-        Regular_Ammo,
-        Tracking_Ammo,
-        Incendiary_Ammo,
-        Energy_Ammo,
-        GunShield_Ammo,
-        Explosive_Ammo,
-        ElectricChargeShot_Ammo,
-        Stun_Ammo,
-
-        PistolAmmo,
-        RifleAmmo,
-
-        DroneBusters_Missile,
-        MiniNuke_Missile,
-
-        Mag,
-        Missile
+        Regular_HealthPack,
     }
+
+    public enum PistolAmmo
+    {
+        Regular_PistolAmmo,
+        Energy_PistolAmmo,
+        Charge_PistolAmmo,
+    }
+
+    public enum RifleAmmo
+    {
+        Regular_RifleAmmo,
+        Incendiary_RifleAmmo,
+        Highcaliber_RifleAmmo,
+    }
+
+
 }
