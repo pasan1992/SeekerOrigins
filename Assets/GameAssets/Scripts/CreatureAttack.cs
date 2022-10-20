@@ -87,7 +87,7 @@ public class CreatureAttack : MonoBehaviour
 
     void Damaging()
     {
-        player.GetComponent<HumanoidDamagableObject>().damage(creatureDamage, _legCollider, Random.insideUnitSphere, _legCollider.transform.position, agentBasicData.m_agentFaction);
+        player.GetComponent<HumanoidDamagableObject>().damage(new CommonFunctions.Damage(creatureDamage,0), _legCollider, Random.insideUnitSphere, _legCollider.transform.position, agentBasicData.m_agentFaction);
     }
 
     public void OnDestory()

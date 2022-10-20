@@ -21,7 +21,7 @@ public class FakeMovingAgent : ICyberAgent
         throw new System.NotImplementedException();
     }
 
-    public void damageAgent(float amount)
+    public void damageAgent(CommonFunctions.Damage amount)
     {
         throw new System.NotImplementedException();
     }

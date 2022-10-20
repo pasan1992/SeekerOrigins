@@ -30,6 +30,8 @@ public class Weapon : Interactable
     protected GameObject m_target;
     public float accuracy_rating = 50;
     public float damage = 3;
+
+    public float energyDamage = 0;
     public string m_weaponAmmunitionName = "BasicMag";
 
     #endregion

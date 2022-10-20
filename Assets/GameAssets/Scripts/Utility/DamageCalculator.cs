@@ -122,11 +122,11 @@ public class DamageCalculator
         
         if(damagableObject != null)
         {
-            damagableObject.damage(1,other,hitDirection,other.transform.position,m_fireFrom);
+            damagableObject.damage(new CommonFunctions.Damage(1,0),other,hitDirection,other.transform.position,m_fireFrom);
         }
     }
 
-    public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,float damage,float dot_time=0)
+    public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,CommonFunctions.Damage damage,float dot_time=0)
     {
         DamagableObject damagableObject = other.transform.GetComponentInParent<DamagableObject>();
         if (damagableObject != null)
@@ -161,7 +161,7 @@ public class DamageCalculator
     }
 
     public static RaycastHit 
-    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,float weapon_damage,float dot_time=0)
+    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,CommonFunctions.Damage weapon_damage,float dot_time=0)
     {
         RaycastHit hit = new RaycastHit();
         RaycastHit acualHit = new RaycastHit();

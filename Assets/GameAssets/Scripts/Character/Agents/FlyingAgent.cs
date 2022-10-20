@@ -51,6 +51,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     // public Transform CharacterTransfrom;
 
     public float WeaponDamage = 0.1f;
+    public float WeaponEneryDamge = 0.1f;
 
     private IEnumerator m_previousCorutine;
 
@@ -202,7 +203,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         // tempProjectile.setFiredFrom(m_agentData.m_agentFaction);
         // tempProjectile.resetToMicroBeam();
 
-        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,WeaponDamage);
+        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,new CommonFunctions.Damage(WeaponDamage,WeaponEneryDamge));
         Tempprojectile.transform.forward = (hitPos.point - firePos).normalized;
 
         ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
@@ -243,7 +244,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
     }
 
-    public void damageAgent(float amount)
+    public void damageAgent(CommonFunctions.Damage amount)
     {
         m_damageModule.DamageByAmount(amount);
         m_onDamaged();

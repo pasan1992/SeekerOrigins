@@ -57,31 +57,40 @@ public class DamageModule
         
     }
 
-    public void DamageByAmount(float amount)
+    public void DamageByAmount(CommonFunctions.Damage damage)
     {
         damaged_count = m_basicData.HealthRegenWait;
-        setDamageText(amount,m_basicData.getAgentTransform().position,Color.yellow);
+        //setDamageText(amount,m_basicData.getAgentTransform().position,Color.yellow);
+        var health_amount = damage.healthDamage;
+
+        //Shield damage
+        var sheild_amount = damage.energyDamage;
+        m_basicData.Sheild = m_basicData.Sheild - sheild_amount;
+        if (m_basicData.Sheild < 0 )
+        {
+            m_basicData.Sheild = 0;
+        }
 
         if (m_basicData.Health == 0)
             return;
 
-        if (amount > m_basicData.Sheild)
+        if (health_amount > m_basicData.Sheild)
         {
-            amount = amount - m_basicData.Sheild;
+            health_amount = health_amount - m_basicData.Sheild;
             
             m_basicData.Sheild = 0;
             
         }
         else
         {          
-            m_basicData.Sheild = m_basicData.Sheild - amount;
+            m_basicData.Sheild = m_basicData.Sheild - health_amount;
             //setDamageText(amount,m_basicData.getAgentTransform().position,Color.blue);
             return;
         }
 
 
 
-        m_basicData.Health -= amount;
+        m_basicData.Health -= health_amount;
         //setDamageText(amount,m_basicData.getAgentTransform().position,Color.red);
 
 

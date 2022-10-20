@@ -188,7 +188,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         }       
     }
 
-    public void damageAgent(float amount)
+    public void damageAgent(CommonFunctions.Damage amount)
     {
         m_damageModule.DamageByAmount(amount);
 

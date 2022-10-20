@@ -712,6 +712,7 @@ public class HumanoidRangedWeaponsModule
     public void SetWeaponAmmoType(string type)
     {
         m_rifle.SwitchAmmoType(type);
+        m_pistol.SwitchAmmoType("Energy");
     }
 
 

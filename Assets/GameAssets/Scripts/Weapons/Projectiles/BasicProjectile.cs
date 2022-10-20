@@ -83,57 +83,6 @@ public class BasicProjectile : MonoBehaviour
 
     }
 
-    private void hitOnEnemy(Collider other)
-    {
-        AgentController agentController = other.transform.GetComponentInParent<AgentController>();
-
-        if (agentController != null && !m_hit)
-        {
-            ICyberAgent cyberAgent = agentController.getICyberAgent();
-            if (cyberAgent !=null && !m_fireFrom.Equals(cyberAgent.getFaction()))
-            {
-                m_hit = true;
-                cyberAgent.reactOnHit(other, (this.transform.forward) * 3f, other.transform.position);
-                cyberAgent.damageAgent(1);
-            
-                speed = 0;
-                this.gameObject.SetActive(false);
-                GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
-                basicHitParticle.SetActive(true);
-                basicHitParticle.transform.position = this.transform.position;
-                basicHitParticle.transform.LookAt(Vector3.up);
- 
-                if (!cyberAgent.IsFunctional())
-                {
-                    HumanoidMovingAgent movingAgent = cyberAgent as HumanoidMovingAgent;
-                    if(movingAgent !=null)
-                    {
-                        Rigidbody rb = other.transform.GetComponent<Rigidbody>();
-
-                        if (rb != null)
-                        {
-                            rb.isKinematic = false;
-                            rb.AddForce((this.transform.forward) * 150, ForceMode.Impulse);
-                        }
-
-                        Rigidbody hitRb =  movingAgent.getChestTransfrom().GetComponent<Rigidbody>();
-
-                        if(hitRb)
-                        {
-                            hitRb.AddForce((this.transform.forward) * 2 + Random.insideUnitSphere*2, ForceMode.Impulse);
-                        }
-
-                    }
-                    else
-                    {
-                       basicHitParticle.transform.position = cyberAgent.getTopPosition();
-                    }
-                }
-            }
-
-        }
-    }
-
     private void hitOnCOver(Collider cover)
     {
         if(DistanceTravelled > 0.03)

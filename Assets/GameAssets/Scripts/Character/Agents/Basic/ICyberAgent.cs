@@ -9,7 +9,7 @@ public interface ICyberAgent
     void aimWeapon();
     void stopAiming();
     void setTargetPoint(Vector3 position);
-    void damageAgent(float amount);
+    void damageAgent(CommonFunctions.Damage amount);
     void reactOnHit(Collider collider, Vector3 force, Vector3 point);
     // void togglepSecondaryWeapon();
     // void togglePrimaryWeapon();

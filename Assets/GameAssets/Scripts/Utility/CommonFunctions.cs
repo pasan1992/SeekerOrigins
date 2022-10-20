@@ -5,6 +5,18 @@ using UnityEngine.AI;
 
 public class CommonFunctions
 {
+    public class Damage
+    {
+        public float healthDamage;
+        public float energyDamage;
+
+        public Damage(float health, float energy)
+        {
+            this.healthDamage = health;
+            this.energyDamage = energy;
+        }
+    }
+    
     private static LayerMask floor_mask = -1;
     public static LayerMask getFloorLayerMask()
     {

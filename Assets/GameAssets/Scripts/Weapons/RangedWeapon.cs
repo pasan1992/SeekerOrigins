@@ -12,12 +12,14 @@ public abstract class RangedWeapon : Weapon
     {
         public string name;
         public float damage;
+        
         public ProjectilePool.POOL_OBJECT_TYPE particleType;
         public float fireRate;
         public float dot_time;
         public string ammo_name;
+        public float energyDamage;
 
-        public AmmunitionType(string name,float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float dot_time,string ammo_name)
+        public AmmunitionType(string name,float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float dot_time,string ammo_name,float energyDamage = 0)
         {
             this.name = name;
             this.damage = damage;
@@ -25,6 +27,7 @@ public abstract class RangedWeapon : Weapon
             this.fireRate = fireRate;
             this.dot_time = dot_time;
             this.ammo_name = ammo_name;
+            this.energyDamage = energyDamage;
         }
     }
 
@@ -115,7 +118,10 @@ public abstract class RangedWeapon : Weapon
         this.fireRate = ammoType.fireRate;
         this.dotTime = ammoType.dot_time;
         this.projectile = ammoType.particleType;
-        m_weaponAmmunitionName = ammoType.ammo_name;
+        this.energyDamage = ammoType.energyDamage;
+        this.m_weaponAmmunitionName = ammoType.ammo_name;
+        Debug.Log(m_ammoCount[ammoType.ammo_name]);
+        Debug.Log(ammoType.ammo_name);
     }
 
     protected void updateContinouseFire()
@@ -246,7 +252,7 @@ public abstract class RangedWeapon : Weapon
             // projetcileBasic.setFiredFrom(m_ownersFaction);
             // projetcileBasic.setTargetTransfrom(m_target.transform);
 
-            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,damage,this.dotTime);
+            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,new CommonFunctions.Damage(damage,energyDamage),this.dotTime);
             EnvironmentSound.Instance.broadcastSound(this.transform.position,m_ownersFaction,SoundMaxDistance);
 
             ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  

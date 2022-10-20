@@ -48,11 +48,12 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     }
 
-    public IEnumerator DotDamage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction,int duration)
+    public IEnumerator DotDamage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction,int duration)
     {
         float damage_frequancy_seconds = 0.5f;
         float damage_count = duration / damage_frequancy_seconds;
-        damageValue = damageValue/ damage_count;
+        damageValue.healthDamage = damageValue.healthDamage / damage_count;
+        damageValue.energyDamage = damageValue.energyDamage / damage_count;
 
 
         if(dotCount == 0)
@@ -76,7 +77,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         }
     }
 
-    public virtual bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
+    public virtual bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
     {
         /*
         if (!GamePlayCam.IsVisibleToCamera(m_movingAgent.getTransfrom()))

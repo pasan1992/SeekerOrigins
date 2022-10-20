@@ -24,11 +24,11 @@ public class DamagableItem : MonoBehaviour,DamagableObject
         m_remaning_Health = Total_Health;
         m_audioSource = this.GetComponent<AudioSource>();
     }
-    public bool damage(float damageValue, Collider collider, Vector3 force, Vector3 point,AgentBasicData.AgentFaction fromFaction,float dot_time = 0)
+    public bool damage(CommonFunctions.Damage damageValue, Collider collider, Vector3 force, Vector3 point,AgentBasicData.AgentFaction fromFaction,float dot_time = 0)
     {
         if(!isDestroyed())
         {
-            m_remaning_Health -= damageValue;
+            m_remaning_Health -= damageValue.healthDamage;
 
             if(m_remaning_Health <= 0)
             {

@@ -6,11 +6,13 @@ public class BasicExplodingObject : MonoBehaviour
 {
      [SerializeField] 
     protected float m_baseDamage;
+    protected float m_baseEnergyDamage = 0;
 
      [SerializeField] 
     protected float m_range = 7;
 
     public float BaseDamage { get => m_baseDamage; set => m_baseDamage = value; }
+    public float BaseEnergyDamage { get => m_baseEnergyDamage; set => m_baseEnergyDamage = value; }
     public float Range { get => m_range; set => m_range = value; }
 
     public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
@@ -70,37 +72,6 @@ public class BasicExplodingObject : MonoBehaviour
 
     }
 
-    private void hitOnEnemy(Collider other)
-    {
-        
-      ICyberAgent agent =  other.GetComponentInParent<ICyberAgent>();
-      Vector3 direction;
-      float damagePropotion = DamageCalculator.getExplosionDamgage(this.transform.position,other.transform.position,m_range,out direction);
-      if(damagePropotion > 0 && agent !=null)
-      {
-        if(agent.IsFunctional())
-        { 
-            if(other.tag =="Chest")
-            {   
-                if(!DamageCalculator.isSafeFromTarget(this.transform.position,other.transform.position,m_range))
-                {
-
-                    agent.damageAgent(m_baseDamage*damagePropotion);
-                }           
-            }
-        }
-        else
-        {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            float chance = Random.value;
-
-            if(rb && chance >0.5f)
-            {
-                rb.AddForce(direction*damagePropotion*BaseDamage*10,ForceMode.Impulse);
-            }
-        }
-      }
-    }
 
     private void hitOnEnemy2(Collider other)
     {
@@ -131,7 +102,7 @@ public class BasicExplodingObject : MonoBehaviour
                 Debug.Log("12131");
 
                 // Neeed to improve it exploding objects must not have faction
-                damagableObject.damage(m_baseDamage*damagePropotion,other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
+                damagableObject.damage(new CommonFunctions.Damage(m_baseDamage*damagePropotion,m_baseEnergyDamage*damagePropotion),other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
                 Debug.Log(damagableObject);
                 Debug.Log(damagePropotion);
                 var mvdamage = (MovingAgentDamagableObject)damagableObject;

@@ -10,7 +10,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
     private int postDestroyDamage = 0;
 
 
-    public override bool damage(float damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
+    public override bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
     {
         // fromFaction is not used atm
         /*
@@ -30,7 +30,8 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
 
         if (collider.name == "Head")
         {
-            damageValue += damageValue * 1.5f;
+            damageValue.healthDamage += damageValue.healthDamage * 1.5f;
+            damageValue.energyDamage += damageValue.energyDamage * 1.5f;
         }
         m_movingAgent.damageAgent(calculate_bonous_damage(-m_movingAgent.getTransfrom().forward,force,damageValue));
         m_movingAgent.reactOnHit(collider, force, point);
@@ -40,7 +41,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             switch (m_movingAgent.GetAgentData().AgentNature)
             {
                 case AgentBasicData.AGENT_NATURE.DROID:
-                    droid_damage_effects(damageValue, collider, force, point);
+                    droid_damage_effects(damageValue.healthDamage, collider, force, point);
                     break;
                 case AgentBasicData.AGENT_NATURE.HUMANOID:
                     break;
@@ -80,12 +81,14 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         return !m_movingAgent.IsFunctional();
     }
 
-    private float calculate_bonous_damage(Vector3 face_direction,Vector3 force_direction,float damage)
+    private CommonFunctions.Damage calculate_bonous_damage(Vector3 face_direction,Vector3 force_direction,CommonFunctions.Damage damage)
     {
         var angle = Vector3.Angle(face_direction, force_direction);
         if (angle > 90)
         {
-            return damage * 1.5f;
+            damage.energyDamage = damage.energyDamage * 1.5f;
+            damage.healthDamage = damage.healthDamage * 1.5f;
+            return damage;
         }
         return damage;
     }
