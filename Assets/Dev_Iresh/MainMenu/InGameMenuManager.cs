@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using HutongGames.PlayMaker;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class InGameMenuManager : MonoBehaviour
     [SerializeField] GameObject _sceneLoader;
     [SerializeField] GameObject _menu;
     [SerializeField] int _btnNo = 0;
+
+    [SerializeField] Text _message;
+
 
     bool _isOpenMenu = false;
 
@@ -40,6 +44,19 @@ public class InGameMenuManager : MonoBehaviour
     public void btnNoChange(int btnNo)
     {
         _btnNo = btnNo;
+
+        if (btnNo == 1 || btnNo == 2)
+        {
+            _message.text = "Do you want to quit from the mission?";
+        }
+        else if (btnNo == -2)
+        {
+            _message.text = "Do you want to reset of the current mission?";
+        }
+        else if (btnNo == -3)
+        {
+            _message.text = "Do you want to start from the previous checkpoint?";
+        }
     }
 
     public void LoadScene(int index)
@@ -48,6 +65,11 @@ public class InGameMenuManager : MonoBehaviour
             _sceneLoader.SetActive(true);
 
             if (_btnNo == -2)
+            {
+                //TODO: set checkpoint to 0
+                _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            }
+            else if (_btnNo == -3)
             {
                 _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
             }

@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveGameManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class SaveGameManager : MonoBehaviour
     SaveGame CreateSaveGameObject()
     {
         SaveGame saveGame = new SaveGame();
+        saveGame.curentScence = SceneManager.GetActiveScene().buildIndex;
         saveGame.latestCheckPoint = checkPoint;
         saveGame.playerPos = _player.transform.position;
         saveGame.playerRotaion = _player.transform.rotation.eulerAngles;

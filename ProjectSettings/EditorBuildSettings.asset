@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SE02/EP04.unity
     guid: 896a58c2195bb2e47824dccc13c30611
+  - enabled: 1
+    path: Assets/Scenes/SE01/EP03/EP03_Checkpoint_Test.unity
+    guid: 7bc46723222e2734f81c9070c6a0f713
   m_configObjects: {}

@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,84 +10,67 @@ using UnityEngine.UI;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-    //public DontDistroyManager dontDistroyManager;
-    //public AudioManager audioManager;
-
     [SerializeField] GameObject _sceneLoader;
+    //[SerializeField] GameObject _saveGameManager;
 
-    //#region Option Feild
-    //    [SerializeField] Slider _musicSlider, _sfxSlider;
-    //    [SerializeField] TMP_Dropdown _resulotionDropdown, _qualityDropdown;
-    //    [SerializeField] Toggle _fullScreenToggle;
+    [SerializeField] GameObject _newGameWarningPanel;
+    [SerializeField] GameObject _continueBtn;
+    public int checkPoint;
+    int _previousScence;
 
-    //    Resolution[] _resolutions;
+    private void Start()
+    {
+        //_saveGameManager.GetComponent<SaveGameManager>().LoadGame();
 
-    //    const string MIXER_MUSIC = "MusicVolume";
-    //    const string MIXER_SFX = "SFXVolume";
-    //#endregion
+        if (File.Exists(Application.streamingAssetsPath + "/gameSave.save"))
+        {
+            SurrogateSelector surrogateSelector = new SurrogateSelector();
+            surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new Vector3SerializationSurrogate());
 
-    //#region Level Feild
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-    //[SerializeField] List<Sprite> _bgList;
+            binaryFormatter.SurrogateSelector = surrogateSelector;
 
-    //    [SerializeField] Image _levelBackground;
-    //    [SerializeField] TMP_Text _levelMainTitle;
-    //    [SerializeField] TMP_Text _levelSubTitle;
-    //    [SerializeField] TMP_Text _levelDescription;
+            FileStream file = File.Open(Application.streamingAssetsPath + "/gameSave.save", FileMode.Open);
+            SaveGame saveGame = (SaveGame)binaryFormatter.Deserialize(file);
+            file.Close();
 
-    //    [SerializeField] GameObject _levelIcon;
-    //    [SerializeField] Image _levelIconImage;
-    //    [SerializeField] TMP_Text _levelMIconTitle;
-    //#endregion
+            checkPoint = saveGame.latestCheckPoint;
+            _previousScence = saveGame.curentScence;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //   //StartCoroutine(OpenSplash());
+            print("_previousScence "+ _previousScence + " CheckPoint " + checkPoint + " Load Success!");
+        }
 
-    //    dontDistroyManager = GameObject.FindGameObjectWithTag("DontDistroyManager").GetComponent<DontDistroyManager>();
-    //    audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-
-    //    if (SceneManager.GetActiveScene().name.ToString() == GameEnums.Scence.Main_Menu.ToString())
-    //    {
-    //        if (!dontDistroyManager.isGameRunning)
-    //        {
-    //            SetSettings();
-    //            dontDistroyManager.isGameRunning = true;
-    //        }
-    //    }
-    //}
-
-    // Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
-    //IEnumerator OpenSplash()
-    //{
-    //    yield return new WaitForSeconds(5);
-    //    _splashScreen.SetActive(false);
-    //    _manu.SetActive(true);
-
-    //    //_loading.SetActive(true);
-    //    //StartCoroutine(CloseLoading());
-    //}
-
-    //IEnumerator CloseLoading()
-    //{
-    //    yield return new WaitForSeconds(3);
-    //    _loading.SetActive(false);
-    //    _manu.SetActive(true);
-    //}
-
+        if (checkPoint != null)
+        {
+            _continueBtn.SetActive(true);
+        }
+    }
     public void SetLevels()
     {
 
     }
 
+    public void CheckPlayBtnState()
+    {
+        if (checkPoint == null)
+        {
+            PlayGame();
+        }
+        else
+        {
+            _newGameWarningPanel.SetActive(true);
+        }
+    }
+
+    public void ContinueGame()
+    {
+        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(_previousScence);
+    }
+
     public void PlayGame()
     {
+
         _sceneLoader.SetActive(true);
         //SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
 

@@ -472,7 +472,7 @@ public class UIManager : MonoBehaviour
         if (m_movingAgent.GetPrimaryWeapon() != null)
         {
             _primaryWeaponAmmo = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getPrimaryWeaponAmmoCount();
-            _rifleCountTxt.text = _primaryWeaponAmmo.ToString();
+            //_rifleCountTxt.text = _primaryWeaponAmmo.ToString();
 
             //LeanTween.cancel(_rifleImg.gameObject);
             //LeanTween.scale(_rifleImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 0.5f)
