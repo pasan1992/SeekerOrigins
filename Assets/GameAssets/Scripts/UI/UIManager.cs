@@ -508,7 +508,7 @@ public class UIManager : MonoBehaviour
         if (m_movingAgent.GetSecondaryWeapon() != null)
         {
             _secondryWeaponAmmo = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getSecondaryWeaponAmmoCount();
-            _pistolCountTxt.text = _secondryWeaponAmmo.ToString();
+            //_pistolCountTxt.text = _secondryWeaponAmmo.ToString();
 
             //LeanTween.cancel(_pistolImg.gameObject);
             //LeanTween.scale(_pistolImg.gameObject, new Vector3(0.7f, 0.7f, 0.7f) * 2f, 0.5f)
@@ -571,7 +571,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            ammo_count.text = "";
+            ammo_count.text = "-/-";
         }
     }
 

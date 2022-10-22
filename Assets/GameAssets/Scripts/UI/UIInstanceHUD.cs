@@ -14,6 +14,7 @@ public class UIInstanceHUD : MonoBehaviour
     //    public string AmmoType;
     //    public int AmmoCount;
     //}
+    //AgentData _agentData;
 
     //List<AmmoPack> _weaponAmmoList = new List<AmmoPack>();
 
@@ -42,13 +43,6 @@ public class UIInstanceHUD : MonoBehaviour
     [SerializeField] TMP_Text _rifleTypeCount_IGF;
 
     // Tab Menu Feilds
-    //[Header("Tab Menu Fields - Base objects")]
-    //[SerializeField] GameObject _missileTypeBaseObj_TMF;
-    //[SerializeField] GameObject _grenadeTypeBaseObj_TMF;
-    //[SerializeField] GameObject _healthPackTypeBaseObj_TMF;
-    //[SerializeField] GameObject _pistolTypeBaseObj_TMF;
-    //[SerializeField] GameObject _rifleTypeBaseObj_TMF;
-
     [Header("Tab Menu Fields")]
     [SerializeField] Toggle _missileTypeObj_TMF_1;
     [SerializeField] TMP_Text _missileTypeCount_TMF_1;
@@ -79,17 +73,14 @@ public class UIInstanceHUD : MonoBehaviour
     [SerializeField] Toggle _rifleTypeObj_TMF_3;
     [SerializeField] TMP_Text _rifleTypeCount_TMF_3;
 
+    [SerializeField] List<Sprite> _missilesSpriteList = new List<Sprite>();
     [SerializeField] List<Sprite> _grenadesSpriteList = new List<Sprite>();
+    [SerializeField] List<Sprite> _HealthPackSpriteList = new List<Sprite>();
 
     [SerializeField] List<Sprite> _pistolsSpriteList = new List<Sprite>();
+    [SerializeField] List<Sprite> _riflesSpriteList = new List<Sprite>();
 
     List<AgentData.AmmoPack> _weaponAmmoList = new List<AgentData.AmmoPack>();
-
-    string _dfMissile = AmmoTypeEnums.Missile.DroneBusters_Missile.ToString();
-    string _dfGrenade = AmmoTypeEnums.Grenade.Regular_Grenade.ToString();
-    string _dfHealthPack = "Regular_HealthPack";
-    string _dfPistolAmmo = AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString();
-    string _dfRifleAmmo = AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString();
 
     string _selectedMissile = "";
     string _selectedGrenade = "";
@@ -97,29 +88,23 @@ public class UIInstanceHUD : MonoBehaviour
     string _selectedPistolAmmo = "";
     string _selectedRifleAmmo = "";
 
-    AgentData _agentData;
-
     Vector3 _initialPosition;
     Vector3 _endPosition;
 
-    //RectTransform _initialPosition;
-    //RectTransform _endPosition;
     bool _isHUDOpen = false;
-
-    //void Awake()
-    //{
-
-    //}
 
     void Start()
     {
-        //_weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
-        _selectedMissile = _dfMissile;
-        _selectedGrenade = _dfGrenade;
-        _selectedHealthPack = _dfHealthPack;
-        _selectedPistolAmmo = _dfPistolAmmo;
-        _selectedRifleAmmo = _dfRifleAmmo;
+        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
 
+        //TODO: to delete
+        SetDefaultItems(
+            AmmoTypeEnums.Missile.DroneBusters_Missile.ToString(), 
+            AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),
+            AmmoTypeEnums.HealthPack.Regular_HealthPack.ToString(),
+            AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString(),
+            AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString()
+            );
     }
 
     void Update()
@@ -127,154 +112,280 @@ public class UIInstanceHUD : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             HudOpen();
-            SetTabMenuUIData();
+            UpdateInGameAndTabUIData();
+            SetTabMenuUIData(); 
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
             HudClose();
-            UpdateInGameUIData(); //To Chenge
-
+            UpdateInGameAndTabUIData();
         }
     }
-
-    void UpdateInGameUIData()
+    //TODO: to call Interface
+    public void SetDefaultItems(string missile,string grenade, string healthPack, string pistol, string rifle)
     {
-        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
+        _selectedMissile = missile;
+        _selectedGrenade = grenade;
+        _selectedHealthPack = healthPack;
+        _selectedPistolAmmo = pistol;
+        _selectedRifleAmmo = rifle;
+    }
 
+    void UpdateInGameAndTabUIData()
+    {
         if (_weaponAmmoList.Count() > 0)
         {
             foreach (var weaponAmmo in _weaponAmmoList)
             {
-                //print(weaponAmmo.AmmoType);
+                #region Missile
+                if (weaponAmmo.AmmoType == AmmoTypeEnums.Missile.DroneBusters_Missile.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Missile.MiniNuke_Missile.ToString())
+                {
+                    if (weaponAmmo.AmmoType == AmmoTypeEnums.Missile.DroneBusters_Missile.ToString())
+                    {
+                        _missileTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
 
-                if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.Regular_Grenade.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.EMP_Grenade.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _missileTypeObj_TMF_1.interactable = false;
+                        }
+                        else
+                        {
+                            _missileTypeObj_TMF_1.interactable = true;
+                        }
+
+                        if (weaponAmmo.AmmoType == _selectedMissile)
+                        {
+                           // _missileTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            _missileTypeObj_IGF.GetComponent<Image>().sprite = _missilesSpriteList[(int)AmmoTypeEnums.Missile.DroneBusters_Missile];
+                        }
+                    }
+
+                    else if (weaponAmmo.AmmoType == AmmoTypeEnums.Missile.MiniNuke_Missile.ToString())
+                    {
+                        _missileTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _missileTypeObj_TMF_2.interactable = false;
+                        }
+                        else
+                        {
+                            _missileTypeObj_TMF_2.interactable = true;
+                        }
+
+                        if (weaponAmmo.AmmoType == _selectedMissile)
+                        {
+                            //_missileTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            _missileTypeObj_IGF.GetComponent<Image>().sprite = _missilesSpriteList[(int)AmmoTypeEnums.Missile.MiniNuke_Missile];
+                            //_grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.EMP_Grenade];
+                        }
+                    }
+
+                    else
+                    {
+                        //_missileTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                        _missileTypeObj_IGF.GetComponent<Image>().sprite = _missilesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
+                    }
+                }
+                #endregion
+
+                #region Injection
+                else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.Regular_Grenade.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.EMP_Grenade.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.Regular_Grenade.ToString())
                     {
-
-                        _grenadeTypeObj_TMF_1.interactable = true;
                         _grenadeTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _grenadeTypeObj_TMF_1.interactable = false;
+                        }
+                        else
+                        {
+                            _grenadeTypeObj_TMF_1.interactable = true;
+                        }
 
                         if (weaponAmmo.AmmoType == _selectedGrenade)
                         {
-                            print("IF Regular_Grenade");
-
-                            _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
-                            //_grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
-                            //_grenadeTypeObj_IGF.SetActive(true);
                         }
                     }
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.EMP_Grenade.ToString())
                     {
-
-                        _grenadeTypeObj_TMF_2.interactable = true;
                         _grenadeTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _grenadeTypeObj_TMF_2.interactable = false;
+                        }
+                        else
+                        {
+                            _grenadeTypeObj_TMF_2.interactable = true;
+                        }
 
                         if (weaponAmmo.AmmoType == _selectedGrenade)
                         {
-                            print("ELSE IF EMP_Grenade");
-
-                            _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.EMP_Grenade];
-
-                            //_grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.EMP_Grenade];
-                            //_grenadeTypeObj_IGF.SetActive(true);
                         }
                     }
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
                     {
-
-                        _grenadeTypeObj_TMF_3.interactable = true;
                         _grenadeTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _grenadeTypeObj_TMF_3.interactable = false;
+                        }
+                        else
+                        {
+                            _grenadeTypeObj_TMF_3.interactable = true;
+                        }
 
                         if (weaponAmmo.AmmoType == _selectedGrenade)
                         {
-                            print("ELSE IF ProximityTrap_Grenade");
-
-                            _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.ProximityTrap_Grenade];
-
-                            //_grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.ProximityTrap_Grenade];
-                            //_grenadeTypeObj_IGF.SetActive(true);
                         }
                     }
 
                     else
                     {
-                        print("ELSE");
-
-                        //if (weaponAmmo.AmmoType == _selectedGrenade)
-                        //{
-                        _grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                        //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                         _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
-
-                        //_grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
-                        //    _grenadeTypeObj_IGF.SetActive(true);
-                        //}
-                        //else
-                        //{
-                        //     _grenadeTypeObj_IGF.SetActive(false);
-                        //}
                     }
                 }
+                #endregion
 
+                #region Pistol
                 else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString())
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString())
                     {
-                        _pistolTypeObj_TMF_1.interactable = true;
                         _pistolTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
 
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _pistolTypeObj_TMF_1.interactable = false;
+                        }
+                        else
+                        {
+                            _pistolTypeObj_TMF_1.interactable = true;
+                        }
+
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            _pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
                         }
-
-                        //_pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
-                        //_pistolTypeObj_IGF.SetActive(true);
-
-
                     }
+
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString())
                     {
-                        _pistolTypeObj_TMF_2.interactable = true;
                         _pistolTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
 
-                        if (weaponAmmo.AmmoType == _selectedPistolAmmo)
+                        if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
+                            _pistolTypeObj_TMF_2.interactable = false;
+                        }
+                        else
+                        {
+                            _pistolTypeObj_TMF_2.interactable = true;
                         }
 
-
-
-                        //_pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
-                        //_pistolTypeObj_IGF.SetActive(true);
-
+                        if (weaponAmmo.AmmoType == _selectedPistolAmmo)
+                        {
+                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
+                        }
                     }
+
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString())
                     {
-                        if (weaponAmmo.AmmoType == _selectedPistolAmmo)
+                        _pistolTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
+                            _pistolTypeObj_TMF_3.interactable = false;
+                        }
+                        else
+                        {
+                            _pistolTypeObj_TMF_3.interactable = true;
                         }
 
-
-                        //_pistolTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
-                        //_pistolTypeObj_IGF.SetActive(true);
-
-
-                    }
-                    else
-                    {
-                        _pistolTypeObj_IGF.SetActive(false);
+                        if (weaponAmmo.AmmoType == _selectedPistolAmmo)
+                        {
+                            //_pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
+                        }
                     }
                 }
+                #endregion
+
+                #region Rifle
+                else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString())
+                {
+                    if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString())
+                    {
+                        _rifleTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _rifleTypeObj_TMF_1.interactable = false;
+                        }
+                        else
+                        {
+                            _rifleTypeObj_TMF_1.interactable = true;
+                        }
+
+                        if (weaponAmmo.AmmoType == _selectedRifleAmmo)
+                        {
+                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo];
+                        }
+                    }
+
+                    else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString())
+                    {
+                        _rifleTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _rifleTypeObj_TMF_2.interactable = false;
+                        }
+                        else
+                        {
+                            _rifleTypeObj_TMF_2.interactable = true;
+                        }
+
+                        if (weaponAmmo.AmmoType == _selectedRifleAmmo)
+                        {
+                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo];
+                        }
+
+                    }
+                    else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString())
+                    {
+                        _rifleTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+
+                        if (weaponAmmo.AmmoCount <= 0)
+                        {
+                            _rifleTypeObj_TMF_3.interactable = false;
+                        }
+                        else
+                        {
+                            _rifleTypeObj_TMF_3.interactable = true;
+                        }
+
+                        if (weaponAmmo.AmmoType == _selectedRifleAmmo)
+                        {
+                            //_rifleTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
+                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo];
+                        }
+
+                    }
+                }
+                #endregion
             }
         }
     }
@@ -374,7 +485,7 @@ public class UIInstanceHUD : MonoBehaviour
         switch (type)
         {
             case 1:
-                _selectedHealthPack = _dfHealthPack;
+                _selectedHealthPack = AmmoTypeEnums.HealthPack.Regular_HealthPack.ToString();
                 break;
         }
     }
