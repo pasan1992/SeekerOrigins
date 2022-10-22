@@ -15,8 +15,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     [SerializeField] GameObject _newGameWarningPanel;
     [SerializeField] GameObject _continueBtn;
-    public int checkPoint;
-    int _previousScence;
+    public int checkPoint = -1;
+    int _previousScence = -1;
 
     private void Start()
     {
@@ -41,8 +41,9 @@ public class MainMenuUIManager : MonoBehaviour
             print("_previousScence "+ _previousScence + " CheckPoint " + checkPoint + " Load Success!");
         }
 
-        if (checkPoint != null)
+        if (_previousScence >= 0 && checkPoint >= 0)
         {
+            print("TRUE");
             _continueBtn.SetActive(true);
         }
     }
@@ -65,6 +66,8 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ContinueGame()
     {
+        _sceneLoader.SetActive(true);
+
         _sceneLoader.GetComponent<SceneLoader>().LoadLevel(_previousScence);
     }
 

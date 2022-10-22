@@ -12,6 +12,7 @@ public class SaveGameManager : MonoBehaviour
     [SerializeField] TMP_Text _Messgae;
     [SerializeField] GameObject _player;
     public int checkPoint;
+    int _previousScence;
 
     public void SaveGame(int val)
     {
@@ -28,7 +29,7 @@ public class SaveGameManager : MonoBehaviour
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
         _Messgae.text = "CheckPoint " + checkPoint + "  Saved!";
-        print("CheckPoint " + checkPoint + "  Saved!");
+        print("SGM SAVE CheckPoint " + checkPoint + "  Saved!");
     }
 
     SaveGame CreateSaveGameObject()
@@ -57,15 +58,16 @@ public class SaveGameManager : MonoBehaviour
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
 
-        _Messgae.text = "CheckPoint Reset Success!";
+        _Messgae.text = "SGM CheckPoint Reset Success!";
 
-        print("CheckPoint Reset Success!");
+        print("SGM RESET CheckPoint Reset Success!");
 
     }
 
     SaveGame ResetSaveGameObject()
     {
         SaveGame saveGame = new SaveGame();
+        saveGame.curentScence = SceneManager.GetActiveScene().buildIndex;
         saveGame.latestCheckPoint = 0;
         saveGame.playerPos = saveGame.df_l2_playerPos;
         saveGame.playerRotaion = new Vector3(0, saveGame.df_l2_playerDirection, 0);
@@ -96,7 +98,7 @@ public class SaveGameManager : MonoBehaviour
             //_player.GetComponent<AgentData>().grenade.count = 20;
             _Messgae.text = "CheckPoint " + checkPoint + " Load Success!";
 
-            print("CheckPoint " + checkPoint + " Load Success!");
+            print("SGM LOAD _previousScence " + saveGame.curentScence + " CheckPoint " + checkPoint + " Load Success!");
 
         }
     }
