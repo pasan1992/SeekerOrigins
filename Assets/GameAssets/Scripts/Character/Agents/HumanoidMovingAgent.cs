@@ -537,9 +537,9 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         }
     }
 
-    public void SwitchAmmoType(string ammoType)
+    public void SwitchAmmoType(AmmoTypeEnums.WeaponTypes weapon, string ammoType)
     {
-        m_equipmentModule.SetWeaponAmmoType(ammoType);
+        m_equipmentModule.SetWeaponAmmoType(weapon,ammoType);
     }
 
     public CharacterMainStates getCharacterMainStates()

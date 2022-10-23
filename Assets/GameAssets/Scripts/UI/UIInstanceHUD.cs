@@ -93,6 +93,8 @@ public class UIInstanceHUD : MonoBehaviour
 
     bool _isHUDOpen = false;
 
+    private PlayerController m_player;
+
     void Start()
     {
         _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
@@ -101,10 +103,11 @@ public class UIInstanceHUD : MonoBehaviour
         SetDefaultItems(
             AmmoTypeEnums.Missile.DroneBusters_Missile.ToString(), 
             AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),
-            AmmoTypeEnums.HealthPack.Regular_HealthPack.ToString(),
+            AmmoTypeEnums.RegenPack.Regular_HealthPack.ToString(),
             AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString(),
             AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString()
             );
+        m_player = FindObjectOfType<PlayerController>();
     }
 
     void Update()
@@ -417,7 +420,7 @@ public class UIInstanceHUD : MonoBehaviour
         }
 
         //HealthPack
-        if (_selectedHealthPack == AmmoTypeEnums.HealthPack.Regular_HealthPack.ToString())
+        if (_selectedHealthPack == AmmoTypeEnums.RegenPack.Regular_HealthPack.ToString())
         {
             _healthPackTypeObj_TMF_1.isOn = true;
         }
@@ -485,7 +488,7 @@ public class UIInstanceHUD : MonoBehaviour
         switch (type)
         {
             case 1:
-                _selectedHealthPack = AmmoTypeEnums.HealthPack.Regular_HealthPack.ToString();
+                _selectedHealthPack = AmmoTypeEnums.RegenPack.Regular_HealthPack.ToString();
                 break;
         }
     }
@@ -550,6 +553,8 @@ public class UIInstanceHUD : MonoBehaviour
                     _isHUDOpen = false;
                     Time.timeScale = 1f;
                 });
+            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol,_selectedPistolAmmo);
+            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle,_selectedRifleAmmo);
         }
     }
 }

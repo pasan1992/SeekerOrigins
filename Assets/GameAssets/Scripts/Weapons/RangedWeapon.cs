@@ -10,23 +10,19 @@ public abstract class RangedWeapon : Weapon
 {
     public class AmmunitionType
     {
-        public string name;
         public float damage;
         
         public ProjectilePool.POOL_OBJECT_TYPE particleType;
         public float fireRate;
         public float dot_time;
-        public string ammo_name;
         public float energyDamage;
 
-        public AmmunitionType(string name,float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float dot_time,string ammo_name,float energyDamage = 0)
+        public AmmunitionType(float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float dot_time,float energyDamage = 0)
         {
-            this.name = name;
             this.damage = damage;
             this.particleType = particleType;
             this.fireRate = fireRate;
             this.dot_time = dot_time;
-            this.ammo_name = ammo_name;
             this.energyDamage = energyDamage;
         }
     }
@@ -119,9 +115,7 @@ public abstract class RangedWeapon : Weapon
         this.dotTime = ammoType.dot_time;
         this.projectile = ammoType.particleType;
         this.energyDamage = ammoType.energyDamage;
-        this.m_weaponAmmunitionName = ammoType.ammo_name;
-        Debug.Log(m_ammoCount[ammoType.ammo_name]);
-        Debug.Log(ammoType.ammo_name);
+        this.m_weaponAmmunitionName = ammoTypeName;
     }
 
     protected void updateContinouseFire()
@@ -192,7 +186,11 @@ public abstract class RangedWeapon : Weapon
 
     public int getAmmoCount()
     {
-        return m_ammoCount[m_weaponAmmunitionName];
+        if (m_ammoCount.ContainsKey(m_weaponAmmunitionName))
+        {
+            return m_ammoCount[m_weaponAmmunitionName];
+        }
+        return 0;
     }
 
     public void setAmmoCount(int count)

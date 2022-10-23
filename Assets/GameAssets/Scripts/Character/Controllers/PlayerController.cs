@@ -249,11 +249,6 @@ public class PlayerController : AgentController
             m_movingAgent.reloadCurretnWeapon();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            m_movingAgent.SwitchAmmoType("Incindeary");
-        }
-
 
         RaycastHit m_raycastHit;
         if (Input.GetKeyDown(KeyCode.Q))
@@ -412,6 +407,11 @@ public class PlayerController : AgentController
     private void FixedUpdate()
     {
         CoverFinder();
+    }
+
+    public void SwitchAmmoType(AmmoTypeEnums.WeaponTypes weapon,string ammoType)
+    {
+        m_movingAgent.SwitchAmmoType(weapon,ammoType);
     }
 
     private void CoverFinder()

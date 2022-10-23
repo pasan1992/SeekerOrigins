@@ -1,5 +1,13 @@
 ﻿public class AmmoTypeEnums
 {
+    public enum WeaponTypes
+    {
+        Missile,
+        Grenade,
+        RegenPack,
+        Rifle,
+        Pistol
+    }
     public enum Missile
     {
         DroneBusters_Missile,
@@ -13,7 +21,7 @@
         ProximityTrap_Grenade,
     }
 
-    public enum HealthPack
+    public enum RegenPack
     {
         Regular_HealthPack,
     }

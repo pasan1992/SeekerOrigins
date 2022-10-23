@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RootMotion.FinalIK;
@@ -709,11 +709,40 @@ public class HumanoidRangedWeaponsModule
         return m_currentWeapon;
     }
 
-    public void SetWeaponAmmoType(string type)
+    public void SetWeaponAmmoType(AmmoTypeEnums.WeaponTypes  weaponTypes,string ammo_name)
     {
-        m_rifle.SwitchAmmoType(type);
-        m_pistol.SwitchAmmoType("Energy");
+        switch (weaponTypes)
+        {
+            case AmmoTypeEnums.WeaponTypes.Grenade:
+            break;
+            case AmmoTypeEnums.WeaponTypes.Rifle:
+                if(m_rifle)
+                {
+                    var current_ammo = m_rifle.getAmmoCount();
+
+                    // switch ammo name and make sure the ammo count is previous as before, any leftover ammo from current type is put back to the agent data and updated with new count
+                    m_rifle.SwitchAmmoType(ammo_name);
+                    var ammo_count = m_rifle.getAmmoCount();
+                    m_agentData.AddAmmo(ammo_name,ammo_count);
+                    m_rifle.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
+                }
+            break;
+            case AmmoTypeEnums.WeaponTypes.Pistol:
+                if(m_pistol)
+                {
+                    var current_ammo = m_pistol.getAmmoCount();
+
+                    // switch ammo name and make sure the ammo count is previous as before, any leftover ammo from current type is put back to the agent data and updated with new count
+                    m_pistol.SwitchAmmoType(ammo_name);
+                    var ammo_count = m_pistol.getAmmoCount();
+                    // put ammo already in type back
+                    m_agentData.AddAmmo(ammo_name,ammo_count);
+                    m_pistol.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
+                }
+            break;
+        }
     }
+
 
 
     public int getCurrentWeaponAmmoCount()
