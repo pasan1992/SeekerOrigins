@@ -48,3 +48,7 @@ MonoBehaviour:
   Tile_Size: 5
   tile: {fileID: 6912492588018610832, guid: 538e647ee547df04c99b460e8cabadfd, type: 3}
   TileVariants: 6
+  WallVariant: 0
+  coverProb: 0
+  NoRails: 1
+  deleteCover: 1
