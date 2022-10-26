@@ -18,6 +18,9 @@ public class ProjectilePool : MonoBehaviour
         PistolAmmo,
         RifleAmmo,
         Grenade,
+
+       ProximityGrenade,
+
         BasicRocket,
         DroidExplosionParticleEffect,
         GlassParticleEffect,
@@ -66,6 +69,8 @@ public class ProjectilePool : MonoBehaviour
     private List<GameObject> rifleAmmoList;
 
     public List<GameObject> grenadeList;
+
+    public List<GameObject> proximity_grenadeList;
 
     public int minorPartilceCount = 5;
 
@@ -174,6 +179,12 @@ public class ProjectilePool : MonoBehaviour
                 resourcePath = "Prefab/Grenede_throwObject";
                 grenadeList = new List<GameObject>();
                 effectList = grenadeList;  
+                break;
+            case POOL_OBJECT_TYPE.ProximityGrenade:
+                count = ammoCount;
+                resourcePath = "Prefab/Proximity_Grenade_throwObject";
+                proximity_grenadeList = new List<GameObject>();
+                effectList = proximity_grenadeList;  
                 break;
             case POOL_OBJECT_TYPE.BasicRocket:
                 count = ammoCount;
@@ -352,6 +363,9 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.Grenade:
                 effectList = grenadeList;
+                break;
+            case POOL_OBJECT_TYPE.ProximityGrenade:
+                effectList = proximity_grenadeList;
                 break;
             case POOL_OBJECT_TYPE.BasicRocket:
                 effectList = basicRocketList;

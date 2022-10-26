@@ -28,6 +28,7 @@ public class Grenade : Weapon
         base.Awake();
         GrenadeTypes = new Dictionary<string,GrenadeType>();
         GrenadeTypes.Add("Ordinary",new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3));
+       // GrenadeTypes.Add("Proximity",new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.ProximityGrenade,3));
         currentGrenadeType = GrenadeTypes["Ordinary"];
     }
 
