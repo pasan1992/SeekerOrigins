@@ -92,6 +92,7 @@ public class UIInstanceHUD : MonoBehaviour
     Vector3 _endPosition;
 
     bool _isHUDOpen = false;
+    bool _isFreeToOpen = true;
 
     private PlayerController m_player;
 
@@ -114,12 +115,17 @@ public class UIInstanceHUD : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Tab))
         {
-            HudOpen();
-            UpdateInGameAndTabUIData();
-            SetTabMenuUIData(); 
+            if (_isFreeToOpen)
+            {
+                HudOpen();
+                UpdateInGameAndTabUIData();
+                SetTabMenuUIData();
+            }
+
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
+            _isFreeToOpen = true;
             HudClose();
             UpdateInGameAndTabUIData();
         }
@@ -465,6 +471,7 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedMissile = AmmoTypeEnums.Missile.MiniNuke_Missile.ToString();
                 break;
         }
+        HudCloseInstanly();
     }
 
     public void UpdateGrenadeType(int type)
@@ -481,6 +488,7 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedGrenade = AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString();
                 break;
         }
+        HudCloseInstanly();
     }
 
     public void UpdateHealthPackType(int type)
@@ -491,6 +499,7 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedHealthPack = AmmoTypeEnums.RegenPack.Regular_HealthPack.ToString();
                 break;
         }
+        HudCloseInstanly();
     }
 
     public void UpdatePistolAmmoType(int type)
@@ -507,6 +516,7 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString();
                 break;
         }
+        HudCloseInstanly();
     }
 
     public void UpdateRifleAmmoType(int type)
@@ -523,7 +533,9 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString();
                 break;
         }
+        HudCloseInstanly();
     }
+
 
     void HudOpen()
     {
@@ -557,4 +569,12 @@ public class UIInstanceHUD : MonoBehaviour
             m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle,_selectedRifleAmmo);
         }
     }
+
+    void HudCloseInstanly()
+    {
+        _isFreeToOpen = false;
+        HudClose();
+        UpdateInGameAndTabUIData();
+    }
+
 }
