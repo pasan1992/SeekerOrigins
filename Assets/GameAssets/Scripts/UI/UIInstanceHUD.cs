@@ -44,6 +44,23 @@ public class UIInstanceHUD : MonoBehaviour
 
     // Tab Menu Feilds
     [Header("Tab Menu Fields")]
+    [SerializeField] CanvasGroup _missile_TMF_1;
+    [SerializeField] CanvasGroup _missile_TMF_2;
+
+    [SerializeField] CanvasGroup _grenade_TMF_1;
+    [SerializeField] CanvasGroup _grenade_TMF_2;
+    [SerializeField] CanvasGroup _grenade_TMF_3;
+
+    [SerializeField] CanvasGroup _healthPack_TMF_1;
+
+    [SerializeField] CanvasGroup _pistol_TMF_1;
+    [SerializeField] CanvasGroup _pistol_TMF_2;
+    [SerializeField] CanvasGroup _pistol_TMF_3;
+
+    [SerializeField] CanvasGroup _rifle_TMF_1;
+    [SerializeField] CanvasGroup _rifle_TMF_2;
+    [SerializeField] CanvasGroup _rifle_TMF_3;
+
     [SerializeField] Toggle _missileTypeObj_TMF_1;
     [SerializeField] TMP_Text _missileTypeCount_TMF_1;
     [SerializeField] Toggle _missileTypeObj_TMF_2;
@@ -92,7 +109,7 @@ public class UIInstanceHUD : MonoBehaviour
     Vector3 _endPosition;
 
     bool _isHUDOpen = false;
-    bool _isFreeToOpen = true;
+    bool _isFreeToOpen;
 
     private PlayerController m_player;
 
@@ -109,12 +126,16 @@ public class UIInstanceHUD : MonoBehaviour
             AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString()
             );
         m_player = FindObjectOfType<PlayerController>();
+
+        UpdateInGameAndTabUIData();
+        SetTabMenuUIData();
+        _isFreeToOpen = true;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.Tab))
-        {
+            {
             if (_isFreeToOpen)
             {
                 HudOpen();
@@ -155,16 +176,17 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _missileTypeObj_TMF_1.interactable = false;
+                            _missile_TMF_1.alpha = 0.3f;
+                            _missile_TMF_1.interactable = false;
                         }
                         else
                         {
-                            _missileTypeObj_TMF_1.interactable = true;
+                            _missile_TMF_1.alpha = 1f;
+                            _missile_TMF_1.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedMissile)
                         {
-                           // _missileTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _missileTypeObj_IGF.GetComponent<Image>().sprite = _missilesSpriteList[(int)AmmoTypeEnums.Missile.DroneBusters_Missile];
                         }
                     }
@@ -175,24 +197,23 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _missileTypeObj_TMF_2.interactable = false;
+                            _missile_TMF_2.alpha = 0.3f;
+                            _missile_TMF_2.interactable = false;
                         }
                         else
                         {
-                            _missileTypeObj_TMF_2.interactable = true;
+                            _missile_TMF_2.alpha = 1f;
+                            _missile_TMF_2.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedMissile)
                         {
-                            //_missileTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _missileTypeObj_IGF.GetComponent<Image>().sprite = _missilesSpriteList[(int)AmmoTypeEnums.Missile.MiniNuke_Missile];
-                            //_grenadeTypeObj_IGF.transform.GetChild(2).GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.EMP_Grenade];
                         }
                     }
 
                     else
                     {
-                        //_missileTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                         _missileTypeObj_IGF.GetComponent<Image>().sprite = _missilesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
                     }
                 }
@@ -207,16 +228,17 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _grenadeTypeObj_TMF_1.interactable = false;
+                            _grenade_TMF_1.alpha = 0.3f;
+                            _grenade_TMF_1.interactable = false;
                         }
                         else
                         {
-                            _grenadeTypeObj_TMF_1.interactable = true;
+                            _grenade_TMF_1.alpha = 1f;
+                            _grenade_TMF_1.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedGrenade)
                         {
-                            //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
                         }
                     }
@@ -227,16 +249,17 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _grenadeTypeObj_TMF_2.interactable = false;
+                            _grenade_TMF_2.alpha = 0.3f;
+                            _grenade_TMF_2.interactable = false;
                         }
                         else
                         {
-                            _grenadeTypeObj_TMF_2.interactable = true;
+                            _grenade_TMF_2.alpha = 1f;
+                            _grenade_TMF_2.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedGrenade)
                         {
-                            //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.EMP_Grenade];
                         }
                     }
@@ -247,23 +270,23 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _grenadeTypeObj_TMF_3.interactable = false;
+                            _grenade_TMF_3.alpha = 0.3f;
+                            _grenade_TMF_3.interactable = false;
                         }
                         else
                         {
-                            _grenadeTypeObj_TMF_3.interactable = true;
+                            _grenade_TMF_3.alpha = 1f;
+                            _grenade_TMF_3.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedGrenade)
                         {
-                            //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.ProximityTrap_Grenade];
                         }
                     }
 
                     else
                     {
-                        //_grenadeTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                         _grenadeTypeObj_IGF.GetComponent<Image>().sprite = _grenadesSpriteList[(int)AmmoTypeEnums.Grenade.Regular_Grenade];
                     }
                 }
@@ -278,11 +301,13 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _pistolTypeObj_TMF_1.interactable = false;
+                            _pistol_TMF_1.alpha = 0.3f;
+                            _pistol_TMF_1.interactable = false;
                         }
                         else
                         {
-                            _pistolTypeObj_TMF_1.interactable = true;
+                            _pistol_TMF_1.alpha = 1f;
+                            _pistol_TMF_1.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
@@ -297,11 +322,13 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _pistolTypeObj_TMF_2.interactable = false;
+                            _pistol_TMF_2.alpha = 0.3f;
+                            _pistol_TMF_2.interactable = false;
                         }
                         else
                         {
-                            _pistolTypeObj_TMF_2.interactable = true;
+                            _pistol_TMF_2.alpha = 1f;
+                            _pistol_TMF_2.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
@@ -316,16 +343,17 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _pistolTypeObj_TMF_3.interactable = false;
+                            _pistol_TMF_3.alpha = 0.3f;
+                            _pistol_TMF_3.interactable = false;
                         }
                         else
                         {
-                            _pistolTypeObj_TMF_3.interactable = true;
+                            _pistol_TMF_3.alpha = 1f;
+                            _pistol_TMF_3.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            //_pistolTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
                         }
                     }
@@ -341,11 +369,13 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _rifleTypeObj_TMF_1.interactable = false;
+                            _rifle_TMF_1.alpha = 0.3f;
+                            _rifle_TMF_1.interactable = false;
                         }
                         else
                         {
-                            _rifleTypeObj_TMF_1.interactable = true;
+                            _rifle_TMF_1.alpha = 1f;
+                            _rifle_TMF_1.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
@@ -360,11 +390,13 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _rifleTypeObj_TMF_2.interactable = false;
+                            _rifle_TMF_2.alpha = 0.3f;
+                            _rifle_TMF_2.interactable = false;
                         }
                         else
                         {
-                            _rifleTypeObj_TMF_2.interactable = true;
+                            _rifle_TMF_2.alpha = 1f;
+                            _rifle_TMF_2.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
@@ -379,19 +411,19 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
-                            _rifleTypeObj_TMF_3.interactable = false;
+                            _rifle_TMF_2.alpha = 0.3f;
+                            _rifle_TMF_2.interactable = false;
                         }
                         else
                         {
-                            _rifleTypeObj_TMF_3.interactable = true;
+                            _rifle_TMF_3.alpha = 1f;
+                            _rifle_TMF_3.interactable = true;
                         }
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            //_rifleTypeCount_IGF.text = weaponAmmo.AmmoCount.ToString();
                             _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo];
                         }
-
                     }
                 }
                 #endregion
@@ -462,7 +494,7 @@ public class UIInstanceHUD : MonoBehaviour
 
     public void UpdateMissileType(int type)
     {
-        switch (type)
+         switch (type)
         {
             case 1:
                 _selectedMissile = AmmoTypeEnums.Missile.DroneBusters_Missile.ToString();
@@ -480,10 +512,10 @@ public class UIInstanceHUD : MonoBehaviour
         {
             case 1:
                 _selectedGrenade = AmmoTypeEnums.Grenade.Regular_Grenade.ToString();
-                break;            
+                break;
             case 2:
                 _selectedGrenade = AmmoTypeEnums.Grenade.EMP_Grenade.ToString();
-                break;          
+                break;
             case 3:
                 _selectedGrenade = AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString();
                 break;
@@ -511,7 +543,7 @@ public class UIInstanceHUD : MonoBehaviour
                 break;
             case 2:
                 _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString();
-                break;            
+                break;
             case 3:
                 _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString();
                 break;
@@ -536,7 +568,6 @@ public class UIInstanceHUD : MonoBehaviour
         HudCloseInstanly();
     }
 
-
     void HudOpen()
     {
         _initialPosition = new Vector3(Screen.width / 2, Screen.height * -1, 0);
@@ -559,22 +590,22 @@ public class UIInstanceHUD : MonoBehaviour
         {
             LeanTween.cancel(_instanceHUD);
             LeanTween.move(_instanceHUD, _initialPosition, 0.1f).setEase(LeanTweenType.easeInBounce)
-                .setIgnoreTimeScale(true).setOnComplete((valu) =>{
+                .setIgnoreTimeScale(true).setOnComplete((valu) =>
+                {
                     _instanceHUD.SetActive(false);
                     _mainHUD.alpha = 1;
                     _isHUDOpen = false;
                     Time.timeScale = 1f;
                 });
-            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol,_selectedPistolAmmo);
-            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle,_selectedRifleAmmo);
+            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol, _selectedPistolAmmo);
+            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle, _selectedRifleAmmo);
         }
     }
-
+       
     void HudCloseInstanly()
     {
         _isFreeToOpen = false;
         HudClose();
         UpdateInGameAndTabUIData();
     }
-
 }
