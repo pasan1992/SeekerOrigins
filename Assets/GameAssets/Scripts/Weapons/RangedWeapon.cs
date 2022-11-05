@@ -249,11 +249,13 @@ public abstract class RangedWeapon : Weapon
             // projetcileBasic.speed = 5f;
             // projetcileBasic.setFiredFrom(m_ownersFaction);
             // projetcileBasic.setTargetTransfrom(m_target.transform);
+            ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
+            proj.damageFuture= null;
 
-            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,new CommonFunctions.Damage(damage,energyDamage),this.dotTime);
+            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,new CommonFunctions.Damage(damage,energyDamage),proj,this.dotTime);
             EnvironmentSound.Instance.broadcastSound(this.transform.position,m_ownersFaction,SoundMaxDistance);
 
-            ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
+            
             if(hitPos.point != Vector3.zero)
             {
                 Tempprojectile.transform.forward = (hitPos.point - m_gunFireingPoint).normalized;        

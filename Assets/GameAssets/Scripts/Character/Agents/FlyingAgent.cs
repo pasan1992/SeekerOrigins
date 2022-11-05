@@ -202,11 +202,13 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         // tempProjectile.speed = 1f;
         // tempProjectile.setFiredFrom(m_agentData.m_agentFaction);
         // tempProjectile.resetToMicroBeam();
-
-        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,new CommonFunctions.Damage(WeaponDamage,WeaponEneryDamge));
+        ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>(); 
+        proj.damageFuture= null;
+        
+        RaycastHit hitPos = DamageCalculator.checkFire(firePos + Tempprojectile.transform.forward *0.5f,m_target.transform.position,m_agentData.m_agentFaction,new CommonFunctions.Damage(WeaponDamage,WeaponEneryDamge),proj);
         Tempprojectile.transform.forward = (hitPos.point - firePos).normalized;
 
-        ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
+         
         if(hitPos.point != Vector3.zero)
         {
             Tempprojectile.transform.forward = (hitPos.point -firePos).normalized;        

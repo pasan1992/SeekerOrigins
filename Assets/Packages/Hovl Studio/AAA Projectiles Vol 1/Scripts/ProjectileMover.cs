@@ -20,6 +20,7 @@ public class ProjectileMover : MonoBehaviour
     private float real_speed = 100;
     private float max_distance = 0;
     private Vector3 start_pos = Vector3.zero;
+    public DamageCalculator.DamageFuture damageFuture;
 
     void Awake()
     {
@@ -142,6 +143,25 @@ public class ProjectileMover : MonoBehaviour
                 detachedPrefab.transform.parent = null;
             }
         }
+        
+        if(damageFuture !=null)
+        {
+            switch(damageFuture.damageLocation)
+            {
+                case DamageCalculator.DamageFuture.DamageLocation.Enemy:
+                DamageCalculator.onHitEnemy(damageFuture.other,damageFuture.m_fireFrom,damageFuture.hitDirection,damageFuture.damage,damageFuture.dot_time);
+                break;
+                case DamageCalculator.DamageFuture.DamageLocation.Item:
+                DamageCalculator.onHitDamagableItem(damageFuture.other,damageFuture.m_fireFrom,damageFuture.hitDirection);
+                break;
+                case DamageCalculator.DamageFuture.DamageLocation.Wall:
+                DamageCalculator.hitOnWall(damageFuture.other,damageFuture.hitpoint);
+                break;
+            }
+        }
+
+
+
         //Destroy(gameObject);
         this.gameObject.SetActive(false);
     }
@@ -163,6 +183,7 @@ public class ProjectileMover : MonoBehaviour
         }
         
         start_pos = this.transform.position;
+        
         //rb.constraints = RigidbodyConstraints.None;
     }
 }

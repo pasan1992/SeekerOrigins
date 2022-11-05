@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class DamageCalculator
 {
+    public class DamageFuture
+    {
+        public DamageFuture(Collider other, AgentBasicData.AgentFaction m_fireFrom, CommonFunctions.Damage damage, float dot_time, DamageLocation dl, Vector3 hitpoint,Vector3 hitDirection)
+        {
+            this.other = other;
+            this.m_fireFrom = m_fireFrom;
+            this.damage = damage;
+            this.dot_time = dot_time;
+            this.damageLocation = dl;
+            this.hitpoint = hitpoint;
+            this.hitDirection = hitDirection;
+        }
+        public Collider other;
+        public AgentBasicData.AgentFaction m_fireFrom;
+        public Vector3 hitDirection;
+        public CommonFunctions.Damage damage;
+        public  float dot_time=0;
+
+        public enum DamageLocation {Wall,Enemy,Item};
+        public Vector3 hitpoint;
+
+        public DamageLocation damageLocation;
+    }
     private static readonly float s_maximumHitReactionValue = 2.5f;
     // public static void SetDamageFromExplosion(ICyberAgent agent,BasicExplodingObject explosionObject,Collider hitObject)
     // {
@@ -161,7 +184,7 @@ public class DamageCalculator
     }
 
     public static RaycastHit 
-    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,CommonFunctions.Damage weapon_damage,float dot_time=0)
+    checkFire(Vector3 startPositon, Vector3 targetPositon, AgentBasicData.AgentFaction ownersFaction,CommonFunctions.Damage weapon_damage,ProjectileMover pmover,float dot_time=0)
     {
         RaycastHit hit = new RaycastHit();
         RaycastHit acualHit = new RaycastHit();
@@ -187,18 +210,21 @@ public class DamageCalculator
                 break;
                 case "Cover":
                 case "Wall":
-                DamageCalculator.hitOnWall(hit.collider,hit.point);
+                //DamageCalculator.hitOnWall(hit.collider,hit.point);
+                pmover.damageFuture = new DamageCalculator.DamageFuture(hit.collider,ownersFaction,null,0,DamageFuture.DamageLocation.Wall,hit.point,Vector3.zero);
                 break;
                 case "Enemy":
                 case "Player":
                 case "Head":
                 case "Chest":
-                DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized,weapon_damage,dot_time);
+                //DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized,weapon_damage,dot_time);
+                pmover.damageFuture = new DamageCalculator.DamageFuture(hit.collider,ownersFaction,weapon_damage,dot_time,DamageFuture.DamageLocation.Enemy,Vector3.zero,(targetPositon-startPositon).normalized);
                 hitOnEnemy = true;
                 break;
                 case "Item":
                 hitOnEnemy = true;
-                DamageCalculator.onHitDamagableItem(hit.collider,ownersFaction,(targetPositon-startPositon).normalized);
+                //DamageCalculator.onHitDamagableItem(hit.collider,ownersFaction,(targetPositon-startPositon).normalized);
+                pmover.damageFuture = new DamageCalculator.DamageFuture(hit.collider,ownersFaction,weapon_damage,dot_time,DamageFuture.DamageLocation.Item,hit.point,(targetPositon-startPositon).normalized);
                 break;       
             } 
 
@@ -213,12 +239,13 @@ public class DamageCalculator
                 switch(hit.transform.tag)
                 {
                     case "Wall":
-                        DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        //DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        pmover.damageFuture = new DamageCalculator.DamageFuture(hit.collider,ownersFaction,weapon_damage,dot_time,DamageFuture.DamageLocation.Wall,Vector3.zero,(targetPositon-startPositon).normalized);
                         acualHit = hit;
                     break;
                     case "Cover":
-                    //DamageCalculator.onHitEnemy(hit.collider,m_ownersFaction,(targetPositon-startPositon).normalized);
-                        DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        //DamageCalculator.hitOnWall(hit.collider,hit.point);
+                        pmover.damageFuture = new DamageCalculator.DamageFuture(hit.collider,ownersFaction,weapon_damage,dot_time,DamageFuture.DamageLocation.Wall,Vector3.zero,(targetPositon-startPositon).normalized);
                         importantHit = true;
                         acualHit = hit;
                     break;
@@ -226,7 +253,8 @@ public class DamageCalculator
                     case "Player":
                     case "Head":
                     case "Chest":
-                        DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage,dot_time);
+                        //DamageCalculator.onHitEnemy(hit.collider,ownersFaction,(targetPositon-startPositon).normalized, weapon_damage,dot_time);
+                        pmover.damageFuture = new DamageCalculator.DamageFuture(hit.collider,ownersFaction,weapon_damage,dot_time,DamageFuture.DamageLocation.Enemy,Vector3.zero,(targetPositon-startPositon).normalized);
                         importantHit = true;
                         acualHit = hit;
                     break; 
