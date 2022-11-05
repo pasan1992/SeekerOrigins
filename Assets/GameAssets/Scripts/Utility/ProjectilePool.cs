@@ -13,6 +13,7 @@ public class ProjectilePool : MonoBehaviour
         BasicProjectile,
 
         IncendearyProjectile,
+        ElectricProjectile,
         ElectricParticleEffect,
         SmokeEffect,
         PistolAmmo,
@@ -76,6 +77,8 @@ public class ProjectilePool : MonoBehaviour
 
     private List<GameObject> inicator_list;
 
+    private List<GameObject> electric_projectile;
+
     private GameObject m_player;
 
     #region initialize
@@ -135,7 +138,7 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.BasicProjectile:
                 count = maxBulletCount;
-                resourcePath = "Prefab/LasterProjectile";
+                resourcePath = "Prefab/RegularProjectile";
                 basicProjectilesList = new List<GameObject>();
                 effectList = basicProjectilesList;
                 break;
@@ -144,6 +147,12 @@ public class ProjectilePool : MonoBehaviour
                 resourcePath = "Prefab/FireProjectile";
                 IncendiaryProjectilesList = new List<GameObject>();
                 effectList = IncendiaryProjectilesList;
+                break;
+            case POOL_OBJECT_TYPE.ElectricProjectile:
+                count = maxBulletCount;
+                resourcePath = "Prefab/ElectricProjectile";
+                electric_projectile = new List<GameObject>();
+                effectList = electric_projectile;
                 break;
             case POOL_OBJECT_TYPE.ElectricParticleEffect:
                 count = maxExplosions;
@@ -379,6 +388,9 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.SmallFireEffect:
                 effectList = smallFireEffect;
+                break;
+            case POOL_OBJECT_TYPE.ElectricProjectile:
+                effectList = electric_projectile;
                 break;
         }
 

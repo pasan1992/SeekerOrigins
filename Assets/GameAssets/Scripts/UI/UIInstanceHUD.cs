@@ -132,6 +132,11 @@ public class UIInstanceHUD : MonoBehaviour
         _isFreeToOpen = true;
     }
 
+    public bool isHudOPen()
+    {
+        return _isFreeToOpen;
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Tab))
@@ -548,11 +553,12 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString();
                 break;
         }
+         m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol, _selectedPistolAmmo);
         HudCloseInstanly();
     }
 
     public void UpdateRifleAmmoType(int type)
-    {
+    {           
         switch (type)
         {
             case 1:
@@ -565,6 +571,7 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString();
                 break;
         }
+        m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle, _selectedRifleAmmo);
         HudCloseInstanly();
     }
 
@@ -597,8 +604,7 @@ public class UIInstanceHUD : MonoBehaviour
                     _isHUDOpen = false;
                     Time.timeScale = 1f;
                 });
-            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol, _selectedPistolAmmo);
-            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle, _selectedRifleAmmo);
+
         }
     }
        

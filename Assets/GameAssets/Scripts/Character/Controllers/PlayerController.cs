@@ -411,7 +411,8 @@ public class PlayerController : AgentController
 
     public void SwitchAmmoType(AmmoTypeEnums.WeaponTypes weapon,string ammoType)
     {
-        m_movingAgent.SwitchAmmoType(weapon,ammoType);
+        if(m_movingAgent)
+            m_movingAgent.SwitchAmmoType(weapon,ammoType);
     }
 
     private void CoverFinder()

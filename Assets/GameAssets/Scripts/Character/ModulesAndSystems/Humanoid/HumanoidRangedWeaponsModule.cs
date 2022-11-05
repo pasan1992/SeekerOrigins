@@ -725,6 +725,11 @@ public class HumanoidRangedWeaponsModule
                     var ammo_count = m_rifle.getAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
                     m_rifle.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
+
+                    if(m_currentWeapon !=null && m_rifle != m_currentWeapon )
+                    {
+                        togglePrimary();
+                    }
                 }
             break;
             case AmmoTypeEnums.WeaponTypes.Pistol:
@@ -738,6 +743,11 @@ public class HumanoidRangedWeaponsModule
                     // put ammo already in type back
                     m_agentData.AddAmmo(ammo_name,ammo_count);
                     m_pistol.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
+
+                    if(m_currentWeapon !=null && m_pistol != m_currentWeapon )
+                    {
+                        toggleSecondary();
+                    }
                 }
             break;
         }
