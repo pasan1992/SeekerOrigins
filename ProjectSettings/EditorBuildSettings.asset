@@ -35,4 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SE01/EP03/EP03 Checkpoints Tests/EP03_Broken_Com_Checkpoint_works.unity
     guid: c8ae929815730624dac1a59949379b67
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d1402d80e3406b845af683f00ed26b2a,
+      type: 2}

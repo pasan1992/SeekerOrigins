@@ -25,7 +25,7 @@ public class UIInstanceHUD : MonoBehaviour
     [SerializeField] PlayerController _player;
 
     // In game Fields
-    [Header("In Game Fields")]
+    [Header("In Game Fields (IGF)")]
 
     [SerializeField] GameObject _missileTypeObj_IGF;
     [SerializeField] TMP_Text _missileTypeCount_IGF;
@@ -43,7 +43,7 @@ public class UIInstanceHUD : MonoBehaviour
     [SerializeField] TMP_Text _rifleTypeCount_IGF;
 
     // Tab Menu Feilds
-    [Header("Tab Menu Fields")]
+    [Header("Tab Menu Fields (TMF)")]
     [SerializeField] CanvasGroup _missile_TMF_1;
     [SerializeField] CanvasGroup _missile_TMF_2;
 
