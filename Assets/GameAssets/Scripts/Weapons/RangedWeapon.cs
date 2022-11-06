@@ -200,7 +200,11 @@ public abstract class RangedWeapon : Weapon
 
     public bool isWeaponEmpty()
     {
-        return m_ammoCount[m_weaponAmmunitionName] == 0;
+        if (m_ammoCount.ContainsKey(m_weaponAmmunitionName))
+        {
+            return m_ammoCount[m_weaponAmmunitionName] == 0;
+        }
+        return true;
     }
 
     #endregion

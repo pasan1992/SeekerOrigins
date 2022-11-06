@@ -15,6 +15,7 @@ public class PrimaryWeapon : RangedWeapon
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
         SwitchAmmoType(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString());
+        m_ammoCount[AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString()] = m_magazineSize;
     }
 
     public void Start()
