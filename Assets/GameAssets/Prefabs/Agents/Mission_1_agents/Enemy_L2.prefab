@@ -9211,6 +9211,7 @@ MonoBehaviour:
   m_restrictions: 0
   target: {fileID: 0}
   preferedWeapon: 1
+  PetrolArmed: 0
   rutine: {fileID: 6374780358941531971}
 --- !u!114 &2946053866484757946
 MonoBehaviour:
@@ -9872,6 +9873,8 @@ MonoBehaviour:
     maxHealth: 5
     MaxSheild: 0
     Regen: 0
+    HealthRegen: 0
+    HealthRegenWait: 10
     m_agentFaction: 1
     health: 5
     Sheild: 0
@@ -9883,8 +9886,10 @@ MonoBehaviour:
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
-    - AmmoType: BasicMag
-      AmmoCount: 9999
+    - AmmoType: Regular_RifleAmmo
+      AmmoCount: 100
+    - AmmoType: Regular_PistolAmmo
+      AmmoCount: 999
     drop_reward: 0
   AgentComponents:
     weaponAimTransform: {fileID: 5776414178874505092}
@@ -9999,6 +10004,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 5
   KeepOnDestory: 0
+  m_onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   currentAvatar: {fileID: 2946487984270548619}
   avatar: []
 --- !u!114 &2946897782893476756
@@ -24016,16 +24024,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Pistol
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     enablePositionRequirment: 1
     placeObjectInHand: 0
     actualObject: {fileID: 0}
+    PlayerRestricted: 0
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
@@ -24038,7 +24046,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 30
   damage: 2
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 3121724588219546815}
   gunFireLight: {fileID: 3121724588219546815}
   targetPointTransfrom: {fileID: 0}
@@ -24048,6 +24059,7 @@ MonoBehaviour:
   m_magazineSize: 12
   full_auto: 0
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!82 &2119121075623001029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -29184,16 +29196,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Rifle
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     enablePositionRequirment: 1
     placeObjectInHand: 0
     actualObject: {fileID: 0}
+    PlayerRestricted: 0
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
@@ -29206,7 +29218,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 50
   damage: 3
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 4365249683498547468}
   gunFireLight: {fileID: 8120100902772597090}
   targetPointTransfrom: {fileID: 0}
@@ -29216,6 +29231,7 @@ MonoBehaviour:
   m_magazineSize: 30
   full_auto: 0
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!82 &5082965437676645492
 AudioSource:
   m_ObjectHideFlags: 0

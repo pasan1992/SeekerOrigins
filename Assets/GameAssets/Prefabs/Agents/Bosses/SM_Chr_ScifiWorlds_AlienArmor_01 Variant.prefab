@@ -5722,7 +5722,6 @@ MonoBehaviour:
     ObjectiveInteratable: 0
     itemName: Pistol
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -5742,7 +5741,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 15
   damage: 2
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 353418877970728339}
   gunFireLight: {fileID: 353418877970728339}
   targetPointTransfrom: {fileID: 0}
@@ -16851,7 +16853,6 @@ MonoBehaviour:
     ObjectiveInteratable: 0
     itemName: Rifle
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -16871,7 +16872,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 50
   damage: 3
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 353418877651175914}
   gunFireLight: {fileID: 353418877766012194}
   targetPointTransfrom: {fileID: 0}
@@ -28199,8 +28203,10 @@ MonoBehaviour:
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
-    - AmmoType: BasicMag
-      AmmoCount: 9999
+    - AmmoType: Regular_RifleAmmo
+      AmmoCount: 299
+    - AmmoType: Regular_PistolAmmo
+      AmmoCount: 299
     drop_reward: 0
   AgentComponents:
     weaponAimTransform: {fileID: 353418877692967033}
@@ -28969,6 +28975,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 5
   KeepOnDestory: 0
+  m_onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   currentAvatar: {fileID: 7220922800165722670}
   avatar: []
 --- !u!114 &6978166759215218202

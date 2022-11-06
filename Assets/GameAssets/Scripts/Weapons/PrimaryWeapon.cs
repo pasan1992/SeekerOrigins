@@ -9,12 +9,12 @@ public class PrimaryWeapon : RangedWeapon
 
     public override void Awake()
     {
-        m_weaponAmmunitionName = "RifleAmmo";
         base.Awake();
         posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(2,ProjectilePool.POOL_OBJECT_TYPE.IncendearyProjectile,3,10));
         posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0));
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
+        SwitchAmmoType(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString());
     }
 
     public void Start()

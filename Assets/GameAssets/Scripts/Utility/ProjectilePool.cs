@@ -26,7 +26,9 @@ public class ProjectilePool : MonoBehaviour
         DamageText,
         Obj_Indicator,
         SmallFireEffect,
-        Granade_Explosion
+        Granade_Explosion,
+
+        AttackDroneExplosion,
     }
 
     // Basic Projectile 
@@ -53,6 +55,8 @@ public class ProjectilePool : MonoBehaviour
     private List<GameObject> basicRocketList;
 
     private List<GameObject> droidExplosionsList;
+
+    private List<GameObject> attackDroneExplosion;
 
 
     public int maxExplosions = 10;
@@ -129,6 +133,12 @@ public class ProjectilePool : MonoBehaviour
                 count = donreExplosions;
                 basicDroneExplosionList = new List<GameObject>();
                 effectList = basicDroneExplosionList;
+                break;
+            case POOL_OBJECT_TYPE.AttackDroneExplosion:
+                resourcePath = "Explosions/AttackDroneExplosion";
+                count = donreExplosions;
+                attackDroneExplosion = new List<GameObject>();
+                effectList = attackDroneExplosion;
                 break;
             case POOL_OBJECT_TYPE.HitBasicParticle:
                 count = maxExplosions;
@@ -391,6 +401,9 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.ElectricProjectile:
                 effectList = electric_projectile;
+                break;
+            case POOL_OBJECT_TYPE.AttackDroneExplosion:
+                effectList = attackDroneExplosion;
                 break;
         }
 

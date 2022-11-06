@@ -57,6 +57,8 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public Transform m_DroneModel;
 
+    public ProjectilePool.POOL_OBJECT_TYPE explosionParticle = ProjectilePool.POOL_OBJECT_TYPE.DroneExplosion;
+
     #region initalize
 
 
@@ -86,7 +88,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public void Start()
     {
-        m_damageModule= new DroneDamageModule(m_agentData, this.GetComponentInChildren<Outline>(), DestroyCharacter,this.transform);
+        m_damageModule= new DroneDamageModule(m_agentData, this.GetComponentInChildren<Outline>(), DestroyCharacter,this.transform,explosionParticle);
     }
 
     #region update

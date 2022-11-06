@@ -19097,6 +19097,7 @@ MonoBehaviour:
   m_restrictions: 0
   target: {fileID: 0}
   preferedWeapon: 0
+  PetrolArmed: 0
   rutine: {fileID: 6021325208775149694}
 --- !u!114 &2523621043491332743
 MonoBehaviour:
@@ -19758,6 +19759,8 @@ MonoBehaviour:
     maxHealth: 20
     MaxSheild: 0
     Regen: 0
+    HealthRegen: 0
+    HealthRegenWait: 10
     m_agentFaction: 1
     health: 20
     Sheild: 0
@@ -19769,8 +19772,10 @@ MonoBehaviour:
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
-    - AmmoType: BasicMag
-      AmmoCount: 9999
+    - AmmoType: Regular_RifleAmmo
+      AmmoCount: 100
+    - AmmoType: Regular_PistolAmmo
+      AmmoCount: 999
     drop_reward: 1
   AgentComponents:
     weaponAimTransform: {fileID: 2523621043359386459}
@@ -19885,6 +19890,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 13
   KeepOnDestory: 0
+  m_onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   currentAvatar: {fileID: 2523080822833678774}
   avatar: []
 --- !u!114 &2522777192647978154
@@ -23967,10 +23975,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Pistol
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -23990,7 +23997,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 30
   damage: 2
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 3995736184028147249}
   gunFireLight: {fileID: 2356887214611278722}
   targetPointTransfrom: {fileID: 0}
@@ -39706,10 +39716,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Rifle
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -39729,7 +39738,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 50
   damage: 3
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 1086303166161980066}
   gunFireLight: {fileID: 8887760585038231135}
   targetPointTransfrom: {fileID: 0}

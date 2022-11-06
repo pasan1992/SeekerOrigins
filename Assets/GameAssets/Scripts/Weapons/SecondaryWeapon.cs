@@ -10,6 +10,7 @@ public class SecondaryWeapon : RangedWeapon
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
         posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(2,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,5,0,100));
         posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,1));
+        SwitchAmmoType(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString());
     }
 
     public void Start()
