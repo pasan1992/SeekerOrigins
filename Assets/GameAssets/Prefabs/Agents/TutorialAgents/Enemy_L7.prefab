@@ -898,6 +898,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 13
   KeepOnDestory: 0
+  m_onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   currentAvatar: {fileID: 70146114552436703}
   avatar: []
 --- !u!114 &69886451426456256
@@ -2736,6 +2739,7 @@ GameObject:
   - component: {fileID: 71862779117567181}
   - component: {fileID: 71862779117567183}
   - component: {fileID: 71862779117567180}
+  - component: {fileID: 5931334546115378210}
   m_Layer: 9
   m_Name: Spine_02
   m_TagString: Chest
@@ -2833,6 +2837,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2954503, y: 0.32666367, z: 0.34}
   m_Center: {x: -0.10424613, y: -0.014931891, z: 3.966592e-16}
+--- !u!114 &5931334546115378210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70461733847672073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 0
 --- !u!1 &70468957014789657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,6 +3163,7 @@ GameObject:
   - component: {fileID: 71862779117567184}
   - component: {fileID: 71862779117567186}
   - component: {fileID: 71862779117567187}
+  - component: {fileID: 1683807601461980274}
   m_Layer: 9
   m_Name: Shoulder_R
   m_TagString: Enemy
@@ -3243,6 +3261,19 @@ CapsuleCollider:
   m_Height: 0.33948052
   m_Direction: 0
   m_Center: {x: 0.16973722, y: 0.0007238013, z: -0.028305529}
+--- !u!114 &1683807601461980274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70502389332238681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 1
 --- !u!1 &70504958287455729
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,6 +3742,7 @@ GameObject:
   - component: {fileID: 71862779117567196}
   - component: {fileID: 71862779117567198}
   - component: {fileID: 71862779117567199}
+  - component: {fileID: 5813124935662280226}
   m_Layer: 9
   m_Name: LowerLeg_R
   m_TagString: Enemy
@@ -3808,6 +3840,19 @@ CapsuleCollider:
   m_Height: 0.37712386
   m_Direction: 0
   m_Center: {x: -0.18856193, y: 0.000000010244548, z: -0.00000017369166}
+--- !u!114 &5813124935662280226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70528869648035019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
 --- !u!1 &70536049098421925
 GameObject:
   m_ObjectHideFlags: 0
@@ -4931,6 +4976,7 @@ GameObject:
   - component: {fileID: 71862779117567211}
   - component: {fileID: 71862779117567205}
   - component: {fileID: 71862779117567210}
+  - component: {fileID: 1499721642259888119}
   m_Layer: 9
   m_Name: LowerLeg_L
   m_TagString: Enemy
@@ -5028,6 +5074,19 @@ CapsuleCollider:
   m_Height: 0.3771234
   m_Direction: 0
   m_Center: {x: 0.1885617, y: 0.00000009778887, z: -0.0000005136244}
+--- !u!114 &1499721642259888119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70713450562250287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
 --- !u!1 &70731812478034013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6512,6 +6571,7 @@ GameObject:
   - component: {fileID: 71862779117567172}
   - component: {fileID: 71862779117567174}
   - component: {fileID: 71862779117567175}
+  - component: {fileID: 9059323249635389732}
   m_Layer: 9
   m_Name: Shoulder_L
   m_TagString: Enemy
@@ -6609,6 +6669,19 @@ CapsuleCollider:
   m_Height: 0.33948034
   m_Direction: 0
   m_Center: {x: -0.1697371, y: -0.00072449795, z: -0.0007181689}
+--- !u!114 &9059323249635389732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70910893326708521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 1
 --- !u!1 &70925679125752939
 GameObject:
   m_ObjectHideFlags: 0
@@ -6652,6 +6725,7 @@ GameObject:
   - component: {fileID: 71862779117567170}
   - component: {fileID: 71862779117567171}
   - component: {fileID: 71862779117567168}
+  - component: {fileID: 1675449824089557537}
   m_Layer: 9
   m_Name: Head
   m_TagString: Head
@@ -6766,6 +6840,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.47
   m_Center: {x: -5.403974e-16, y: 0.09000001, z: -0.01}
+--- !u!114 &1675449824089557537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71092790636605577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 1
 --- !u!1 &71096869349705467
 GameObject:
   m_ObjectHideFlags: 0
@@ -13834,7 +13921,6 @@ MonoBehaviour:
     ObjectiveInteratable: 0
     itemName: Pistol
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -13854,7 +13940,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 15
   damage: 2
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 238591041619310059}
   gunFireLight: {fileID: 238591041619310059}
   targetPointTransfrom: {fileID: 0}
@@ -29541,7 +29630,6 @@ MonoBehaviour:
     ObjectiveInteratable: 0
     itemName: Rifle
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -29561,7 +29649,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 50
   damage: 3
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 3236311182132909259}
   gunFireLight: {fileID: 6389858070330370102}
   targetPointTransfrom: {fileID: 0}
@@ -34855,6 +34946,12 @@ PrefabInstance:
     - {fileID: 1498233384, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
     - {fileID: 1498233383, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
+--- !u!4 &7976312218801588241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6972490019812177856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7976312218801588240 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1041122100592164816, guid: f4598a0dea1a5a043a62fa46555f2cf1,
@@ -34867,9 +34964,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431fccda15f7e6641801a1cc00eaa54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7976312218801588241 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6972490019812177856}
-  m_PrefabAsset: {fileID: 0}

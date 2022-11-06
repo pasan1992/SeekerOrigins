@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 8851718178811672318}
   - component: {fileID: 8851718178811672316}
   - component: {fileID: 8851718178811672317}
+  - component: {fileID: 9105072979207387935}
   m_Layer: 9
   m_Name: LowerLeg_L
   m_TagString: Player
@@ -314,6 +315,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &9105072979207387935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851718178811672319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
 --- !u!1 &8851718178812422941
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,9 +671,8 @@ MonoBehaviour:
   m_restrictions: 0
   target: {fileID: 0}
   preferedWeapon: 1
-  CanDodge: 0
+  PetrolArmed: 0
   rutine: {fileID: 1887792727}
-  max_Sound_hearing_distance: 10
 --- !u!114 &8851718178877291366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,15 +691,24 @@ MonoBehaviour:
     Skill: 0.2
     VisualDistance: 10
     VisualAngle: 180
+    max_Sound_hearing_distance: 5
+    CanDodge: 0
+    ThrowGrenade: 0
+    FireRocket: 0
+    RocketPack: {fileID: 0}
     maxHealth: 5
     MaxSheild: 0
     Regen: 0
+    HealthRegen: 0
+    HealthRegenWait: 10
     m_agentFaction: 1
     health: 5
     Sheild: 0
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 8851718180856099040}
     grenade: {fileID: 0}
+    HealInjectionCount: 1
+    HealPerInjection: 20
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
@@ -1330,6 +1352,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 3
+  KeepOnDestory: 0
+  m_onDestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
   currentAvatar: {fileID: 8851718179415572753}
   avatar:
   - {fileID: 8851718180809855807}
@@ -1863,6 +1889,7 @@ GameObject:
   - component: {fileID: 8851718178925435867}
   - component: {fileID: 8851718178925435860}
   - component: {fileID: 8851718178925435861}
+  - component: {fileID: 389863546997447106}
   m_Layer: 9
   m_Name: Spine_02
   m_TagString: Chest
@@ -1960,6 +1987,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &389863546997447106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851718178925435863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 0
 --- !u!1 &8851718178939559908
 GameObject:
   m_ObjectHideFlags: 0
@@ -4747,6 +4787,7 @@ GameObject:
   - component: {fileID: 8851718179801523536}
   - component: {fileID: 8851718179801523542}
   - component: {fileID: 8851718179801523543}
+  - component: {fileID: 2250742746118449009}
   m_Layer: 9
   m_Name: Shoulder_L
   m_TagString: Player
@@ -4844,6 +4885,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2250742746118449009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851718179801523537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 2
 --- !u!1 &8851718179818492368
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,6 +4910,7 @@ GameObject:
   - component: {fileID: 8851718179818492372}
   - component: {fileID: 8851718179818492373}
   - component: {fileID: 8851718179818492374}
+  - component: {fileID: 2385344275717065798}
   m_Layer: 9
   m_Name: Head
   m_TagString: Head
@@ -4954,6 +5009,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2385344275717065798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851718179818492368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 1
 --- !u!1 &8851718179830614454
 GameObject:
   m_ObjectHideFlags: 0
@@ -16751,16 +16819,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Rifle
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     enablePositionRequirment: 1
     placeObjectInHand: 0
     actualObject: {fileID: 0}
+    PlayerRestricted: 0
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
@@ -16773,7 +16841,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 40
   damage: 1.5
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 8851718179990328935}
   gunFireLight: {fileID: 5543271795722405739}
   targetPointTransfrom: {fileID: 0}
@@ -16783,6 +16854,7 @@ MonoBehaviour:
   m_magazineSize: 20
   full_auto: 0
   SoundMaxDistance: 20
+  m_weaponLight: {fileID: 0}
 --- !u!114 &8851718180189712950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20692,6 +20764,7 @@ GameObject:
   - component: {fileID: 8851718180362093852}
   - component: {fileID: 8851718180362093858}
   - component: {fileID: 8851718180362093859}
+  - component: {fileID: 3589033795581716475}
   m_Layer: 9
   m_Name: LowerLeg_R
   m_TagString: Player
@@ -20789,6 +20862,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3589033795581716475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851718180362093853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
 --- !u!1 &8851718180407109423
 GameObject:
   m_ObjectHideFlags: 0
@@ -21948,6 +22034,7 @@ GameObject:
   - component: {fileID: 8851718180798005027}
   - component: {fileID: 8851718180798005025}
   - component: {fileID: 8851718180798005026}
+  - component: {fileID: 765368888197925994}
   m_Layer: 9
   m_Name: Shoulder_R
   m_TagString: Player
@@ -22045,6 +22132,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &765368888197925994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851718180798005020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 2
 --- !u!1 &8851718180809855807
 GameObject:
   m_ObjectHideFlags: 0
@@ -22544,16 +22644,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 0
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Pistol
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     enablePositionRequirment: 1
     placeObjectInHand: 0
     actualObject: {fileID: 0}
+    PlayerRestricted: 0
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
@@ -22566,7 +22666,10 @@ MonoBehaviour:
   m_ownersFaction: 0
   accuracy_rating: 38
   damage: 1.5
+  energyDamage: 0
   m_weaponAmmunitionName: BasicMag
+  projectile: 4
+  dotTime: 0
   gunMuzzle: {fileID: 5543271795979246664}
   gunFireLight: {fileID: 5543271795979246664}
   targetPointTransfrom: {fileID: 0}
@@ -22576,6 +22679,7 @@ MonoBehaviour:
   m_magazineSize: 12
   full_auto: 0
   SoundMaxDistance: 3
+  m_weaponLight: {fileID: 0}
 --- !u!82 &8851718180856099043
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23158,6 +23262,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbbb666690243b4bb7a85a04c8ff660, type: 3}
+--- !u!224 &928564797176910040 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2626897410929670777, guid: 0fbbb666690243b4bb7a85a04c8ff660,
+    type: 3}
+  m_PrefabInstance: {fileID: 2924649826642733729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1291311345142654167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4142706196662079094, guid: 0fbbb666690243b4bb7a85a04c8ff660,
@@ -23173,12 +23283,6 @@ MonoBehaviour:
 --- !u!1 &4198775913486783403 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1356566416465737994, guid: 0fbbb666690243b4bb7a85a04c8ff660,
-    type: 3}
-  m_PrefabInstance: {fileID: 2924649826642733729}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &928564797176910040 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2626897410929670777, guid: 0fbbb666690243b4bb7a85a04c8ff660,
     type: 3}
   m_PrefabInstance: {fileID: 2924649826642733729}
   m_PrefabAsset: {fileID: 0}
@@ -23466,15 +23570,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dcd651cdf4ed9a4db1b2f5b041bd2b0, type: 3}
---- !u!4 &2925015351490432558 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5926775866237569448, guid: 7dcd651cdf4ed9a4db1b2f5b041bd2b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 8851718179925526406}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5543271795979246664 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 3907495676557974478, guid: 7dcd651cdf4ed9a4db1b2f5b041bd2b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8851718179925526406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2925015351490432558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5926775866237569448, guid: 7dcd651cdf4ed9a4db1b2f5b041bd2b0,
     type: 3}
   m_PrefabInstance: {fileID: 8851718179925526406}
   m_PrefabAsset: {fileID: 0}

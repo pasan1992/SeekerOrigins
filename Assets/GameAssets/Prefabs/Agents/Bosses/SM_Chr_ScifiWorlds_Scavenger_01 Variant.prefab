@@ -1154,6 +1154,7 @@ GameObject:
   - component: {fileID: 4755114362200218100}
   - component: {fileID: 4755114362200218102}
   - component: {fileID: 4755114362200218103}
+  - component: {fileID: 8098363540705276683}
   m_Layer: 9
   m_Name: Spine_02
   m_TagString: Chest
@@ -1251,6 +1252,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28722855, y: 0.2273292, z: 0.34}
   m_Center: {x: -0.10485769, y: 0.044424485, z: -0.0000000024011517}
+--- !u!114 &8098363540705276683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672018521198261814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 0
 --- !u!1 &1672026590263458928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1277,7 @@ GameObject:
   - component: {fileID: 4755106310104617900}
   - component: {fileID: 4755106310104617901}
   - component: {fileID: 4755106310104617906}
+  - component: {fileID: 8673886177627020721}
   m_Layer: 9
   m_Name: Head
   m_TagString: Head
@@ -1364,6 +1379,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.47
   m_Center: {x: -7.4375406e-16, y: 0.1628117, z: 0.010450968}
+--- !u!114 &8673886177627020721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672026590263458928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 1
 --- !u!1 &1672043220229701092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2049,7 @@ GameObject:
   - component: {fileID: 4754826548902728974}
   - component: {fileID: 4754826548902728968}
   - component: {fileID: 4754826548902728969}
+  - component: {fileID: 1974850064523971042}
   m_Layer: 9
   m_Name: LowerLeg_R
   m_TagString: Enemy
@@ -2118,6 +2147,19 @@ CapsuleCollider:
   m_Height: 0.3771234
   m_Direction: 0
   m_Center: {x: -0.18856193, y: -0.000000020489097, z: 0.0000000023283064}
+--- !u!114 &1974850064523971042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672301249054751436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
 --- !u!1 &1672547840004503534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,6 +2312,7 @@ GameObject:
   - component: {fileID: 4755679219292574160}
   - component: {fileID: 4755679219292574162}
   - component: {fileID: 4755679219292574163}
+  - component: {fileID: 8018396600703192688}
   m_Layer: 9
   m_Name: LowerLeg_L
   m_TagString: Enemy
@@ -2367,6 +2410,19 @@ CapsuleCollider:
   m_Height: 0.3771234
   m_Direction: 0
   m_Center: {x: 0.18856168, y: -0.005541795, z: -0.00556884}
+--- !u!114 &8018396600703192688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672574478024719890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 3
 --- !u!1 &1672602014640406972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,6 +2916,7 @@ GameObject:
   - component: {fileID: 4755569364891441472}
   - component: {fileID: 4755569364891441474}
   - component: {fileID: 4755569364891441475}
+  - component: {fileID: 6734728102540721865}
   m_Layer: 9
   m_Name: Shoulder_L
   m_TagString: Enemy
@@ -2957,6 +3014,19 @@ CapsuleCollider:
   m_Height: 0.33948016
   m_Direction: 0
   m_Center: {x: -0.16973703, y: -0.017205581, z: 0.012474098}
+--- !u!114 &6734728102540721865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672684332696581762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 2
 --- !u!1 &1672684605343658958
 GameObject:
   m_ObjectHideFlags: 0
@@ -4709,6 +4779,7 @@ GameObject:
   - component: {fileID: 4755459468889513862}
   - component: {fileID: 4755459468889513856}
   - component: {fileID: 4755459468889513857}
+  - component: {fileID: 1988450116804833931}
   m_Layer: 9
   m_Name: Shoulder_R
   m_TagString: Enemy
@@ -4806,6 +4877,19 @@ CapsuleCollider:
   m_Height: 0.3394802
   m_Direction: 0
   m_Center: {x: 0.16973726, y: 0.020989474, z: -0.00891269}
+--- !u!114 &1988450116804833931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672935103330086980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dec31d0deffdca42bb4a41c3a61fe8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPart: 2
 --- !u!1 &1672936228084668468
 GameObject:
   m_ObjectHideFlags: 0
