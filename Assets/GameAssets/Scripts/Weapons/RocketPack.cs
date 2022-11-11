@@ -8,11 +8,13 @@ public class RocketPack : MonoBehaviour
     public List<Transform> Locations;
     private int m_current_transfrom = 0;
     public FloatingGameUI targetIcon;
+
+    private string currentRocketName = AmmoTypeEnums.Missile.MiniNuke_Missile.ToString();
     
     public void FireMissleLocation(Vector3 location, AgentData agentData)
     {
 
-        var ammo_count = agentData.useAmmoCount("Missile",1);
+        var ammo_count = agentData.useAmmoCount(getCurrentRokectName(),1);
 
         if(ammo_count > 0)
         {
@@ -29,12 +31,15 @@ public class RocketPack : MonoBehaviour
 
     }
 
-
-
+    public string getCurrentRokectName()
+    {
+        return currentRocketName;
+    }
 
     public void FireMissleTransfrom(Transform transfrom, AgentData agentData)
     {
-        var ammo_count = agentData.useAmmoCount("Missile",1);
+        var ammo_count = agentData.useAmmoCount(getCurrentRokectName(),1);
+        Debug.Log(ammo_count);
 
         if(ammo_count > 0)
         {

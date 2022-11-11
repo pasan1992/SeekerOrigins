@@ -276,14 +276,15 @@ public class HumanoidInteractionModule
             }
             else if(obj is Grenade)
             {
-                var wp = obj.GetComponent<Grenade>();
-                m_agentData.grenade = wp;
-                m_equipmentModule.equipWeapon(m_agentData.grenade);
-                obj.OnEquipAction();   
-                if(onWeaponPickupEvent !=null)
-                {
-                    onWeaponPickupEvent(m_agentData.grenade);
-                }                
+                Debug.Log("This is a bug");
+                // var wp = obj.GetComponent<Grenade>();
+                // m_agentData.grenade = wp;
+                // m_equipmentModule.equipWeapon(m_agentData.grenade);
+                // obj.OnEquipAction();   
+                // if(onWeaponPickupEvent !=null)
+                // {
+                //     onWeaponPickupEvent(m_agentData.grenade);
+                // }                
             }
             else
             {
@@ -313,7 +314,7 @@ public class HumanoidInteractionModule
         }
         //ammo_pck.AmmoPackData = new List<AgentData.AmmoPack>();
 
-        m_agent.SetGrenateCount(ammo_pck.GrenadeCount);
+        //m_agent.SetGrenateCount(ammo_pck.GrenadeCount);
         m_agent.GetAgentData().HealInjectionCount += ammo_pck.HealthInjectionCount;
         if (onAmmoPickupEvent != null)
         {

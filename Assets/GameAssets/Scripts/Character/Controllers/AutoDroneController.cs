@@ -225,6 +225,17 @@ public class AutoDroneController :  AgentController
         switchToCombatStage();
     }
 
+    public override void MoveToWaypoint(BasicWaypoint[] waypoints, bool enableIterate,GameEvents.BasicNotifactionEvent onEnd)
+    {
+        base.MoveToWaypoint(waypoints,enableIterate,onEnd);
+        if(m_currentBehaviorState != m_itearationState)
+        {
+            Debug.LogError("Current movment stage is not iteration stage, make the agent restriction as no combat from start. Or give a wait in the playmaker before calling this");
+        }
+        ((IteractionStage)m_itearationState).setMovmentEndEvent(onEnd);
+        ((IteractionStage)m_itearationState).moveToWayPoint(waypoints,enableIterate);
+        m_selfAgent.cancleInteraction();
+    }
     public override void ForceCombatMode(Transform position)
     {
         switchToCombatStage();

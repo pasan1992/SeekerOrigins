@@ -174,7 +174,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
             return;
         Interactable obj = AgentItemFinder.findNearItem(getCurrentPosition(),isPlayer);
-        Debug.Log(obj);
         if(obj)
         {
             interactWith(obj,obj.properties.Type);
@@ -209,7 +208,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
             return;
         }
 
-        if(m_equipmentModule.getCurrentWeaponAmmoCount() > 0)
+        if(m_equipmentModule.getCurrentWeaponLoadedAmmoCount() > 0)
         {
             StartCoroutine(fireWeapon());
             return;
@@ -582,9 +581,9 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         return m_equipmentModule.getSecondaryWeaponAmmoCount();
     }
 
-    public int getCurrentWeaponAmmoCount()
+    public int getCurrentWeaponLoadedAmmoCount()
     {
-        return m_equipmentModule.getCurrentWeaponAmmoCount();
+        return m_equipmentModule.getCurrentWeaponLoadedAmmoCount();
     }
 
     public int getCurrentWeaponMagazineSize()
@@ -709,10 +708,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         return m_equipmentModule.getGrenadeCount();
     }
 
-    public void SetGrenateCount(int count)
-    {
-        m_equipmentModule.SetGrenadeCount(count);
-    }
 
     public void ReloadEnd()
     {

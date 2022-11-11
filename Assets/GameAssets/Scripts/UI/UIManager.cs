@@ -151,13 +151,13 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        if (ammoPack.GrenadeCount > 0)
-        {
-            //
-            //var msg = "Grenade X" + ammoPack.GrenadeCount;
-            CreatePickupMsg("Grenade", ammoPack.GrenadeCount,_pickupMsgTxtQueue);
-            yield return new WaitForSeconds(0.5f);
-        }
+        // if (ammoPack.GrenadeCount > 0)
+        // {
+        //     //
+        //     //var msg = "Grenade X" + ammoPack.GrenadeCount;
+        //     CreatePickupMsg("Grenade", ammoPack.GrenadeCount,_pickupMsgTxtQueue);
+        //     yield return new WaitForSeconds(0.5f);
+        // }
 
         if (ammoPack.HealthInjectionCount > 0)
         {
@@ -410,7 +410,12 @@ public class UIManager : MonoBehaviour
         #endregion
 
         #region Missile
-        int missile_count = m_movingAgent.GetAgentData().checkAvailableAmmo("Missile");
+        int missile_count = 0;
+        if(m_movingAgent.GetAgentData().RocketPack)
+        {
+            missile_count = m_movingAgent.GetAgentData().checkUnloadAvaialbleAmmo(m_movingAgent.GetAgentData().RocketPack.getCurrentRokectName());
+        }
+        
         _missileCountTxt.text = missile_count.ToString();
 
         if (missile_count <= 0)
@@ -471,7 +476,7 @@ public class UIManager : MonoBehaviour
         #region Primary Weapon
         if (m_movingAgent.GetPrimaryWeapon() != null)
         {
-            _primaryWeaponAmmo = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getPrimaryWeaponAmmoCount();
+            _primaryWeaponAmmo = m_movingAgent.GetAgentData().checkUnloadAvaialbleAmmo(m_movingAgent.GetPrimaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getPrimaryWeaponAmmoCount();
             //_rifleCountTxt.text = _primaryWeaponAmmo.ToString();
 
             //LeanTween.cancel(_rifleImg.gameObject);
@@ -507,7 +512,7 @@ public class UIManager : MonoBehaviour
         #region Secondary Weapon
         if (m_movingAgent.GetSecondaryWeapon() != null)
         {
-            _secondryWeaponAmmo = m_movingAgent.GetAgentData().checkAvailableAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getSecondaryWeaponAmmoCount();
+            _secondryWeaponAmmo = m_movingAgent.GetAgentData().checkUnloadAvaialbleAmmo(m_movingAgent.GetSecondaryWeapon().m_weaponAmmunitionName) + m_movingAgent.getSecondaryWeaponAmmoCount();
             //_pistolCountTxt.text = _secondryWeaponAmmo.ToString();
 
             //LeanTween.cancel(_pistolImg.gameObject);
@@ -550,7 +555,7 @@ public class UIManager : MonoBehaviour
 
         if (m_movingAgent.getCurrentWeapon() !=null)
         {
-            var loaded = m_movingAgent.getCurrentWeaponAmmoCount();
+            var loaded = m_movingAgent.getCurrentWeaponLoadedAmmoCount();
 
             switch (m_movingAgent.getCurrentWeapon().getWeaponType())
             {
@@ -559,13 +564,14 @@ public class UIManager : MonoBehaviour
 
                     
                     var agent_data = m_movingAgent.GetAgentData();
-                    int totalAmmo = agent_data.checkAvailableAmmo(m_movingAgent.getCurrentWeapon().m_weaponAmmunitionName);
+                    int totalAmmo = agent_data.checkUnloadAvaialbleAmmo(m_movingAgent.getCurrentWeapon().m_weaponAmmunitionName);
                     // agent_data.weaponAmmoCount.TryGetValue(m_movingAgent.getCurrentWeapon().m_weaponAmmunitionName, out totalAmmo);
                     ammo_count.text = loaded.ToString() + "/" + totalAmmo.ToString();
 
                     break;
                 case Weapon.WEAPONTYPE.grenede:
-                    ammo_count.text = loaded.ToString();
+                    //ammo_count.text = loaded.ToString();
+                    Debug.LogError("Problem, This is a bug");
                     break;
             }
         }

@@ -61,11 +61,11 @@ public class MouseCurserSystem : MonoBehaviour
             var ammo_string = "";
             if (player.getCurrentWeaponMagazineSize() > 0)
             {
-                ammo_string = player.getCurrentWeaponAmmoCount().ToString() +"/" + player.getCurrentWeaponMagazineSize().ToString();
+                ammo_string = player.getCurrentWeaponLoadedAmmoCount().ToString() +"/" + player.getCurrentWeaponMagazineSize().ToString();
                 
             }
 
-            if(player.getCurrentWeaponMagazineSize()>0 && player.getCurrentWeaponAmmoCount() == 0)
+            if(player.getCurrentWeaponMagazineSize()>0 && player.getCurrentWeaponLoadedAmmoCount() == 0)
             {
                 ui_curser.set_text("R");
             }
@@ -92,7 +92,7 @@ public class MouseCurserSystem : MonoBehaviour
         }
 
         var total_ammo_count_ticks = TargetWithAmmoCount.Count;
-        var ammo_tick_index =  (int)(((float)player.getCurrentWeaponAmmoCount() /player.getCurrentWeaponMagazineSize()) * (total_ammo_count_ticks-1));
+        var ammo_tick_index =  (int)(((float)player.getCurrentWeaponLoadedAmmoCount() /player.getCurrentWeaponMagazineSize()) * (total_ammo_count_ticks-1));
         Cursor.SetCursor(TargetWithAmmoCount[ammo_tick_index], hotSpot, cursorMode);
         
 

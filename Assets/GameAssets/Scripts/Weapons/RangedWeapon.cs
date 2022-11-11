@@ -129,7 +129,7 @@ public abstract class RangedWeapon : Weapon
                 burstFireInterval = 0;
                 fireWeapon();
 
-                if (this.isActiveAndEnabled && getAmmoCount() > 0)
+                if (this.isActiveAndEnabled && getLoadedAmmoCount() > 0)
                 {
                     StartCoroutine(waitAndRecoil());
                 }
@@ -184,7 +184,7 @@ public abstract class RangedWeapon : Weapon
         m_onWeaponFire = onfire;
     }
 
-    public int getAmmoCount()
+    public int getLoadedAmmoCount()
     {
         if (m_ammoCount.ContainsKey(m_weaponAmmunitionName))
         {
@@ -234,7 +234,7 @@ public abstract class RangedWeapon : Weapon
 
     protected virtual void fireWeapon()
     {
-        if(getAmmoCount() > 0)
+        if(getLoadedAmmoCount() > 0)
         {
             var originalPos = m_target.transform.position;
             m_target.transform.position += Random.onUnitSphere* calculate_recall_offset() + new Vector3(0,Random.Range(-0.2f,0f),0);

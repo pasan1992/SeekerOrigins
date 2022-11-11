@@ -71,6 +71,7 @@ public class DroneMovmentModule : MovmentModule
 
     private void updateTakeOff(GameEnums.DroneState currentState,out GameEnums.DroneState state)
     {
+        
         state = currentState;
         if(m_currentDroneState != GameEnums.DroneState.TakeOff)
         {
@@ -78,8 +79,9 @@ public class DroneMovmentModule : MovmentModule
              m_animationSystem.enableAnimationSystem();
         }
 
-        if((Vector3.Distance(m_MovmentTransfrom.position,m_hoverPosition) > 0.3f))
+        if((Vector3.Distance(m_MovmentTransfrom.position,m_hoverPosition) > 0.2f))
         {
+            Debug.Log("TAKING OFF");
             state = GameEnums.DroneState.TakeOff;
             m_MovmentTransfrom.position = Vector3.Lerp(m_MovmentTransfrom.position,m_hoverPosition,0.1f);
         }

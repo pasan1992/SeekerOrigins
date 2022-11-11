@@ -57,6 +57,10 @@ public class WaypontMovementStage : BasicMovmentStage
 
     protected void MoveToWaypoint(BasicWaypoint waypoint)
     {
+        if(m_stopStage)
+        {
+            return;
+        }
         m_navMeshAgent.SetDestination(waypoint.getPosition()); 
     }
 

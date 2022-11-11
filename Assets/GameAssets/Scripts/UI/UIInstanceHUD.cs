@@ -168,6 +168,7 @@ public class UIInstanceHUD : MonoBehaviour
 
     void UpdateInGameAndTabUIData()
     {
+        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
         if (_weaponAmmoList.Count() > 0)
         {
             foreach (var weaponAmmo in _weaponAmmoList)

@@ -81,7 +81,29 @@ public class AgentData : AgentBasicData
         }
     }
 
-    public int checkAvailableAmmo(string ammoName)
+    public int checkTotalAmmo(string ammoName)
+    {
+        var unloaded = checkUnloadAvaialbleAmmo(ammoName);
+        var loaded = 0;
+        if(primaryWeapon !=null)
+        {
+            if (primaryWeapon.posibleAmmoTypes.ContainsKey(ammoName))
+            {
+                loaded += primaryWeapon.getLoadedAmmoCount();
+            }
+        }
+
+        if(primaryWeapon !=null)
+        {
+            if (secondaryWeapon.posibleAmmoTypes.ContainsKey(ammoName))
+            {
+                loaded += secondaryWeapon.getLoadedAmmoCount();
+            }
+        }
+        return unloaded + loaded;
+    }
+
+    public int checkUnloadAvaialbleAmmo(string ammoName)
     {
         int ammo = 0;
         weaponAmmoCount.TryGetValue(ammoName,out ammo);
@@ -90,7 +112,7 @@ public class AgentData : AgentBasicData
 
     public void AddAmmo(string ammoName,int addCount)
     {
-        int currntCount = checkAvailableAmmo(ammoName);
+        int currntCount = checkUnloadAvaialbleAmmo(ammoName);
         weaponAmmoCount[ammoName] = currntCount + addCount;
     }
 

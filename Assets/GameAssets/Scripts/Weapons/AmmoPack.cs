@@ -6,12 +6,9 @@ public class AmmoPack : Interactable
 {
     // Start is called before the first frame update
     public List<AgentData.AmmoPack> AmmoPackData;
-    public int GrenadeCount = 0;
+    //public int GrenadeCount = 0;
 
     public int HealthInjectionCount = 0;
-
-    public string AmmoType = "RifleAmmo";
-    public int count = 10;
 
     private Animator m_anim;
 
@@ -24,7 +21,7 @@ public class AmmoPack : Interactable
     public override void OnPickUpAction()
     {
         var ammoPackData = AmmoPackData;
-        var grenadeCount = GrenadeCount;
+        //var grenadeCount = GrenadeCount;
         //AmmoPackAnimation();
         //base.OnPickUpAction();
         ResetAmmoPack();

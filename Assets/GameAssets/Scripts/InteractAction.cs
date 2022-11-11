@@ -28,10 +28,7 @@ public class InteractionAction : FsmStateAction
     {
         if(FinishOnState == InteractObjectObjective.InteractionState.OnStart && !finished)
         {
-            //Fsm.Event(onStartEvent);
-            finished = true;
-            Finish();
-            finished = true;
+            EndIntAction();   
         }
     }
 
@@ -39,12 +36,17 @@ public class InteractionAction : FsmStateAction
     {
         if(FinishOnState == InteractObjectObjective.InteractionState.OnComplete && !finished)
         {
-            //Fsm.Event(finishEvent);
-            finished = true;
-            m_interactable.SetInteratable(false);
-            Finish();
-            
+            EndIntAction();     
         }
+    }
+
+    private void EndIntAction()
+    {
+        if(finishEvent!=null)
+            Fsm.Event(finishEvent);
+        finished = true;
+        Finish();
+        finished = true;       
     }
 
     #if UNITY_EDITOR

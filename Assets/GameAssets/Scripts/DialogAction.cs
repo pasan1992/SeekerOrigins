@@ -30,7 +30,8 @@ public class DialogAction : FsmStateAction
     {
         if(dialogEnded)
         {
-            Fsm.Event(finishEvent);
+            if(finishEvent!=null)
+                Fsm.Event(finishEvent);
             Finish();
         }
     }

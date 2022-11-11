@@ -11,13 +11,16 @@ public class Grenade : Weapon
     [System.Serializable]
     public class GrenadeType
     {
-        public GrenadeType(ProjectilePool.POOL_OBJECT_TYPE objectType,float damage)
+        public GrenadeType(ProjectilePool.POOL_OBJECT_TYPE objectType,float damage,string name)
         {
             this.damage = damage;
             this.objectType = objectType;
+            this.name = name;
         }
         public ProjectilePool.POOL_OBJECT_TYPE objectType;
         public float damage;
+
+        public string name;
     }
 
     public IDictionary<string,GrenadeType> GrenadeTypes;
@@ -27,8 +30,13 @@ public class Grenade : Weapon
     {
         base.Awake();
         GrenadeTypes = new Dictionary<string,GrenadeType>();
-        GrenadeTypes.Add("Ordinary",new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3));
-        currentGrenadeType = GrenadeTypes["Ordinary"];
+        GrenadeTypes.Add(AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3,AmmoTypeEnums.Grenade.Regular_Grenade.ToString()));
+        currentGrenadeType = GrenadeTypes[AmmoTypeEnums.Grenade.Regular_Grenade.ToString()];
+    }
+
+    public void getGrenateCount()
+    {
+        
     }
 
     public override WEAPONTYPE getWeaponType()
@@ -38,11 +46,11 @@ public class Grenade : Weapon
 
     public void pullGrenedePin()
     {
-        if (count == 0)
-            return;
-        if (count < 0)
-            Debug.LogError("GRENATE COUNT LESS THANT ZERO");
-        count -= 1;
+        // if (count == 0)
+        //     return;
+        // if (count < 0)
+        //     Debug.LogError("GRENATE COUNT LESS THANT ZERO");
+        // count -= 1;
 
 
 
@@ -112,18 +120,15 @@ public class Grenade : Weapon
         Invoke("EnableGrenadeProp",0.5f);
         
 
-        if(count <0)
-        {
-            Debug.LogError("G count less than zero");
-        }
+        // if(count <0)
+        // {
+        //     Debug.LogError("G count less than zero");
+        // }
     }
 
     private void EnableGrenadeProp()
     {
-        if(count >0)
-        {
-            nonFunctionalProperties.magazineObjProp.SetActive(true);
-        } 
+        nonFunctionalProperties.magazineObjProp.SetActive(true);
     }
 
     private Vector3 calculateThrowVelocity(Vector3 relativePosition)
@@ -143,6 +148,11 @@ public class Grenade : Weapon
     public bool isPinPulled()
     {
         return m_pinPulled;
+    }
+
+    public string getCurrentGrenateType()
+    {
+        return currentGrenadeType.name;
     }
 
     public void SwitchGrenadeType(string type)

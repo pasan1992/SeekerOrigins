@@ -167,6 +167,11 @@ public class HumanoidRangedWeaponsModule
     public void OnThrow()
     {
         //m_inWeaponAction = false;
+        var grenade = m_agentData.useAmmoCount(m_grenede.getCurrentGrenateType(),1);
+        if (grenade ==0)
+        {
+            Debug.LogError("This is a bug");
+        }
         m_grenede.ThrowGrenadeQuick(grenadeHoldLocation.transform);
         // if(m_grenede.count == 0)
         // {
@@ -174,7 +179,7 @@ public class HumanoidRangedWeaponsModule
         //     toggleSecondary();
         // }
 
-        if(m_grenede.count < 0)
+        if(getGrenadeCount() < 0)
         {
             Debug.LogError("G COUNT LESS THANT ZERO");
         }
@@ -186,9 +191,9 @@ public class HumanoidRangedWeaponsModule
         if(m_currentWeapon !=null && currentRangedWeapon)
         {
             currentRangedWeapon.setReloading(false);
-            int totalAmmo = m_agentData.checkAvailableAmmo(currentRangedWeapon.m_weaponAmmunitionName);
+            int totalAmmo = m_agentData.checkUnloadAvaialbleAmmo(currentRangedWeapon.m_weaponAmmunitionName);
             // m_agentData.weaponAmmoCount.TryGetValue(currentRangedWeapon.m_weaponAmmunitionName, out totalAmmo);
-            var ammo_needed = currentRangedWeapon.m_magazineSize - currentRangedWeapon.getAmmoCount();
+            var ammo_needed = currentRangedWeapon.m_magazineSize - currentRangedWeapon.getLoadedAmmoCount();
 
             // // Enought Ammo available
             // if(totalAmmo > ammo_needed)
@@ -204,7 +209,7 @@ public class HumanoidRangedWeaponsModule
             // currentRangedWeapon.setAmmoCount(totalAmmo + currentRangedWeapon.getAmmoCount());
             // m_agentData.weaponAmmoCount[currentRangedWeapon.m_weaponAmmunitionName] = 0;
             var ammo_taken = m_agentData.useAmmoCount(currentRangedWeapon.m_weaponAmmunitionName,ammo_needed);
-            currentRangedWeapon.setAmmoCount( currentRangedWeapon.getAmmoCount() + ammo_taken);
+            currentRangedWeapon.setAmmoCount( currentRangedWeapon.getLoadedAmmoCount() + ammo_taken);
             return;
         }
     }
@@ -284,8 +289,8 @@ public class HumanoidRangedWeaponsModule
                 break;
 
                 case Weapon.WEAPONTYPE.grenede:
-                    m_inWeaponAction = true;
-                    m_grenede.pullGrenedePin();
+                    // m_inWeaponAction = true;
+                    // m_grenede.pullGrenedePin();
                 break;
             }
 
@@ -364,13 +369,11 @@ public class HumanoidRangedWeaponsModule
             if (m_pistol)
             {
                 m_pistol.dropWeapon();
-                var ammo_pack = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.PistolAmmo);
-                var pck = ammo_pack.GetComponent<AmmoPack>();
-                (ammo_pack.GetComponent<InteractableTrigger>()).trig_enabled = true;
-                ammo_pack.SetActive(true);
-                pck.AmmoType = m_pistol.m_weaponAmmunitionName;
-                pck.count = Random.Range(2, 15);
-                CommonFunctions.place_on_ground(m_pistol.transform.position, ammo_pack.transform);
+                // var ammo_pack = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.PistolAmmo);
+                // var pck = ammo_pack.GetComponent<AmmoPack>();
+                // (ammo_pack.GetComponent<InteractableTrigger>()).trig_enabled = true;
+                // ammo_pack.SetActive(true);
+                // CommonFunctions.place_on_ground(m_pistol.transform.position, ammo_pack.transform);
             }
 
             if (m_rifle)
@@ -381,13 +384,11 @@ public class HumanoidRangedWeaponsModule
             if (m_rifle)
             {
                 m_rifle.dropWeapon();
-                var ammo_pack = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.PistolAmmo);
-                (ammo_pack.GetComponent<InteractableTrigger>()).trig_enabled = true;
-                ammo_pack.SetActive(true);
-                var pck = ammo_pack.GetComponent<AmmoPack>();
-                pck.AmmoType = m_rifle.m_weaponAmmunitionName;
-                pck.count = Random.Range(2, 15);
-                CommonFunctions.place_on_ground(m_rifle.transform.position, ammo_pack.transform);
+                // var ammo_pack = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.PistolAmmo);
+                // (ammo_pack.GetComponent<InteractableTrigger>()).trig_enabled = true;
+                // ammo_pack.SetActive(true);
+                // var pck = ammo_pack.GetComponent<AmmoPack>();
+                // CommonFunctions.place_on_ground(m_rifle.transform.position, ammo_pack.transform);
             }
 
             if (m_pistol)
@@ -459,14 +460,14 @@ public class HumanoidRangedWeaponsModule
         {
             // If ammo count is full No need to reload
             var r_weapon = (RangedWeapon)m_currentWeapon;
-            if (r_weapon.getAmmoCount() == r_weapon.m_magazineSize)
+            if (r_weapon.getLoadedAmmoCount() == r_weapon.m_magazineSize)
             {
                 return false;
             }
 
             // int totalAmmo = 0;
             // m_agentData.weaponAmmoCount.TryGetValue(m_currentWeapon.m_weaponAmmunitionName, out totalAmmo);
-            int totalAmmo = m_agentData.checkAvailableAmmo(m_currentWeapon.m_weaponAmmunitionName);
+            int totalAmmo = m_agentData.checkUnloadAvaialbleAmmo(m_currentWeapon.m_weaponAmmunitionName);
             if (totalAmmo > 0)
             {
                 return true;
@@ -615,6 +616,7 @@ public class HumanoidRangedWeaponsModule
 
     public HumanoidMovingAgent.CharacterMainStates toggleGrenede()
     {
+        Debug.LogError("Grenade switcing logic working. This is a bug");
        if(!isInEquipingAction() && !isReloading() && m_grenede && !m_inWeaponAction)
        {
            // Current Weapon avaialble
@@ -630,44 +632,48 @@ public class HumanoidRangedWeaponsModule
 
 
                     // If grenedes count is zero, remove the grenate from user wepons
-                    if(m_grenede.count ==0)
-                    {
-                        GameObject.Destroy(m_grenede);
-                        m_grenede = null;
-                    }
+                    // if(m_grenede.count ==0)
+                    // {
+                    //     GameObject.Destroy(m_grenede);
+                    //     m_grenede = null;
+                    // }
+                    Debug.LogError("Grenade switcing logic working. This is a bug");
 
                     return m_animationSystem.unEquipEquipment();
                 }
                 // Weapon fast toggle
                 else
                 {
-                    if(m_grenede !=null && m_grenede.count >0 )
-                    {
-                        placeWeaponinHosterLocation(m_currentWeapon);
-                        m_currentWeapon = m_grenede;
-                        placeWeaponInHand(m_currentWeapon);
-                        m_animationSystem.setCurretnWeapon(2);
-                        m_animationSystem.fastEquipCurrentEquipment();
-                    }
+                    // if(m_grenede !=null && m_grenede.count >0 )
+                    // {
+                    //     placeWeaponinHosterLocation(m_currentWeapon);
+                    //     m_currentWeapon = m_grenede;
+                    //     placeWeaponInHand(m_currentWeapon);
+                    //     m_animationSystem.setCurretnWeapon(2);
+                    //     m_animationSystem.fastEquipCurrentEquipment();
+                    // }
+                    Debug.LogError("Grenade switcing logic working. This is a bug");
                     return m_currentState;
                 }
            }
            // Equip with animation
-           else if(m_grenede != null && m_grenede.count > 0)
-           {
-                m_animationSystem.setCurretnWeapon(2);
-                m_currentWeapon = m_grenede;
-                placeWeaponInHand(m_currentWeapon);
-                return m_animationSystem.equipCurrentEquipment();
-           }
-           else
-           {
-                // Unable to equip or unequip no weapon
-                if (m_grenede == null && m_currentWeapon == null && !m_inWeaponAction)
-                {
-                    m_animationSystem.triggerShrug();
-                }
-            }
+        //    else if(m_grenede != null && m_grenede.count > 0)
+        //    {
+        //         Debug.LogError("Grenade switcing logic working. This is a bug");
+        //         m_animationSystem.setCurretnWeapon(2);
+        //         m_currentWeapon = m_grenede;
+        //         placeWeaponInHand(m_currentWeapon);
+        //         return m_animationSystem.equipCurrentEquipment();
+        //    }
+        //    else
+        //    {
+        //         Debug.LogError("Grenade switcing logic working. This is a bug");
+        //         // Unable to equip or unequip no weapon
+        //         if (m_grenede == null && m_currentWeapon == null && !m_inWeaponAction)
+        //         {
+        //             m_animationSystem.triggerShrug();
+        //         }
+        //     }
        }
        return m_currentState;
     } 
@@ -718,11 +724,15 @@ public class HumanoidRangedWeaponsModule
             case AmmoTypeEnums.WeaponTypes.Rifle:
                 if(m_rifle)
                 {
-                    var current_ammo = m_rifle.getAmmoCount();
+                    var current_ammo = m_rifle.getLoadedAmmoCount();
 
                     // switch ammo name and make sure the ammo count is previous as before, any leftover ammo from current type is put back to the agent data and updated with new count
+                   
+                    var ammo_count = m_rifle.getLoadedAmmoCount();
+                    m_agentData.AddAmmo(ammo_name,ammo_count);
+
                     m_rifle.SwitchAmmoType(ammo_name);
-                    var ammo_count = m_rifle.getAmmoCount();
+                    ammo_count = m_rifle.getLoadedAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
                     m_rifle.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
 
@@ -735,12 +745,15 @@ public class HumanoidRangedWeaponsModule
             case AmmoTypeEnums.WeaponTypes.Pistol:
                 if(m_pistol)
                 {
-                    var current_ammo = m_pistol.getAmmoCount();
+                    var current_ammo = m_pistol.getLoadedAmmoCount();
 
                     // switch ammo name and make sure the ammo count is previous as before, any leftover ammo from current type is put back to the agent data and updated with new count
+                       // put ammo already in type back                 
+                    var ammo_count = m_pistol.getLoadedAmmoCount();
+                    m_agentData.AddAmmo(ammo_name,ammo_count);
+
                     m_pistol.SwitchAmmoType(ammo_name);
-                    var ammo_count = m_pistol.getAmmoCount();
-                    // put ammo already in type back
+                    ammo_count = m_pistol.getLoadedAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
                     m_pistol.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
 
@@ -755,7 +768,7 @@ public class HumanoidRangedWeaponsModule
 
 
 
-    public int getCurrentWeaponAmmoCount()
+    public int getCurrentWeaponLoadedAmmoCount()
     {
         int count = 0;
 
@@ -766,11 +779,12 @@ public class HumanoidRangedWeaponsModule
             {
                 case Weapon.WEAPONTYPE.primary:
                 case Weapon.WEAPONTYPE.secondary:
-                    count =  ((RangedWeapon)m_currentWeapon).getAmmoCount();
+                    count =  ((RangedWeapon)m_currentWeapon).getLoadedAmmoCount();
                 break;
 
                 case Weapon.WEAPONTYPE.grenede:
-                    count = ((Grenade)m_currentWeapon).count;
+                    //count = ((Grenade)m_currentWeapon).count;
+                    Debug.LogError("This is a bug");
                 break;
             }
 
@@ -906,21 +920,22 @@ public class HumanoidRangedWeaponsModule
 
     public int getPrimaryWeaponAmmoCount()
     {
-        return m_rifle.getAmmoCount();
+        return m_rifle.getLoadedAmmoCount();
     }
 
     public int getSecondaryWeaponAmmoCount()
     {
-        return m_pistol.getAmmoCount();
+        return m_pistol.getLoadedAmmoCount();
     }
 
     public int getGrenadeCount()
     {
+        
         if(m_grenede == null)
         {
             return 0;
         }
-        return m_grenede.count;
+        return m_agentData.checkUnloadAvaialbleAmmo(m_grenede.getCurrentGrenateType());
     }
 
     public void setPrimayWeaponAmmoCount(int count)
@@ -986,7 +1001,7 @@ public class HumanoidRangedWeaponsModule
 
     public void GrenadeQuickThrow()
     {
-        if(m_grenede != null)
+        if(m_grenede != null && getGrenadeCount() > 0)
         {
             placeWeaponinHosterLocation(m_grenede);
             OnThrow();
@@ -1018,10 +1033,10 @@ public class HumanoidRangedWeaponsModule
         return m_pistol;
     }
 
-    public void SetGrenadeCount(int value)
-    {
-        m_grenede.count += value;
-    }
+    // public void SetGrenadeCount(int value)
+    // {
+    //     m_grenede.count += value;
+    // }
 
     public void equipWeapon(Weapon weapon)
     {
@@ -1098,16 +1113,17 @@ public class HumanoidRangedWeaponsModule
                 m_pistol.targetPointTransfrom = m_agentComponents.weaponAimTransform;
             break;
             case Weapon.WEAPONTYPE.grenede:
-                if(m_grenede)
-                {
-                    m_grenede.dropWeapon();
-                    ((Grenade)weapon).count +=m_grenede.count;
-                    GameObject.Destroy(m_grenede);
-                    m_grenede = null;
-                }
-                m_grenede = (Grenade)weapon;
-                m_grenede.onWeaponEquip();
-                placeWeaponinHosterLocation(weapon);
+                Debug.LogError("This is a bug");
+                // if(m_grenede)
+                // {
+                //     m_grenede.dropWeapon();
+                //     ((Grenade)weapon).count +=m_grenede.count;
+                //     GameObject.Destroy(m_grenede);
+                //     m_grenede = null;
+                // }
+                // m_grenede = (Grenade)weapon;
+                // m_grenede.onWeaponEquip();
+                // placeWeaponinHosterLocation(weapon);
                 //m_grenede.targetPointTransfrom = m_agentComponents.lookAimTransform;
             break;
         }

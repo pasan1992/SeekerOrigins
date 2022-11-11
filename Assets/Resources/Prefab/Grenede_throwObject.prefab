@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_baseDamage: 4
-  m_range: 10
-  explosionType: 18
+  m_range: 3
+  explosionType: 0
   m_explosionCountDown: 3
   indicator: {fileID: 1772451122}
 --- !u!1 &5773269469634759610

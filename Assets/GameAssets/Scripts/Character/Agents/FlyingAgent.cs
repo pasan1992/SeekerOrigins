@@ -333,7 +333,13 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     }
     #endregion
 
+    public bool isInAction()
+    {
+        return isInteracting() || m_currentDroneState != GameEnums.DroneState.Flying;
+    }
+
     #region un-implemented functions 
+
 
     public void setWeponFireCapability(bool enadled)
     {

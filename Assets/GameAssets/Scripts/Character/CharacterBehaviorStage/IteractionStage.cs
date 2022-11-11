@@ -13,6 +13,8 @@ public class IteractionStage : WaypontMovementStage
     IterationState m_currentIteractionState = IterationState.InteractionOver;
     public bool Iterate = true;
 
+    public GameEvents.BasicNotifactionEvent onMovmentEnd;
+
 
     public IteractionStage(ICyberAgent selfAgent,NavMeshAgent navMeshAgent, BasicWaypoint[] wayPoints):base(selfAgent,navMeshAgent,wayPoints)
     {
@@ -103,13 +105,45 @@ public class IteractionStage : WaypontMovementStage
 
         if(m_currentWayPointID == m_wayPoints.Length)
         {
-            if(!Iterate)
+            if (Iterate)
+            {
+                m_currentWayPointID = 0;  
+            }
+            else
             {
                 endMovment();
+                if(onMovmentEnd != null)
+                {
+                    onMovmentEnd();
+                }
+                m_currentWayPointID--;
             }
-            m_currentWayPointID = 0;         
+     
         }
         return m_wayPoints[m_currentWayPointID];
+    }
+
+    public void setMovmentEndEvent(GameEvents.BasicNotifactionEvent onEnd) {
+        if (onEnd == null)
+        {
+            Debug.LogError("On End event is null");
+            return;
+            
+        }
+        onMovmentEnd += onEnd;
+    }
+
+    public  void moveToWayPoint(BasicWaypoint[] waypoints, bool enableIterate=true)
+    {
+        Iterate = enableIterate;
+        if (waypoints.Length == 0)
+        {
+            Debug.LogError("No waypoints are given");
+            return;
+        }
+        m_currentWayPointID = -1;
+        this.m_wayPoints = waypoints;
+        startStage();   
     }
 
     private BasicWaypoint createBasicWaypoint()

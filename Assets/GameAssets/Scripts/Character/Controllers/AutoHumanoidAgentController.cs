@@ -395,6 +395,17 @@ public class AutoHumanoidAgentController :  AgentController
         switchToCombatStage();
     }
 
+    public override void MoveToWaypoint(BasicWaypoint[] waypoints,bool enableIterate, GameEvents.BasicNotifactionEvent onEnd)
+    {
+        base.MoveToWaypoint(waypoints,enableIterate,onEnd);
+        if(m_currentState != m_idleStage)
+        {
+            Debug.LogError("Current movment stage is not iteration stage, make the agent restriction as no combat from start. Or give a wait in the playmaker before calling this");
+        }
+        ((IteractionStage)m_idleStage).setMovmentEndEvent(onEnd);
+        ((IteractionStage)m_idleStage).moveToWayPoint(waypoints,enableIterate);
+    }
+
     #endregion
 
 

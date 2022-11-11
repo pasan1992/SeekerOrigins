@@ -60,6 +60,16 @@ public abstract class AgentController : MonoBehaviour
         CancelInvoke();
     }
 
+    public virtual void MoveToWaypoint(BasicWaypoint[] waypoints, bool enableIterate, GameEvents.BasicNotifactionEvent onEnd)
+    {
+
+    }
+
+    public virtual void SetOnMovmentEndEvent()
+    {
+        
+    }
+
     public bool isInUse()
     {
         return m_inUse;
