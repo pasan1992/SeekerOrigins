@@ -45,6 +45,7 @@ public class InteractionAction : FsmStateAction
         if(finishEvent!=null)
             Fsm.Event(finishEvent);
         finished = true;
+        m_interactable.properties.interactionEnabled = false;
         Finish();
         finished = true;       
     }

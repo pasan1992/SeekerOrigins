@@ -222,7 +222,6 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
         if (stats)
         {
-        Debug.Log("making fire");
         GameObject fireEffet = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.SmallFireEffect);
         fireEffet.SetActive(true);
         fireEffet.transform.position = location.position;
@@ -233,7 +232,6 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         {
             if(fireEffect !=null)
             {
-            Debug.Log("removing fire");
             fireEffect.GetComponent<BasicParticleEffect>().resetAll();
             fireEffect = null;
             }
