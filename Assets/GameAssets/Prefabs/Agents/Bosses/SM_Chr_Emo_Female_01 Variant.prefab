@@ -915,8 +915,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6507979401858411891}
-  - component: {fileID: 7591680345185070156}
-  - component: {fileID: 2613222612025182011}
   m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
@@ -942,35 +940,6 @@ Transform:
   m_Father: {fileID: 6507772392399236339}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7591680345185070156
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6504341450818476345}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.40321636, y: 0.20857954, z: 0.33640724}
-  m_Center: {x: -0, y: 0.94027543, z: -0.008203603}
---- !u!54 &2613222612025182011
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6504341450818476345}
-  serializedVersion: 2
-  m_Mass: 12
-  m_Drag: 0.3
-  m_AngularDrag: 0.3
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &6504345018030092345
 GameObject:
   m_ObjectHideFlags: 0
@@ -35681,6 +35650,12 @@ PrefabInstance:
     - {fileID: 1498233384, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
     - {fileID: 1498233383, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
+--- !u!4 &5929898277288241399 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6645611111199397670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5929898277288241398 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1041122100592164816, guid: f4598a0dea1a5a043a62fa46555f2cf1,
@@ -35693,9 +35668,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431fccda15f7e6641801a1cc00eaa54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5929898277288241399 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6645611111199397670}
-  m_PrefabAsset: {fileID: 0}
