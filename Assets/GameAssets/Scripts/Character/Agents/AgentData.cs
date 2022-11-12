@@ -85,21 +85,19 @@ public class AgentData : AgentBasicData
     {
         var unloaded = checkUnloadAvaialbleAmmo(ammoName);
         var loaded = 0;
-        if(primaryWeapon !=null)
-        {
-            if (primaryWeapon.posibleAmmoTypes.ContainsKey(ammoName))
-            {
-                loaded += primaryWeapon.getLoadedAmmoCount();
-            }
-        }
 
-        if(primaryWeapon !=null)
+        if (primaryWeapon !=null && primaryWeapon.posibleAmmoTypes.ContainsKey(ammoName) && primaryWeapon.getCurrentAmmoType() == ammoName)
         {
-            if (secondaryWeapon.posibleAmmoTypes.ContainsKey(ammoName))
-            {
-                loaded += secondaryWeapon.getLoadedAmmoCount();
-            }
+            loaded += primaryWeapon.getLoadedAmmoCount();
         }
+    
+
+
+        if (secondaryWeapon !=null && secondaryWeapon.posibleAmmoTypes.ContainsKey(ammoName) && secondaryWeapon.getCurrentAmmoType() == ammoName)
+        {
+            loaded += secondaryWeapon.getLoadedAmmoCount();
+        }
+        
         return unloaded + loaded;
     }
 

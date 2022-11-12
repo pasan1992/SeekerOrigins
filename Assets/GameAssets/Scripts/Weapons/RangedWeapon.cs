@@ -118,6 +118,11 @@ public abstract class RangedWeapon : Weapon
         this.m_weaponAmmunitionName = ammoTypeName;
     }
 
+    public string getCurrentAmmoType()
+    {
+        return m_weaponAmmunitionName;
+    }
+
     protected void updateContinouseFire()
     {
         if(triggerPulled)
