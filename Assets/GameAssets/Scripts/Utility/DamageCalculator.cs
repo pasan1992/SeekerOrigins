@@ -151,6 +151,10 @@ public class DamageCalculator
 
     public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,CommonFunctions.Damage damage,float dot_time=0)
     {
+        if(other == null)
+        {
+            return;
+        }
         DamagableObject damagableObject = other.transform.GetComponentInParent<DamagableObject>();
         if (damagableObject != null)
         {
@@ -290,7 +294,6 @@ public class DamageCalculator
                 case "Wall":
                 case "Environment":
                 case "IgnoreNavMesh":
-                    Debug.Log("Close Hit");
                     actualHit = hit;
                     return true;  
             }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;  
 using System.Collections;
 
@@ -238,7 +238,6 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         m_damageModule.ExplosionEffect(m_droneRigitBody.transform.position);
         if(m_onDestroyCallback != null)
         {
-            Debug.Log("On Destroy");
             m_onDestroyCallback();
         }
         CancelInvoke();       
@@ -311,6 +310,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
             m_animationModule.enableAnimationSystem();
             m_currentDroneState = GameEnums.DroneState.Landing;
             m_movmentModule.setLandPosition(landPosition);
+            m_animationModule.animTrigger("land");
         }
     }
 
@@ -329,6 +329,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
             m_droneRigitBody.Sleep();
             m_droneRigitBody.isKinematic = true;
             m_droneRigitBody.useGravity = false;
+            m_animationModule.animTrigger("takeoff");
         }
     }
     #endregion

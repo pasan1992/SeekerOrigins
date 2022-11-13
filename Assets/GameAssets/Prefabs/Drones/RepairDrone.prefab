@@ -714,14 +714,14 @@ MonoBehaviour:
     ThrowGrenade: 0
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 3
-    MaxSheild: 3
+    maxHealth: 1
+    MaxSheild: 1
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 0
     m_agentFaction: 3
-    health: 3
-    Sheild: 3
+    health: 1
+    Sheild: 1
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 0}
     grenade: {fileID: 0}
@@ -738,7 +738,9 @@ MonoBehaviour:
   - firePoint: {fileID: 2009975145221140550}
     fireParticle: {fileID: 4882720930578857129}
   WeaponDamage: 0.1
+  WeaponEneryDamge: 0.1
   m_DroneModel: {fileID: 3588317434241036081}
+  explosionParticle: 2
 --- !u!82 &4683949813706334806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1309,19 +1311,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7459009339328981906
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7460161989061041777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.8403656, y: 9.114812, z: 2.3886087}
-  m_Center: {x: -0.10298848, y: -2.4688497, z: -0.12094438}
 --- !u!65 &4683949812352758637
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1333,8 +1322,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2455626, y: 0.49490562, z: 1.1664914}
-  m_Center: {x: 0, y: -0.042964906, z: 0.0000002860992}
+  m_Size: {x: 1.0340669, y: 0.49490565, z: 1.1025321}
+  m_Center: {x: -0.009807944, y: -0.0429649, z: -0.031979468}
+--- !u!65 &7459009339328981906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460161989061041777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0248781, y: 1.2796171, z: 1.0822896}
+  m_Center: {x: 0.0000024267606, y: -0.015533993, z: -0.032555718}
 --- !u!95 &7459009339328981909
 Animator:
   serializedVersion: 3
@@ -1345,7 +1347,7 @@ Animator:
   m_GameObject: {fileID: 7460161989061041777}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c33852b3b1de0ec498597e1410a5aece, type: 2}
+  m_Controller: {fileID: 9100000, guid: bd241d2c5fa14cc42aef1e7f9927fa70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1482,11 +1484,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4604023365360802, guid: 41eac07628561874e8fd3c1649c10b47, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.16178802
+      value: 0.161788
       objectReference: {fileID: 0}
     - target: {fileID: 4604023365360802, guid: 41eac07628561874e8fd3c1649c10b47, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.16178802
+      value: 0.161788
       objectReference: {fileID: 0}
     - target: {fileID: 4604023365360802, guid: 41eac07628561874e8fd3c1649c10b47, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1631,11 +1633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4604023365360802, guid: 41eac07628561874e8fd3c1649c10b47, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.16178802
+      value: 0.161788
       objectReference: {fileID: 0}
     - target: {fileID: 4604023365360802, guid: 41eac07628561874e8fd3c1649c10b47, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.16178802
+      value: 0.161788
       objectReference: {fileID: 0}
     - target: {fileID: 4604023365360802, guid: 41eac07628561874e8fd3c1649c10b47, type: 3}
       propertyPath: m_LocalPosition.x

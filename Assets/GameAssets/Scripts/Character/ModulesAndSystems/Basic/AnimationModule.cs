@@ -46,4 +46,9 @@ public class AnimationModule
         m_animator.SetInteger("interactionID",interactionId);
         m_animator.SetBool("timedInteraction",enabled);
     }
+
+    public void animTrigger(string name)
+    {
+        m_animator.SetTrigger(name);
+    }
 }

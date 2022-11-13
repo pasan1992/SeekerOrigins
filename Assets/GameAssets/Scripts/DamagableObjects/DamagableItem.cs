@@ -9,6 +9,8 @@ public class DamagableItem : MonoBehaviour,DamagableObject
     public float Total_Health;
     private float m_remaning_Health;
     public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnDestroy;
+
+    public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnHit = ProjectilePool.POOL_OBJECT_TYPE.GlassParticleEffect;
     public Color color;
 
     private GameEvents.BasicNotifactionEvent onDamagedEvent;
@@ -114,7 +116,7 @@ public class DamagableItem : MonoBehaviour,DamagableObject
 
     public void damage_effect(Transform hit_transfrom)
     {
-        GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
+        GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(particleEffectOnHit);
         basicHitParticle.SetActive(true);
         basicHitParticle.transform.position = hit_transfrom.position;
         basicHitParticle.transform.LookAt(Vector3.up);

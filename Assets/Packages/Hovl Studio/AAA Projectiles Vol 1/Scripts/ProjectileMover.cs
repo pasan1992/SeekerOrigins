@@ -22,6 +22,8 @@ public class ProjectileMover : MonoBehaviour
     private Vector3 start_pos = Vector3.zero;
     public DamageCalculator.DamageFuture damageFuture;
 
+    public bool disableHitEffect = false;
+
     void Awake()
     {
         real_speed = speed;
@@ -29,7 +31,14 @@ public class ProjectileMover : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        startFlash();
 
+        
+        //Destroy(gameObject,5);
+	}
+
+    private void startFlash()
+    {
         if (flash != null)
         {
             var flashInstance = Instantiate(flash, transform.position, Quaternion.identity);
@@ -45,9 +54,7 @@ public class ProjectileMover : MonoBehaviour
                 Destroy(flashInstance, flashPsParts.main.duration);
             }
         }
-        
-        //Destroy(gameObject,5);
-	}
+    }
 
     void FixedUpdate ()
     {
@@ -81,7 +88,7 @@ public class ProjectileMover : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point + contact.normal * hitOffset;
 
-        if (hit != null)
+        if (hit != null && !disableHitEffect)
         {
             var hitInstance = Instantiate(hit, pos, rot);
             if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
@@ -118,7 +125,7 @@ public class ProjectileMover : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, hit_obj.normal);
         Vector3 pos = hit_obj.point + hit_obj.normal * hitOffset;
 
-        if (hit != null)
+        if (hit != null && !disableHitEffect)
         {
             var hitInstance = Instantiate(hit, pos, rot);
             if (UseFirePointRotation) { hitInstance.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180f, 0); }
@@ -183,6 +190,7 @@ public class ProjectileMover : MonoBehaviour
         }
         
         start_pos = this.transform.position;
+        startFlash();
         
         //rb.constraints = RigidbodyConstraints.None;
     }

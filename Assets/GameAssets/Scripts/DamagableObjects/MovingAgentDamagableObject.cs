@@ -11,7 +11,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
     protected GameEvents.BasicNotifactionEvent onDamagedEvent;
     protected GameEvents.BasicNotifactionEvent onDestroyedEvent;
     protected bool destroyedEventCalled = false;
-    public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnDamage = ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle;
+    public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnDamage = ProjectilePool.POOL_OBJECT_TYPE.SmokeEffect;
     protected AudioSource m_audioSource;
     protected SoundManager m_soundManager;
     protected ObjectUI m_objectUI;
@@ -54,7 +54,6 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         float damage_count = duration / damage_frequancy_seconds;
         damageValue.healthDamage = damageValue.healthDamage / damage_count;
         damageValue.energyDamage = damageValue.energyDamage / damage_count;
-
 
         if(dotCount == 0)
         {
@@ -112,6 +111,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         if (!destroyedEventCalled & getRemaningHealth() == 0)
         {           
             destroyedEventCalled = true;
+            
 
 
             if(m_onDestroyEvent !=null)
@@ -208,6 +208,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         if(!KeepOnDestory)
         {
             yield return new WaitForSeconds(time);
+            
             SetFireEffect(false,null);
             Destroy(this.gameObject);
 
@@ -217,7 +218,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
     }
 
     
-    private void SetFireEffect(bool stats,Transform location)
+    protected void SetFireEffect(bool stats,Transform location)
     {
 
         if (stats)

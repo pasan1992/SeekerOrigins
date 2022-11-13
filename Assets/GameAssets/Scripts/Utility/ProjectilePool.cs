@@ -9,7 +9,8 @@ public class ProjectilePool : MonoBehaviour
 
         RocketExplosionParticle,
         DroneExplosion,
-        HitBasicParticle,
+        RepairDroneExplosionParticle,
+        HumanoidExplosion,
         BasicProjectile,
 
         IncendearyProjectile,
@@ -41,6 +42,7 @@ public class ProjectilePool : MonoBehaviour
 
     // Explosions
     private List<GameObject> basicDroneExplosionList;
+    private List<GameObject> repairDroneExplosionList;
 
     // Particle effects
     private List<GameObject> basicFireExplosionParticlesList;
@@ -134,15 +136,21 @@ public class ProjectilePool : MonoBehaviour
                 basicDroneExplosionList = new List<GameObject>();
                 effectList = basicDroneExplosionList;
                 break;
+            case POOL_OBJECT_TYPE.RepairDroneExplosionParticle:
+                resourcePath = "Explosions/RepairDroneExplosion";
+                count = minorPartilceCount;
+                repairDroneExplosionList = new List<GameObject>();
+                effectList = repairDroneExplosionList;
+                break;    
             case POOL_OBJECT_TYPE.AttackDroneExplosion:
                 resourcePath = "Explosions/AttackDroneExplosion";
                 count = donreExplosions;
                 attackDroneExplosion = new List<GameObject>();
                 effectList = attackDroneExplosion;
                 break;
-            case POOL_OBJECT_TYPE.HitBasicParticle:
+            case POOL_OBJECT_TYPE.HumanoidExplosion:
                 count = maxExplosions;
-                resourcePath = "ParticleEffects/BulletHitBasicParticle";
+                resourcePath = "ParticleEffects/BodyExplosion";
                 bulletHitBasicParticleList = new List<GameObject>();
                 effectList = bulletHitBasicParticleList;
                 break;
@@ -214,7 +222,7 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.BloodSplatterEffect:
                 resourcePath = "ParticleEffects/BulletHitHbodyParticle";
-                count = minorPartilceCount;
+                count = ammoCount;
                 blood_splatter_particles = new List<GameObject>();
                 effectList = blood_splatter_particles;
                 break;
@@ -348,7 +356,7 @@ public class ProjectilePool : MonoBehaviour
             case POOL_OBJECT_TYPE.DroneExplosion:
                 effectList = basicDroneExplosionList;
                 break;
-            case POOL_OBJECT_TYPE.HitBasicParticle:
+            case POOL_OBJECT_TYPE.HumanoidExplosion:
                 effectList = bulletHitBasicParticleList;
                 break;
             case POOL_OBJECT_TYPE.BasicProjectile:
@@ -404,6 +412,9 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.AttackDroneExplosion:
                 effectList = attackDroneExplosion;
+                break;
+            case POOL_OBJECT_TYPE.RepairDroneExplosionParticle:
+                effectList = repairDroneExplosionList;
                 break;
         }
 

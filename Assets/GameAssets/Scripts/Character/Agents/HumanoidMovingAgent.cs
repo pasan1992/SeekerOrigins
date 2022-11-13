@@ -894,7 +894,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void setStunned(float duration)
     {
         m_animationModule.setStun(true);
-        m_damageModule.emitSmoke();
+        if(GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
+        {
+            m_damageModule.emitSmoke();
+        }
+        
         if(m_characterState !=CharacterMainStates.Stunned)
         {
             m_previousTempState = m_characterState;

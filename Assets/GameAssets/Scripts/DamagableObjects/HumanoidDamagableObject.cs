@@ -36,21 +36,33 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         m_movingAgent.damageAgent(calculate_bonous_damage(-m_movingAgent.getTransfrom().forward,force,damageValue));
         m_movingAgent.reactOnHit(collider, force, point);
 
+        GameObject smoke = ProjectilePool.getInstance().getPoolObject(particleEffectOnDamage);
+        if(smoke)
+        {
+        smoke.SetActive(true);
+        smoke.transform.position = collider.transform.position;
+        }
+
+
         if (getRemaningHealth() == 0)
         {
-            switch (m_movingAgent.GetAgentData().AgentNature)
-            {
-                case AgentBasicData.AGENT_NATURE.DROID:
-                    droid_damage_effects(damageValue.healthDamage, collider, force, point);
-                    break;
-                case AgentBasicData.AGENT_NATURE.HUMANOID:
-                    break;
-            }
+
 
             
 
             if (!destroyedEventCalled)
             {
+
+                collider.transform.localScale = Vector3.zero;
+                switch (m_movingAgent.GetAgentData().AgentNature)
+                {
+                    case AgentBasicData.AGENT_NATURE.DROID:
+                        droid_damage_effects(damageValue.healthDamage, collider, force, point);
+                        break;
+                    case AgentBasicData.AGENT_NATURE.HUMANOID:
+                        humanDamageEffect(damageValue.healthDamage, collider, force, point);
+                        break;
+                }
                 destroyedEventCalled = true;
 
                 if(onDestroyedEvent != null)
@@ -91,6 +103,17 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             return damage;
         }
         return damage;
+    }
+
+    private void humanDamageEffect(float damageValue, Collider collider, Vector3 force, Vector3 point)
+    {
+        //StartCoroutine("waitAndDestory");
+
+        GameObject smoke = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HumanoidExplosion);
+        smoke.SetActive(true);
+        smoke.transform.position = collider.transform.position;
+
+        SetFireEffect(false,null);
     }
 
 

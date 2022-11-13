@@ -83,37 +83,37 @@ public class BasicProjectile : MonoBehaviour
 
     }
 
-    private void hitOnCOver(Collider cover)
-    {
-        if(DistanceTravelled > 0.03)
-        {
-            speed = 0;
-            GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
-            basicHitParticle.SetActive(true);
-            basicHitParticle.transform.position = this.transform.position;
-            basicHitParticle.transform.LookAt(Vector3.up);
-            this.gameObject.SetActive(false);
-        }      
-    }
-    private void hitOnWall(Collider wall)
-    {
-            speed = 0;
-            GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
-            basicHitParticle.SetActive(true);
-            basicHitParticle.transform.position = this.transform.position;
-            basicHitParticle.transform.LookAt(Vector3.up);
-            this.gameObject.SetActive(false);
-    }
+    // private void hitOnCOver(Collider cover)
+    // {
+    //     if(DistanceTravelled > 0.03)
+    //     {
+    //         speed = 0;
+    //         GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
+    //         basicHitParticle.SetActive(true);
+    //         basicHitParticle.transform.position = this.transform.position;
+    //         basicHitParticle.transform.LookAt(Vector3.up);
+    //         this.gameObject.SetActive(false);
+    //     }      
+    // }
+    // private void hitOnWall(Collider wall)
+    // {
+    //         speed = 0;
+    //         GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
+    //         basicHitParticle.SetActive(true);
+    //         basicHitParticle.transform.position = this.transform.position;
+    //         basicHitParticle.transform.LookAt(Vector3.up);
+    //         this.gameObject.SetActive(false);
+    // }
 
-    private void hitOnFloor(Collider floor)
-    {
-        speed = 0;
-        GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
-        basicHitParticle.SetActive(true);
-        basicHitParticle.transform.position = this.transform.position;
-        basicHitParticle.transform.LookAt(Vector3.up);
-        this.gameObject.SetActive(false);      
-    }
+    // private void hitOnFloor(Collider floor)
+    // {
+    //     speed = 0;
+    //     GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
+    //     basicHitParticle.SetActive(true);
+    //     basicHitParticle.transform.position = this.transform.position;
+    //     basicHitParticle.transform.LookAt(Vector3.up);
+    //     this.gameObject.SetActive(false);      
+    // }
 
     public void OnEnable()
     {

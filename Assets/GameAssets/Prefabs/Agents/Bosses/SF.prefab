@@ -52,6 +52,11 @@ PrefabInstance:
       propertyPath: AgentData.WeaponAmmo.Array.data[1].AmmoCount
       value: 999
       objectReference: {fileID: 0}
+    - target: {fileID: 467369143335228858, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: particleEffectOnDamage
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 467393300377156578, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_ConnectedAnchor.x

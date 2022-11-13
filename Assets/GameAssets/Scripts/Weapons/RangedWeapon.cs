@@ -225,11 +225,17 @@ public abstract class RangedWeapon : Weapon
 
             if (gunMuzzle != null)
             {
-                gunMuzzle.Play();
-                gunFireLight.Play();
+                //gunMuzzle.Play();
+                
                 //m_audioScource.PlayOneShot(m_soundManager.getLaserFireAudioClip());
-                playWeaponFireSound();
+                
             }
+            if(gunFireLight)
+            {
+                //gunFireLight.Play();
+            }
+            
+            playWeaponFireSound();
         }
 
 
