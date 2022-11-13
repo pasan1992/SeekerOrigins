@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13eac66b16d666d49a530a6953985c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffectOnDamage: 2
+  particleEffectOnDamage: 21
   KeepOnDestory: 0
   m_onDestroyEvent:
     m_PersistentCalls:
