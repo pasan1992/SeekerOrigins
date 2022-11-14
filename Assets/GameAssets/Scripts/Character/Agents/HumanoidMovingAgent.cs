@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RootMotion.FinalIK;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(HumanoidMovingAgent))]
 public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
@@ -59,47 +60,51 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     #region Initalize
     public virtual void Awake()
     {
-        m_target = new GameObject();
-        m_movmentVector = new Vector3(0, 0, 0);
-        AgentData.InitalizeAmmo();
+        var scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex != 1)
+        {
+            m_target = new GameObject();
+            m_movmentVector = new Vector3(0, 0, 0);
+            AgentData.InitalizeAmmo();
 
-        // Create Animation system.
-        AimIK aimIK = this.GetComponent<AimIK>();
-        aimIK.solver.target = m_target.transform;
-        m_animationModule = new HumanoidAnimationModule(this.GetComponent<Animator>(), this.GetComponent<AimIK>(),AgentComponents, 10);
+            // Create Animation system.
+            AimIK aimIK = this.GetComponent<AimIK>();
+            aimIK.solver.target = m_target.transform;
+            m_animationModule = new HumanoidAnimationModule(this.GetComponent<Animator>(), this.GetComponent<AimIK>(),AgentComponents, 10);
 
-        // Create equipment system.
-        RangedWeapon[] currentWeapons = this.GetComponentsInChildren<RangedWeapon>();
-        WeaponProp[] currentWeaponProps = this.GetComponentsInChildren<WeaponProp>();
+            // Create equipment system.
+            RangedWeapon[] currentWeapons = this.GetComponentsInChildren<RangedWeapon>();
+            WeaponProp[] currentWeaponProps = this.GetComponentsInChildren<WeaponProp>();
         
-        m_equipmentModule = new HumanoidRangedWeaponsModule(currentWeaponProps, m_characterState, m_target, GetComponent<Recoil>(), m_animationModule,AgentData,AgentComponents);
+            m_equipmentModule = new HumanoidRangedWeaponsModule(currentWeaponProps, m_characterState, m_target, GetComponent<Recoil>(), m_animationModule,AgentData,AgentComponents);
 
-        // Create movment system.
-        NavMeshAgent navMeshAgent = this.GetComponent<NavMeshAgent>();
+            // Create movment system.
+            NavMeshAgent navMeshAgent = this.GetComponent<NavMeshAgent>();
 
-        m_movmentModule = new HumanoidMovmentModule(this.transform, m_characterState, m_target, m_animationModule,navMeshAgent);
+            m_movmentModule = new HumanoidMovmentModule(this.transform, m_characterState, m_target, m_animationModule,navMeshAgent);
 
-        // Create Damage module
-        m_damageModule = new HumanoidDamageModule(AgentData, 
-        this.GetComponent<RagdollUtility>(), 
-        this.GetComponentInChildren<HitReaction>(),
-        m_animationModule, findHeadTransfrom(), 
-        findChestTransfrom(), 
-        destroyCharacter, 
-        this.GetComponentInChildren<Outline>());
+            // Create Damage module
+            m_damageModule = new HumanoidDamageModule(AgentData, 
+            this.GetComponent<RagdollUtility>(), 
+            this.GetComponentInChildren<HitReaction>(),
+            m_animationModule, findHeadTransfrom(), 
+            findChestTransfrom(), 
+            destroyCharacter, 
+            this.GetComponentInChildren<Outline>());
 
-        // Create intearction system.
-        m_interactionModule = new HumanoidInteractionModule(m_animationModule,
-        m_movmentModule,
-        AgentData,
-        m_equipmentModule,
-        navMeshAgent,
-        this,
-        // This is the callback for interaction done.
-        OnInteractionDone,
-        m_equipmentModule.getWeaponHoldTransfrom()
-        );
-        m_renderer = this.GetComponentInChildren<Renderer>();
+            // Create intearction system.
+            m_interactionModule = new HumanoidInteractionModule(m_animationModule,
+            m_movmentModule,
+            AgentData,
+            m_equipmentModule,
+            navMeshAgent,
+            this,
+            // This is the callback for interaction done.
+            OnInteractionDone,
+            m_equipmentModule.getWeaponHoldTransfrom()
+            );
+            m_renderer = this.GetComponentInChildren<Renderer>();
+        }
     }
     #endregion
 
