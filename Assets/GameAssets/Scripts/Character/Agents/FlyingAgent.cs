@@ -497,7 +497,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         return this.transform;
     }
 
-    public void setStunned(float duration)
+    public void setStunned(float duration, Vector3 direction)
     {
 
         if(m_previousCorutine !=null)

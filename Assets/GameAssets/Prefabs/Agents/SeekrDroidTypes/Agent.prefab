@@ -716,7 +716,8 @@ MonoBehaviour:
     WeaponAmmo:
     - AmmoType: BasicMag
       AmmoCount: 9999
-    drop_reward: 1
+    immuneToStunn: 0
+    drop_reward: 0
   AgentComponents:
     weaponAimTransform: {fileID: 8851718179661802297}
     lookAimTransform: {fileID: 7575901756742842751}
@@ -16882,7 +16883,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 8851718179990328935}
   gunFireLight: {fileID: 5543271795722405739}
   targetPointTransfrom: {fileID: 0}
@@ -32334,7 +32335,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 8851718180373007921}
   gunFireLight: {fileID: 5543271795979246664}
   targetPointTransfrom: {fileID: 0}

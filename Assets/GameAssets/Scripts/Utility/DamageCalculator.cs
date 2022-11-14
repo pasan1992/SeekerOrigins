@@ -149,7 +149,7 @@ public class DamageCalculator
         }
     }
 
-    public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,CommonFunctions.Damage damage,float dot_time=0)
+    public static void onHitEnemy(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection,CommonFunctions.Damage damage,float stunPrecentage=0)
     {
         if(other == null)
         {
@@ -164,7 +164,7 @@ public class DamageCalculator
 
                // cyberAgent.reactOnHit(other, (hitDirection) * 3f, other.transform.position);
                 //cyberAgent.damageAgent(1);
-               movingDamagableObject.damage(damage, other,(hitDirection) * 1f,other.transform.position,m_fireFrom,dot_time);
+               movingDamagableObject.damage(damage, other,(hitDirection) * 1f,other.transform.position,m_fireFrom,stunPrecentage);
             
                 //GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HitBasicParticle);
                 //basicHitParticle.SetActive(true);

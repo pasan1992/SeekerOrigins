@@ -10,7 +10,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
     private int postDestroyDamage = 0;
 
 
-    public override bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
+    public override bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float stunPrecentage = 0)
     {
         // fromFaction is not used atm
         /*
@@ -21,10 +21,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             return false;
         }
         */
-        if (dot_time > 0)
+        if (stunPrecentage > Random.value && !m_movingAgent.isDisabled())
         {
-            StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)dot_time));
-            return false;
+            //StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)stunPrecentage));
+            //return false;
+            m_movingAgent.setStunned(3f,force);
         }
 
 

@@ -76,7 +76,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         }
     }
 
-    public virtual bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float dot_time = 0)
+    public virtual bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float stunPrecentage = 0)
     {
         /*
         if (!GamePlayCam.IsVisibleToCamera(m_movingAgent.getTransfrom()))
@@ -85,12 +85,14 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
             Debug.Log("Not damaging");
             return false;
         }*/
+        Debug.Log(stunPrecentage);
+        Debug.Log("sdsd");
 
-        if (dot_time > 0)
-        {
-            StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)dot_time));
-            return false;
-        }
+        // if (stunPrecentage > Random.value)
+        // {
+        //     //StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)stunPrecentage));
+        //     //this.m_movingAgent.setStunned(3);
+        // }
 
         m_movingAgent.damageAgent(damageValue);
         
@@ -198,9 +200,9 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     }
 
-    public void Stun(float duration)
+    public void Stun(float duration,Vector3 direction)
     {
-        m_movingAgent.setStunned(duration);
+        m_movingAgent.setStunned(duration,direction);
     }
 
     protected IEnumerator waitAndDestory(float time)

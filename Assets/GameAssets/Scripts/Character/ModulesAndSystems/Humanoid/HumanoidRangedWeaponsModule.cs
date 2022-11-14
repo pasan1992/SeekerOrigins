@@ -717,6 +717,15 @@ public class HumanoidRangedWeaponsModule
 
     public void SetWeaponAmmoType(AmmoTypeEnums.WeaponTypes  weaponTypes,string ammo_name)
     {
+        if(m_currentWeapon)
+        {
+            var curret_ammoType = m_currentWeapon.m_weaponAmmunitionName;
+            if(curret_ammoType == ammo_name)
+            {
+                return;
+            }
+        }
+        
         switch (weaponTypes)
         {
             case AmmoTypeEnums.WeaponTypes.Grenade:

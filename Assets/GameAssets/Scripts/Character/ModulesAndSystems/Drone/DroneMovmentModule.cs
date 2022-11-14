@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -81,7 +81,6 @@ public class DroneMovmentModule : MovmentModule
 
         if((Vector3.Distance(m_MovmentTransfrom.position,m_hoverPosition) > 0.2f))
         {
-            Debug.Log("TAKING OFF");
             state = GameEnums.DroneState.TakeOff;
             m_MovmentTransfrom.position = Vector3.Lerp(m_MovmentTransfrom.position,m_hoverPosition,0.1f);
         }
