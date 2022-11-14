@@ -97,7 +97,7 @@ public class AgentData : AgentBasicData
         {
             loaded += secondaryWeapon.getLoadedAmmoCount();
         }
-        
+        Debug.Log(unloaded + loaded);
         return unloaded + loaded;
     }
 

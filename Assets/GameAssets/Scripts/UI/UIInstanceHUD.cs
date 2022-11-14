@@ -26,6 +26,8 @@ public class UIInstanceHUD : MonoBehaviour
 
     // In game Fields
     [Header("In Game Fields (IGF)")]
+    [SerializeField] List<Sprite> _pistolImgList;
+    [SerializeField] List<Sprite> _rifleImgList;
 
     [SerializeField] GameObject _missileTypeObj_IGF;
     [SerializeField] TMP_Text _missileTypeCount_IGF;
@@ -168,17 +170,36 @@ public class UIInstanceHUD : MonoBehaviour
 
     void UpdateInGameAndTabUIData()
     {
-        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
+        _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo; //1
+        //_weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo();
+
         if (_weaponAmmoList.Count() > 0)
         {
+            int i = 0;
             foreach (var weaponAmmo in _weaponAmmoList)
             {
+                //TODO Dynamic
+                //var textName = "_pistolTypeCount_TMF_" + i;
+                //_pistolTypeCount_TMF_1.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString()).ToString();
+
+                //if (weaponAmmo.AmmoCount <= 0)
+                //{
+                //    _pistol_TMF_1.alpha = 0.3f;
+                //    _pistol_TMF_1.interactable = false;
+                //}
+                //else
+                //{
+                //    _pistol_TMF_1.alpha = 1f;
+                //    _pistol_TMF_1.interactable = true;
+                //}
+
                 #region Missile
                 if (weaponAmmo.AmmoType == AmmoTypeEnums.Missile.DroneBusters_Missile.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Missile.MiniNuke_Missile.ToString())
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.Missile.DroneBusters_Missile.ToString())
                     {
-                        _missileTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        //_missileTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        _missileTypeCount_TMF_1.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.Missile.DroneBusters_Missile.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -199,7 +220,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.Missile.MiniNuke_Missile.ToString())
                     {
-                        _missileTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        //_missileTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        _missileTypeCount_TMF_2.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.Missile.MiniNuke_Missile.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -225,12 +247,13 @@ public class UIInstanceHUD : MonoBehaviour
                 }
                 #endregion
 
-                #region Injection
+                #region Grenade
                 else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.Regular_Grenade.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.EMP_Grenade.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.Regular_Grenade.ToString())
                     {
-                        _grenadeTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        //_grenadeTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        _grenadeTypeCount_TMF_1.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.Grenade.Regular_Grenade.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -251,7 +274,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.EMP_Grenade.ToString())
                     {
-                        _grenadeTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        //_grenadeTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        _grenadeTypeCount_TMF_2.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.Grenade.EMP_Grenade.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -272,7 +296,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString())
                     {
-                        _grenadeTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+                        //_grenadeTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+                        _grenadeTypeCount_TMF_3.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.Grenade.ProximityTrap_Grenade.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -303,7 +328,8 @@ public class UIInstanceHUD : MonoBehaviour
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString())
                     {
-                        _pistolTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        //_pistolTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString(); //1
+                        _pistolTypeCount_TMF_1.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -318,13 +344,15 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
+                            //_pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
+                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolImgList[0];
                         }
                     }
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString())
                     {
-                        _pistolTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        //_pistolTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        _pistolTypeCount_TMF_2.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -339,13 +367,16 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
+                            //_pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
+                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolImgList[1];
+
                         }
                     }
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString())
                     {
-                        _pistolTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+                        //_pistolTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+                        _pistolTypeCount_TMF_3.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -360,7 +391,9 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
+                            //_pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
+                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolImgList[2];
+
                         }
                     }
                 }
@@ -371,7 +404,8 @@ public class UIInstanceHUD : MonoBehaviour
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString())
                     {
-                        _rifleTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        //_rifleTypeCount_TMF_1.text = weaponAmmo.AmmoCount.ToString();
+                        _rifleTypeCount_TMF_1.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -386,13 +420,16 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo];
+                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo];
+                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[0];
+
                         }
                     }
 
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString())
                     {
-                        _rifleTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        //_rifleTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
+                        _rifleTypeCount_TMF_2.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -407,13 +444,16 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo];
+                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo];
+                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[1];
+
                         }
 
                     }
                     else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString())
                     {
-                        _rifleTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+                        //_rifleTypeCount_TMF_3.text = weaponAmmo.AmmoCount.ToString();
+                        _rifleTypeCount_TMF_3.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -428,7 +468,9 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo];
+                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo];
+                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[2];
+
                         }
                     }
                 }
