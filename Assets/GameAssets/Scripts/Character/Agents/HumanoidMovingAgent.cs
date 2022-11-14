@@ -53,6 +53,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     private Renderer m_renderer;
     private IEnumerator m_previousCorutine;
 
+
     #endregion
 
     #region Initalize
@@ -244,7 +245,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // Stop Aiming current Weapon.
     public virtual void stopAiming()
     {
-        if (m_characterState.Equals(CharacterMainStates.Aimed))
+        if (m_characterState.Equals(CharacterMainStates.Aimed) && m_characterState != CharacterMainStates.Stunned)
         {
             m_characterState = CharacterMainStates.Armed_not_Aimed;
             m_equipmentModule.getCurrentWeapon().setAimed(false);
@@ -256,7 +257,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
         if(m_characterState == HumanoidMovingAgent.CharacterMainStates.Stunned )
         {
-            Debug.Log("Stuned");
             return;
         }
             
@@ -754,14 +754,15 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void DodgeEnd()
     {
+        if(isDisabled())
+            return;
+            
         if (m_animationModule.isEquiped())
         {
             m_characterState = CharacterMainStates.Armed_not_Aimed;
+            return;
         }
-        else
-        {
-            m_characterState = CharacterMainStates.Idle;
-        }
+        m_characterState = CharacterMainStates.Idle;
     }
     #endregion
 
@@ -891,13 +892,10 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_animationModule.Stop();
     }
 
-    public void setStunned(float duration)
+    public void setStunned(float duration, Vector3 direction)
     {
-        m_animationModule.setStun(true);
-        if(GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
-        {
-            m_damageModule.emitSmoke();
-        }
+        if(isDisabled() || m_characterState == CharacterMainStates.Dodge || GetAgentData().immuneToStunn)
+            return;
         
         if(m_characterState !=CharacterMainStates.Stunned)
         {
@@ -905,6 +903,12 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         }
 
         m_characterState = CharacterMainStates.Stunned;
+
+        m_animationModule.setStun(true);
+        if(GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
+        {
+            m_damageModule.emitSmoke();
+        }
 
         if(m_previousCorutine !=null)
         {
@@ -915,6 +919,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         StartCoroutine(m_previousCorutine);
         m_movmentModule.setMovment(false);
         m_movmentVector = Vector3.zero;
+        m_movmentModule.LookAtObject(this.transform.position - direction);
     }
 
     IEnumerator waitAndRemoveStun(float waitDuration)

@@ -30,6 +30,9 @@ public class AgentData : AgentBasicData
     public AgentBehaviorStatus behaviorStatus = AgentBehaviorStatus.Suspicious;
     public List<AmmoPack> WeaponAmmo = new List<AmmoPack>();
 
+    public bool immuneToStunn = false
+    ;
+
     public bool drop_reward = true;
 
     public AgentData()
@@ -88,14 +91,14 @@ public class AgentData : AgentBasicData
 
         if (primaryWeapon !=null && primaryWeapon.posibleAmmoTypes.ContainsKey(ammoName) && primaryWeapon.getCurrentAmmoType() == ammoName)
         {
-            loaded += primaryWeapon.getLoadedAmmoCount();
+            loaded = primaryWeapon.getLoadedAmmoCount();
         }
     
 
 
         if (secondaryWeapon !=null && secondaryWeapon.posibleAmmoTypes.ContainsKey(ammoName) && secondaryWeapon.getCurrentAmmoType() == ammoName)
         {
-            loaded += secondaryWeapon.getLoadedAmmoCount();
+            loaded = secondaryWeapon.getLoadedAmmoCount();
         }
         
         return unloaded + loaded;

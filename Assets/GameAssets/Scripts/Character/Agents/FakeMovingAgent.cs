@@ -219,7 +219,7 @@ public class FakeMovingAgent : ICyberAgent
         return false;
     }
 
-    public void setStunned(float duration)
+    public void setStunned(float duration, Vector3 direction)
     {
     }
     public void removeStun()

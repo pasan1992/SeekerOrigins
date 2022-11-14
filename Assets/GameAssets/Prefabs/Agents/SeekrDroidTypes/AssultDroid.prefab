@@ -281,7 +281,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.0074295327, y: 0.168194, z: -0.98572606}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.039930936, y: -0.000000036787238, z: -0.000000010244547}
+  m_ConnectedAnchor: {x: 0.039930932, y: -0.000000035390254, z: -0.000000055413686}
   serializedVersion: 2
   m_SwingAxis: {x: -0.043499496, y: 0.9847658, z: 0.16835797}
   m_TwistLimitSpring:
@@ -404,7 +404,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.000018047169, y: -0.27017358, z: 0.012819714}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.033947434, y: -0.00014489071, z: -0.00014363941}
+  m_ConnectedAnchor: {x: -0.033947434, y: -0.00014488972, z: -0.00014359191}
   serializedVersion: 2
   m_SwingAxis: {x: 0.07153671, y: -0.04727993, z: -0.99631715}
   m_TwistLimitSpring:
@@ -585,7 +585,6 @@ GameObject:
   - component: {fileID: 1887792727}
   - component: {fileID: 1014349588}
   - component: {fileID: 1014349589}
-  - component: {fileID: 1014349598}
   - component: {fileID: 7305767775791588074}
   m_Layer: 12
   m_Name: AssultDroid
@@ -714,9 +713,12 @@ MonoBehaviour:
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
-    - AmmoType: BasicMag
-      AmmoCount: 9999
-    drop_reward: 1
+    - AmmoType: Regular_RifleAmmo
+      AmmoCount: 200
+    - AmmoType: Regular_PistolAmmo
+      AmmoCount: 999
+    immuneToStunn: 0
+    drop_reward: 0
   AgentComponents:
     weaponAimTransform: {fileID: 8851718179661802297}
     lookAimTransform: {fileID: 7575901756742842751}
@@ -1353,7 +1355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f3d95eb3df20c42b2304787911f219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffectOnDamage: 3
+  particleEffectOnDamage: 8
   KeepOnDestory: 0
   m_onDestroyEvent:
     m_PersistentCalls:
@@ -1655,24 +1657,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
---- !u!114 &1014349598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8851718178877291356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 1
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &7305767775791588074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,7 +1955,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -4.99962e-16, y: 4.765705e-17, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.116032936, z: -0.00065083505}
+  m_ConnectedAnchor: {x: 0, y: 0.116032936, z: -0.0006507874}
   serializedVersion: 2
   m_SwingAxis: {x: 0.14607999, y: 0.9892729, z: -2.5888609e-17}
   m_TwistLimitSpring:
@@ -2185,7 +2169,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.031741098, y: 0.99949616, z: 0.00000011920929}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.009896708, y: 0.083155826, z: -0.002046895}
+  m_ConnectedAnchor: {x: 0.009896708, y: 0.08315582, z: -0.0020469667}
   serializedVersion: 2
   m_SwingAxis: {x: -0.000000014901161, y: 0, z: -1.0000001}
   m_TwistLimitSpring:
@@ -2807,7 +2791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8851718179415572752}
   - component: {fileID: 8851718179415572759}
-  - component: {fileID: 6446295743155424896}
   m_Layer: 9
   m_Name: Character_Robot_01
   m_TagString: Untagged
@@ -2929,24 +2912,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000037252903, y: 0.08537136, z: -0.0049535856}
     m_Extent: {x: 0.10210054, y: 0.09556867, z: 0.027952857}
   m_DirtyAABB: 0
---- !u!114 &6446295743155424896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8851718179415572753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 1, b: 0.25909448, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &8851718179438510793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,7 +3157,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0.00000009336509, y: -0.000000059604645, z: 1.0000002}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.037712365, y: 0.000000009313229, z: -7.5669976e-10}
+  m_ConnectedAnchor: {x: -0.037712358, y: -0.00000008707869, z: -0.000000017171264}
   serializedVersion: 2
   m_SwingAxis: {x: -0.85418296, y: 0.519973, z: -0.000000044703484}
   m_TwistLimitSpring:
@@ -3669,7 +3634,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.031741098, y: 0.99949616, z: 0.00000011920929}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.009896713, y: 0.083155826, z: -0.002046919}
+  m_ConnectedAnchor: {x: -0.009896708, y: 0.08315581, z: -0.0020469667}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -0.00000011920929, z: 1.0000001}
   m_TwistLimitSpring:
@@ -4165,7 +4130,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.017759213, y: 0.21701507, z: -0.010271923}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.027114509, y: -0.000000022281254, z: 0.000038136735}
+  m_ConnectedAnchor: {x: 0.027114505, y: -0.0000000053423714, z: 0.00003815983}
   serializedVersion: 2
   m_SwingAxis: {x: 0.00000087171793, y: 0.047279954, z: 0.99888206}
   m_TwistLimitSpring:
@@ -4888,7 +4853,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0.0013807677, y: -0.33905834, z: 0.01569834}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.023371836, y: -0.0007856791, z: 0.019098938}
+  m_ConnectedAnchor: {x: -0.023371825, y: -0.00078563066, z: 0.019098938}
   serializedVersion: 2
   m_SwingAxis: {x: -0.013768971, y: -0.046301812, z: -0.99883294}
   m_TwistLimitSpring:
@@ -5013,7 +4978,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1.0000001, y: 9.329193e-16, z: 0.00000011920929}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.040415432, y: 0.006136576, z: 3.3501847e-17}
+  m_ConnectedAnchor: {x: -0.04041543, y: 0.0061366474, z: 3.3501847e-17}
   serializedVersion: 2
   m_SwingAxis: {x: -0.000000014901161, y: -0.00000011920929, z: 1.0000001}
   m_TwistLimitSpring:
@@ -16882,7 +16847,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 8851718179990328935}
   gunFireLight: {fileID: 5543271795722405739}
   targetPointTransfrom: {fileID: 0}
@@ -25678,7 +25643,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.0074295364, y: 0.168194, z: -0.98572606}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.039930936, y: -4.6566123e-10, z: -0.000000010710209}
+  m_ConnectedAnchor: {x: -0.039930936, y: -4.6566123e-10, z: 0.00000006146728}
   serializedVersion: 2
   m_SwingAxis: {x: 0.043499477, y: -0.9847658, z: -0.16835785}
   m_TwistLimitSpring:
@@ -30944,7 +30909,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0.017763738, y: -0.21701854, z: 0.010272129}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.027114544, y: 0.000000002308752, z: -0.000038131533}
+  m_ConnectedAnchor: {x: -0.027114542, y: 0.000000015766544, z: -0.000038159007}
   serializedVersion: 2
   m_SwingAxis: {x: 0.000001244247, y: -0.04727993, z: -0.99888206}
   m_TwistLimitSpring:
@@ -31521,7 +31486,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0.00001802668, y: 0.27017337, z: -0.012819709}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.033947486, y: 0.00014472174, z: 0.00014364174}
+  m_ConnectedAnchor: {x: 0.033947486, y: 0.00014473542, z: 0.00014359505}
   serializedVersion: 2
   m_SwingAxis: {x: -0.0715346, y: 0.047279954, z: 0.9963173}
   m_TwistLimitSpring:
@@ -31762,7 +31727,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -0.0013793036, y: 0.3390587, z: -0.0156983}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.023371555, y: -0.00078572286, z: -0.019098908}
+  m_ConnectedAnchor: {x: -0.023371538, y: -0.00078567443, z: -0.019098908}
   serializedVersion: 2
   m_SwingAxis: {x: 0.013771087, y: 0.04630166, z: 0.99883294}
   m_TwistLimitSpring:
@@ -31934,7 +31899,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0.0000000661239, y: -0.000000044703484, z: 1.0000002}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.03771233, y: 0.000000006984922, z: -0.00000008422651}
+  m_ConnectedAnchor: {x: 0.037712328, y: 0.000000104308164, z: -0.00000007334167}
   serializedVersion: 2
   m_SwingAxis: {x: 0.8541831, y: -0.51997304, z: -0.000000059604645}
   m_TwistLimitSpring:
@@ -32334,7 +32299,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 8851718180373007921}
   gunFireLight: {fileID: 5543271795979246664}
   targetPointTransfrom: {fileID: 0}
@@ -33937,12 +33902,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2924649826642733729}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4198775913486783403 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1356566416465737994, guid: 0fbbb666690243b4bb7a85a04c8ff660,
-    type: 3}
-  m_PrefabInstance: {fileID: 2924649826642733729}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1291311345142654167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4142706196662079094, guid: 0fbbb666690243b4bb7a85a04c8ff660,
@@ -33955,6 +33914,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4198775913486783403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1356566416465737994, guid: 0fbbb666690243b4bb7a85a04c8ff660,
+    type: 3}
+  m_PrefabInstance: {fileID: 2924649826642733729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3592617261883701859
 PrefabInstance:
   m_ObjectHideFlags: 0

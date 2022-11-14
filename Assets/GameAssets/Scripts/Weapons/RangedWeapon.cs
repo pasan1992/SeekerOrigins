@@ -14,15 +14,16 @@ public abstract class RangedWeapon : Weapon
         
         public ProjectilePool.POOL_OBJECT_TYPE particleType;
         public float fireRate;
-        public float dot_time;
+        public float stun_precentage;
+
         public float energyDamage;
 
-        public AmmunitionType(float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float dot_time,float energyDamage = 0)
+        public AmmunitionType(float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float stunPrecentage,float energyDamage = 0)
         {
             this.damage = damage;
             this.particleType = particleType;
             this.fireRate = fireRate;
-            this.dot_time = dot_time;
+            this.stun_precentage = stunPrecentage;
             this.energyDamage = energyDamage;
         }
     }
@@ -31,7 +32,7 @@ public abstract class RangedWeapon : Weapon
 
     public IDictionary<string, AmmunitionType> posibleAmmoTypes = new Dictionary<string, AmmunitionType>();
 
-    public float dotTime = 0;
+    public float stunPrecentage = 0;
 
     public delegate void WeaponFireDeligaet(float weight);
 
@@ -112,7 +113,7 @@ public abstract class RangedWeapon : Weapon
         var ammoType =  posibleAmmoTypes[ammoTypeName];
         this.damage = ammoType.damage;
         this.fireRate = ammoType.fireRate;
-        this.dotTime = ammoType.dot_time;
+        this.stunPrecentage = ammoType.stun_precentage;
         this.projectile = ammoType.particleType;
         this.energyDamage = ammoType.energyDamage;
         this.m_weaponAmmunitionName = ammoTypeName;
@@ -267,7 +268,7 @@ public abstract class RangedWeapon : Weapon
             ProjectileMover proj = Tempprojectile.GetComponent<ProjectileMover>();  
             proj.damageFuture= null;
 
-            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,new CommonFunctions.Damage(damage,energyDamage),proj,this.dotTime);
+            RaycastHit hitPos =  DamageCalculator.checkFire(m_gunFireingPoint,m_target.transform.position,m_ownersFaction,new CommonFunctions.Damage(damage,energyDamage),proj,this.stunPrecentage);
             EnvironmentSound.Instance.broadcastSound(this.transform.position,m_ownersFaction,SoundMaxDistance);
 
             

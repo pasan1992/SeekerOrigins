@@ -46,6 +46,6 @@ public interface ICyberAgent
     void cancleInteraction();
     Transform getHeadTransfrom();
 
-    void setStunned(float duration);
+    void setStunned(float duration,Vector3 direction);
     void removeStun();
 }

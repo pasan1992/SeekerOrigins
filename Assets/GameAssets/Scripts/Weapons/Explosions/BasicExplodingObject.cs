@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -99,16 +99,13 @@ public class BasicExplodingObject : MonoBehaviour
         {   
             if(!DamageCalculator.isSafeFromTarget(this.transform.position,other.transform.position,m_range))
             {
-                Debug.Log("12131");
 
                 // Neeed to improve it exploding objects must not have faction
                 damagableObject.damage(new CommonFunctions.Damage(m_baseDamage*damagePropotion,m_baseEnergyDamage*damagePropotion),other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
-                Debug.Log(damagableObject);
-                Debug.Log(damagePropotion);
                 var mvdamage = (MovingAgentDamagableObject)damagableObject;
                 if(mvdamage !=null)
                 {
-                    mvdamage.Stun(3f);
+                    mvdamage.Stun(3f,other.transform.position - this.transform.position);
                 }
 
             }           
