@@ -258,3 +258,13 @@ public class UILevelsHandler : MonoBehaviour
     //        public T[] Items;
     //    }
 }
+
+
+//,
+//    {
+//    "levelMainText": "Tutorial",
+//      "levelSubText": "VR Expereance",
+//      "LevelDescription": "This place is improved your shooting ability",
+//      "levelImagePath": "path",
+//      "levelIsPlayed": "false"
+//    }

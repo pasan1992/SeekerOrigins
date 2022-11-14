@@ -61,7 +61,9 @@ public class InGameMenuManager : MonoBehaviour
 
     public void LoadScene(int index)
     {
-        if(index == -3){
+        Time.timeScale = 1;
+
+        if (index == -3){
             _sceneLoader.SetActive(true);
 
             if (_btnNo == -2)
