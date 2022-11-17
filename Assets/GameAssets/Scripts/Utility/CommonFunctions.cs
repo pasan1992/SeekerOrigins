@@ -5,6 +5,14 @@ using UnityEngine.AI;
 
 public class CommonFunctions
 {
+    [System.Serializable]
+    public class ActionAgent
+    {
+        
+        public GameObject agentController;
+        public int agentCount;
+        public GameObject spawnPoint;
+    }
     public class Damage
     {
         public float healthDamage;

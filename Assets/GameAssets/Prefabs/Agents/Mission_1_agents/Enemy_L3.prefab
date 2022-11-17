@@ -5117,7 +5117,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: dd6e2e48a9071994ebe224249a719ba1, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19846,6 +19845,7 @@ MonoBehaviour:
       AmmoCount: 100
     - AmmoType: Regular_PistolAmmo
       AmmoCount: 999
+    immuneToStunn: 0
     drop_reward: 1
   AgentComponents:
     weaponAimTransform: {fileID: 2523621043359386459}
@@ -24084,7 +24084,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 3995736184028147249}
   gunFireLight: {fileID: 2356887214611278722}
   targetPointTransfrom: {fileID: 0}
@@ -39825,7 +39825,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 1086303166161980066}
   gunFireLight: {fileID: 8887760585038231135}
   targetPointTransfrom: {fileID: 0}
@@ -40666,6 +40666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Attach_Chef_Tank_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1023011944176064, guid: b33f673bde9fbc742b0ad781a04532bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4840722949253488, guid: b33f673bde9fbc742b0ad781a04532bf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -40740,6 +40744,10 @@ PrefabInstance:
     - target: {fileID: 1532041618854166, guid: 33d7b7671c675de468d855bc842ecf51, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Attach_Shoulder_Large_L_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532041618854166, guid: 33d7b7671c675de468d855bc842ecf51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4482098382135698, guid: 33d7b7671c675de468d855bc842ecf51, type: 3}
       propertyPath: m_RootOrder

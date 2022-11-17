@@ -9,35 +9,41 @@ namespace HutongGames.PlayMaker.Actions
 public class SpawnEnemyAction : FsmStateAction
 {
 
-    public GameObject AgentPrefab;
-    public GameObject[] SpawnPoint;
+    public CommonFunctions.ActionAgent[] agents;
     public Transform Target;
     public FsmEvent finishEvent;
-    public int AgetnCount;
-    private int agent_count = 0;
-
+  
     public bool waitTillEnd = true;
 
+    private int agentCount = 0;
     
 
     public override void OnEnter()
     {
-        agent_count = AgetnCount;
-        for (int i =0; i< agent_count ; i++)
-        {
-            var enemey = GameObject.Instantiate(AgentPrefab);
-            var agent =  enemey.GetComponent<NavMeshAgent>();
-            var sp_id = i % SpawnPoint.Length;
-            var sp = SpawnPoint[sp_id];
+     
+            foreach(CommonFunctions.ActionAgent agent in agents) 
+            {
+                for(int i=0; i< agent.agentCount; i++) 
+                {
+                    agentCount += 1;
+                    var enemey = GameObject.Instantiate(agent.agentController);
+                    var navMesh = enemey.GetComponent<NavMeshAgent>();
 
-            agent.Warp(sp.transform.position);
-            agent.enabled = false;
-            agent.enabled = true;
+                    navMesh.Warp(agent.spawnPoint.transform.position);
+                    navMesh.enabled = false;
+                    navMesh.enabled = true;
 
-            AgentController agentCont = enemey.GetComponent<AgentController>();
-            enemey.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
-            StartCoroutine(waitAndAttack(agentCont,Target));
-        }
+                    AgentController agentCont = enemey.GetComponent<AgentController>();
+                    enemey.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
+                    StartCoroutine(waitAndAttack(agentCont, Target));
+                }
+                
+                
+            }
+            
+    
+            
+
 
         if (!waitTillEnd)
         {
@@ -47,8 +53,8 @@ public class SpawnEnemyAction : FsmStateAction
 
     public void OnDestroyed()
     {
-        agent_count -=1;
-        if(agent_count == 0)
+            agentCount -= 1;
+        if(agentCount == 0)
         {
             Fsm.Event(finishEvent);
             Finish();
@@ -64,10 +70,7 @@ public class SpawnEnemyAction : FsmStateAction
 
     #if UNITY_EDITOR
 
-    public override float GetProgress()
-    {
-        return (AgetnCount - (float)agent_count)/AgetnCount;
-    }
+   
 
 #endif
 }
