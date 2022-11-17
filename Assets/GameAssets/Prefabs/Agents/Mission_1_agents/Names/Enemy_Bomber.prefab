@@ -768,7 +768,7 @@ MonoBehaviour:
     RocketPack: {fileID: 0}
     maxHealth: 10
     MaxSheild: 30
-    Regen: 2
+    Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1

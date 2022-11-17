@@ -758,34 +758,32 @@ MonoBehaviour:
   m_characterState: 3
   AgentData:
     AgentNature: 0
-    Skill: 0.1
-    VisualDistance: 30
+    Skill: 1
+    VisualDistance: 60
     VisualAngle: 180
-    max_Sound_hearing_distance: 5
+    max_Sound_hearing_distance: 30
     CanDodge: 0
     ThrowGrenade: 0
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 10
-    MaxSheild: 5
-    Regen: 2
+    maxHealth: 5
+    MaxSheild: 50
+    Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 10
-    Sheild: 5
+    health: 5
+    Sheild: 50
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 7410864591502989375}
-    grenade: {fileID: 7976312218801588240}
+    grenade: {fileID: 0}
     HealInjectionCount: 1
     HealPerInjection: 20
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
-    - AmmoType: Regular_RifleAmmo
-      AmmoCount: 100
     - AmmoType: Regular_PistolAmmo
-      AmmoCount: 999
+      AmmoCount: 50
     immuneToStunn: 0
     drop_reward: 0
   AgentComponents:
@@ -14081,15 +14079,15 @@ MonoBehaviour:
     weaponRecoilOffset: {x: 0, y: 7, z: 0}
   m_ownersFaction: 0
   accuracy_rating: 15
-  damage: 2
-  energyDamage: 0
+  damage: 10
+  energyDamage: 5
   m_weaponAmmunitionName: BasicMag
   projectile: 4
   stunPrecentage: 0
   gunMuzzle: {fileID: 238591041619310059}
   gunFireLight: {fileID: 238591041619310059}
   targetPointTransfrom: {fileID: 0}
-  fireRate: 4
+  fireRate: 0.5
   weaponRecoil: 2
   m_enableLine: 1
   m_magazineSize: 12
@@ -35544,15 +35542,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6972490019812177856}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7976312218801588240 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1041122100592164816, guid: f4598a0dea1a5a043a62fa46555f2cf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6972490019812177856}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 431fccda15f7e6641801a1cc00eaa54a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

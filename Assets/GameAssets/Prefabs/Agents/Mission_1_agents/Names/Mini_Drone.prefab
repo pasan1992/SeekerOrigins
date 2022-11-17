@@ -639,13 +639,13 @@ MonoBehaviour:
     ThrowGrenade: 0
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 20
+    maxHealth: 5
     MaxSheild: 10
-    Regen: 3
+    Regen: 0
     HealthRegen: 10
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 20
+    health: 5
     Sheild: 10
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 0}
@@ -663,7 +663,7 @@ MonoBehaviour:
     fireParticle: {fileID: 896429263946900559}
   - firePoint: {fileID: 6077313875584985616}
     fireParticle: {fileID: 896429264151963391}
-  WeaponDamage: 0.1
+  WeaponDamage: 0.3
   WeaponEneryDamge: 0.1
   m_DroneModel: {fileID: 9045122833389729256}
   explosionParticle: 2

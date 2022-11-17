@@ -106,7 +106,7 @@ MonoBehaviour:
   m_timeToReset: 2
   m_restrictions: 0
   target: {fileID: 0}
-  preferedWeapon: 1
+  preferedWeapon: 0
   PetrolArmed: 0
   rutine: {fileID: 8100557664498112023}
 --- !u!114 &71862779117567214
@@ -758,34 +758,35 @@ MonoBehaviour:
   m_characterState: 3
   AgentData:
     AgentNature: 0
-    Skill: 0.1
-    VisualDistance: 30
+    Skill: 0.5
+    VisualDistance: 40
     VisualAngle: 180
-    max_Sound_hearing_distance: 5
-    CanDodge: 0
-    ThrowGrenade: 0
+    max_Sound_hearing_distance: 15
+    CanDodge: 1
+    ThrowGrenade: 1
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 10
-    MaxSheild: 5
+    maxHealth: 15
+    MaxSheild: 30
     Regen: 2
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 10
-    Sheild: 5
-    primaryWeapon: {fileID: 0}
+    health: 15
+    Sheild: 30
+    primaryWeapon: {fileID: 8286467605234337910}
     secondaryWeapon: {fileID: 7410864591502989375}
     grenade: {fileID: 7976312218801588240}
     HealInjectionCount: 1
     HealPerInjection: 20
-    inventryItems: []
+    inventryItems:
+    - {fileID: 8286467605234337910}
     behaviorStatus: 0
     WeaponAmmo:
     - AmmoType: Regular_RifleAmmo
       AmmoCount: 100
-    - AmmoType: Regular_PistolAmmo
-      AmmoCount: 999
+    - AmmoType: Regular_Granade
+      AmmoCount: 3
     immuneToStunn: 0
     drop_reward: 0
   AgentComponents:
@@ -29837,7 +29838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5321693899257136045
 Transform:
   m_ObjectHideFlags: 0
