@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 69886451426456257}
   - component: {fileID: 8100557664498112021}
   - component: {fileID: 8100557664498112020}
+  - component: {fileID: 3744586116133598407}
   m_Layer: 12
   m_Name: Enemy_Sniper
   m_TagString: Player
@@ -731,7 +732,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 0.8
   m_Acceleration: 5
   avoidancePriority: 0
   m_AngularSpeed: 1
@@ -1037,6 +1038,20 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+--- !u!114 &3744586116133598407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69886451426456263}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637bb9ddf9440cf4e8f000f4bd85f4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Behavor: 5
+  Target: {fileID: 0}
 --- !u!1 &69910823800042913
 GameObject:
   m_ObjectHideFlags: 0
@@ -14079,7 +14094,7 @@ MonoBehaviour:
     weaponRecoilOffset: {x: 0, y: 7, z: 0}
   m_ownersFaction: 0
   accuracy_rating: 15
-  damage: 10
+  damage: 6
   energyDamage: 5
   m_weaponAmmunitionName: BasicMag
   projectile: 4

@@ -68,7 +68,6 @@ MonoBehaviour:
   - ON_SECOND_GUARD_DESTROY
   - ALL_DESTORYED
   - ALL_DESTROYED
-  - ON_COMPLETE
   - ON_PLAYER_DEAD
   - GUN_PICK_UP
   - WEAPON_IN_HAND
@@ -99,3 +98,6 @@ MonoBehaviour:
   - Load_B
   - Load_C
   - Load_D
+  - ON_COMPLETE
+  - InitialEnemyCleared
+  - BOSS_DEAD
