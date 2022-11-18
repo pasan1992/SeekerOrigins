@@ -713,10 +713,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   properties:
     Type: 1
-    interactionEnabled: 1
+    ObjectiveInteratable: 0
     itemName: Ammo
     interactionTime: 0
-    interactionID: 0
     InteractionAnim: -99
     offset: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
@@ -729,14 +728,15 @@ MonoBehaviour:
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
   AmmoPackData:
-  - AmmoType: PistolAmmo
-    AmmoCount: 100
-  - AmmoType: RifleAmmo
-    AmmoCount: 100
-  GrenadeCount: 4
+  - AmmoType: Regular_Grenade
+    AmmoCount: 1
+  - AmmoType: Regular_PistolAmmo
+    AmmoCount: 25
+  - AmmoType: Regular_RifleAmmo
+    AmmoCount: 12
+  - AmmoType: Energy_PistolAmmo
+    AmmoCount: 10
   HealthInjectionCount: 0
-  AmmoType: PistolAmmo
-  count: 10
 --- !u!114 &2777207165993587953
 MonoBehaviour:
   m_ObjectHideFlags: 0
