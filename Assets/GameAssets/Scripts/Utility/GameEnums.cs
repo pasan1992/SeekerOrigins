@@ -20,6 +20,8 @@ public class GameEnums
     public enum Scence {Main_Menu, Tutorial, Mission_00_ep1, Mission_01, Mission_02 }
 
     public enum BodyPart {Chest,Head,Hand,Leg}
+
+    public enum Debuff {Skill,RegenHealth,RegenShield}
     #endregion
 
 }

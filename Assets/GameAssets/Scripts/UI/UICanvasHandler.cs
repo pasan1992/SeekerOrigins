@@ -11,10 +11,20 @@ public class UICanvasHandler : MonoBehaviour
     bool _isAvailaleEscape = true;
     bool _isAvailaleTab = true;
 
+    bool isTabMenuOpened = false;
+
+    private static UICanvasHandler m_UIHandler;
+
     // Start is called before the first frame update
-    void Start()
+
+    public static UICanvasHandler getInstance()
     {
-        
+        if(m_UIHandler ==null)
+        {
+            m_UIHandler = GameObject.FindObjectOfType<UICanvasHandler>();
+        }
+
+        return m_UIHandler;
     }
 
     // Update is called once per frame
@@ -52,6 +62,7 @@ public class UICanvasHandler : MonoBehaviour
             if (_weponeMenuCanvas.GetComponent<UIInstanceHUD>().isFreeToOpen)
             {
                 _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToOpen();
+                isTabMenuOpened = true;
             }
         }
 
@@ -63,6 +74,12 @@ public class UICanvasHandler : MonoBehaviour
             _weponeMenuCanvas.gameObject.SetActive(false);
 
             _gameHUDCanvas.alpha = 1;
+            isTabMenuOpened = false;
         }
+    }
+
+    public bool TabMenuOpened()
+    {
+        return isTabMenuOpened;
     }
 }

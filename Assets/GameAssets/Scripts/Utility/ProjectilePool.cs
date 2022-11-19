@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectilePool : MonoBehaviour
 {
     public enum POOL_OBJECT_TYPE {
-        FireEXplosionParticle,
+        ExplosionLarge,
 
         RocketExplosionParticle,
         DroneExplosion,
@@ -22,11 +22,11 @@ public class ProjectilePool : MonoBehaviour
         Grenade,
         BasicRocket,
         DroidExplosionParticleEffect,
-        GlassParticleEffect,
+        GlassBreakEffect,
         BloodSplatterEffect,
         DamageText,
         Obj_Indicator,
-        SmallFireEffect,
+        SmallExplosionEffect,
         Granade_Explosion,
 
         AttackDroneExplosion,
@@ -116,7 +116,7 @@ public class ProjectilePool : MonoBehaviour
 
         switch (typeofEffect)
         {
-            case POOL_OBJECT_TYPE.FireEXplosionParticle:
+            case POOL_OBJECT_TYPE.ExplosionLarge:
                 //resourcePath = "ParticleEffects/Explosion_fire";
                 resourcePath = "ParticleEffects/Grenade_Explosive";
                 count = maxExplosions;
@@ -214,7 +214,7 @@ public class ProjectilePool : MonoBehaviour
                 droidExplosionsList = new List<GameObject>();
                 effectList = droidExplosionsList;
                 break;
-            case POOL_OBJECT_TYPE.GlassParticleEffect:
+            case POOL_OBJECT_TYPE.GlassBreakEffect:
                 resourcePath = "ParticleEffects/GlassBreak";
                 count = minorPartilceCount;
                 glassParticles = new List<GameObject>();
@@ -247,9 +247,9 @@ public class ProjectilePool : MonoBehaviour
                 effectList = basicGrenadeExplosionParticlesList;
                 break;    
 
-            case POOL_OBJECT_TYPE.SmallFireEffect:
+            case POOL_OBJECT_TYPE.SmallExplosionEffect:
                 //resourcePath = "ParticleEffects/Explosion_fire";
-                resourcePath = "ParticleEffects/FireEffect";
+                resourcePath = "Explosions/Explosion_fire Variant";
                 count = maxExplosions;
                 smallFireEffect = new List<GameObject>();
                 effectList = smallFireEffect;
@@ -347,7 +347,7 @@ public class ProjectilePool : MonoBehaviour
 
         switch (type)
         {
-            case POOL_OBJECT_TYPE.FireEXplosionParticle:
+            case POOL_OBJECT_TYPE.ExplosionLarge:
                 effectList = basicFireExplosionParticlesList;
                 break;
             case POOL_OBJECT_TYPE.RocketExplosionParticle:
@@ -386,7 +386,7 @@ public class ProjectilePool : MonoBehaviour
             case POOL_OBJECT_TYPE.DroidExplosionParticleEffect:
                 effectList = droidExplosionsList;
                 break;
-            case POOL_OBJECT_TYPE.GlassParticleEffect:
+            case POOL_OBJECT_TYPE.GlassBreakEffect:
                 effectList = glassParticles;
                 break;
             case POOL_OBJECT_TYPE.BloodSplatterEffect:
@@ -404,7 +404,7 @@ public class ProjectilePool : MonoBehaviour
             case POOL_OBJECT_TYPE.IncendearyProjectile:
                 effectList = IncendiaryProjectilesList;
                 break;
-            case POOL_OBJECT_TYPE.SmallFireEffect:
+            case POOL_OBJECT_TYPE.SmallExplosionEffect:
                 effectList = smallFireEffect;
                 break;
             case POOL_OBJECT_TYPE.ElectricProjectile:
