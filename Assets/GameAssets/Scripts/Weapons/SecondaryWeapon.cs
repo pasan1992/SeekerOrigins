@@ -8,7 +8,7 @@ public class SecondaryWeapon : RangedWeapon
         base.Awake();
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
-        posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(2,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,this.fireRate,0,5));
+        posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,this.fireRate,0,this.damage*4));
         posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0,0));
         SwitchAmmoType(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString());
         m_ammoCount[AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString()] = m_magazineSize;
