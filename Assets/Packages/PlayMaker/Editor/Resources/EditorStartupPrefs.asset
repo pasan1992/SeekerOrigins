@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de5210ce93b60c74b910290c522cd727, type: 3}
-  m_Name: EditorStartupPrefs
+  m_Name: 
   m_EditorClassIdentifier: 
   welcomeScreenVersion: '1.9.1 '
   playmakerVersion: 
-  showWelcomeScreen: 0
+  showWelcomeScreen: 1
   showUpgradeGuide: 0
-<<<<<<< HEAD
-  lastAutoUpdateSignature: 2019.4.37f1__C:/rrr/HGGFFHJFKHG/SeekerOrigins/Assets__0.0.0.0
-=======
-  lastAutoUpdateSignature: 2019.4.37f1__D:/Projects/Clients/Freelance/Seeker-Origins/Project/SeekerOrigins/Assets__0.0.0.0
->>>>>>> c045129de4b1909de687d086417fdc5340c388be
+  lastAutoUpdateSignature: 
   useLegacyNetworking: 0
