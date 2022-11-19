@@ -792,9 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e9072d9920aa94ebeba2285ffd2f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_wayPoints: []
 --- !u!114 &1059070432264042499
 MonoBehaviour:
   m_ObjectHideFlags: 0

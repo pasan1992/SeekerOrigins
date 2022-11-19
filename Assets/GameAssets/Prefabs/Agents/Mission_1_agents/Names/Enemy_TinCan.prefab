@@ -2179,6 +2179,7 @@ GameObject:
   - component: {fileID: 8229656658337692820}
   - component: {fileID: 8229656658337692821}
   - component: {fileID: 8229656658337692822}
+  - component: {fileID: 2407792085928910637}
   m_Layer: 12
   m_Name: Enemy_TinCan
   m_TagString: Player
@@ -2253,15 +2254,15 @@ MonoBehaviour:
     ThrowGrenade: 0
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 5
-    MaxSheild: 0
+    maxHealth: 25
+    MaxSheild: 100
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 5
-    Sheild: 0
-    primaryWeapon: {fileID: 0}
+    health: 25
+    Sheild: 100
+    primaryWeapon: {fileID: 1518668743694234929}
     secondaryWeapon: {fileID: 1518668745143868615}
     grenade: {fileID: 1973045190660274763}
     HealInjectionCount: 1
@@ -2294,7 +2295,7 @@ MonoBehaviour:
   m_timeToReset: 2
   m_restrictions: 0
   target: {fileID: 0}
-  preferedWeapon: 1
+  preferedWeapon: 0
   PetrolArmed: 0
   rutine: {fileID: 8229656658337692827}
 --- !u!114 &8229656658337692827
@@ -2919,7 +2920,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 0.4
   m_Acceleration: 5
   avoidancePriority: 0
   m_AngularSpeed: 1
@@ -3179,6 +3180,20 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+--- !u!114 &2407792085928910637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496868895803840278}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637bb9ddf9440cf4e8f000f4bd85f4b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Behavor: 0
+  Target: {fileID: 0}
 --- !u!1 &1496882823679246362
 GameObject:
   m_ObjectHideFlags: 0
@@ -9411,7 +9426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1518668743694234932
 Transform:
   m_ObjectHideFlags: 0
