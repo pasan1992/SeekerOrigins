@@ -308,9 +308,8 @@ public class PlayerController : AgentController
 
     private void UpdateShooting()
     {
-        bool inHudOpened = UICanvasHandler.getInstance().TabMenuOpened();
         bool crouch_pressed = Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(1);
-        if (!inHudOpened && Input.GetMouseButtonDown(0) /*&& Input.GetMouseButton(1)*/ && !Input.GetKey(KeyCode.LeftShift) && !crouch_pressed)
+        if (Input.GetMouseButtonDown(0) /*&& Input.GetMouseButton(1)*/ && !Input.GetKey(KeyCode.LeftShift) && !crouch_pressed)
         { 
             m_movingAgent.pullTrigger();
             MouseCurserSystem.getInstance().onBullet_Fire();

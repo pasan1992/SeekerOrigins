@@ -10,7 +10,7 @@ public class DamagableItem : MonoBehaviour,DamagableObject
     private float m_remaning_Health;
     public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnDestroy;
 
-    public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnHit = ProjectilePool.POOL_OBJECT_TYPE.GlassBreakEffect;
+    public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnHit = ProjectilePool.POOL_OBJECT_TYPE.GlassParticleEffect;
     public Color color;
 
     private GameEvents.BasicNotifactionEvent onDamagedEvent;

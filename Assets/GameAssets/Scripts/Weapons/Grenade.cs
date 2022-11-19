@@ -11,16 +11,14 @@ public class Grenade : Weapon
     [System.Serializable]
     public class GrenadeType
     {
-        public GrenadeType(ProjectilePool.POOL_OBJECT_TYPE objectType,float energyDamage,float damage,string name)
+        public GrenadeType(ProjectilePool.POOL_OBJECT_TYPE objectType,float damage,string name)
         {
             this.damage = damage;
             this.objectType = objectType;
             this.name = name;
-            this.energyDamage = energyDamage;
         }
         public ProjectilePool.POOL_OBJECT_TYPE objectType;
         public float damage;
-        public float energyDamage;
 
         public string name;
     }
@@ -32,7 +30,7 @@ public class Grenade : Weapon
     {
         base.Awake();
         GrenadeTypes = new Dictionary<string,GrenadeType>();
-        GrenadeTypes.Add(AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3,3,AmmoTypeEnums.Grenade.Regular_Grenade.ToString()));
+        GrenadeTypes.Add(AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3,AmmoTypeEnums.Grenade.Regular_Grenade.ToString()));
         currentGrenadeType = GrenadeTypes[AmmoTypeEnums.Grenade.Regular_Grenade.ToString()];
     }
 
@@ -86,7 +84,6 @@ public class Grenade : Weapon
         // reset exploding object
         var baseGrenade = m_tempGrenede.GetComponent<BasicExplodingObject>();
         baseGrenade.BaseDamage = currentGrenadeType.damage;
-        baseGrenade.BaseEnergyDamage = currentGrenadeType.energyDamage;
         baseGrenade.activateExplosionMechanisum();
 
     }

@@ -85,7 +85,7 @@ public class MouseCurserSystem : MonoBehaviour
     {
         var currentWeapon = player.getCurrentWeapon();
 
-        if(currentWeapon == null || UICanvasHandler.getInstance().TabMenuOpened())
+        if(currentWeapon == null)
         {
             Cursor.SetCursor(idleTexture, hotSpot, cursorMode);
             return;

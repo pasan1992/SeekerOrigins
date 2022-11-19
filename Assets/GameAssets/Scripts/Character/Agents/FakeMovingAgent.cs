@@ -226,9 +226,5 @@ public class FakeMovingAgent : ICyberAgent
     {
 
     }
-    public void setDebuffed(float duration, GameEnums.Debuff debuff )
-    {
-        
-    }
 }
 

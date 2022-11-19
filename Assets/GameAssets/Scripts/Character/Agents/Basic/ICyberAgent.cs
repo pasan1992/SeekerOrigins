@@ -48,7 +48,4 @@ public interface ICyberAgent
 
     void setStunned(float duration,Vector3 direction);
     void removeStun();
-
-    void setDebuffed(float duration, GameEnums.Debuff debuff );
-    
 }

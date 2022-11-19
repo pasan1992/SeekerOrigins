@@ -927,34 +927,6 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_movmentModule.LookAtObject(this.transform.position - direction);
     }
 
-    public void setDebuffed(float duration, GameEnums.Debuff debuff )
-    {
-        switch (debuff)
-        {
-            case GameEnums.Debuff.Skill:
-                if(GetAgentData().Skill !=0)
-                {
-                    var orignalValue = GetAgentData().Skill;
-                    GetAgentData().Skill = 0;
-                    StartCoroutine(removeDebuff(duration,orignalValue,debuff));
-                }
-
-                break;
-        }
-    }
-
-    private IEnumerator removeDebuff(float waitValue, float originalValue, GameEnums.Debuff debuff)
-    {
-        yield return new WaitForSeconds(waitValue);
-        
-        switch (debuff)
-        {
-            case GameEnums.Debuff.Skill:
-                GetAgentData().Skill = originalValue;
-                break;
-        }       
-    }
-
     IEnumerator waitAndRemoveStun(float waitDuration)
     {
         yield return new WaitForSeconds(waitDuration);

@@ -518,10 +518,6 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
 
     }
-    public void setDebuffed(float duration, GameEnums.Debuff debuff )
-    {
-        
-    }
 
     #endregion
 }

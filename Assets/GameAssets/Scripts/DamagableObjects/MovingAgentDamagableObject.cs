@@ -225,7 +225,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
         if (stats)
         {
-        GameObject fireEffet = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.SmallExplosionEffect);
+        GameObject fireEffet = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.SmallFireEffect);
         fireEffet.SetActive(true);
         fireEffet.transform.position = location.position;
         fireEffet.transform.parent = location.transform;  

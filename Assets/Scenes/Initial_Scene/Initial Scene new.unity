@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 687160947190129238, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_Name
-      value: DF_Canvas_ScenceLoader
+      value: Canvas_Loading
       objectReference: {fileID: 0}
     - target: {fileID: 687160947190129238, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}

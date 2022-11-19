@@ -9,7 +9,7 @@ public class BasicExplosion : MonoBehaviour
     #region Initialize
 
     protected Rigidbody[] explosionParticles;
-    public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.ExplosionLarge;
+    public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
     //ParticleSystem m_particleSystem;
     void Awake()
     {
