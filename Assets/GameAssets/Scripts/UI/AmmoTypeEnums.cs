@@ -36,7 +36,7 @@
     public enum RifleAmmo
     {
         Regular_RifleAmmo,
-        Incendiary_RifleAmmo,
+        Energy_RifleAmmo,
         Highcaliber_RifleAmmo,
     }
 
