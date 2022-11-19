@@ -639,14 +639,14 @@ MonoBehaviour:
     ThrowGrenade: 0
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 5
-    MaxSheild: 10
+    maxHealth: 2
+    MaxSheild: 3
     Regen: 0
-    HealthRegen: 10
+    HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 5
-    Sheild: 10
+    health: 2
+    Sheild: 3
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 0}
     grenade: {fileID: 0}
