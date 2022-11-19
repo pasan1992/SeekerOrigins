@@ -19,10 +19,10 @@ public class InGameMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GamePaused();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    GamePaused();
+        //}
     }
 
     public void GamePaused()
