@@ -768,13 +768,13 @@ MonoBehaviour:
     FireRocket: 0
     RocketPack: {fileID: 0}
     maxHealth: 5
-    MaxSheild: 15
+    MaxSheild: 5
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
     health: 5
-    Sheild: 15
+    Sheild: 5
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 7410864591502989375}
     grenade: {fileID: 0}
@@ -35377,7 +35377,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: dd6e2e48a9071994ebe224249a719ba1, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
