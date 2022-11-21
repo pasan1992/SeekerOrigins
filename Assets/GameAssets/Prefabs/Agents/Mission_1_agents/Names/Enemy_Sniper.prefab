@@ -768,13 +768,21 @@ MonoBehaviour:
     FireRocket: 0
     RocketPack: {fileID: 0}
     maxHealth: 5
+<<<<<<< HEAD
     MaxSheild: 10
+=======
+    MaxSheild: 50
+>>>>>>> 392e979dcbd2259c4851ed93c828eaf4e8ce1c14
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
     health: 5
+<<<<<<< HEAD
     Sheild: 10
+=======
+    Sheild: 50
+>>>>>>> 392e979dcbd2259c4851ed93c828eaf4e8ce1c14
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 7410864591502989375}
     grenade: {fileID: 0}

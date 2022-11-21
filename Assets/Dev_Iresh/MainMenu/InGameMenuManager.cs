@@ -17,26 +17,16 @@ public class InGameMenuManager : MonoBehaviour
 
     bool _isOpenMenu = false;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GamePaused();
-        }
-    }
-
     public void GamePaused()
     {
         if (!_isOpenMenu)
         {
             Time.timeScale = 0;
-            _menu.SetActive(true);
             _isOpenMenu = true;
         }
         else
         {
             Time.timeScale = 1;
-            _menu.SetActive(false);
             _isOpenMenu = false;
         }
     }
@@ -62,26 +52,127 @@ public class InGameMenuManager : MonoBehaviour
     public void LoadScene(int index)
     {
         Time.timeScale = 1;
-
-        if (index == -3){
-            _sceneLoader.SetActive(true);
-
+        if (index == -3)
+        {
             if (_btnNo == -2)
             {
                 //TODO: set checkpoint to 0
-                _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+                PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
             }
             else if (_btnNo == -3)
             {
-                _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+                PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
             }
             else
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(_btnNo);
+            {
+                PlayerPrefs.SetInt("LoadScene", _btnNo);
+            }
         }
         else
         {
-            _sceneLoader.SetActive(true);
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(index);
+            PlayerPrefs.SetInt("LoadScene", index);
         }
+
+        SceneManager.LoadScene(8, LoadSceneMode.Single);
+
+
+        //SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt("CurrentScene"));
+        //SceneManager.LoadScene(0, LoadSceneMode.Additive);
+        //
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadSceneAsync(0, LoadSceneMode.Additive);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Initial Scene"));
+        //print("ADDITIVE");
+
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt("CurrentScene"));
+        //SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("EP01_A"));
+        //print(SceneManager.sceneCount);
+        //// Get count of loaded Scenes and last index
+        //var lastSceneIndex = SceneManager.sceneCount - 1;
+
+        //// Get last Scene by index in all loaded Scenes
+        //var lastLoadedScene = SceneManager.GetSceneAt(lastSceneIndex);
+
+        // Unload Scene
+        //SceneManager.UnloadSceneAsync(lastLoadedScene);
+        //SceneManager.UnloadSceneAsync(0);
+
+        //Scene gameScene = SceneManager.GetSceneByName("Initial Scene");
+        //if (gameScene.isLoaded)
+        //{
+        //    StartCoroutine(SetActive(gameScene));
+        //    var sceneObjs = gameScene.GetRootGameObjects();
+        //    print(gameScene.GetRootGameObjects().Length);
+        //}
+
+
+        //foreach (var root in gameScene.GetRootGameObjects())
+        //{
+        //    print("WORKS");
+        //}
+
+        //var sceneObjs = gameScene.GetRootGameObjects();
+        //print(gameScene.GetRootGameObjects().Length);
+        //print(gameScene.GetRootGameObjects()[3].name);
+
+        //_sceneLoader = sceneObjs[3];
+
+        //if (index == -3)
+        //{
+        //    if (_btnNo == -2)
+        //    {
+        //        //TODO: set checkpoint to 0
+        //        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        //    }
+        //    else if (_btnNo == -3)
+        //    {
+        //        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        //    }
+        //    else
+        //        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(_btnNo);
+        //}
+        //else
+        //{
+        //    _sceneLoader.SetActive(true);
+        //    _sceneLoader.GetComponent<SceneLoader>().LoadLevel(index);
+        //}
+        //
+
+        //if (index == -3)
+        //{
+
+
+        //    _sceneLoader.SetActive(true);
+
+        //    if (_btnNo == -2)
+        //    {
+        //        //TODO: set checkpoint to 0
+        //        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        //    }
+        //    else if (_btnNo == -3)
+        //    {
+        //        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(SceneManager.GetActiveScene().buildIndex);
+        //    }
+        //    else
+        //        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(_btnNo);
+        //}
+        //else
+        //{
+        //    _sceneLoader.SetActive(true);
+        //    _sceneLoader.GetComponent<SceneLoader>().LoadLevel(index);
+        //}
+    }
+
+    public IEnumerator SetActive(Scene scene)
+    {
+        int i = 0;
+        while (i == 0)
+        {
+            i++;
+            yield return null;
+        }
+        SceneManager.SetActiveScene(scene);
+        yield break;
     }
 }
