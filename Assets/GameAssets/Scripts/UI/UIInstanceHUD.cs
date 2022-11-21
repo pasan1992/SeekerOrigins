@@ -8,17 +8,6 @@ using UnityEngine.UI;
 
 public class UIInstanceHUD : MonoBehaviour
 {
-    //[System.Serializable]
-    //public struct AmmoPack
-    //{
-    //    public string AmmoType;
-    //    public int AmmoCount;
-    //}
-    //AgentData _agentData;
-
-    //List<AmmoPack> _weaponAmmoList = new List<AmmoPack>();
-
-
     [SerializeField] CanvasGroup _mainHUD;
     [SerializeField] GameObject _instanceHUD;
 
@@ -157,24 +146,6 @@ public class UIInstanceHUD : MonoBehaviour
             HudClose();
             UpdateInGameAndTabUIData();
         }
-        //if (Input.GetKey(KeyCode.Tab))
-        //    {
-        //    if (isFreeToOpen)
-        //    {
-        //        //HudOpen();
-        //        //UpdateInGameAndTabUIData();
-        //        //SetTabMenuUIData();
-        //        //CallToOpen();
-        //    }
-
-        //}
-        //if (Input.GetKeyUp(KeyCode.Tab))
-        //{
-        //    //isFreeToOpen = true;
-        //    //HudClose();
-        //    //UpdateInGameAndTabUIData();
-        //    //CallToStop();
-        //}
     }
 
     public void CallToOpen()

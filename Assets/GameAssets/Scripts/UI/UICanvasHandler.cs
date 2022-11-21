@@ -11,18 +11,12 @@ public class UICanvasHandler : MonoBehaviour
     bool _isAvailaleEscape = true;
     bool _isAvailaleTab = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (_isAvailaleEscape)
+            if (_isAvailaleEscape && _isAvailaleTab)
             {
                 _gameHUDCanvas.alpha = 0;
                 _inGameMenuCanvas.gameObject.SetActive(true);
@@ -31,39 +25,40 @@ public class UICanvasHandler : MonoBehaviour
                 _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
                 _isAvailaleEscape = false;
             }
-            else
+            else if (_isAvailaleTab)
             {
                 CloseMenu();
-                //_inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
-
-                //_inGameMenuCanvas.alpha = 0;
-                //_inGameMenuCanvas.gameObject.SetActive(false);
-                //_gameHUDCanvas.alpha = 1;
-
-                //_isAvailaleEscape = true;
             }
         }
 
         if (Input.GetKey(KeyCode.Tab))
         {
-            _gameHUDCanvas.alpha = 0;
-            _weponeMenuCanvas.gameObject.SetActive(true);
-            _weponeMenuCanvas.alpha = 1;
-
-            if (_weponeMenuCanvas.GetComponent<UIInstanceHUD>().isFreeToOpen)
+            if (_isAvailaleEscape)
             {
-                _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToOpen();
+                _isAvailaleTab = false;
+                _gameHUDCanvas.alpha = 0;
+                _weponeMenuCanvas.gameObject.SetActive(true);
+                _weponeMenuCanvas.alpha = 1;
+
+                if (_weponeMenuCanvas.GetComponent<UIInstanceHUD>().isFreeToOpen)
+                {
+                    _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToOpen();
+                }
             }
         }
 
         if (Input.GetKeyUp(KeyCode.Tab))
         {
-            _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToClose();
+            if (_isAvailaleEscape)
+            {
+                _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToClose();
 
-            _weponeMenuCanvas.alpha = 0;
-            _weponeMenuCanvas.gameObject.SetActive(false);
+                _weponeMenuCanvas.alpha = 0;
+                _weponeMenuCanvas.gameObject.SetActive(false);
 
-            _gameHUDCanvas.alpha = 1;
+                _gameHUDCanvas.alpha = 1;
+                _isAvailaleTab = true;
+            }
         }
     }
     public void CloseMenu()
