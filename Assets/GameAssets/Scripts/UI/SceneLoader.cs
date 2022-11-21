@@ -14,11 +14,11 @@ public class SceneLoader : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            Invoke("InitiateCall", 10);
+            Invoke("InitiateCall", 7);
         }
         else
         {
-            Invoke("SceneLoad", 5);
+            Invoke("SceneLoad", 3);
         }
     }
 

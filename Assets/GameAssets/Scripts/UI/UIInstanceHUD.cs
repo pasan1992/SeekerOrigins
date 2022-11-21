@@ -111,7 +111,7 @@ public class UIInstanceHUD : MonoBehaviour
     Vector3 _endPosition;
 
     bool _isHUDOpen = false;
-    bool _isFreeToOpen;
+    public bool isFreeToOpen;
 
     private PlayerController m_player;
 
@@ -131,19 +131,19 @@ public class UIInstanceHUD : MonoBehaviour
 
         UpdateInGameAndTabUIData();
         SetTabMenuUIData();
-        _isFreeToOpen = true;
+        isFreeToOpen = true;
     }
 
     public bool isHudOPen()
     {
-        return _isFreeToOpen;
+        return isFreeToOpen;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.Tab))
             {
-            if (_isFreeToOpen)
+            if (isFreeToOpen)
             {
                 HudOpen();
                 UpdateInGameAndTabUIData();
@@ -153,11 +153,45 @@ public class UIInstanceHUD : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
-            _isFreeToOpen = true;
+            isFreeToOpen = true;
             HudClose();
             UpdateInGameAndTabUIData();
         }
+        //if (Input.GetKey(KeyCode.Tab))
+        //    {
+        //    if (isFreeToOpen)
+        //    {
+        //        //HudOpen();
+        //        //UpdateInGameAndTabUIData();
+        //        //SetTabMenuUIData();
+        //        //CallToOpen();
+        //    }
+
+        //}
+        //if (Input.GetKeyUp(KeyCode.Tab))
+        //{
+        //    //isFreeToOpen = true;
+        //    //HudClose();
+        //    //UpdateInGameAndTabUIData();
+        //    //CallToStop();
+        //}
     }
+
+    public void CallToOpen()
+    {
+        HudOpen();
+        UpdateInGameAndTabUIData();
+        SetTabMenuUIData();
+    }
+
+    public void CallToClose()
+    {
+        isFreeToOpen = true;
+
+        HudClose();
+        UpdateInGameAndTabUIData();
+    }
+
     //TODO: to call Interface
     public void SetDefaultItems(string missile,string grenade, string healthPack, string pistol, string rifle)
     {
@@ -626,8 +660,8 @@ public class UIInstanceHUD : MonoBehaviour
         if (!_isHUDOpen)
         {
             _isHUDOpen = true;
-            _mainHUD.alpha = 0;
-            _instanceHUD.SetActive(true);
+            //_mainHUD.alpha = 0;
+            //_instanceHUD.SetActive(true);
             LeanTween.cancel(_instanceHUD);
             Time.timeScale = 0.1f;
             LeanTween.move(_instanceHUD, _endPosition, 0.1f).setEase(LeanTweenType.easeOutBounce).setIgnoreTimeScale(true);
@@ -642,8 +676,8 @@ public class UIInstanceHUD : MonoBehaviour
             LeanTween.move(_instanceHUD, _initialPosition, 0.1f).setEase(LeanTweenType.easeInBounce)
                 .setIgnoreTimeScale(true).setOnComplete((valu) =>
                 {
-                    _instanceHUD.SetActive(false);
-                    _mainHUD.alpha = 1;
+                    //_instanceHUD.SetActive(false);
+                    //_mainHUD.alpha = 1;
                     _isHUDOpen = false;
                     Time.timeScale = 1f;
                 });
@@ -653,7 +687,7 @@ public class UIInstanceHUD : MonoBehaviour
        
     void HudCloseInstanly()
     {
-        _isFreeToOpen = false;
+        isFreeToOpen = false;
         HudClose();
         UpdateInGameAndTabUIData();
     }
