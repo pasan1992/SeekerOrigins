@@ -66,139 +66,37 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        _sceneLoader.SetActive(true);
-
-        _sceneLoader.GetComponent<SceneLoader>().LoadLevel(_previousScence);
+        SceneLoad(_previousScence);
     }
 
     public void PlayGame()
     {
-
-        _sceneLoader.SetActive(true);
-        //SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
-
-        //if (true)
-        //{
-        //    GameEnums.Scence.Mission_00_ep1.ToString());
-        //}
         if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 0)
         {
-            //SceneManager.LoadScene(0);
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(3);
-            //SceneManager.LoadScene(GameEnums.Scence.Mission_00_ep1.ToString());
+            SceneLoad(3);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(5);
-
-            //SceneManager.LoadScene(GameEnums.Scence.Mission_02.ToString());
+            SceneLoad(5);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 2)
         {
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(6);
-
-            //SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
+            SceneLoad(6);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 3)
         {
-            _sceneLoader.GetComponent<SceneLoader>().LoadLevel(7);
-
-            //SceneManager.LoadScene(GameEnums.Scence.Mission_01.ToString());
+            SceneLoad(7);
         }
+    }
+
+    void SceneLoad(int index)
+    {
+        PlayerPrefs.SetInt("LoadScene", index);
+        SceneManager.LoadScene(8, LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
-
-    //public void SetSettings()
-    //{
-    //    _musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
-    //    _sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
-    //    _fullScreenToggle.isOn = GetFullScreen();
-    //    GetResolution();
-    //    GetQuality();
-    //}
-
-    //public void SetMusicVolume(float volume)
-    //{
-    //    //audioManager.audioMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(volume) * 20);
-    //    PlayerPrefs.SetFloat("MusicVolume", volume);
-    //}
-     
-    //public void SetSfxVolume(float volume)
-    //{
-    //    //audioManager.audioMixer.SetFloat(MIXER_SFX, Mathf.Log10(volume) * 20);
-    //    PlayerPrefs.SetFloat("SFXVolume", volume);
-    //}
-
-    //public void SetFullScreen(bool isFullScreen)
-    //{
-    //    Screen.fullScreen = isFullScreen;
-
-    //    if (isFullScreen)
-    //    {
-    //        PlayerPrefs.SetInt("isFullScreen", 1);
-    //    }
-    //    else
-    //    {
-    //        PlayerPrefs.SetInt("isFullScreen", 0);
-    //    }
-    //}
-    //public bool GetFullScreen()
-    //{
-    //    int isFullScreen = PlayerPrefs.GetInt("isFullScreen", 1);
-    //    return isFullScreen == 1 ? true : false;
-    //}
-
-    //public void SetResolution(int resolutionIndex)
-    //{
-    //    Resolution resolution = _resolutions[resolutionIndex];
-    //    Screen.SetResolution(resolution.width, resolution.height, GetFullScreen());
-    //}
-
-    //public void GetResolution()
-    //{
-    //    _resolutions = Screen.resolutions;
-    //    _resulotionDropdown.ClearOptions();
-    //    List<string> options = new List<string>();
-
-    //    int currentResolutionIndex = 0;
-
-    //    for (int i = 0; i < _resolutions.Length; i++)
-    //    {
-    //        string option = _resolutions[i].width + " x " + _resolutions[i].height + " @ " + _resolutions[i].refreshRate + "hz";
-    //        options.Add(option);
-
-    //        if (GetFullScreen())
-    //        {
-    //            if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
-    //            {
-    //                currentResolutionIndex = i;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            if (_resolutions[i].width == Screen.width && _resolutions[i].height == Screen.height)
-    //            {
-    //                currentResolutionIndex = i;
-    //            }
-    //        }
-    //    }
-    //    _resulotionDropdown.AddOptions(options);
-    //    _resulotionDropdown.value = currentResolutionIndex;
-    //    _resulotionDropdown.RefreshShownValue();
-    //}
-
-    //public void SetQuality(int qualityIndex)
-    //{
-    //    QualitySettings.SetQualityLevel(qualityIndex);
-    //}
-
-    //public void GetQuality()
-    //{
-    //    int value = QualitySettings.GetQualityLevel();
-    //    _qualityDropdown.value = value;
-    //}
 }

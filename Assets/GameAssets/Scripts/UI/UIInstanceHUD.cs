@@ -8,17 +8,6 @@ using UnityEngine.UI;
 
 public class UIInstanceHUD : MonoBehaviour
 {
-    //[System.Serializable]
-    //public struct AmmoPack
-    //{
-    //    public string AmmoType;
-    //    public int AmmoCount;
-    //}
-    //AgentData _agentData;
-
-    //List<AmmoPack> _weaponAmmoList = new List<AmmoPack>();
-
-
     [SerializeField] CanvasGroup _mainHUD;
     [SerializeField] GameObject _instanceHUD;
 
@@ -111,7 +100,7 @@ public class UIInstanceHUD : MonoBehaviour
     Vector3 _endPosition;
 
     bool _isHUDOpen = false;
-    bool _isFreeToOpen;
+    public bool isFreeToOpen;
 
     private PlayerController m_player;
 
@@ -131,19 +120,19 @@ public class UIInstanceHUD : MonoBehaviour
 
         UpdateInGameAndTabUIData();
         SetTabMenuUIData();
-        _isFreeToOpen = true;
+        isFreeToOpen = true;
     }
 
     public bool isHudOPen()
     {
-        return _isFreeToOpen;
+        return isFreeToOpen;
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.Tab))
             {
-            if (_isFreeToOpen)
+            if (isFreeToOpen)
             {
                 HudOpen();
                 UpdateInGameAndTabUIData();
@@ -153,11 +142,27 @@ public class UIInstanceHUD : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         {
-            _isFreeToOpen = true;
+            isFreeToOpen = true;
             HudClose();
             UpdateInGameAndTabUIData();
         }
     }
+
+    public void CallToOpen()
+    {
+        HudOpen();
+        UpdateInGameAndTabUIData();
+        SetTabMenuUIData();
+    }
+
+    public void CallToClose()
+    {
+        isFreeToOpen = true;
+
+        HudClose();
+        UpdateInGameAndTabUIData();
+    }
+
     //TODO: to call Interface
     public void SetDefaultItems(string missile,string grenade, string healthPack, string pistol, string rifle)
     {
@@ -400,7 +405,7 @@ public class UIInstanceHUD : MonoBehaviour
                 #endregion
 
                 #region Rifle
-                else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString())
+                else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString() || weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString())
                 {
                     if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString())
                     {
@@ -426,10 +431,10 @@ public class UIInstanceHUD : MonoBehaviour
                         }
                     }
 
-                    else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString())
+                    else if (weaponAmmo.AmmoType == AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString())
                     {
                         //_rifleTypeCount_TMF_2.text = weaponAmmo.AmmoCount.ToString();
-                        _rifleTypeCount_TMF_2.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString()).ToString();
+                        _rifleTypeCount_TMF_2.text = _player.GetComponent<HumanoidMovingAgent>().AgentData.checkTotalAmmo(AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString()).ToString();
 
                         if (weaponAmmo.AmmoCount <= 0)
                         {
@@ -444,7 +449,7 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo];
+                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo];
                             _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[1];
 
                         }
@@ -530,7 +535,7 @@ public class UIInstanceHUD : MonoBehaviour
         {
             _rifleTypeObj_TMF_1.isOn = true;
         }        
-        else if (_selectedRifleAmmo == AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString())
+        else if (_selectedRifleAmmo == AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString())
         {
             _rifleTypeObj_TMF_2.isOn = true;
         }
@@ -608,7 +613,7 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString();
                 break;
             case 2:
-                _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString();
+                _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString();
                 break;
             case 3:
                 _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString();
@@ -626,8 +631,8 @@ public class UIInstanceHUD : MonoBehaviour
         if (!_isHUDOpen)
         {
             _isHUDOpen = true;
-            _mainHUD.alpha = 0;
-            _instanceHUD.SetActive(true);
+            //_mainHUD.alpha = 0;
+            //_instanceHUD.SetActive(true);
             LeanTween.cancel(_instanceHUD);
             Time.timeScale = 0.1f;
             LeanTween.move(_instanceHUD, _endPosition, 0.1f).setEase(LeanTweenType.easeOutBounce).setIgnoreTimeScale(true);
@@ -642,8 +647,8 @@ public class UIInstanceHUD : MonoBehaviour
             LeanTween.move(_instanceHUD, _initialPosition, 0.1f).setEase(LeanTweenType.easeInBounce)
                 .setIgnoreTimeScale(true).setOnComplete((valu) =>
                 {
-                    _instanceHUD.SetActive(false);
-                    _mainHUD.alpha = 1;
+                    //_instanceHUD.SetActive(false);
+                    //_mainHUD.alpha = 1;
                     _isHUDOpen = false;
                     Time.timeScale = 1f;
                 });
@@ -653,7 +658,7 @@ public class UIInstanceHUD : MonoBehaviour
        
     void HudCloseInstanly()
     {
-        _isFreeToOpen = false;
+        isFreeToOpen = false;
         HudClose();
         UpdateInGameAndTabUIData();
     }
