@@ -109928,6 +109928,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3076570286959257907}
     m_Modifications:
+    - target: {fileID: 78471137636718595, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: m_text
+      value: Regular Pistol Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130485363262369446, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c1bfa2eab7166d64b8b884da6d881f0a,
+        type: 3}
+    - target: {fileID: 1946799212177272149, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: m_text
+      value: Regular Rifle Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291459265880699196, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: m_text
+      value: Energy Rifle Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692577792692734968, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: m_text
+      value: Energy Pistol Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093056102014747185, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1addb79c968e3154d9e16c941e387263,
+        type: 3}
     - target: {fileID: 8383216866099477676, guid: b058c46871a1b734e9ef13531b5137ea,
         type: 3}
       propertyPath: m_Pivot.x
@@ -110083,6 +110115,36 @@ PrefabInstance:
       propertyPath: _healthPackTypeCount_IGF
       value: 
       objectReference: {fileID: 4885702772975243711}
+    - target: {fileID: 8383216866099477679, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: _rifleImgList.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 304366e5c4376964299dab99edb60aad,
+        type: 3}
+    - target: {fileID: 8383216866099477679, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: _rifleImgList.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7c37d1166bd00ed4eaa477107d734578,
+        type: 3}
+    - target: {fileID: 8383216866099477679, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: _pistolImgList.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d4fcc7b9f99af87488903f74fce6eeb6,
+        type: 3}
+    - target: {fileID: 8383216866099477679, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: _pistolImgList.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: a7e6028f3fd7a074086f9f5be3873813,
+        type: 3}
+    - target: {fileID: 8383216866099477679, guid: b058c46871a1b734e9ef13531b5137ea,
+        type: 3}
+      propertyPath: _grenadesSpriteList.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c1bfa2eab7166d64b8b884da6d881f0a,
+        type: 3}
     - target: {fileID: 8383216866099477680, guid: b058c46871a1b734e9ef13531b5137ea,
         type: 3}
       propertyPath: m_Name
@@ -110360,6 +110422,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DF_Canvas_GameHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 2823332033234675629, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d4fcc7b9f99af87488903f74fce6eeb6,
+        type: 3}
+    - target: {fileID: 9177702267893471755, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 304366e5c4376964299dab99edb60aad,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d19a08c9c6de3cc45b0902baf5f5acbf, type: 3}
 --- !u!114 &4692908599224368767 stripped
