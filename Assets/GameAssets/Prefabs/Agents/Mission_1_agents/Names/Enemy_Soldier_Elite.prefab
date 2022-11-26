@@ -760,21 +760,21 @@ MonoBehaviour:
   AgentData:
     AgentNature: 0
     Skill: 0.7
-    VisualDistance: 40
-    VisualAngle: 180
+    VisualDistance: 60
+    VisualAngle: 270
     max_Sound_hearing_distance: 15
     CanDodge: 1
     ThrowGrenade: 1
     FireRocket: 0
     RocketPack: {fileID: 0}
     maxHealth: 5
-    MaxSheild: 20
+    MaxSheild: 100
     Regen: 2
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
     health: 5
-    Sheild: 20
+    Sheild: 100
     primaryWeapon: {fileID: 8286467605234337910}
     secondaryWeapon: {fileID: 7410864591502989375}
     grenade: {fileID: 7976312218801588240}
@@ -787,9 +787,11 @@ MonoBehaviour:
     behaviorStatus: 0
     WeaponAmmo:
     - AmmoType: Regular_RifleAmmo
-      AmmoCount: 100
-    - AmmoType: Regular_Granade
+      AmmoCount: 300
+    - AmmoType: Regular_Grenade
       AmmoCount: 3
+    - AmmoType: Regular_PistolAmmo
+      AmmoCount: 500
     immuneToStunn: 0
     drop_reward: 0
   AgentComponents:
