@@ -61,7 +61,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public virtual void Awake()
     {
         var scene = SceneManager.GetActiveScene();
-        if (scene.buildIndex != 1)
+        if (scene.buildIndex != 2)
         {
             m_target = new GameObject();
             m_movmentVector = new Vector3(0, 0, 0);

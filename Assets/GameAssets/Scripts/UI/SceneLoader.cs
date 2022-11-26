@@ -10,22 +10,30 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] Slider _slider;
     [SerializeField] Text _percentageTxt;
 
-    private void Start()
+    void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-           Invoke("InitiateCall",4); 
+            Invoke("InitiateCall", 7);
+        }
+        else
+        {
+            Invoke("SceneLoad", 3);
         }
     }
 
     void InitiateCall()
     {
-        LoadLevel(1);
+        LoadLevel(2);
+    }
+
+    void SceneLoad()
+    {
+        LoadLevel(PlayerPrefs.GetInt("LoadScene"));
     }
 
     public void LoadLevel(int sceneIndex)
     {
-        //_loadingScreen.SetActive(true);
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
 
