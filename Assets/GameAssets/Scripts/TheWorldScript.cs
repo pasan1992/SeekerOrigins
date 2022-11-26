@@ -15,7 +15,7 @@ public class TheWorldScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             _isMenuActive = true;
         }

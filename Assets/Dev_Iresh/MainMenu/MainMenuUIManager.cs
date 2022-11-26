@@ -41,20 +41,15 @@ public class MainMenuUIManager : MonoBehaviour
             print("_previousScence "+ _previousScence + " CheckPoint " + checkPoint + " Load Success!");
         }
 
-        if (_previousScence >= 0 && checkPoint >= 0)
+        if (_previousScence >= 0 && checkPoint > 0)
         {
-            print("TRUE");
             _continueBtn.SetActive(true);
         }
-    }
-    public void SetLevels()
-    {
-
     }
 
     public void CheckPlayBtnState()
     {
-        if (checkPoint == null)
+        if (checkPoint == -1 || checkPoint == 0)
         {
             PlayGame();
         }
@@ -73,26 +68,26 @@ public class MainMenuUIManager : MonoBehaviour
     {
         if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 0)
         {
-            SceneLoad(3);
+            SceneLoad(4);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {
-            SceneLoad(5);
+            SceneLoad(6);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 2)
         {
-            SceneLoad(6);
+            SceneLoad(7);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 3)
         {
-            SceneLoad(7);
+            SceneLoad(8);
         }
     }
 
     void SceneLoad(int index)
     {
         PlayerPrefs.SetInt("LoadScene", index);
-        SceneManager.LoadScene(8, LoadSceneMode.Single);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void QuitGame()
