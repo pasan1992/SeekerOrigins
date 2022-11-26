@@ -767,24 +767,24 @@ MonoBehaviour:
     ThrowGrenade: 0
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 5
-    MaxSheild: 5
+    maxHealth: 2
+    MaxSheild: 10
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 5
-    Sheild: 5
+    health: 2
+    Sheild: 10
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 7410864591502989375}
-    grenade: {fileID: 0}
+    grenade: {fileID: 7976312218801588240}
     HealInjectionCount: 1
     HealPerInjection: 3
     inventryItems: []
     behaviorStatus: 0
     WeaponAmmo:
     - AmmoType: Regular_PistolAmmo
-      AmmoCount: 50
+      AmmoCount: 500
     immuneToStunn: 0
     drop_reward: 0
   AgentComponents:
@@ -35678,6 +35678,18 @@ PrefabInstance:
     - {fileID: 1498233384, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
     - {fileID: 1498233383, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
+--- !u!114 &7976312218801588240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1041122100592164816, guid: f4598a0dea1a5a043a62fa46555f2cf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6972490019812177856}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 431fccda15f7e6641801a1cc00eaa54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7976312218801588241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,

@@ -766,16 +766,16 @@ MonoBehaviour:
     ThrowGrenade: 1
     FireRocket: 0
     RocketPack: {fileID: 0}
-    maxHealth: 10
-    MaxSheild: 30
+    maxHealth: 5
+    MaxSheild: 25
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
-    health: 10
-    Sheild: 30
+    health: 5
+    Sheild: 25
     primaryWeapon: {fileID: 0}
-    secondaryWeapon: {fileID: 0}
+    secondaryWeapon: {fileID: 7410864591502989375}
     grenade: {fileID: 7976312218801588240}
     HealInjectionCount: 1
     HealPerInjection: 20
@@ -785,6 +785,8 @@ MonoBehaviour:
     WeaponAmmo:
     - AmmoType: Regular_Grenade
       AmmoCount: 25
+    - AmmoType: Regular_PistolAmmo
+      AmmoCount: 300
     immuneToStunn: 0
     drop_reward: 0
   AgentComponents:
@@ -1350,7 +1352,6 @@ GameObject:
   m_Component:
   - component: {fileID: 67492303098226777}
   - component: {fileID: 78524841297257877}
-  - component: {fileID: 3181481054972363853}
   m_Layer: 9
   m_Name: SM_Chr_RobotFemale_01
   m_TagString: Untagged
@@ -1473,24 +1474,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000059604645, y: 0.88624907, z: -0.069565065}
     m_Extent: {x: 1.0210044, y: 0.9175712, z: 0.24419081}
   m_DirtyAABB: 0
---- !u!114 &3181481054972363853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70146114552436703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  outlineColor: {r: 0, g: 1, b: 0.20990038, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &70159015630381617
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,7 +4130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &67220101751071597
 Transform:
   m_ObjectHideFlags: 0
@@ -35537,12 +35520,6 @@ PrefabInstance:
     - {fileID: 1498233384, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
     - {fileID: 1498233383, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4598a0dea1a5a043a62fa46555f2cf1, type: 3}
---- !u!4 &7976312218801588241 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,
-    type: 3}
-  m_PrefabInstance: {fileID: 6972490019812177856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7976312218801588240 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1041122100592164816, guid: f4598a0dea1a5a043a62fa46555f2cf1,
@@ -35555,3 +35532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431fccda15f7e6641801a1cc00eaa54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7976312218801588241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1041122100592164817, guid: f4598a0dea1a5a043a62fa46555f2cf1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6972490019812177856}
+  m_PrefabAsset: {fileID: 0}
