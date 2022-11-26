@@ -35,11 +35,11 @@ public class InGameMenuManager : MonoBehaviour
     {
         _btnNo = btnNo;
 
-        if (btnNo == 1 || btnNo == 2)
+        if (btnNo == 2 || btnNo == 3)
         {
             _message.text = "Do you want to quit from the mission?";
         }
-        else if (btnNo == -2)
+        else if (btnNo == -2 )
         {
             _message.text = "Do you want to reset of the current mission?";
         }
@@ -56,11 +56,11 @@ public class InGameMenuManager : MonoBehaviour
         {
             if (_btnNo == -2)
             {
-                //TODO: set checkpoint to 0
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
             }
             else if (_btnNo == -3)
             {
+                //TODO: set checkpoint to 0
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
             }
             else
@@ -73,7 +73,7 @@ public class InGameMenuManager : MonoBehaviour
             PlayerPrefs.SetInt("LoadScene", index);
         }
 
-        SceneManager.LoadScene(8, LoadSceneMode.Single);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
 
 
         //SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt("CurrentScene"));
