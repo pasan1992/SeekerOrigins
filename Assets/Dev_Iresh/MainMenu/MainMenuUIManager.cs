@@ -87,7 +87,7 @@ public class MainMenuUIManager : MonoBehaviour
     void SceneLoad(int index)
     {
         PlayerPrefs.SetInt("LoadScene", index);
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single); //LOAD
     }
 
     public void QuitGame()

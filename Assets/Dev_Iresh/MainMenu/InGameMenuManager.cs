@@ -73,7 +73,7 @@ public class InGameMenuManager : MonoBehaviour
             PlayerPrefs.SetInt("LoadScene", index);
         }
 
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single); //LOAD
 
 
         //SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt("CurrentScene"));
