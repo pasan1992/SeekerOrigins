@@ -7,7 +7,17 @@ using UnityEngine.Events;
 public class DamagableItem : MonoBehaviour,DamagableObject
 {
     public float Total_Health;
+
+    public bool damage_by_energy_only = false;
+
     private float m_remaning_Health;
+
+    public bool isDamagable = true;
+
+
+    public bool removeOnDestory = true;
+
+
     public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnDestroy;
 
     public ProjectilePool.POOL_OBJECT_TYPE particleEffectOnHit = ProjectilePool.POOL_OBJECT_TYPE.GlassParticleEffect;
@@ -28,9 +38,22 @@ public class DamagableItem : MonoBehaviour,DamagableObject
     }
     public bool damage(CommonFunctions.Damage damageValue, Collider collider, Vector3 force, Vector3 point,AgentBasicData.AgentFaction fromFaction,float dot_time = 0)
     {
+        if (!isDamagable)
+        {
+            return false;
+        }
+
+        if (damage_by_energy_only)
+        {
+            damageValue.healthDamage = 0;
+        }
+
         if(!isDestroyed())
         {
             m_remaning_Health -= damageValue.healthDamage;
+            m_remaning_Health -= damageValue.energyDamage;
+
+
 
             if(m_remaning_Health <= 0)
             {
@@ -64,9 +87,29 @@ public class DamagableItem : MonoBehaviour,DamagableObject
                     }                    
                 }
                 
-                Destroy(this.gameObject);
+                if(removeOnDestory)
+                {
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    isDamagable = false;
+                }
+                
 
                 return true;
+            }
+            else
+            {
+                GameObject basicHitParticle = ProjectilePool.getInstance().getPoolObject(particleEffectOnHit);
+                if(basicHitParticle)
+                {
+                    basicHitParticle.SetActive(true);
+                    basicHitParticle.transform.position = point;
+                    basicHitParticle.transform.LookAt(Vector3.up);
+                    basicHitParticle.transform.localScale = new Vector3(0.6f,0.6f, 0.6f);
+                    //basicHitParticle.transform.localScale = new Vector3(1f,1f,1f);
+                }
             }
             onDamagedEvent?.Invoke();
         }

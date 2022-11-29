@@ -12,6 +12,8 @@ public class CommonFunctions
         public GameObject agentController;
         public int agentCount;
         public GameObject spawnPoint;
+
+        public float wait = 0;
     }
     public class Damage
     {

@@ -139,13 +139,13 @@ public class DamageCalculator
     //     }
     // }
 
-    public static void onHitDamagableItem(Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection)
+    public static void onHitDamagableItem(CommonFunctions.Damage damage, Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection)
     {
         DamagableObject damagableObject = other.transform.GetComponentInParent<DamagableObject>();
         
         if(damagableObject != null)
         {
-            damagableObject.damage(new CommonFunctions.Damage(1,0),other,hitDirection,other.transform.position,m_fireFrom);
+            damagableObject.damage(damage,other,hitDirection,other.transform.position,m_fireFrom);
         }
     }
 

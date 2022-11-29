@@ -526,7 +526,39 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
     private void ThrowGrenade()
     {
-        if(targetLocation & Random.value < m_selfAgent.getSkill() & m_selfAgent.GetAgentData().ThrowGrenade)
+        bool can_throw_grenade = false;
+        if (m_target !=null)
+        {
+            HumanoidMovingAgent humanoidOpponent = m_target as HumanoidMovingAgent;
+            if(humanoidOpponent)
+            {
+                if(humanoidOpponent.isCrouched() && !humanoidOpponent.isAimed())
+                {
+                    can_throw_grenade = true;
+                }
+                else if (humanoidOpponent.GetAgentData().Health/humanoidOpponent.GetAgentData().MaxHealth < 0.5f)
+                {
+                    can_throw_grenade = true;
+                }
+                else if (m_selfAgent.GetAgentData().MaxHealth < m_selfAgent.GetAgentData().MaxSheild)
+                {
+                    if(m_selfAgent.GetAgentData().Sheild/m_selfAgent.GetAgentData().MaxSheild < 0.5f)
+                    {
+                        can_throw_grenade = true;
+                    }
+                }
+                else if (m_selfAgent.GetAgentData().MaxHealth >= m_selfAgent.GetAgentData().MaxSheild)
+                {
+                    if(m_selfAgent.GetAgentData().Health/m_selfAgent.GetAgentData().MaxHealth < 0.5f)
+                    {
+                        can_throw_grenade = true;
+                    }
+                }
+
+            }
+        }
+
+        if(can_throw_grenade && targetLocation & Random.value < m_selfAgent.getSkill() & m_selfAgent.GetAgentData().ThrowGrenade)
         {
             ((HumanoidMovingAgent)m_selfAgent).Throw();
         }

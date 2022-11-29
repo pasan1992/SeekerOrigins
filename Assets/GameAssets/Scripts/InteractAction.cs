@@ -28,7 +28,7 @@ public class InteractionAction : FsmStateAction
     {
         if(FinishOnState == InteractObjectObjective.InteractionState.OnStart && !finished)
         {
-            EndIntAction();   
+            EndIntAction(onStartEvent);   
         }
     }
 
@@ -36,14 +36,14 @@ public class InteractionAction : FsmStateAction
     {
         if(FinishOnState == InteractObjectObjective.InteractionState.OnComplete && !finished)
         {
-            EndIntAction();     
+            EndIntAction(finishEvent);     
         }
     }
 
-    private void EndIntAction()
+    private void EndIntAction(FsmEvent end_event)
     {
-        if(finishEvent!=null)
-            Fsm.Event(finishEvent);
+        if(end_event!=null)
+            Fsm.Event(end_event);
         finished = true;
         m_interactable.properties.interactionEnabled = false;
         Finish();

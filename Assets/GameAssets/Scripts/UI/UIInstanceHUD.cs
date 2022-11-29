@@ -104,6 +104,7 @@ public class UIInstanceHUD : MonoBehaviour
 
     private PlayerController m_player;
 
+
     void Start()
     {
         _weaponAmmoList = _player.GetComponent<HumanoidMovingAgent>().AgentData.WeaponAmmo;
@@ -122,6 +123,7 @@ public class UIInstanceHUD : MonoBehaviour
         SetTabMenuUIData();
         isFreeToOpen = true;
     }
+
 
     public bool isHudOPen()
     {

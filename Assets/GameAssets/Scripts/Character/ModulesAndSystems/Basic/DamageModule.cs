@@ -11,6 +11,8 @@ public class DamageModule
     private float damaged_count;
     private GameEvents.BasicNotifactionEvent m_onHeal;
 
+    private float SheildDamageReduction= 0.5f;
+
     public DamageModule(AgentBasicData basicData,OnDestoryDeligate onDestroyCallback,Outline outline)
     {
         m_basicData = basicData;
@@ -74,16 +76,16 @@ public class DamageModule
         if (m_basicData.Health == 0)
             return;
 
-        if (health_amount > m_basicData.Sheild)
+        if (health_amount > m_basicData.Sheild / SheildDamageReduction )
         {
-            health_amount = health_amount - m_basicData.Sheild;
+            health_amount = health_amount - m_basicData.Sheild / SheildDamageReduction;
             
             m_basicData.Sheild = 0;
             
         }
         else
         {          
-            m_basicData.Sheild = m_basicData.Sheild - health_amount;
+            m_basicData.Sheild = m_basicData.Sheild - health_amount * SheildDamageReduction;
             //setDamageText(amount,m_basicData.getAgentTransform().position,Color.blue);
             return;
         }

@@ -11,7 +11,7 @@ public class PrimaryWeapon : RangedWeapon
     {
         base.Awake();
         posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Incendiary_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(2,ProjectilePool.POOL_OBJECT_TYPE.IncendearyProjectile,this.fireRate,10));
-        posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0.25f,0));
+        posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0.05f,0));
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
         SwitchAmmoType(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString());

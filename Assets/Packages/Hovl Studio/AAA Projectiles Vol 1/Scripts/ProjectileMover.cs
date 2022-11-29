@@ -159,7 +159,7 @@ public class ProjectileMover : MonoBehaviour
                 DamageCalculator.onHitEnemy(damageFuture.other,damageFuture.m_fireFrom,damageFuture.hitDirection,damageFuture.damage,damageFuture.dot_time);
                 break;
                 case DamageCalculator.DamageFuture.DamageLocation.Item:
-                DamageCalculator.onHitDamagableItem(damageFuture.other,damageFuture.m_fireFrom,damageFuture.hitDirection);
+                DamageCalculator.onHitDamagableItem(damageFuture.damage,damageFuture.other,damageFuture.m_fireFrom,damageFuture.hitDirection);
                 break;
                 case DamageCalculator.DamageFuture.DamageLocation.Wall:
                 DamageCalculator.hitOnWall(damageFuture.other,damageFuture.hitpoint);

@@ -11,6 +11,19 @@ public class UICanvasHandler : MonoBehaviour
     bool _isAvailaleEscape = true;
     bool _isAvailaleTab = true;
 
+    public static UICanvasHandler this_instance;
+    public bool isTabMenuOn = false;
+
+    public static UICanvasHandler getInstance()
+    {
+        if(this_instance ==null)
+        {
+            this_instance = GameObject.FindObjectOfType<UICanvasHandler>();
+        }
+
+        return this_instance;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -36,6 +49,7 @@ public class UICanvasHandler : MonoBehaviour
             if (_isAvailaleEscape)
             {
                 _isAvailaleTab = false;
+                isTabMenuOn = true;
                 _gameHUDCanvas.alpha = 0;
                 _weponeMenuCanvas.gameObject.SetActive(true);
                 _weponeMenuCanvas.alpha = 1;
@@ -58,6 +72,7 @@ public class UICanvasHandler : MonoBehaviour
 
                 _gameHUDCanvas.alpha = 1;
                 _isAvailaleTab = true;
+                isTabMenuOn = false;
             }
         }
     }

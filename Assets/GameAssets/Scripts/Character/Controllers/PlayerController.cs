@@ -390,7 +390,7 @@ public class PlayerController : AgentController
 
     private void Update()
     {
-        if(!m_enabled)
+        if(!m_enabled || UICanvasHandler.getInstance().isTabMenuOn)
         {
             return;
         }

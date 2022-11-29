@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3960fdf7b65944945917300f712b6f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionType: 19
   head: {fileID: 5700473208435989202}
   hands:
   - {fileID: 8110747597742827886}

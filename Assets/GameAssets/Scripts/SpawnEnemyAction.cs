@@ -26,6 +26,23 @@ public class SpawnEnemyAction : FsmStateAction
                 for(int i=0; i< agent.agentCount; i++) 
                 {
                     agentCount += 1;
+                }
+            }
+            StartCoroutine(waitAndSpawn());
+
+        if (!waitTillEnd)
+        {
+            Finish();
+        }
+    }
+
+    private IEnumerator waitAndSpawn()
+    {
+            foreach(CommonFunctions.ActionAgent agent in agents) 
+            {
+                for(int i=0; i< agent.agentCount; i++) 
+                {
+                    yield return new WaitForSeconds(agent.wait);
                     var enemey = GameObject.Instantiate(agent.agentController);
                     var navMesh = enemey.GetComponent<NavMeshAgent>();
 
@@ -36,19 +53,11 @@ public class SpawnEnemyAction : FsmStateAction
                     AgentController agentCont = enemey.GetComponent<AgentController>();
                     enemey.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
                     StartCoroutine(waitAndAttack(agentCont, Target));
+                    
                 }
                 
                 
             }
-            
-    
-            
-
-
-        if (!waitTillEnd)
-        {
-            Finish();
-        }
     }
 
     public void OnDestroyed()
