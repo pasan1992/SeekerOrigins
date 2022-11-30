@@ -141,6 +141,11 @@ public class DamageCalculator
 
     public static void onHitDamagableItem(CommonFunctions.Damage damage, Collider other,AgentBasicData.AgentFaction m_fireFrom,Vector3 hitDirection)
     {
+        if (other == null)
+        {
+            return;
+        }
+        
         DamagableObject damagableObject = other.transform.GetComponentInParent<DamagableObject>();
         
         if(damagableObject != null)

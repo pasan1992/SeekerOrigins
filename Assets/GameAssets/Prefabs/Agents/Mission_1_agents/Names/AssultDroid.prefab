@@ -21,7 +21,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a21c28f92f2d894489878c44028a66c0, type: 2}
+      objectReference: {fileID: 2100000, guid: 04e71246c75bcad4bb526ab1430652ce, type: 2}
     - target: {fileID: 4607530255411957966, guid: 9934d631196d9ce4dbe48b49d07347ab,
         type: 3}
       propertyPath: m_IsActive
@@ -77,6 +77,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 55c0cd122e2ec5d4eb6df00a2966824b, type: 2}
+    - target: {fileID: 7107664711879474232, guid: 9934d631196d9ce4dbe48b49d07347ab,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.45834818
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107664711879474232, guid: 9934d631196d9ce4dbe48b49d07347ab,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.45834818
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107664711879474232, guid: 9934d631196d9ce4dbe48b49d07347ab,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
     - target: {fileID: 8851718178811672317, guid: 9934d631196d9ce4dbe48b49d07347ab,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
