@@ -6519,7 +6519,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0
+          value: 1
         fsmBoolParams:
         - useVariable: 0
           name: 
@@ -24829,6 +24829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810605256315719478, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: fsm.states.Array.data[1].actionData.fsmIntParams.Array.data[0].value
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5961590265311864559, guid: c2bbcbdf8110fed41b7f9e37812fd796,
         type: 3}
