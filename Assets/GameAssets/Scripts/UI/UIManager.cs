@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public ItemStat ItemStatUI;
 
     [SerializeField] Image _InteractImg;
-    [SerializeField] TMP_Text _lootText;
+    //[SerializeField] TMP_Text _lootText;
 
     [SerializeField] public Image _pistolImg;
     [SerializeField] public Image _rifleImg;
@@ -41,9 +41,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] public TMP_Text _sheildCountTxt;
     [SerializeField] public TMP_Text _bulletCountTxt;
 
-    [SerializeField] TMP_Text _magazinCountTxt;
-    [SerializeField] Image _weaponImg;
-    [SerializeField] Sprite[] _weaponList;
+    //[SerializeField] TMP_Text _magazinCountTxt;
+    //[SerializeField] Image _weaponImg;
+    //[SerializeField] Sprite[] _weaponList;
 
     //[SerializeField] GameObject _interactImg;
     [SerializeField] GameObject _pickupMsgTxt;
@@ -53,15 +53,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] Transform _pickupMsgTxtParant;
     [SerializeField] GameObject _pickupMsgPanel;
     private FloatingGameUI m_onPickupMsgPanelUI;
-    [SerializeField] GameObject _ammoBox;
+    //[SerializeField] GameObject _ammoBox;
 
-    [SerializeField] Transform _taskMsgTxtParant;
-    [SerializeField] GameObject _taskMsgPanel;
+    //[SerializeField] Transform _taskMsgTxtParant;
+    //[SerializeField] GameObject _taskMsgPanel;
 
-    [SerializeField] Transform _targetParant;
-    [SerializeField] Image _target;
+    //[SerializeField] Transform _targetParant;
+    //[SerializeField] Image _target;
 
-    [SerializeField] GameObject _activeWeapon;
+    //[SerializeField] GameObject _activeWeapon;
     private AgentData _agentData;
 
     int _primaryWeaponAmmo;
@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
     float _prevHealth = 1;
     float _prevSheild = 1;
 
-    Coroutine pickupCorouting = null;
+    //Coroutine pickupCorouting = null;
 
     bool _havingSheald = true;
 
@@ -376,7 +376,7 @@ public class UIManager : MonoBehaviour
         {
             //_bulletCountTxt.text = "0";
             //_bulletsBarImg.fillAmount = 0;
-            _target.fillAmount = 0;
+            //_target.fillAmount = 0; //TOCHECK
         }
 
         #region Injection
@@ -595,7 +595,7 @@ public class UIManager : MonoBehaviour
         {
             //lootText.setInteratableObject(m_currentInteractable);
             m_currentInteractable.setOutLineState(Interactable.outLineState.Blue);
-            _lootText.text = m_currentInteractable.name + ": Press E to Interact";
+            //_lootText.text = m_currentInteractable.name + ": Press E to Interact"; //TOCHECK
             //lootText.text = m_currentInteractable.name + ": Press E to Interact";
 
             FloatingGameUI onInteractiveUI = _InteractImg.GetComponent<FloatingGameUI>();
@@ -609,7 +609,7 @@ public class UIManager : MonoBehaviour
             _InteractImg.gameObject.SetActive(false);
 
             //lootText.text = "";
-            _lootText.text = "";
+            //_lootText.text = ""; //TOCHECK
         }
     }
 
