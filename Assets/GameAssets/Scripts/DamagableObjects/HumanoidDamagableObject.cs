@@ -34,6 +34,12 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             damageValue.healthDamage += damageValue.healthDamage * 1.5f;
             damageValue.energyDamage += damageValue.energyDamage * 1.5f;
         }
+        if(m_movingAgent.isDisabled())
+        {
+            damageValue.healthDamage += damageValue.healthDamage * 2f;
+            damageValue.energyDamage += damageValue.energyDamage * 2f;            
+        }
+        
         m_movingAgent.damageAgent(calculate_bonous_damage(-m_movingAgent.getTransfrom().forward,force,damageValue));
         m_movingAgent.reactOnHit(collider, force, point);
 

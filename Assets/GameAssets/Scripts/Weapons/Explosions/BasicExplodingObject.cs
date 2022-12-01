@@ -6,13 +6,12 @@ public class BasicExplodingObject : MonoBehaviour
 {
      [SerializeField] 
     protected float m_baseDamage;
-    protected float m_baseEnergyDamage = 0;
+    public float m_energyDaamge;
 
      [SerializeField] 
     protected float m_range = 7;
 
     public float BaseDamage { get => m_baseDamage; set => m_baseDamage = value; }
-    public float BaseEnergyDamage { get => m_baseEnergyDamage; set => m_baseEnergyDamage = value; }
     public float Range { get => m_range; set => m_range = value; }
 
     public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
@@ -101,7 +100,7 @@ public class BasicExplodingObject : MonoBehaviour
             {
 
                 // Neeed to improve it exploding objects must not have faction
-                damagableObject.damage(new CommonFunctions.Damage(m_baseDamage*damagePropotion,m_baseEnergyDamage*damagePropotion),other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
+                damagableObject.damage(new CommonFunctions.Damage(m_baseDamage*damagePropotion,m_energyDaamge*damagePropotion),other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
                 var mvdamage = (MovingAgentDamagableObject)damagableObject;
                 if(mvdamage !=null)
                 {
