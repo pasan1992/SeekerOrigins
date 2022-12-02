@@ -409,7 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eedd815e09c47a418e33efebfe47169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 4
+  m_baseDamage: 6
+  m_energyDaamge: 10
   m_range: 3
   explosionType: 0
   m_explosionCountDown: 3

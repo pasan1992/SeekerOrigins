@@ -591,6 +591,7 @@ public class UIInstanceHUD : MonoBehaviour
 
     public void UpdatePistolAmmoType(int type)
     {
+        var previous_ammo = _selectedPistolAmmo;
         switch (type)
         {
             case 1:
@@ -603,12 +604,17 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedPistolAmmo = AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo.ToString();
                 break;
         }
-         m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol, _selectedPistolAmmo);
+        if(previous_ammo != _selectedPistolAmmo)
+        {
+            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol, _selectedPistolAmmo);
+        }
+
         HudCloseInstanly();
     }
 
     public void UpdateRifleAmmoType(int type)
-    {           
+    {       
+        var previous_ammo = _selectedRifleAmmo;    
         switch (type)
         {
             case 1:
@@ -621,7 +627,11 @@ public class UIInstanceHUD : MonoBehaviour
                 _selectedRifleAmmo = AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo.ToString();
                 break;
         }
-        m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle, _selectedRifleAmmo);
+        if(previous_ammo != _selectedRifleAmmo)
+        {
+            m_player.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle, _selectedRifleAmmo);
+        }
+        
         HudCloseInstanly();
     }
 
