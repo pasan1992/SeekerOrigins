@@ -745,7 +745,7 @@ public class HumanoidRangedWeaponsModule
                     m_agentData.AddAmmo(ammo_name,ammo_count);
                     m_rifle.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
 
-                    if(m_currentWeapon !=null && m_rifle != m_currentWeapon )
+                    if( (m_currentWeapon !=null && m_rifle != m_currentWeapon) )
                     {
                         togglePrimary();
                     }
@@ -766,7 +766,7 @@ public class HumanoidRangedWeaponsModule
                     m_agentData.AddAmmo(ammo_name,ammo_count);
                     m_pistol.setAmmoCount(m_agentData.useAmmoCount(ammo_name,current_ammo));
 
-                    if(m_currentWeapon !=null && m_pistol != m_currentWeapon )
+                    if( (m_currentWeapon !=null && m_pistol != m_currentWeapon))
                     {
                         toggleSecondary();
                     }

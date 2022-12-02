@@ -19,6 +19,9 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
     private ICyberAgent m_enemy;
 
     private Vector3 m_targetPosition;
+
+    public AutoHumanoidAgentController.WeaponType preferedWeapon = AutoHumanoidAgentController.WeaponType.SECONDAY;
+
     void Start()
     {
         m_agent = this.GetComponent<HumanoidMovingAgent>();
@@ -163,7 +166,7 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
 
     private void staryCover()
     {
-        m_agent.togglePrimaryWeapon();
+        _toggleWeapon();
         _goHidden(true);
         m_hbar.set_full_cover();
     }
@@ -240,11 +243,24 @@ public class HumanoidSimpleBehaviorController : MonoBehaviour
     {
         if(!m_agent.isArmed() & armed)
         {
-            m_agent.togglepSecondaryWeapon();
+            _toggleWeapon();
         }
         else if (!armed && m_agent.isAimed())
         {
+            _toggleWeapon();
+        }
+    }
+
+    private void _toggleWeapon()
+    {
+        switch(preferedWeapon)
+        {
+            case AutoHumanoidAgentController.WeaponType.PRIMARY:
+            m_agent.togglePrimaryWeapon();
+            break;
+            case AutoHumanoidAgentController.WeaponType.SECONDAY:
             m_agent.togglepSecondaryWeapon();
+            break;
         }
     }
 
