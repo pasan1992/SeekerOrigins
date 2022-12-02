@@ -7,6 +7,7 @@ public class UICanvasHandler : MonoBehaviour
     [SerializeField] CanvasGroup _gameHUDCanvas;
     [SerializeField] CanvasGroup _inGameMenuCanvas;
     [SerializeField] CanvasGroup _weponeMenuCanvas;
+    [SerializeField] CanvasGroup _videoPlayerCanvas;
 
     bool _isAvailaleEscape = true;
     bool _isAvailaleTab = true;
@@ -85,5 +86,30 @@ public class UICanvasHandler : MonoBehaviour
         _gameHUDCanvas.alpha = 1;
 
         _isAvailaleEscape = true;
+    }
+
+    public void OpenVideoPlayerHome()
+    {
+        _gameHUDCanvas.alpha = 0;
+
+        _videoPlayerCanvas.gameObject.SetActive(true);
+        _videoPlayerCanvas.alpha = 1;
+
+        _isAvailaleEscape = false;
+        _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
+
+    }
+
+    public void CloseVideoPlayerHome()
+    {
+
+        _videoPlayerCanvas.alpha = 0;
+        _videoPlayerCanvas.gameObject.SetActive(false);
+
+        _gameHUDCanvas.alpha = 1;
+
+        _isAvailaleEscape = true;
+        _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
+
     }
 }
