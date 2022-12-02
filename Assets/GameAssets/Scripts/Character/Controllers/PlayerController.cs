@@ -489,6 +489,7 @@ public class PlayerController : AgentController
     public void setEnabled (bool enabled)
     {
         m_enabled = enabled;
+        m_movingAgent.moveCharacter(Vector3.zero);
     }
 
     public bool getEnabled()

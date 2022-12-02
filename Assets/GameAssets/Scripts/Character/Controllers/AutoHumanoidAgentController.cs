@@ -97,6 +97,7 @@ public class AutoHumanoidAgentController :  AgentController
     {
         if(m_restrictions == AGENT_AI_RESTRICTIONS.DISABLED)
         {
+            m_movingAgent.moveCharacter(Vector3.zero);
             return;
         }
 

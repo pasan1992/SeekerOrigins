@@ -43,13 +43,19 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         m_movingAgent.damageAgent(calculate_bonous_damage(-m_movingAgent.getTransfrom().forward,force,damageValue));
         m_movingAgent.reactOnHit(collider, force, point);
 
-        GameObject smoke = ProjectilePool.getInstance().getPoolObject(particleEffectOnDamage);
+
+        ProjectilePool.POOL_OBJECT_TYPE damageEffect = ProjectilePool.POOL_OBJECT_TYPE.ElectricParticleEffect;
+        if(m_movingAgent.GetAgentData().Sheild == 0)
+        {
+            damageEffect = particleEffectOnDamage;
+        }
+
+        GameObject smoke = ProjectilePool.getInstance().getPoolObject(damageEffect);
         if(smoke)
         {
         smoke.SetActive(true);
         smoke.transform.position = collider.transform.position;
         }
-
 
         if (getRemaningHealth() == 0)
         {
