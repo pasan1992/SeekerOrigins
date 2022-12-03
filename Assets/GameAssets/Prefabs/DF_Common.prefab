@@ -65132,13 +65132,49 @@ MonoBehaviour:
   rotationSpeed: 1
   roataionEnabled: 1
   maintainAimedOffset: 1
-  shake_magnitue: 0.4
-  shake_count_start: 2
-  shake_count_end: 2
-  shake_rate: 0.3
-  shake_lerp_start: 0.3
-  shake_lerp_end: 0.3
   screenDamageFilter: {fileID: 3363295911698008485}
+  _shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.23434578
+      value: 0.79447234
+      inSlope: 1.1781968
+      outSlope: 1.1781968
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6904387
+      value: 0.9822419
+      inSlope: 0.100116104
+      outSlope: 0.100116104
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &4607712558383836174
 MonoBehaviour:
   m_ObjectHideFlags: 0

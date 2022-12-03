@@ -19,21 +19,20 @@ public class GamePlayCam : MonoBehaviour
 
     public bool maintainAimedOffset = false;
 
-    public float shake_magnitue = 1;
-    public float shake_count_start = 1;
-    public float shake_count_end = 1;
-    public float shake_rate = 1;
-    public float shake_lerp_start = 1;
-    public float shake_lerp_end = 1;
-
     public Image screenDamageFilter;
 
+    private Camera m_camera;
+    [SerializeField] AnimationCurve _shakeCurve;
+    private bool isStaking;
+    private float cam_fov;
     //public float speedMultiplayer;
     void Start()
     {
         offset = target.transform.position - this.transform.position;
         m_cameraAimOffset = Vector3.zero;
         var outlines = FindObjectsOfType<Outline>();
+        m_camera = Camera.main;
+        cam_fov = m_camera.fieldOfView;
         // foreach(Outline outline in outlines)
         // {
         //     outline.OutlineMode = Outline.Mode.SilhouetteOnly;
@@ -128,22 +127,25 @@ public class GamePlayCam : MonoBehaviour
 
     public IEnumerator cam_Shake(Vector3 direction,float magnitigue)
     {
-        /*
-        direction.y = 0;
-        direction = Vector3.left * shake_magnitue;
-        for (int i=0;i<shake_count_start;i++)
+        if(!isStaking)
         {
-            yield return new WaitForSeconds(Time.deltaTime* shake_rate);
-            this.transform.position = Vector3.Lerp(this.transform.position, calcualteCameraAimPositon() + direction, shake_lerp_start);
-        }
+            isStaking = true;
+            for (float t = 0; t < 0.1f; t += Time.deltaTime)
+            {
+                float y = _shakeCurve.Evaluate(t * 10);
+                m_camera.fieldOfView = cam_fov + y/5;
+                yield return null;
+            }
+            cam_fov = m_camera.fieldOfView;
+            for (float t = 0; t < 0.1f; t += Time.deltaTime)
+            {
+                float y = _shakeCurve.Evaluate(t * 10);
+                m_camera.fieldOfView = cam_fov - y/5;
+                yield return null;
+            }
+            isStaking= false;
+        }   
 
-        for (int i = 0; i < shake_count_start; i++)
-        {
-            yield return new WaitForSeconds(Time.deltaTime * shake_rate);
-            this.transform.position = Vector3.Lerp(this.transform.position, calcualteCameraAimPositon(), shake_lerp_end);
-        }
-        */
-        yield return null;
 
         //transform.position = originalPose;
     }
