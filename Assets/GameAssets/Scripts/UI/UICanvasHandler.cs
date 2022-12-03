@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class UICanvasHandler : MonoBehaviour
 {
     [SerializeField] CanvasGroup _gameHUDCanvas;
     [SerializeField] CanvasGroup _inGameMenuCanvas;
     [SerializeField] CanvasGroup _weponeMenuCanvas;
+    [SerializeField] CanvasGroup _instantVideoPlayerCanvas;
     [SerializeField] CanvasGroup _videoPlayerCanvas;
 
     bool _isAvailaleEscape = true;
     bool _isAvailaleTab = true;
+    bool _isOpenInstantVideo = false;
+
+    public bool isTabMenuOn = false;
 
     public static UICanvasHandler this_instance;
-    public bool isTabMenuOn = false;
 
     public static UICanvasHandler getInstance()
     {
@@ -28,52 +32,55 @@ public class UICanvasHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!_isOpenInstantVideo)
         {
-            if (_isAvailaleEscape && _isAvailaleTab)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                _gameHUDCanvas.alpha = 0;
-                _inGameMenuCanvas.gameObject.SetActive(true);
-                _inGameMenuCanvas.alpha = 1;
-
-                _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
-                _isAvailaleEscape = false;
-            }
-            else if (_isAvailaleTab)
-            {
-                CloseMenu();
-            }
-        }
-
-        if (Input.GetKey(KeyCode.Tab))
-        {
-            if (_isAvailaleEscape)
-            {
-                _isAvailaleTab = false;
-                isTabMenuOn = true;
-                _gameHUDCanvas.alpha = 0;
-                _weponeMenuCanvas.gameObject.SetActive(true);
-                _weponeMenuCanvas.alpha = 1;
-
-                if (_weponeMenuCanvas.GetComponent<UIInstanceHUD>().isFreeToOpen)
+                if (_isAvailaleEscape && _isAvailaleTab)
                 {
-                    _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToOpen();
+                    _gameHUDCanvas.alpha = 0;
+                    _inGameMenuCanvas.gameObject.SetActive(true);
+                    _inGameMenuCanvas.alpha = 1;
+
+                    _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
+                    _isAvailaleEscape = false;
+                }
+                else if (_isAvailaleTab)
+                {
+                    CloseMenu();
                 }
             }
-        }
 
-        if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            if (_isAvailaleEscape)
+            if (Input.GetKey(KeyCode.Tab))
             {
-                _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToClose();
+                if (_isAvailaleEscape)
+                {
+                    _isAvailaleTab = false;
+                    isTabMenuOn = true;
+                    _gameHUDCanvas.alpha = 0;
+                    _weponeMenuCanvas.gameObject.SetActive(true);
+                    _weponeMenuCanvas.alpha = 1;
 
-                _weponeMenuCanvas.alpha = 0;
-                _weponeMenuCanvas.gameObject.SetActive(false);
+                    if (_weponeMenuCanvas.GetComponent<UIInstanceHUD>().isFreeToOpen)
+                    {
+                        _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToOpen();
+                    }
+                }
+            }
 
-                _gameHUDCanvas.alpha = 1;
-                _isAvailaleTab = true;
-                isTabMenuOn = false;
+            if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                if (_isAvailaleEscape)
+                {
+                    _weponeMenuCanvas.GetComponent<UIInstanceHUD>().CallToClose();
+
+                    _weponeMenuCanvas.alpha = 0;
+                    _weponeMenuCanvas.gameObject.SetActive(false);
+
+                    _gameHUDCanvas.alpha = 1;
+                    _isAvailaleTab = true;
+                    isTabMenuOn = false;
+                }
             }
         }
     }
@@ -86,6 +93,30 @@ public class UICanvasHandler : MonoBehaviour
         _gameHUDCanvas.alpha = 1;
 
         _isAvailaleEscape = true;
+    }
+
+    public void OpenInstantVideoPlayerHome()
+    {
+        _isOpenInstantVideo = true;
+
+        _gameHUDCanvas.alpha = 0;
+
+        _instantVideoPlayerCanvas.gameObject.SetActive(true);
+        _instantVideoPlayerCanvas.alpha = 1;
+
+        _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
+    }
+
+    public void CloseInstantVideoPlayerHome()
+    {
+
+        _instantVideoPlayerCanvas.alpha = 0;
+        _instantVideoPlayerCanvas.gameObject.SetActive(false);
+
+        _gameHUDCanvas.alpha = 1;
+
+        _isOpenInstantVideo = false;
+        _inGameMenuCanvas.GetComponent<InGameMenuManager>().GamePaused();
     }
 
     public void OpenVideoPlayerHome()

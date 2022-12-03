@@ -7,13 +7,20 @@ using UnityEngine.Video;
 
 public class VideoHandler : MonoBehaviour
 {
+    [SerializeField] UICanvasHandler _uICanvasHandler;
+
     [SerializeField] List<VideoClip> _videoClip;
     [SerializeField] VideoPlayer _videoPlayer;
     [SerializeField] RenderTexture _renderTexture;
 
-    public void SelectClip(int clipNo)
+    public void OnEnable()
     {
-        _videoPlayer.clip = _videoClip[clipNo];
+        SelectClip();
+    }
+
+    public void SelectClip()
+    {
+        _videoPlayer.clip = _videoClip[PlayerPrefs.GetInt("loadVideo",0)];
         _renderTexture.Release();
         _videoPlayer.Play();
     }
@@ -23,18 +30,18 @@ public class VideoHandler : MonoBehaviour
         _videoPlayer.Play();
     }
 
-    public void PauseVideo()
-    {
-        _videoPlayer.Pause();
-    }
-
     public void StopVideo()
     {
         _videoPlayer.Stop();
     }
+   public void PauseVideo()
+    {
+        _videoPlayer.Pause();
+    }
 
-    public void ClosePLayer()
+    public void CloseInstantPLayer()
     {
         StopVideo();
+        _uICanvasHandler.CloseInstantVideoPlayerHome();
     }
 }
