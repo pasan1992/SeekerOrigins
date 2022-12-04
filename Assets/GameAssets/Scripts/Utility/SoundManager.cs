@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
@@ -9,20 +11,45 @@ public class SoundManager : MonoBehaviour
     private AudioClip m_emptyGun;
     private AudioClip m_buletHitMetal;
 
-
+    [System.Serializable]
+    public struct SoundEffect
+    {
+        public AudioClip[] sound;
+        public string soundName;
+    }
 
     public string pistolSoundFile;
     public string emptyGunSoundFile;
     public string rifleSoundFile;
     public string bulletHitMetal;
+    private static SoundManager this_ins;
+    private string sound_location ="Sounds/";
 
+
+    public List<SoundEffect> SoundList = new List<SoundEffect>();
+    private Dictionary<string,AudioClip[]> sound_dict = new Dictionary<string,AudioClip[]>(); 
     void Awake()
     {
-        m_laserPistol = Resources.Load<AudioClip>("Sounds/" + pistolSoundFile);
-        m_laserRifal = Resources.Load<AudioClip>("Sounds/" + rifleSoundFile);
-        m_droneExplosion = Resources.Load<AudioClip>("Sounds/droneExplosion");
-        m_emptyGun = Resources.Load<AudioClip>("Sounds/" + emptyGunSoundFile);
-        m_buletHitMetal = Resources.Load<AudioClip>("Sounds/" + bulletHitMetal);
+        m_laserPistol = Resources.Load<AudioClip>(sound_location + pistolSoundFile);
+        m_laserRifal = Resources.Load<AudioClip>(sound_location + rifleSoundFile);
+        m_droneExplosion = Resources.Load<AudioClip>(sound_location+"/droneExplosion");
+        m_emptyGun = Resources.Load<AudioClip>(sound_location + emptyGunSoundFile);
+        m_buletHitMetal = Resources.Load<AudioClip>(sound_location + bulletHitMetal);
+
+        foreach(SoundEffect s in SoundList)
+        {
+            sound_dict.Add(s.soundName,s.sound);
+        }
+    }
+
+    public static SoundManager getInstance()
+    {
+        if(this_ins ==null)
+        {
+            this_ins = GameObject.FindObjectOfType<SoundManager>();
+        }
+
+        return this_ins;
     }
 
     public AudioClip getLaserPistolAudioClip()
@@ -48,5 +75,15 @@ public class SoundManager : MonoBehaviour
     public AudioClip getBulletHitMetal()
     {
         return m_buletHitMetal;
+    }
+
+    public AudioClip getSound(string soundName)
+    {
+        if(sound_dict.ContainsKey(soundName))
+        {
+            var clips = sound_dict[soundName];
+            return clips[Random.Range(0,clips.GetLength(0))];
+        }
+        return null;
     }
 }

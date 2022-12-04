@@ -142,10 +142,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 2001428145241486108}
@@ -726,10 +728,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0.1, z: 0}
     magazineObjProp: {fileID: 96951351298641143}
@@ -17206,10 +17210,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 1196078089295886714}
@@ -42455,10 +42461,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 0}
@@ -46193,10 +46201,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 0}
@@ -57937,8 +57947,6 @@ GameObject:
   - component: {fileID: 3209784683429458903}
   - component: {fileID: 3176744139028636579}
   - component: {fileID: 4548465470531181705}
-  - component: {fileID: 8399273458960013842}
-  - component: {fileID: 1317650064}
   m_Layer: 0
   m_Name: --GAMESYSTEM--
   m_TagString: Untagged
@@ -57986,6 +57994,15 @@ MonoBehaviour:
   emptyGunSoundFile: EmptyGun
   rifleSoundFile: SHOT
   bulletHitMetal: TING
+  SoundList:
+  - sound:
+    - {fileID: 8300000, guid: 6d4dc73411d951b4b915d2d03d1b63a6, type: 3}
+    - {fileID: 8300000, guid: c623bb4207f3fc84ead211e7cd327a41, type: 3}
+    soundName: TEST
+  - sound:
+    - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
+    - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
+    soundName: DroneFire
 --- !u!114 &3209784683429458911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58167,198 +58184,6 @@ MonoBehaviour:
   CharacterImage: {fileID: 4021429976527012157}
   dialogUI: {fileID: 8517184668400327212}
 --- !u!82 &4548465470531181705
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3209784683429458907}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &8399273458960013842
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3209784683429458907}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!82 &1317650064
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109602,10 +109427,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 8667083903617412536}

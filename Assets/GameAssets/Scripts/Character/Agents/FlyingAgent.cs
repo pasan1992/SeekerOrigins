@@ -217,7 +217,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         }
         proj.StartFire(hitPos);
 
-        m_audioSource.Play();
+        m_audioSource.PlayOneShot(SoundManager.getInstance().getSound("DroneFire"));
     }
 
     public Vector3 getFirePoint()

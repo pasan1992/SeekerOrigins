@@ -43,6 +43,7 @@ public class Interactable : MonoBehaviour
         public Transform actualObject = null;
         public bool PlayerRestricted = false;
         public GameEvents.BasicEnableDisableEvent interatabilityChange; 
+        public string InteractionSoundName = "";
     }
 
     [System.Serializable]
@@ -88,6 +89,7 @@ public class Interactable : MonoBehaviour
     }
 
     public enum outLineState {Disabled,white,Blue};
+    public AudioSource m_baseAudioSource;
 
     public virtual void Awake()
     {
@@ -111,6 +113,12 @@ public class Interactable : MonoBehaviour
 
         // set event on interatability change
         properties.interatabilityChange +=setInteratableIndicator;
+        m_baseAudioSource = this.GetComponent<AudioSource>();
+        if(m_baseAudioSource == null)
+        {
+            this.gameObject.AddComponent<AudioSource>();
+            m_baseAudioSource = this.GetComponent<AudioSource>();
+        }
     }
 
     public void Start()
@@ -186,7 +194,23 @@ public class Interactable : MonoBehaviour
         interacting = true;
 
         if(onInteractionStartCallback!=null)
+        {
             onInteractionStartCallback();
+            if(properties.InteractionSoundName!="")
+            {
+                var sm = SoundManager.getInstance();
+                var sound_clip = sm.getSound(properties.InteractionSoundName);
+                if(sound_clip)
+                {
+                    m_baseAudioSource.PlayOneShot(sound_clip);
+                }
+                else
+                {
+                    Debug.LogError("No sound clip named: " + properties.InteractionSoundName);
+                }
+            }
+        }
+            
 
         //Debug.Log("interact");
     }

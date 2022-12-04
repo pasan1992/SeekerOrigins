@@ -4586,6 +4586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResetTime: 1.5
   defaultOnEnable: 0
+  ParticleSound: BloodExplosion
 --- !u!1 &6661039064491657791
 GameObject:
   m_ObjectHideFlags: 0
