@@ -27,6 +27,9 @@ public class AutoHumanoidAgentController :  AgentController
 
     private bool m_forced_attack = false;
     private Transform m_force_transfrom = null;
+    public enum COMBAT_BEHAVIOR {COVERA_BASED_SHOOTER,RUNNER};
+    public COMBAT_BEHAVIOR m_combatBehavior = COMBAT_BEHAVIOR.COVERA_BASED_SHOOTER;
+
     #region initaialize
 
     private void Awake()
@@ -64,7 +67,16 @@ public class AutoHumanoidAgentController :  AgentController
 
     private void inializeGuard()
     {
-        m_combatStage = new CoverPointBasedCombatStage(m_movingAgent,m_navMeshAgent,GameEnums.MovmentBehaviorType.FREE);
+        switch(m_combatBehavior)
+        {
+            case COMBAT_BEHAVIOR.COVERA_BASED_SHOOTER:
+            m_combatStage = new CoverPointBasedCombatStage(m_movingAgent,m_navMeshAgent,GameEnums.MovmentBehaviorType.FREE);
+            break;
+            case COMBAT_BEHAVIOR.RUNNER:
+            m_combatStage = new ExplodingRunner(m_movingAgent,m_navMeshAgent,this.GetComponent<BasicExplodingObject>());
+            break;
+        }
+        
         m_idleStage = new IteractionStage(m_movingAgent,m_navMeshAgent,rutine.m_wayPoints.ToArray());
     }
     #endregion
@@ -131,7 +143,16 @@ public class AutoHumanoidAgentController :  AgentController
         }
         else
         {
-            ((CoverPointBasedCombatStage)m_combatStage).alrtDamage();
+            ((BasicMovmentCombatStage)m_combatStage).alrtDamage();
+            // switch(m_combatBehavior)
+            // {
+            //     case COMBAT_BEHAVIOR.COVERA_BASED_SHOOTER:
+            //     ((CoverPointBasedCombatStage)m_combatStage).alrtDamage();
+            //     break;
+            //     case COMBAT_BEHAVIOR.RUNNER:
+            //     break;
+            // }
+            
             
         }
         m_visualSensor.forceUpdateSneosr();
@@ -287,13 +308,24 @@ public class AutoHumanoidAgentController :  AgentController
         {
             return;
         }
-        CombatTextShower.Instance.yellMessage("Initiating Attack", m_movingAgent,1,0.7f);
-        if (m_currentState != m_combatStage)
+        switch(m_combatBehavior)
         {
+            case COMBAT_BEHAVIOR.COVERA_BASED_SHOOTER:
+            CombatTextShower.Instance.yellMessage("Initiating Attack", m_movingAgent,1,0.7f);
+            if (m_currentState != m_combatStage)
+            {
+                m_movingAgent.cancleInteraction();
+                ((CoverPointBasedCombatStage)m_combatStage).initalizeStage(preferedWeapon);
+                m_currentState = m_combatStage;
+            }
+            break;
+            case COMBAT_BEHAVIOR.RUNNER:
             m_movingAgent.cancleInteraction();
-            ((CoverPointBasedCombatStage)m_combatStage).initalizeStage(preferedWeapon);
             m_currentState = m_combatStage;
+            break;
         }
+
+
         
     }
 
