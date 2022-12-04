@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 6504774399072452185, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_Name
-      value: Worker
+      value: Bomber
       objectReference: {fileID: 0}
     - target: {fileID: 6504834068431127695, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}

@@ -17,12 +17,15 @@ public class BasicTimerExplodingObject : BasicExplodingObject
 
     private float blink_time = 0;
 
+    private AudioSource m_audioSource;
+
     public void Awake()
     {
         if(indicator)
         {
             indicator.SetActive(false);
         }
+        m_audioSource = this.GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -70,6 +73,7 @@ public class BasicTimerExplodingObject : BasicExplodingObject
     private IEnumerator blink()
     {
         indicator.SetActive(true);
+        m_audioSource.Play();
         yield return new WaitForSeconds( (ExplosionCountDown - CurrentCownDown) / 20 );
         indicator.SetActive(false);
         yield return new WaitForSeconds( (ExplosionCountDown - CurrentCownDown) / 20 );

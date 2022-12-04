@@ -82,4 +82,23 @@ public class CommonFunctions
             obj.position = hit.point + Vector3.up * 0.2f;
         }
     }
+
+    public static void PlaySound(string soundName, AudioSource audioSource)
+    {
+        Debug.Log(soundName);
+        if(soundName!="")
+        {
+            Debug.Log(soundName);
+            var sm = SoundManager.getInstance();
+            var sound_clip = sm.getSound(soundName);
+            if(sound_clip)
+            {
+                audioSource.PlayOneShot(sound_clip);
+            }
+            else
+            {
+                Debug.LogError("No sound clip named: " + soundName);
+            }
+        }
+    }
 }

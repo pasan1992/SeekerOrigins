@@ -198,21 +198,8 @@ public class Interactable : MonoBehaviour
         {
             onInteractionStartCallback();
         }
-        if(properties.InteractionSoundName!="")
-        {
-            var sm = SoundManager.getInstance();
-            var sound_clip = sm.getSound(properties.InteractionSoundName);
-            if(sound_clip)
-            {
-                m_baseAudioSource.PlayOneShot(sound_clip);
-            }
-            else
-            {
-                Debug.LogError("No sound clip named: " + properties.InteractionSoundName);
-            }
-        }
-            
 
+        CommonFunctions.PlaySound(properties.InteractionSoundName,m_baseAudioSource);
         //Debug.Log("interact");
     }
 

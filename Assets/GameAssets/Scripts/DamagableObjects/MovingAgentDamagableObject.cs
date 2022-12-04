@@ -85,8 +85,6 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
             Debug.Log("Not damaging");
             return false;
         }*/
-        Debug.Log(stunPrecentage);
-        Debug.Log("sdsd");
 
         // if (stunPrecentage > Random.value)
         // {
