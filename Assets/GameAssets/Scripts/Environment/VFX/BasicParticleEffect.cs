@@ -32,20 +32,7 @@ public class BasicParticleEffect : MonoBehaviour
         if(defaultOnEnable)
         {
             _onEnable(ResetTime);
-            if(ParticleSound!="")
-            {
-                var sm = SoundManager.getInstance();
-                var sound_clip = sm.getSound(ParticleSound);
-                Debug.Log(sound_clip);
-                if(sound_clip)
-                {
-                    m_baseAudioSource.PlayOneShot(sound_clip);
-                }
-                else
-                {
-                    Debug.LogError("No sound clip named: " + ParticleSound);
-                }
-            }
+            CommonFunctions.PlaySound(ParticleSound,m_baseAudioSource);
         }
     }
 

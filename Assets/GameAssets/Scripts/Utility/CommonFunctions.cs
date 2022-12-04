@@ -85,10 +85,8 @@ public class CommonFunctions
 
     public static void PlaySound(string soundName, AudioSource audioSource)
     {
-        Debug.Log(soundName);
         if(soundName!="")
         {
-            Debug.Log(soundName);
             var sm = SoundManager.getInstance();
             var sound_clip = sm.getSound(soundName);
             if(sound_clip)

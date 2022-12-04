@@ -57996,9 +57996,8 @@ MonoBehaviour:
   bulletHitMetal: TING
   SoundList:
   - sound:
-    - {fileID: 8300000, guid: 6d4dc73411d951b4b915d2d03d1b63a6, type: 3}
-    - {fileID: 8300000, guid: c623bb4207f3fc84ead211e7cd327a41, type: 3}
-    soundName: TEST
+    - {fileID: 8300000, guid: 754c5878e1fdbbd49b14f7b9b8bab45a, type: 3}
+    soundName: Explode
   - sound:
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}

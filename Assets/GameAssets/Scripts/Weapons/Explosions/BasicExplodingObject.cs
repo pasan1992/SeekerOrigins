@@ -16,19 +16,7 @@ public class BasicExplodingObject : MonoBehaviour
 
     public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
 
-    public string m_explodeSound = "Explode";
-
     private AudioSource m_audioSource;
-
-    public void Start()
-    {
-        m_audioSource = this.GetComponent<AudioSource>();
-        if(m_audioSource == null)
-        {
-            this.gameObject.AddComponent<AudioSource>();
-            m_audioSource = this.GetComponent<AudioSource>();
-        }
-    }
 
     public void explode()
     {
@@ -53,7 +41,7 @@ public class BasicExplodingObject : MonoBehaviour
     {
 
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, m_range);
-         CommonFunctions.PlaySound(m_explodeSound,m_audioSource);
+         
 
         for(int i =0; i<5 ;i++)
         {
