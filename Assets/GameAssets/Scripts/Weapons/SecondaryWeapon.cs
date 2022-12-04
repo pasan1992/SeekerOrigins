@@ -8,8 +8,8 @@ public class SecondaryWeapon : RangedWeapon
         base.Awake();
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
-        posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage/4,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,this.fireRate,0,this.damage*4));
-        posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0,0));
+        posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage/4,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,this.fireRate,0,this.damage*4,"Energy_PistolAmmo"));
+        posibleAmmoTypes.Add(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0,0,"Regular_PistolAmmo"));
         SwitchAmmoType(AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString());
         m_ammoCount[AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo.ToString()] = m_magazineSize;
     }
@@ -36,11 +36,6 @@ public class SecondaryWeapon : RangedWeapon
     {
         base.dropWeapon();
         triggerPulled = false;
-    }
-
-    protected override void playWeaponFireSound()
-    {
-        m_audioScource.PlayOneShot(m_soundManager.getLaserPistolAudioClip());
     }
     #endregion
 

@@ -30,11 +30,8 @@ public class SoundManager : MonoBehaviour
     private Dictionary<string,AudioClip[]> sound_dict = new Dictionary<string,AudioClip[]>(); 
     void Awake()
     {
-        m_laserPistol = Resources.Load<AudioClip>(sound_location + pistolSoundFile);
-        m_laserRifal = Resources.Load<AudioClip>(sound_location + rifleSoundFile);
         m_droneExplosion = Resources.Load<AudioClip>(sound_location+"/droneExplosion");
         m_emptyGun = Resources.Load<AudioClip>(sound_location + emptyGunSoundFile);
-        m_buletHitMetal = Resources.Load<AudioClip>(sound_location + bulletHitMetal);
 
         foreach(SoundEffect s in SoundList)
         {
@@ -52,16 +49,6 @@ public class SoundManager : MonoBehaviour
         return this_ins;
     }
 
-    public AudioClip getLaserPistolAudioClip()
-    {
-        return m_laserPistol;
-    }
-
-    public AudioClip getLaserRifalAudioClip()
-    {
-        return m_laserRifal;
-    }
-
     public AudioClip getDroneExplosion()
     {
         return m_droneExplosion;
@@ -70,11 +57,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip getEmptyGunSound()
     {
         return m_emptyGun;
-    }
-
-    public AudioClip getBulletHitMetal()
-    {
-        return m_buletHitMetal;
     }
 
     public AudioClip getSound(string soundName)

@@ -10,8 +10,8 @@ public class PrimaryWeapon : RangedWeapon
     public override void Awake()
     {
         base.Awake();
-        posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage/4,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,this.fireRate,0.05f,this.damage*2));
-        posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0.05f,0));
+        posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage/4,ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile,this.fireRate,0.05f,this.damage*2,"Energy_RifleAmmo"));
+        posibleAmmoTypes.Add(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString(),new RangedWeapon.AmmunitionType(this.damage,ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile,this.fireRate,0.05f,0,"Regular_RifleAmmo"));
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
         SwitchAmmoType(AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo.ToString());
@@ -36,11 +36,6 @@ public class PrimaryWeapon : RangedWeapon
     public override void dropWeapon()
     {
         base.dropWeapon();
-    }
-
-    protected override void playWeaponFireSound()
-    {
-        m_audioScource.PlayOneShot(m_soundManager.getLaserRifalAudioClip());
     }
     #endregion
 

@@ -18,13 +18,16 @@ public abstract class RangedWeapon : Weapon
 
         public float energyDamage;
 
-        public AmmunitionType(float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float stunPrecentage,float energyDamage = 0)
+        public string SoundName;
+
+        public AmmunitionType(float damage,ProjectilePool.POOL_OBJECT_TYPE particleType,float fireRate,float stunPrecentage,float energyDamage = 0,string soundName="")
         {
             this.damage = damage;
             this.particleType = particleType;
             this.fireRate = fireRate;
             this.stun_precentage = stunPrecentage;
             this.energyDamage = energyDamage;
+            this.SoundName = soundName;
         }
     }
 
@@ -70,6 +73,8 @@ public abstract class RangedWeapon : Weapon
     protected bool m_realoding = false;
     protected IDictionary<string,int> m_ammoCount = new Dictionary<string,int>();
     protected GamePlayCam camplayer;
+
+    protected string m_fireSoundName="";
 
     private float POSSIBLE_MAX_RANGE = 40;
     public Light m_weaponLight;
@@ -117,6 +122,7 @@ public abstract class RangedWeapon : Weapon
         this.projectile = ammoType.particleType;
         this.energyDamage = ammoType.energyDamage;
         this.m_weaponAmmunitionName = ammoTypeName;
+        this.m_fireSoundName = ammoType.SoundName;
     }
 
     public string getCurrentAmmoType()
@@ -242,7 +248,10 @@ public abstract class RangedWeapon : Weapon
 
     }
 
-    protected abstract void playWeaponFireSound();
+    protected virtual void playWeaponFireSound()
+    {
+        CommonFunctions.PlaySound(m_fireSoundName,m_audioScource);
+    }
 
     protected virtual void fireWeapon()
     {
