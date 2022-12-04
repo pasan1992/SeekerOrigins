@@ -204,7 +204,7 @@ public class ProjectilePool : MonoBehaviour
                 break;
             case POOL_OBJECT_TYPE.BasicRocket:
                 count = ammoCount;
-                resourcePath = "Prefab/BasicRocket"; 
+                resourcePath = "Prefab/MiniRocket"; 
                 basicRocketList = new List<GameObject>();
                 effectList = basicRocketList;       
                 break;
@@ -267,6 +267,11 @@ public class ProjectilePool : MonoBehaviour
             if (basic_particle)
             {
                 basic_particle.SetParent(this.transform);
+            }
+            var basicRocket = bulletHitParticle.GetComponent<BasicRocket>();
+            if(basicRocket)
+            {
+                basicRocket.SetParent(this.transform);
             }
             // if (bulletHitParticle is BasicParticleEffect)
             // {

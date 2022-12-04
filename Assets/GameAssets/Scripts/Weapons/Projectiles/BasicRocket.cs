@@ -19,6 +19,9 @@ public class BasicRocket : MonoBehaviour
 
     private bool move_up = true;
     private float m_current_speed = 0;
+    private bool armed = false;
+    public GameObject particleEffect;
+    private Transform m_parent;
 
     public void Awake()
     {
@@ -34,7 +37,9 @@ public class BasicRocket : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("selfDestoryOnTimeOut",explosionTimeout);
+        armed = false;
+        setParticleEffect(armed);
+        //Invoke("selfDestoryOnTimeOut",explosionTimeout);
     }
 
     private void OnDisable()
@@ -42,9 +47,17 @@ public class BasicRocket : MonoBehaviour
         CancelInvoke();
     }
 
+    public void resetAll()
+    {
+        this.transform.parent = m_parent;
+    }
+
 
     private void fireRocket()
     {
+        armed = true;
+        Invoke("selfDestoryOnTimeOut",explosionTimeout);
+        setParticleEffect(armed);
         Vector3 relativePosition = m_targetLocation - this.transform.position;
     }
 
@@ -55,7 +68,6 @@ public class BasicRocket : MonoBehaviour
         fireRocket();
         move_up = true;
         StartCoroutine(waitToAim(0.1f));
-        m_followingDamagableObject = null;
     }
 
     public void fireRocketLocation(Vector3 position)
@@ -85,12 +97,24 @@ public class BasicRocket : MonoBehaviour
         return m_target.transform.position;
     }
 
+    private void setParticleEffect(bool active)
+    {
+        if(particleEffect)
+        {
+            particleEffect.SetActive(active);
+        }
+    }
+
 
 
     public void Update()
     {
+        if(!armed)
+        {
+            return;
+        }
         // Enable follow target position
-        if( (m_followingDamagableObject != null && !m_followingDamagableObject.isDestroyed()) || m_target !=null )
+        if( (m_followingDamagableObject != null && !m_followingDamagableObject.isDestroyed()) || m_target !=null)
         {
             if(move_up)
             {
@@ -137,6 +161,7 @@ public class BasicRocket : MonoBehaviour
     private void selfDestoryOnTimeOut()
     {
         m_explodingObject.explode(ProjectilePool.POOL_OBJECT_TYPE.RocketExplosionParticle);
+        resetAll();
     }
 
     private void checkExplodeCondition()
@@ -144,6 +169,12 @@ public class BasicRocket : MonoBehaviour
         if(Vector3.Distance(this.transform.position,m_targetLocation)<0.2f)
         {
             m_explodingObject.explode(ProjectilePool.POOL_OBJECT_TYPE.RocketExplosionParticle);
+            
         }
+    }
+
+    public void SetParent(Transform parent)
+    {
+        m_parent = parent;
     }
 }

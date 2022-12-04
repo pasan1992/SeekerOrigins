@@ -28,6 +28,10 @@ public class GamePlayCam : MonoBehaviour
     //public float speedMultiplayer;
     void Start()
     {
+        if(target == null)
+        {
+            target = ((HumanoidMovingAgent)FindObjectOfType<PlayerController>().getICyberAgent());
+        }
         offset = target.transform.position - this.transform.position;
         m_cameraAimOffset = Vector3.zero;
         var outlines = FindObjectsOfType<Outline>();

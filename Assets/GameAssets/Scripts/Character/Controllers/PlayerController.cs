@@ -38,6 +38,11 @@ public class PlayerController : AgentController
 
     private bool is_slowmo = false;
 
+
+    public bool EnableAutoCover = true;
+    public bool EnableWeaponEquip = true;
+    public bool EnableRun = true;
+
     #region Initialize
     private void Start()
     {
@@ -121,7 +126,7 @@ public class PlayerController : AgentController
         }
 
 
-        bool crouch_pressed = Input.GetMouseButton(1);
+        bool crouch_pressed = Input.GetMouseButton(1) && EnableAutoCover;
         verticleSpeed = Mathf.Lerp(verticleSpeed, Input.GetAxis("Vertical"),1);
         horizontalSpeed = Mathf.Lerp(horizontalSpeed, Input.GetAxis("Horizontal"), 1);
 
@@ -160,7 +165,7 @@ public class PlayerController : AgentController
             m_movingAgent.stopAiming();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && EnableWeaponEquip)
         {
             m_movingAgent.togglepSecondaryWeapon();
 
@@ -175,7 +180,7 @@ public class PlayerController : AgentController
             }
             
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && EnableWeaponEquip)
         {
             m_movingAgent.togglePrimaryWeapon();
 
@@ -218,12 +223,12 @@ public class PlayerController : AgentController
                 m_movingAgent.toggleHide();
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && EnableRun)
         {
             m_movingAgent.dodgeAttack(getDirectionRelativeToCamera( new Vector3(verticleSpeed, 0, -horizontalSpeed)));
         }
 
-        if(Input.GetKey(KeyCode.LeftShift) && (Mathf.Abs(verticleSpeed) > 0 || Mathf.Abs(horizontalSpeed) > 0))
+        if(Input.GetKey(KeyCode.LeftShift) && (Mathf.Abs(verticleSpeed) > 0 || Mathf.Abs(horizontalSpeed) > 0) && EnableRun)
         {
             speedModifyVale = Mathf.Lerp(speedModifyVale, 1.5f, 0.1f);
             if(m_movingAgent.isHidden())
@@ -253,12 +258,16 @@ public class PlayerController : AgentController
         RaycastHit m_raycastHit;
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out m_raycastHit, 100, LayerMask.GetMask("Enemy")))
+            // if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out m_raycastHit, 100, LayerMask.GetMask("Enemy")))
+            // {
+            //     if(m_rocket_pack)
+            //     {
+            //         m_rocket_pack.FireMissleTransfrom(m_raycastHit.transform,m_movingAgent.GetAgentData());
+            //     }
+            // }
+            if(m_rocket_pack)
             {
-                if(m_rocket_pack)
-                {
-                    m_rocket_pack.FireMissleTransfrom(m_raycastHit.transform,m_movingAgent.GetAgentData());
-                }
+                m_rocket_pack.FireMissiles(m_movingAgent.GetAgentData());
             }
         }
 
@@ -417,6 +426,11 @@ public class PlayerController : AgentController
 
     private void CoverFinder()
     {
+        if (!EnableAutoCover)
+        {
+            return;
+        }
+
         bool crouch_pressed = Input.GetKey(KeyCode.LeftControl) || Input.GetMouseButton(1);
         bool found_cover = false;
         foreach(CoverPoint cp in coverpoints)

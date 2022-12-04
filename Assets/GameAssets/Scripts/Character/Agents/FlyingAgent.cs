@@ -61,7 +61,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     #region initalize
 
-
+    private Transform headTransfrom;
 
     public void Awake()
     {
@@ -89,6 +89,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public void Start()
     {
         m_damageModule= new DroneDamageModule(m_agentData, this.GetComponentInChildren<Outline>(), DestroyCharacter,this.transform,explosionParticle);
+        headTransfrom = findHeadTransfrom();
     }
 
     #region update
@@ -240,6 +241,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         {
             m_onDestroyCallback();
         }
+        m_DroneModel.gameObject.SetActive(false);
         CancelInvoke();       
     }
 
@@ -494,7 +496,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     public Transform  getHeadTransfrom()
     {
-        return this.transform;
+        return headTransfrom;
     }
 
     public void setStunned(float duration, Vector3 direction)
@@ -517,6 +519,19 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public void removeStun()
     {
 
+    }
+
+    private Transform findHeadTransfrom()
+    {
+        Transform headTransfrom = null;
+        foreach (AgentBodyPart rb in this.GetComponentsInChildren<AgentBodyPart>())
+        {
+            if (rb.bodyPart == GameEnums.BodyPart.Head)
+            {
+                headTransfrom = rb.transform;
+            }
+        }
+        return headTransfrom;
     }
 
     #endregion

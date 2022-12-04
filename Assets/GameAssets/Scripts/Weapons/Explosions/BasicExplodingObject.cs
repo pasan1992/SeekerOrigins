@@ -94,7 +94,7 @@ public class BasicExplodingObject : MonoBehaviour
             }
         }
 
-        if(other.tag =="Chest")
+        if(other.tag =="Chest" || other.tag == "Head")
         {   
             if(!DamageCalculator.isSafeFromTarget(this.transform.position,other.transform.position,m_range))
             {
