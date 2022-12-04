@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -113,6 +113,7 @@ public class Interactable : MonoBehaviour
 
         // set event on interatability change
         properties.interatabilityChange +=setInteratableIndicator;
+        
         m_baseAudioSource = this.GetComponent<AudioSource>();
         if(m_baseAudioSource == null)
         {
@@ -196,18 +197,18 @@ public class Interactable : MonoBehaviour
         if(onInteractionStartCallback!=null)
         {
             onInteractionStartCallback();
-            if(properties.InteractionSoundName!="")
+        }
+        if(properties.InteractionSoundName!="")
+        {
+            var sm = SoundManager.getInstance();
+            var sound_clip = sm.getSound(properties.InteractionSoundName);
+            if(sound_clip)
             {
-                var sm = SoundManager.getInstance();
-                var sound_clip = sm.getSound(properties.InteractionSoundName);
-                if(sound_clip)
-                {
-                    m_baseAudioSource.PlayOneShot(sound_clip);
-                }
-                else
-                {
-                    Debug.LogError("No sound clip named: " + properties.InteractionSoundName);
-                }
+                m_baseAudioSource.PlayOneShot(sound_clip);
+            }
+            else
+            {
+                Debug.LogError("No sound clip named: " + properties.InteractionSoundName);
             }
         }
             
