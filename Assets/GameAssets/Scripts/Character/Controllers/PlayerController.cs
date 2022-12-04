@@ -572,7 +572,7 @@ public class PlayerController : AgentController
         }
         else
         {
-            Debug.LogError("There is no interaction to cancle");
+            Debug.Log("There is no interaction to cancle");
         }
     }
 

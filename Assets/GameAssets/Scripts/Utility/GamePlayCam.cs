@@ -136,13 +136,14 @@ public class GamePlayCam : MonoBehaviour
                 m_camera.fieldOfView = cam_fov + y/5;
                 yield return null;
             }
-            cam_fov = m_camera.fieldOfView;
+            var tmp_camP_fov = m_camera.fieldOfView;
             for (float t = 0; t < 0.1f; t += Time.deltaTime)
             {
                 float y = _shakeCurve.Evaluate(t * 10);
-                m_camera.fieldOfView = cam_fov - y/5;
+                m_camera.fieldOfView = tmp_camP_fov - y/5;
                 yield return null;
             }
+            m_camera.fieldOfView = cam_fov;
             isStaking= false;
         }   
 
