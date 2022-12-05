@@ -723,10 +723,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: OpenLootBox
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   AmmoPackData:
   - AmmoType: Regular_Grenade
     AmmoCount: 1

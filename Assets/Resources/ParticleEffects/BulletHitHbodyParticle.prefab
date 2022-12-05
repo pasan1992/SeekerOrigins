@@ -4637,3 +4637,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResetTime: 1.5
   defaultOnEnable: 1
+  ParticleSound: BulletHitBody

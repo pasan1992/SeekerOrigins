@@ -58002,6 +58002,33 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
     soundName: DroneFire
+  - sound:
+    - {fileID: 8300000, guid: 92fa5a02bde27a04da7b6bda0480add9, type: 3}
+    - {fileID: 8300000, guid: ca220f40548f3a141b5a0e69ee3ebf0c, type: 3}
+    - {fileID: 8300000, guid: bdaf5b8037ebf9542bcf5391b4f7a98d, type: 3}
+    soundName: Regular_PistolAmmo
+  - sound:
+    - {fileID: 8300000, guid: 56973468e16ca264791364c2928cb653, type: 3}
+    - {fileID: 8300000, guid: 6990f22dc6026ae46913fffc9f8ceff7, type: 3}
+    - {fileID: 8300000, guid: 9f8efeb3fe0812046a1740255ae6aafe, type: 3}
+    soundName: Energy_PistolAmmo
+  - sound:
+    - {fileID: 8300000, guid: 6650fb561ccda9446960d41d5ece60a0, type: 3}
+    - {fileID: 8300000, guid: 922b414801006ac4c8547f7271fea839, type: 3}
+    soundName: Regular_RifleAmmo
+  - sound:
+    - {fileID: 8300000, guid: 1285c5b5c63b7274a8047f4d29ea4595, type: 3}
+    - {fileID: 8300000, guid: 74fbb03c91ea5bc47a08f48800ff8253, type: 3}
+    soundName: Energy_RifleAmmo
+  - sound:
+    - {fileID: 8300000, guid: 7e089bf6b4ef0804bb037948fabb6a63, type: 3}
+    soundName: GranadeExplode
+  - sound:
+    - {fileID: 8300000, guid: b9ef8bc82e4577c4fa64a30171f3b797, type: 3}
+    soundName: OpenLootBox
+  - sound:
+    - {fileID: 8300000, guid: 513a4a5f91196144bb0a7dfdcf46bfc7, type: 3}
+    soundName: BulletHitBody
 --- !u!114 &3209784683429458911
 MonoBehaviour:
   m_ObjectHideFlags: 0

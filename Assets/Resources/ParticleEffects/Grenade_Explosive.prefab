@@ -19239,7 +19239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResetTime: 1.5
   defaultOnEnable: 1
-  ParticleSound: Explode
+  ParticleSound: GranadeExplode
 --- !u!1 &3293020931375340603
 GameObject:
   m_ObjectHideFlags: 0
