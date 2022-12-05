@@ -227,7 +227,17 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
                 if(m_target != null)
                 {
-                    coverBasedCombat();                
+                    if(m_selfAgent.GetAgentData().use_cover)
+                    {
+                        coverBasedCombat(); 
+                    }
+                    else
+                    {
+                        m_selfAgent.weaponFireForAI();
+                        FireRocket();
+                        ThrowGrenade();
+                    }
+                                   
                 }
                 else
                 {
@@ -385,7 +395,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
         {
         case GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT:
             
-            CoverPoint tempCurrentCoverPoint =  CoverPointsManager.getNearCoverObject(m_selfAgent,m_target,fireRangeDistance,true,CenteredPosition,MaxDistnaceFromCenteredPoint);
+            CoverPoint tempCurrentCoverPoint =  CoverPointsManager.getNearCoverObject(m_selfAgent,m_target,fireRangeDistance,m_selfAgent.GetAgentData().use_cover,CenteredPosition,MaxDistnaceFromCenteredPoint);
             //CoverPoint tempCurrentCoverPoint = CoverPointsManager.getNextCoverPoint(m_currentCoverPoint,m_target,m_selfAgent.getCurrentPosition());
 
             //Stop the moving agent in case status change from moving - calculate next point
@@ -460,7 +470,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
         {
             case GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT:
 
-                CoverPoint cp = CoverPointsManager.getNearCoverObject(m_selfAgent, m_target, fireRangeDistance, true, CenteredPosition, MaxDistnaceFromCenteredPoint);
+                CoverPoint cp = CoverPointsManager.getNearCoverObject(m_selfAgent, m_target, fireRangeDistance, m_selfAgent.GetAgentData().use_cover, CenteredPosition, MaxDistnaceFromCenteredPoint);
                 if (cp == null)
                 {
                     

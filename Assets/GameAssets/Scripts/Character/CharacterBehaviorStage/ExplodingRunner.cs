@@ -9,6 +9,9 @@ public class ExplodingRunner : BasicMovmentCombatStage
     private float m_explosionRange = 2;
     private BasicExplodingObject m_explosion;
     private Vector3 previousPosition;
+
+    private float timeFromLastExplosion=0;
+
     public ExplodingRunner(ICyberAgent selfAgent,NavMeshAgent agent, BasicExplodingObject explosion) : base(selfAgent, agent)
     {
         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
@@ -26,11 +29,22 @@ public class ExplodingRunner : BasicMovmentCombatStage
         // When centered positon is zero, center point is not concidered when calculating coverpoints
         // m_centeredPoint is set as zero from the super class setter for m_currentMovmentType variable.
         updateGeneralMovment();
+        timeFromLastExplosion +=0.3f;
     }
 
     public override void alrtDamage()
     {
         m_selfAgent.dodgeAttack(m_navMeshAgent.desiredVelocity);
+    }
+
+    private void Explode()
+    {
+        if(timeFromLastExplosion>3)
+        {
+            timeFromLastExplosion = 0;
+            m_explosion.explode();
+        }
+        
     }
 
     private void updateGeneralMovment()
@@ -45,7 +59,7 @@ public class ExplodingRunner : BasicMovmentCombatStage
                 distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
                 if(distance_to_target < m_explosion.Range/2)
                 {
-                    m_explosion.explode();
+                    Explode();
                 }
 
         break;
@@ -54,14 +68,14 @@ public class ExplodingRunner : BasicMovmentCombatStage
                 distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
                 if(distance_to_target < m_explosion.Range/2)
                 {
-                    m_explosion.explode();
+                    Explode();
                 }
         break;
         case GameEnums.MovmentBehaviorStage.AT_POINT:
                 distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
                 if(distance_to_target < m_explosion.Range/2)
                 {
-                    m_explosion.explode();
+                    Explode();
                 }
                 else
                 {

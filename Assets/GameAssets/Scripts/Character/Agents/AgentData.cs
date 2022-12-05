@@ -23,6 +23,8 @@ public class AgentData : AgentBasicData
     public SecondaryWeapon secondaryWeapon;
     public Grenade grenade;
 
+    public bool use_cover = true;
+
     public int HealInjectionCount = 1;
     public int HealPerInjection = 20;
 

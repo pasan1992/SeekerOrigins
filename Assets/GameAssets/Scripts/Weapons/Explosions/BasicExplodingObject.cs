@@ -23,7 +23,7 @@ public class BasicExplodingObject : MonoBehaviour
         explode(explosionType);
     }   
 
-    public void explode(ProjectilePool.POOL_OBJECT_TYPE explosionType)
+    public virtual void explode(ProjectilePool.POOL_OBJECT_TYPE explosionType)
     {
        GameObject explostion = ProjectilePool.getInstance().getPoolObject(explosionType);
        explostion.transform.position = this.transform.position;
@@ -37,7 +37,7 @@ public class BasicExplodingObject : MonoBehaviour
         
     }
 
-    private void damgeAround()
+    protected void damgeAround()
     {
 
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, m_range);
@@ -59,7 +59,7 @@ public class BasicExplodingObject : MonoBehaviour
                     case "Player":
                     case "Head":
                     case "Chest":
-                        hitOnEnemy2(hitCollider);
+                        hitOnEnemy(hitCollider);
                         break;
                     case "Wall":
                         break;
@@ -75,7 +75,7 @@ public class BasicExplodingObject : MonoBehaviour
     }
 
 
-    private void hitOnEnemy2(Collider other)
+    protected virtual void hitOnEnemy(Collider other)
     {
         
       DamagableObject damagableObject =  other.GetComponentInParent<DamagableObject>();
