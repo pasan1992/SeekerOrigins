@@ -58003,9 +58003,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
     soundName: DroneFire
   - sound:
-    - {fileID: 8300000, guid: 92fa5a02bde27a04da7b6bda0480add9, type: 3}
-    - {fileID: 8300000, guid: ca220f40548f3a141b5a0e69ee3ebf0c, type: 3}
-    - {fileID: 8300000, guid: bdaf5b8037ebf9542bcf5391b4f7a98d, type: 3}
+    - {fileID: 8300000, guid: 04fca4419730df14394082c2388d8146, type: 3}
+    - {fileID: 8300000, guid: 108671952e7bb984d8770ed412f7f7b2, type: 3}
+    - {fileID: 8300000, guid: f00e67f221f06264595b276790c7fa31, type: 3}
     soundName: Regular_PistolAmmo
   - sound:
     - {fileID: 8300000, guid: 56973468e16ca264791364c2928cb653, type: 3}
