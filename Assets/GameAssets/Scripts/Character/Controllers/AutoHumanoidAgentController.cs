@@ -60,6 +60,12 @@ public class AutoHumanoidAgentController :  AgentController
         }
     }
 
+    public void setAttackMode(COMBAT_BEHAVIOR behavior)
+    {
+        m_combatBehavior = behavior;
+        inializeGuard();
+    }
+
     public void forceStart()
     {
         Start();

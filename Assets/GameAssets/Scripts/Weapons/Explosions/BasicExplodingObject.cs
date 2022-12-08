@@ -21,7 +21,12 @@ public class BasicExplodingObject : MonoBehaviour
     public void explode()
     {
         explode(explosionType);
-    }   
+    } 
+
+    public void Explode()
+    {
+        explode(explosionType);
+    }  
 
     public virtual void explode(ProjectilePool.POOL_OBJECT_TYPE explosionType)
     {
