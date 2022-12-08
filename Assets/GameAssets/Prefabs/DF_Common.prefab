@@ -66595,7 +66595,7 @@ MonoBehaviour:
     manualUpdate: 0
     outVariableIndices: 
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 0
+    preprocessed: 1
     ExposedEvents: []
     OutputEvents: []
     RestartOnEnable: 1
@@ -67736,6 +67736,7 @@ MonoBehaviour:
     primaryWeapon: {fileID: 2998259687881664500}
     secondaryWeapon: {fileID: 2103385761}
     grenade: {fileID: 8665422509748772533}
+    use_cover: 1
     HealInjectionCount: 0
     HealPerInjection: 30
     inventryItems: []
@@ -67767,6 +67768,7 @@ MonoBehaviour:
       AmmoCount: 15
     immuneToStunn: 0
     drop_reward: 0
+    unbalanced: 0
   AgentComponents:
     weaponAimTransform: {fileID: 2354547766425579488}
     lookAimTransform: {fileID: 6142851823170799448}
