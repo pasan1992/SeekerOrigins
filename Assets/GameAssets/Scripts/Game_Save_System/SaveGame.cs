@@ -6,6 +6,10 @@ public class SaveGame
     public AgentData agentData;
 
     public int curentScence;
+    public int curentCheckPoint;
+    public Vector3 curentDirecton;
+
+    // To delete -> those are used only in SaveGameManager 
     public int latestCheckPoint;
 
     public Vector3 playerPos;
