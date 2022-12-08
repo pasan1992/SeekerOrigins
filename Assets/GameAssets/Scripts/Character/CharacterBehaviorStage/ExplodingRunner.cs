@@ -17,6 +17,7 @@ public class ExplodingRunner : BasicMovmentCombatStage
         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
         m_explosion = explosion; 
         m_stepIntervalInSeconds = 0.1f;
+        ((HumanoidMovingAgent)m_selfAgent).togglepSecondaryWeapon();
     }
 
     public override void setTargets(ICyberAgent target)
@@ -42,7 +43,8 @@ public class ExplodingRunner : BasicMovmentCombatStage
         if(timeFromLastExplosion>3)
         {
             timeFromLastExplosion = 0;
-            m_explosion.explode();
+            // m_explosion.explode();
+            m_selfAgent.MeleteAttack(1,-m_navMeshAgent.desiredVelocity);
         }
         
     }
@@ -57,7 +59,7 @@ public class ExplodingRunner : BasicMovmentCombatStage
             m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
 
                 distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-                if(distance_to_target < m_explosion.Range/2)
+                if(distance_to_target < m_explosion.Range)
                 {
                     Explode();
                 }
@@ -66,14 +68,14 @@ public class ExplodingRunner : BasicMovmentCombatStage
         case GameEnums.MovmentBehaviorStage.MOVING_TO_POINT:
                 m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.AT_POINT;
                 distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-                if(distance_to_target < m_explosion.Range/2)
+                if(distance_to_target < m_explosion.Range)
                 {
                     Explode();
                 }
         break;
         case GameEnums.MovmentBehaviorStage.AT_POINT:
                 distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-                if(distance_to_target < m_explosion.Range/2)
+                if(distance_to_target < m_explosion.Range)
                 {
                     Explode();
                 }

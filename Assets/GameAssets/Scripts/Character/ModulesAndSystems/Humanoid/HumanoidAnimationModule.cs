@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using RootMotion.FinalIK;
 
 
@@ -7,6 +9,11 @@ public partial class HumanoidAnimationModule : AnimationModule
     // Start is called before the first frame update
     protected AimIK m_aimIK;
     protected float m_aimSpeed = 10;
+
+    protected Dictionary<HumanoidMovingAgent.CharacterMainStates,string> EffectAnimationKeys = new Dictionary<HumanoidMovingAgent.CharacterMainStates, string>{
+        {HumanoidMovingAgent.CharacterMainStates.MeeleAttack,"meleeAttack"},
+        {HumanoidMovingAgent.CharacterMainStates.Stunned,"stun"}
+    };
 
     protected AgentFunctionalComponents m_functionalComponents;
 
@@ -36,6 +43,7 @@ public partial class HumanoidAnimationModule : AnimationModule
                 m_aimIK.solver.IKPositionWeight = Mathf.Lerp(m_aimIK.solver.IKPositionWeight, 0, Time.deltaTime * m_aimSpeed);
                 break;
             case HumanoidMovingAgent.CharacterMainStates.Stunned:
+            case HumanoidMovingAgent.CharacterMainStates.MeeleAttack:
                 m_aimIK.solver.IKPositionWeight = Mathf.Lerp(m_aimIK.solver.IKPositionWeight, 0, Time.deltaTime * m_aimSpeed);
                 break;            
             default:
@@ -200,6 +208,11 @@ public partial class HumanoidAnimationModule : AnimationModule
     public void setStun(bool enabled)
     {
         m_animator.SetBool("stun",enabled);
+    }
+
+    public void setEffectState(bool enabled, HumanoidMovingAgent.CharacterMainStates state)
+    {
+        m_animator.SetBool(EffectAnimationKeys[state],enabled);
     }
 
 

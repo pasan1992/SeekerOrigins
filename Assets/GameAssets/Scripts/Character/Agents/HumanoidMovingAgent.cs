@@ -25,7 +25,8 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     protected HumanoidInteractionModule m_interactionModule;
 
     // Attributes
-    public enum CharacterMainStates { Aimed, Armed_not_Aimed, Dodge, Idle,Interaction,Stunned }
+    public enum CharacterMainStates { Aimed, Armed_not_Aimed, Dodge, Idle,Interaction,Stunned,MeeleAttack }
+    private HashSet<CharacterMainStates> effectStates = new HashSet<CharacterMainStates>{CharacterMainStates.Stunned,CharacterMainStates.MeeleAttack};
     public CharacterMainStates m_characterState = CharacterMainStates.Idle;
     private CharacterMainStates m_previousTempState = CharacterMainStates.Idle;
     protected GameObject m_target;
@@ -124,6 +125,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     #region Commands
 
+    private bool isEffectState()
+    {
+        return effectStates.Contains(m_characterState);
+    }
+
     /**
      Interact with given interatable object
      - Interaction type can be different from the interaction type of the interatable object given.
@@ -131,7 +137,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void interactWith(Interactable obj,Interactable.InteractableProperties.InteractableType type)
     {
         bool interactCondition =( (m_characterState.Equals(CharacterMainStates.Idle) || 
-        m_characterState.Equals(CharacterMainStates.Armed_not_Aimed)) && !m_characterState.Equals(CharacterMainStates.Interaction) && !m_characterState.Equals(CharacterMainStates.Stunned));
+        m_characterState.Equals(CharacterMainStates.Armed_not_Aimed)) && !m_characterState.Equals(CharacterMainStates.Interaction) && !isEffectState());
         
         // Check if character is ready to interact - Do not interact if the character is already interacting.
         if(interactCondition)
@@ -176,7 +182,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     }
     public void Interact(bool isPlayer)
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         Interactable obj = AgentItemFinder.findNearItem(getCurrentPosition(),isPlayer);
         if(obj)
@@ -206,7 +212,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // This fire wepon is called by the AI Agent controlers to fire weapon.
     public virtual void weaponFireForAI()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         if(m_equipmentModule.isReloading())
         {
@@ -228,7 +234,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void reloadCurretnWeapon()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         m_equipmentModule.reloadCurretnWeapon();
     }
@@ -236,7 +242,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // Aim Current Weapon 
     public virtual void aimWeapon()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         if (m_characterState.Equals(CharacterMainStates.Armed_not_Aimed) && !isEquipingWeapon() && !isInteracting())
         {
@@ -249,7 +255,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // Stop Aiming current Weapon.
     public virtual void stopAiming()
     {
-        if (m_characterState.Equals(CharacterMainStates.Aimed) && m_characterState != CharacterMainStates.Stunned)
+        if (m_characterState.Equals(CharacterMainStates.Aimed) && !isEffectState())
         {
             m_characterState = CharacterMainStates.Armed_not_Aimed;
             m_equipmentModule.getCurrentWeapon().setAimed(false);
@@ -259,7 +265,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // Move character
     public virtual void moveCharacter(Vector3 movmentDirection)
     {
-        if(m_characterState == HumanoidMovingAgent.CharacterMainStates.Stunned )
+        if(isEffectState() )
         {
             return;
         }
@@ -311,7 +317,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void togglePrimaryWeapon()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         // To make sure that weapon toggle won't happen mid interaction.
         if(!m_characterState.Equals(CharacterMainStates.Interaction))
@@ -324,7 +330,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void togglepSecondaryWeapon()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         // To make sure that weapon toggle won't happen mid interaction.
         if(!m_characterState.Equals(CharacterMainStates.Interaction))
@@ -337,7 +343,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void toggleGrenede()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         // To make sure that weapon toggle won't happen mid interaction.
         if (!m_characterState.Equals(CharacterMainStates.Interaction))
@@ -354,7 +360,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void dodgeAttack(Vector3 dodgeDirection)
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         if (!m_characterState.Equals(CharacterMainStates.Dodge))
         {
@@ -372,7 +378,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void pullTrigger()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         m_equipmentModule.pullTrigger();
     }
@@ -572,7 +578,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public bool isDisabled()
     {
-        return m_isDisabled || m_characterState == CharacterMainStates.Stunned;
+        return m_isDisabled || isEffectState();
     }
 
     public int getPrimaryWeaponAmmoCount()
@@ -634,7 +640,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     // Return true if weapon is already hosted or actualy wepon is husted from this command
     public bool hosterWeapon()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return false;
         if((m_characterState.Equals(CharacterMainStates.Armed_not_Aimed) || m_characterState.Equals(CharacterMainStates.Aimed)) && !m_equipmentModule.isInEquipingAction() && !m_equipmentModule.isReloading())
         {
@@ -687,7 +693,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void OnThrow()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         //m_equipmentModule.OnThrow();
         m_equipmentModule.GrenadeQuickThrow();
@@ -695,7 +701,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void Throw()
     {
-        if(m_characterState.Equals(HumanoidMovingAgent.CharacterMainStates.Stunned))
+        if(isEffectState())
             return;
         if(m_equipmentModule.getGrenadeCount() > 0)
         {
@@ -896,19 +902,19 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_animationModule.Stop();
     }
 
-    public void setStunned(float duration, Vector3 direction)
+    private void setEffectState(CharacterMainStates state, float duration, Vector3 direction)
     {
-        if(isDisabled() || m_characterState == CharacterMainStates.Dodge || GetAgentData().immuneToStunn)
+        if(isDisabled() || m_characterState == CharacterMainStates.Dodge)
             return;
         
-        if(m_characterState !=CharacterMainStates.Stunned)
+        if(!isEffectState())
         {
             m_previousTempState = m_characterState;
         }
 
-        m_characterState = CharacterMainStates.Stunned;
+        m_characterState = state;
 
-        m_animationModule.setStun(true);
+        m_animationModule.setEffectState(true,state);
         if(GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
         {
             m_damageModule.emitSmoke();
@@ -919,17 +925,22 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
             StopCoroutine(m_previousCorutine);
         }
         
-        m_previousCorutine = waitAndRemoveStun(duration);
+        m_previousCorutine = waitAndRemoveStun(duration,state);
         StartCoroutine(m_previousCorutine);
         m_movmentModule.setMovment(false);
         m_movmentVector = Vector3.zero;
         m_movmentModule.LookAtObject(this.transform.position - direction);
     }
 
-    IEnumerator waitAndRemoveStun(float waitDuration)
+    public void setStunned(float duration, Vector3 direction)
+    {
+        setEffectState(CharacterMainStates.Stunned,duration,direction);
+    }
+
+    IEnumerator waitAndRemoveStun(float waitDuration,CharacterMainStates state)
     {
         yield return new WaitForSeconds(waitDuration);
-        m_animationModule.setStun(false);
+        m_animationModule.setEffectState(false,state);
         yield return new WaitForSeconds(0.5f);
         removeStun();
     }
@@ -938,6 +949,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         
         m_characterState = m_previousTempState;  
         m_movmentModule.setMovment(true);  
+    }
+
+    public void MeleteAttack(float duration,Vector3 direction)
+    {
+        setEffectState(CharacterMainStates.MeeleAttack,duration,direction);
     }
 
 

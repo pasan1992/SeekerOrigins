@@ -519,5 +519,10 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
 
     }
 
+    public void MeleteAttack(float duration,Vector3 direction)
+    {
+        
+    }
+
     #endregion
 }

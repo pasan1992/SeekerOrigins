@@ -115,6 +115,7 @@ public class HumanoidMovmentModule : MovmentModule
                 // }
                 break;
             case HumanoidMovingAgent.CharacterMainStates.Stunned:
+            case HumanoidMovingAgent.CharacterMainStates.MeeleAttack:
                 m_animationSystem.setMovment(0, 0);
                 m_navMeshAgent.isStopped = false;
                 m_navMeshAgent.velocity = Vector3.zero;
