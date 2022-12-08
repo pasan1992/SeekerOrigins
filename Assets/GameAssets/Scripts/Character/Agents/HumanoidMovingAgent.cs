@@ -510,7 +510,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public Vector3 getCurrentPosition()
     {
-        return this.transform.position;
+        if(this.transform !=null)
+        {
+            return this.transform.position;
+        }
+        return Vector3.zero;
     }
 
     public Vector3 getTopPosition()

@@ -20,10 +20,7 @@ public class ExplodingRunner : BasicMovmentCombatStage
 
 
         resetAgent();
-
-
-
-        
+        m_selfAgent.GetAgentData().unbalanced = true;
     }
 
     private void resetAgent()

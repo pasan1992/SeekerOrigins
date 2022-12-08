@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1316736503642185411
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,6 +1116,7 @@ MonoBehaviour:
       AmmoCount: 5
     immuneToStunn: 0
     drop_reward: 0
+    unbalanced: 0
   AgentComponents:
     weaponAimTransform: {fileID: 8851718179661802297}
     lookAimTransform: {fileID: 7575901756742842751}
@@ -2090,6 +2091,7 @@ MonoBehaviour:
   m_explosionCountDown: 5
   indicator: {fileID: 1316060306262273487}
   damageSelf: 1
+  enableTimerFromStart: 0
 --- !u!114 &692450651157249141
 MonoBehaviour:
   m_ObjectHideFlags: 0

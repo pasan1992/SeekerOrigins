@@ -6,7 +6,6 @@ public class HumanoidAttackerExplosion : AttackerExplosion
 {
     // Start is called before the first frame update
     private HumanoidMovingAgent m_movingAgent;
-    public bool PlayMeeleAttackAnimation = false;
 
     public override void Start()
     {
@@ -33,10 +32,13 @@ public class HumanoidAttackerExplosion : AttackerExplosion
 
     protected override void hitOnEnemy(Collider other)
     {
-        DamagableObject damagableObject =  other.GetComponentInParent<DamagableObject>();
-        if(damagableObject == m_selfDamagable)
+        if(!damageSelf)
         {
-            return;
+            DamagableObject damagableObject =  other.GetComponentInParent<DamagableObject>();
+            if(damagableObject == m_selfDamagable)
+            {
+                return;
+            }
         }
         base.hitOnEnemy(other);
     }

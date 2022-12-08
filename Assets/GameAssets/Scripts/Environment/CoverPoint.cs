@@ -137,7 +137,11 @@ public class CoverPoint : MonoBehaviour, IPoints
         if(isOccupied())
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(this.transform.position, occupent.getCurrentPosition());
+            if(occupent != null & occupent.IsFunctional())
+            {
+                Gizmos.DrawLine(this.transform.position, occupent.getCurrentPosition());
+            }
+            
         }
         else
         {
