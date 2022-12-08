@@ -20,6 +20,10 @@ public class BasicRocket : MonoBehaviour
     private bool move_up = true;
     private float m_current_speed = 0;
 
+    private bool armed = false;
+
+    public float upTime = 1;
+
     public void Awake()
     {
         m_explodingObject = this.GetComponent<BasicExplodingObject>();
@@ -34,7 +38,11 @@ public class BasicRocket : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("selfDestoryOnTimeOut",explosionTimeout);
+        if(armed)
+        {
+            Invoke("selfDestoryOnTimeOut",explosionTimeout);
+        }
+        
     }
 
     private void OnDisable()
@@ -45,6 +53,8 @@ public class BasicRocket : MonoBehaviour
 
     private void fireRocket()
     {
+        armed = true;
+        Invoke("selfDestoryOnTimeOut",explosionTimeout);
         Vector3 relativePosition = m_targetLocation - this.transform.position;
     }
 
@@ -65,7 +75,7 @@ public class BasicRocket : MonoBehaviour
         m_target = t.transform;
         fireRocket();
         move_up = true;
-        StartCoroutine(waitToAim(0.4f));
+        StartCoroutine(waitToAim(upTime));
     }
 
     public void fireRocketTransfrom(Transform transfrom)
@@ -73,7 +83,7 @@ public class BasicRocket : MonoBehaviour
         m_target = transfrom;
         fireRocket();
         move_up = true;
-        StartCoroutine(waitToAim(0.4f));
+        StartCoroutine(waitToAim(upTime));
     }
 
     private Vector3 getTarget()
@@ -89,6 +99,10 @@ public class BasicRocket : MonoBehaviour
 
     public void Update()
     {
+        if(!armed)
+        {
+            return;
+        }
         // Enable follow target position
         if( (m_followingDamagableObject != null && !m_followingDamagableObject.isDestroyed()) || m_target !=null )
         {

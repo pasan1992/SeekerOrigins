@@ -198,8 +198,14 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
 
     }
 
-    public void Stun(float duration,Vector3 direction)
+    public void Stun(CommonFunctions.Damage damage, float duration,Vector3 direction)
     {
+        if(damage.energyDamage > damage.healthDamage && m_movingAgent.GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID &&
+        Random.value > 0.5f)
+        {
+            m_movingAgent.setShocked(4,direction);
+            return;
+        }
         m_movingAgent.setStunned(duration,direction);
     }
 

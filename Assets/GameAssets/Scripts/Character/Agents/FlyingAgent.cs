@@ -518,6 +518,10 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
 
     }
+    public void setShocked(float duration,Vector3 direction)
+    {
+
+    }
 
     public void MeleteAttack(float duration,Vector3 direction)
     {

@@ -106,13 +106,13 @@ public class BasicExplodingObject : MonoBehaviour
         {   
             if(!DamageCalculator.isSafeFromTarget(this.transform.position,other.transform.position,m_range))
             {
-
+                var damage = new CommonFunctions.Damage(m_baseDamage*damagePropotion,m_energyDaamge*damagePropotion);
                 // Neeed to improve it exploding objects must not have faction
-                damagableObject.damage(new CommonFunctions.Damage(m_baseDamage*damagePropotion,m_energyDaamge*damagePropotion),other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
+                damagableObject.damage(damage,other,direction,other.transform.position,AgentBasicData.AgentFaction.Neutral);
                 var mvdamage = (MovingAgentDamagableObject)damagableObject;
                 if(mvdamage !=null)
                 {
-                    mvdamage.Stun(3f,other.transform.position - this.transform.position);
+                    mvdamage.Stun(damage,3f,other.transform.position - this.transform.position);
                 }
 
             }           

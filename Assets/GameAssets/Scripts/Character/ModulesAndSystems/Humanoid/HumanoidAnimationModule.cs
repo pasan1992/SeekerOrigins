@@ -12,7 +12,8 @@ public partial class HumanoidAnimationModule : AnimationModule
 
     protected Dictionary<HumanoidMovingAgent.CharacterMainStates,string> EffectAnimationKeys = new Dictionary<HumanoidMovingAgent.CharacterMainStates, string>{
         {HumanoidMovingAgent.CharacterMainStates.MeeleAttack,"meleeAttack"},
-        {HumanoidMovingAgent.CharacterMainStates.Stunned,"stun"}
+        {HumanoidMovingAgent.CharacterMainStates.Stunned,"stun"},
+        {HumanoidMovingAgent.CharacterMainStates.Shock,"shock"}
     };
 
     protected AgentFunctionalComponents m_functionalComponents;

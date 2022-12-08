@@ -25,8 +25,8 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     protected HumanoidInteractionModule m_interactionModule;
 
     // Attributes
-    public enum CharacterMainStates { Aimed, Armed_not_Aimed, Dodge, Idle,Interaction,Stunned,MeeleAttack }
-    private HashSet<CharacterMainStates> effectStates = new HashSet<CharacterMainStates>{CharacterMainStates.Stunned,CharacterMainStates.MeeleAttack};
+    public enum CharacterMainStates { Aimed, Armed_not_Aimed, Dodge, Idle,Interaction,Stunned,MeeleAttack,Shock }
+    private HashSet<CharacterMainStates> effectStates = new HashSet<CharacterMainStates>{CharacterMainStates.Stunned,CharacterMainStates.MeeleAttack,CharacterMainStates.Shock};
     public CharacterMainStates m_characterState = CharacterMainStates.Idle;
     private CharacterMainStates m_previousTempState = CharacterMainStates.Idle;
     protected GameObject m_target;
@@ -949,6 +949,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void setStunned(float duration, Vector3 direction)
     {
         setEffectState(CharacterMainStates.Stunned,duration,direction);
+    }
+
+    public void setShocked(float duration, Vector3 direction)
+    {
+        setEffectState(CharacterMainStates.Shock,duration,direction);
     }
 
     IEnumerator waitAndRemoveStun(float waitDuration,CharacterMainStates state)

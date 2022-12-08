@@ -25,7 +25,15 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         {
             //StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)stunPrecentage));
             //return false;
-            m_movingAgent.setStunned(3f,force);
+            if(damageValue.energyDamage > damageValue.healthDamage && m_movingAgent.GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID)
+            {
+                m_movingAgent.setShocked(3f,force);
+            }
+            else
+            {
+                m_movingAgent.setStunned(3f,force);
+            }
+            
         }
 
 

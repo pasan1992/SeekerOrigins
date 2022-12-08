@@ -47,6 +47,7 @@ public interface ICyberAgent
     Transform getHeadTransfrom();
 
     void setStunned(float duration,Vector3 direction);
+    void setShocked(float duration,Vector3 direction);
     void removeStun();
     void MeleteAttack(float duration,Vector3 direction);
 }
