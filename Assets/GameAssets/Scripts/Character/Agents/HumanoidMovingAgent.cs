@@ -130,6 +130,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         return effectStates.Contains(m_characterState);
     }
 
+    private bool isEffectState(CharacterMainStates state)
+    {
+        return effectStates.Contains(state);
+    }
+
     /**
      Interact with given interatable object
      - Interaction type can be different from the interaction type of the interatable object given.
@@ -904,6 +909,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     private void setEffectState(CharacterMainStates state, float duration, Vector3 direction)
     {
+        if(!isEffectState(state))
+        {
+            return;
+        }
+
         if(isDisabled() || m_characterState == CharacterMainStates.Dodge)
             return;
         

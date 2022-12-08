@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackerExplosion : BasicExplodingObject
+public class AttackerExplosion : BasicTimerExplodingObject
 {
-    private DamagableObject m_selfDamagable;
+    protected DamagableObject m_selfDamagable;
+    public bool damageSelf = true;
+    private bool exploded = false;
 
-    public void Start()
+    public bool enableTimerFromStart;
+
+    public virtual void Start()
     {
         m_selfDamagable = this.GetComponent<DamagableObject>();
     }
@@ -20,13 +24,27 @@ public class AttackerExplosion : BasicExplodingObject
        damgeAround();
     }
 
+    public virtual void performAttack(float duration,Vector3 direction)
+    {
+        if(!exploded)
+        {
+            exploded = true;
+            activateExplosionMechanisum();
+        }
+
+    }
+
     protected override void hitOnEnemy(Collider other)
     {
-        DamagableObject damagableObject =  other.GetComponentInParent<DamagableObject>();
-        if(damagableObject == m_selfDamagable)
+        if(!damageSelf)
         {
-            return;
+            DamagableObject damagableObject =  other.GetComponentInParent<DamagableObject>();
+            if(damagableObject == m_selfDamagable)
+            {
+                return;
+            }
         }
+
         base.hitOnEnemy(other);
     }
 }

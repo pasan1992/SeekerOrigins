@@ -5,19 +5,19 @@ using UnityEngine;
 public class BasicTimerExplodingObject : BasicExplodingObject
 {
      [SerializeField] 
-    private float m_explosionCountDown;
+    protected float m_explosionCountDown;
     private float m_currentCownDown = 0;
     private bool m_countDownStarted = false;
 
     public float ExplosionCountDown { get => m_explosionCountDown; set => m_explosionCountDown = value; }
-    public bool CountDownStarted { get => m_countDownStarted; set => m_countDownStarted = value; }
-    public float CurrentCownDown { get => m_currentCownDown; set => m_currentCownDown = value; }
+    private bool CountDownStarted { get => m_countDownStarted; set => m_countDownStarted = value; }
+    private float CurrentCownDown { get => m_currentCownDown; set => m_currentCownDown = value; }
 
     public GameObject indicator;
 
     private float blink_time = 0;
 
-    private AudioSource m_audioSource;
+    protected AudioSource m_audioSource;
 
     public void Awake()
     {
@@ -73,7 +73,12 @@ public class BasicTimerExplodingObject : BasicExplodingObject
     private IEnumerator blink()
     {
         indicator.SetActive(true);
-        m_audioSource.Play();
+        var sm = SoundManager.getInstance();
+        var sound_clip = sm.getSound("GrenadeBeep");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }
         yield return new WaitForSeconds( (ExplosionCountDown - CurrentCownDown) / 20 );
         indicator.SetActive(false);
         yield return new WaitForSeconds( (ExplosionCountDown - CurrentCownDown) / 20 );

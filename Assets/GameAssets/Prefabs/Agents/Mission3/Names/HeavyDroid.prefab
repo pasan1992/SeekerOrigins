@@ -502,6 +502,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000008422651
       objectReference: {fileID: 0}
+    - target: {fileID: 9008394975374781610, guid: 9934d631196d9ce4dbe48b49d07347ab,
+        type: 3}
+      propertyPath: m_explosionCountDown
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9934d631196d9ce4dbe48b49d07347ab, type: 3}
 --- !u!4 &2961447347194485870 stripped

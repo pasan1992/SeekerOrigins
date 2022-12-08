@@ -21,7 +21,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             return false;
         }
         */
-        if (stunPrecentage > Random.value && !m_movingAgent.isDisabled())
+        if ( (stunPrecentage > Random.value && !m_movingAgent.isDisabled()) || (m_movingAgent.GetAgentData().unbalanced && Random.value > 0.5f))
         {
             //StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)stunPrecentage));
             //return false;

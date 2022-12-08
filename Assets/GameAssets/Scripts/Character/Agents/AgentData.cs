@@ -37,6 +37,8 @@ public class AgentData : AgentBasicData
 
     public bool drop_reward = true;
 
+    public bool unbalanced = false;
+
     public AgentData()
     {
         InitalizeAmmo();

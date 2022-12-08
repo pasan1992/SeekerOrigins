@@ -79,7 +79,7 @@ public class AutoHumanoidAgentController :  AgentController
             m_combatStage = new CoverPointBasedCombatStage(m_movingAgent,m_navMeshAgent,GameEnums.MovmentBehaviorType.FREE);
             break;
             case COMBAT_BEHAVIOR.RUNNER:
-            m_combatStage = new ExplodingRunner(m_movingAgent,m_navMeshAgent,this.GetComponent<BasicExplodingObject>());
+            m_combatStage = new ExplodingRunner(m_movingAgent,m_navMeshAgent,this.GetComponent<AttackerExplosion>());
             break;
         }
         

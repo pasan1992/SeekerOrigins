@@ -7,17 +7,50 @@ public class ExplodingRunner : BasicMovmentCombatStage
 {
     public ICyberAgent m_target;
     private float m_explosionRange = 2;
-    private BasicExplodingObject m_explosion;
+    private AttackerExplosion m_explosion;
     private Vector3 previousPosition;
 
     private float timeFromLastExplosion=0;
 
-    public ExplodingRunner(ICyberAgent selfAgent,NavMeshAgent agent, BasicExplodingObject explosion) : base(selfAgent, agent)
+    public ExplodingRunner(ICyberAgent selfAgent,NavMeshAgent agent, AttackerExplosion explosion) : base(selfAgent, agent)
     {
         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
         m_explosion = explosion; 
-        m_stepIntervalInSeconds = 0.1f;
-        ((HumanoidMovingAgent)m_selfAgent).togglepSecondaryWeapon();
+        m_stepIntervalInSeconds = 0.2f;
+
+
+        resetAgent();
+
+
+
+        
+    }
+
+    private void resetAgent()
+    {
+        var currentWeapon =  ((HumanoidMovingAgent)m_selfAgent).getCurrentWeapon();
+        if(currentWeapon && ((HumanoidMovingAgent)m_selfAgent).isArmed())
+        {
+            switch(((HumanoidMovingAgent)m_selfAgent).getCurrentWeaponType())
+            {
+                case Weapon.WEAPONTYPE.primary:
+                ((HumanoidMovingAgent)m_selfAgent).togglePrimaryWeapon();
+                break;
+                case Weapon.WEAPONTYPE.secondary:
+                ((HumanoidMovingAgent)m_selfAgent).togglepSecondaryWeapon();
+                break;
+            }
+        }
+
+        if(m_selfAgent.isHidden())
+        {
+            m_selfAgent.toggleHide();
+        }
+
+        if(m_explosion.enableTimerFromStart)
+        {
+            Explode();
+        }
     }
 
     public override void setTargets(ICyberAgent target)
@@ -40,52 +73,60 @@ public class ExplodingRunner : BasicMovmentCombatStage
 
     private void Explode()
     {
-        if(timeFromLastExplosion>3)
+        if(timeFromLastExplosion>2f)
         {
             timeFromLastExplosion = 0;
-            // m_explosion.explode();
-            m_selfAgent.MeleteAttack(1,-m_navMeshAgent.desiredVelocity);
+            m_explosion.performAttack(1.5f,(m_selfAgent.getTransfrom().position - m_target.getTransfrom().position));
         }
         
     }
 
     private void updateGeneralMovment()
     {
+
+        resetAgent();
+
+        m_navMeshAgent.isStopped = false;
+
         float distance_to_target = 0;
-        switch (m_currentMovmentBehaviorStage)
+        if(m_target !=null)
         {
-        case GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT:
             m_navMeshAgent.SetDestination(m_target.getCurrentPosition() + Random.insideUnitSphere);
-            m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
-
-                distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-                if(distance_to_target < m_explosion.Range)
-                {
-                    Explode();
-                }
-
-        break;
-        case GameEnums.MovmentBehaviorStage.MOVING_TO_POINT:
-                m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.AT_POINT;
-                distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-                if(distance_to_target < m_explosion.Range)
-                {
-                    Explode();
-                }
-        break;
-        case GameEnums.MovmentBehaviorStage.AT_POINT:
-                distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-                if(distance_to_target < m_explosion.Range)
-                {
-                    Explode();
-                }
-                else
-                {
-                    m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
-
-                }
-
-        break;     
         }
+        
+        m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
+
+        distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
+        if(distance_to_target < m_explosion.Range/2)
+        {
+            Explode();
+        }
+
+        // switch (m_currentMovmentBehaviorStage)
+        // {
+        // case GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT:
+        //     m_navMeshAgent.SetDestination(m_target.getCurrentPosition() + Random.insideUnitSphere);
+        //     m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
+        //     distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
+
+        // break;
+        // case GameEnums.MovmentBehaviorStage.MOVING_TO_POINT:
+        //         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.AT_POINT;
+        //         distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
+        // break;
+        // case GameEnums.MovmentBehaviorStage.AT_POINT:
+        //         distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
+        //         if(distance_to_target < m_explosion.Range/2)
+        //         {
+        //             Explode();
+        //         }
+        //         else
+        //         {
+        //             m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
+
+        //         }
+
+        // break;     
+        // }
     }
 }
