@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class BasicExplosion : MonoBehaviour
 {
@@ -10,10 +11,24 @@ public class BasicExplosion : MonoBehaviour
 
     protected Rigidbody[] explosionParticles;
     public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
+
+    public string ExplosionSound = "";
+    private AudioSource m_baseAudioSource;
     //ParticleSystem m_particleSystem;
     void Awake()
     {
        explosionParticles =  this.GetComponentsInChildren<Rigidbody>();
+
+       
+        if(ExplosionSound !="")
+        {
+            m_baseAudioSource = this.GetComponent<AudioSource>();
+            if(m_baseAudioSource == null)
+            {
+                this.gameObject.AddComponent<AudioSource>();
+                m_baseAudioSource = this.GetComponent<AudioSource>();
+            }
+        }
     }
 
     protected virtual void resetAll()
@@ -67,6 +82,7 @@ public class BasicExplosion : MonoBehaviour
         GameObject explosion = ProjectilePool.getInstance().getPoolObject(explosionType);
         explosion.SetActive(true);
         explosion.transform.position = this.transform.position;
+        CommonFunctions.PlaySound(ExplosionSound,m_baseAudioSource);
     }
 
     #endregion

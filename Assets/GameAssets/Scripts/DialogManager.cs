@@ -35,9 +35,12 @@ public class DialogManager : MonoBehaviour
 
     private bool pause = false;
 
+
     public enum Characters {Alex_afraid,Alex_angry,Alex_happy,Alex_normal,Govnor_Happy,Govnor_Disapointed,Govnor_Normal,Govnor_Angry
                             ,Kangarian_Angry,Kangarian_Normal,Fang_normal};
     public Dictionary<DialogManager.Characters,Sprite> imageDict;
+
+    private SoundManager soundManager;
 
     void Awake()
     {
@@ -144,6 +147,11 @@ public class DialogManager : MonoBehaviour
     }
     private void NextDialog()
     {  
+        if(soundManager == null)
+        {
+            soundManager = SoundManager.getInstance();
+        }
+
         if(currentDialogStatments.Count == 0)
         {
             if(onDialogEndCallback !=null)
@@ -151,10 +159,13 @@ public class DialogManager : MonoBehaviour
                 onDialogEndCallback();
                 DialogText.text = "";
                 onDialogEndCallback = null;
+                soundManager.setDialogPlaying(false);
+
             }
             dialogUI.SetActive(false);
             return;
         }
+        soundManager.setDialogPlaying(true);
         dialogUI.SetActive(true);
         pause=true;
         DialogText.text = "";

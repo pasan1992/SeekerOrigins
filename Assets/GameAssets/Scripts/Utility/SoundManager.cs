@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private AudioClip m_laserPistol;
-    private AudioClip m_laserRifal;
-    private AudioClip m_droneExplosion;
-    private AudioClip m_emptyGun;
-    private AudioClip m_buletHitMetal;
 
     [System.Serializable]
     public struct SoundEffect
@@ -18,25 +12,25 @@ public class SoundManager : MonoBehaviour
         public string soundName;
     }
 
-    public string pistolSoundFile;
-    public string emptyGunSoundFile;
-    public string rifleSoundFile;
-    public string bulletHitMetal;
     private static SoundManager this_ins;
-    private string sound_location ="Sounds/";
+
+    private bool dialogPlaying;
 
 
     public List<SoundEffect> SoundList = new List<SoundEffect>();
     private Dictionary<string,AudioClip[]> sound_dict = new Dictionary<string,AudioClip[]>(); 
     void Awake()
     {
-        m_droneExplosion = Resources.Load<AudioClip>(sound_location+"/droneExplosion");
-        m_emptyGun = Resources.Load<AudioClip>(sound_location + emptyGunSoundFile);
 
         foreach(SoundEffect s in SoundList)
         {
             sound_dict.Add(s.soundName,s.sound);
         }
+    }
+
+    public void setDialogPlaying(bool isPlaying)
+    {
+        dialogPlaying = isPlaying;
     }
 
     public static SoundManager getInstance()
@@ -48,15 +42,16 @@ public class SoundManager : MonoBehaviour
 
         return this_ins;
     }
-
-    public AudioClip getDroneExplosion()
+    public void setAudioVolume(AudioSource audioSource)
     {
-        return m_droneExplosion;
-    }
-
-    public AudioClip getEmptyGunSound()
-    {
-        return m_emptyGun;
+        if(dialogPlaying)
+        {
+            audioSource.volume = 0.1f;
+        }
+        else
+        {
+            audioSource.volume = 0.8f;
+        }
     }
 
     public AudioClip getSound(string soundName)

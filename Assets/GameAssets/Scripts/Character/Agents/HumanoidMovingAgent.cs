@@ -139,11 +139,10 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
      Interact with given interatable object
      - Interaction type can be different from the interaction type of the interatable object given.
     */
-    public void interactWith(Interactable obj,Interactable.InteractableProperties.InteractableType type)
+    public bool interactWith(Interactable obj,Interactable.InteractableProperties.InteractableType type)
     {
         bool interactCondition =( (m_characterState.Equals(CharacterMainStates.Idle) || 
         m_characterState.Equals(CharacterMainStates.Armed_not_Aimed)) && !m_characterState.Equals(CharacterMainStates.Interaction) && !isEffectState());
-        
         // Check if character is ready to interact - Do not interact if the character is already interacting.
         if(interactCondition)
         {
@@ -165,7 +164,8 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
                 m_characterState = CharacterMainStates.Interaction;
                 StartCoroutine(m_interactionModule.interactWith(obj,type));
             }
-        }      
+        }     
+        return interactCondition; 
     }
 
     public void consume_ammo_pack(AmmoPack ammo_pack)
@@ -196,11 +196,12 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         }
     }
 
-    public void InteractWith(Interactable obj) {
+    public bool InteractWith(Interactable obj) {
          if(obj)
         {
-            interactWith(obj,obj.properties.Type);
-        }       
+            return interactWith(obj,obj.properties.Type);
+        }    
+        return false;   
     }
 
     public void damageAgent(CommonFunctions.Damage amount)

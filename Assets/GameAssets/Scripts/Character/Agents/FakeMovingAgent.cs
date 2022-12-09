@@ -81,7 +81,7 @@ public class FakeMovingAgent : ICyberAgent
         return fakeObject.transform;
     }
 
-    public void interactWith(Interactable interactableObj, Interactable.InteractableProperties.InteractableType type)
+    public bool interactWith(Interactable interactableObj, Interactable.InteractableProperties.InteractableType type)
     {
         throw new System.NotImplementedException();
     }

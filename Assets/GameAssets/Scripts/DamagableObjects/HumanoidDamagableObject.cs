@@ -269,7 +269,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
                 
             postDestoryExplosion.transform.position = collider.transform.position;
             postDestoryExplosion.SetActive(true);
-            m_audioSource.PlayOneShot(m_soundManager.getDroneExplosion());
+            CommonFunctions.PlaySound("DroidExplosion",m_audioSource);
 
 
             GameObject postDestoryExplosion2 = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.DroidExplosionParticleEffect);

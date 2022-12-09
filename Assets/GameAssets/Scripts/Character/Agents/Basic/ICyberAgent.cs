@@ -40,7 +40,7 @@ public interface ICyberAgent
     GameObject getGameObject();
     AgentData GetAgentData();
     bool isInteracting();
-    void interactWith(Interactable interactableObj,Interactable.InteractableProperties.InteractableType type);
+    bool interactWith(Interactable interactableObj,Interactable.InteractableProperties.InteractableType type);
     void setOnDamagedCallback(GameEvents.BasicNotifactionEvent callback);
     IEnumerator waitTillUnarmed();
     void cancleInteraction();

@@ -88,8 +88,9 @@ public class AutoHumanoidAgentController :  AgentController
     #endregion
 
     #region update
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         //timeFromLastSwitch += Time.deltaTime;
         
         if(m_currentState != null && m_movingAgent.IsFunctional() && !m_movingAgent.isDisabled() & isInUse())
@@ -111,8 +112,10 @@ public class AutoHumanoidAgentController :  AgentController
 
     }
 
-    void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if(m_restrictions == AGENT_AI_RESTRICTIONS.DISABLED)
         {
             m_movingAgent.moveCharacter(Vector3.zero);
@@ -440,6 +443,7 @@ public class AutoHumanoidAgentController :  AgentController
         if(m_currentState != m_idleStage)
         {
             Debug.LogError("Current movment stage is not iteration stage, make the agent restriction as no combat from start. Or give a wait in the playmaker before calling this");
+            swithtoIteractionStage();
         }
         ((IteractionStage)m_idleStage).setMovmentEndEvent(onEnd);
         ((IteractionStage)m_idleStage).moveToWayPoint(waypoints,enableIterate);

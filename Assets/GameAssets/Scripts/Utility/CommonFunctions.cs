@@ -20,10 +20,19 @@ public class CommonFunctions
         public float healthDamage;
         public float energyDamage;
 
+        public ICyberAgent damageFrom;
+
         public Damage(float health, float energy)
         {
             this.healthDamage = health;
             this.energyDamage = energy;
+        }
+
+        public Damage(float health, float energy, ICyberAgent damageFrom)
+        {
+            this.healthDamage = health;
+            this.energyDamage = energy;
+            this.damageFrom = damageFrom;
         }
     }
     
@@ -89,6 +98,7 @@ public class CommonFunctions
         {
             var sm = SoundManager.getInstance();
             var sound_clip = sm.getSound(soundName);
+            sm.setAudioVolume(audioSource);
             if(sound_clip)
             {
                 audioSource.PlayOneShot(sound_clip);

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
 public abstract class RangedWeapon : Weapon
@@ -301,7 +300,7 @@ public abstract class RangedWeapon : Weapon
         }
         else
         {
-            m_audioScource.PlayOneShot(m_soundManager.getEmptyGunSound());
+            CommonFunctions.PlaySound("EmptyGun",m_audioScource);
         }
     }
 

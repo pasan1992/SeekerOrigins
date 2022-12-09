@@ -17,8 +17,6 @@ public class BasicTimerExplodingObject : BasicExplodingObject
 
     private float blink_time = 0;
 
-    protected AudioSource m_audioSource;
-
     public void Awake()
     {
         if(indicator)

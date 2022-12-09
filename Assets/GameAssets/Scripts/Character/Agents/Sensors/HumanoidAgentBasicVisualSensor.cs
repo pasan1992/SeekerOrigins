@@ -266,13 +266,14 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
 
     public override void forceUpdateSneosr()
     {
-        VISUAL_CONE_ANGLE = 360;
-        VISUAL_DISTANCE = 40;
+        VISUAL_CONE_ANGLE = Mathf.Max(360,m_agent.GetAgentData().VisualAngle);
+        VISUAL_DISTANCE = Mathf.Max(100,m_agent.GetAgentData().VisualDistance);
         normalUpdate = false;
         onSensorUpdate();
-        VISUAL_CONE_ANGLE = 85;
-        VISUAL_DISTANCE = 20;
+        VISUAL_DISTANCE = m_agent.GetAgentData().VisualDistance;
+        VISUAL_CONE_ANGLE = m_agent.GetAgentData().VisualAngle;
         normalUpdate = true;
+        
     }
 
     public void forceCombatMode(Vector3 position)

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionType: 0
+  ExplosionSound: DroneExplosion
 --- !u!82 &8344265791652891630
 AudioSource:
   m_ObjectHideFlags: 0
@@ -119,7 +120,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3f0810adaaaef1048bdd3ff762e962c5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

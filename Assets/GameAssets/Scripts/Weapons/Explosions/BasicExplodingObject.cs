@@ -16,7 +16,7 @@ public class BasicExplodingObject : MonoBehaviour
 
     public ProjectilePool.POOL_OBJECT_TYPE explosionType = ProjectilePool.POOL_OBJECT_TYPE.FireEXplosionParticle;
 
-    private AudioSource m_audioSource;
+    protected AudioSource m_audioSource;
 
     public void explode()
     {

@@ -10,6 +10,8 @@ public abstract class AgentController : MonoBehaviour
     public enum AGENT_AI_RESTRICTIONS { NO_RESTRICTIONS,NO_COMBAT,DISABLED };
     public AGENT_AI_RESTRICTIONS m_restrictions = AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
 
+    public bool ControlDisabled = false;
+
     protected void intializeAgentCallbacks(ICyberAgent cyberAgent)
     {
         cyberAgent.setOnDestoryCallback(OnAgentDestroy);
@@ -53,6 +55,22 @@ public abstract class AgentController : MonoBehaviour
 
     public void resetControlAgent()
     {
+    }
+
+    public virtual void Update()
+    {
+        if(ControlDisabled)
+        {
+            return;
+        }
+    }
+
+    public virtual void FixedUpdate()
+    {
+         if(ControlDisabled)
+        {
+            return;
+        }       
     }
 
     private void OnDisable()

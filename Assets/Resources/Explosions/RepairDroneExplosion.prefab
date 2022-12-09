@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionType: 0
+  ExplosionSound: GranadeExplode
 --- !u!1 &2620319579179720520
 GameObject:
   m_ObjectHideFlags: 0

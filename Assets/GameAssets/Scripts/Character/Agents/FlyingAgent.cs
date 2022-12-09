@@ -446,14 +446,15 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         return m_currentDroneState == GameEnums.DroneState.TakeOff || m_currentDroneState == GameEnums.DroneState.Landing || m_currentDroneState == GameEnums.DroneState.Landed ;  
     }
 
-    public void interactWith(Interactable interactableObj,Interactable.InteractableProperties.InteractableType type)
+    public bool interactWith(Interactable interactableObj,Interactable.InteractableProperties.InteractableType type)
     {
         if(type == Interactable.InteractableProperties.InteractableType.TimedInteraction){
             landDrone(interactableObj.transform.position);
             float interactionTime= interactableObj.properties.interactionTime;
             StartCoroutine(waitCoroutine(interactionTime));
+            return true;
         }
-
+        return false;
     }
 
     IEnumerator waitCoroutine(float interactionTime){

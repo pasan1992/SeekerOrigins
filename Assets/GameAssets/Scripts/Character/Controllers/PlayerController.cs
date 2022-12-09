@@ -388,8 +388,10 @@ public class PlayerController : AgentController
         m_currentTargetPosition = targetPosition;
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         if(!m_enabled || UICanvasHandler.getInstance().isTabMenuOn)
         {
             return;
@@ -404,8 +406,9 @@ public class PlayerController : AgentController
         }
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdate()
     {
+        base.FixedUpdate();
         CoverFinder();
     }
 

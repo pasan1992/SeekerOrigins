@@ -90,6 +90,10 @@ public class ExplodingRunner : BasicMovmentCombatStage
         {
             m_navMeshAgent.SetDestination(m_target.getCurrentPosition() + Random.insideUnitSphere);
         }
+        else
+        {
+            return;
+        }
         
         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
 
@@ -98,32 +102,5 @@ public class ExplodingRunner : BasicMovmentCombatStage
         {
             Explode();
         }
-
-        // switch (m_currentMovmentBehaviorStage)
-        // {
-        // case GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT:
-        //     m_navMeshAgent.SetDestination(m_target.getCurrentPosition() + Random.insideUnitSphere);
-        //     m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
-        //     distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-
-        // break;
-        // case GameEnums.MovmentBehaviorStage.MOVING_TO_POINT:
-        //         m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.AT_POINT;
-        //         distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-        // break;
-        // case GameEnums.MovmentBehaviorStage.AT_POINT:
-        //         distance_to_target = Vector3.Distance(m_target.getCurrentPosition(),m_selfAgent.getCurrentPosition());
-        //         if(distance_to_target < m_explosion.Range/2)
-        //         {
-        //             Explode();
-        //         }
-        //         else
-        //         {
-        //             m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.CALULATING_NEXT_POINT;
-
-        //         }
-
-        // break;     
-        // }
     }
 }

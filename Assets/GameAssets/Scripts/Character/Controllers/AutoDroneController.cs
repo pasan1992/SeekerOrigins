@@ -50,8 +50,9 @@ public class AutoDroneController :  AgentController
     #region update
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if(m_selfAgent.IsFunctional() && !m_selfAgent.isDisabled() && isInUse())
         {
             m_currentBehaviorState.updateStage();

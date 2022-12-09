@@ -495,6 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionType: 19
+  ExplosionSound: DroidExplosion
   head: {fileID: 5700473208435989202}
   hands:
   - {fileID: 8110747597742827886}
@@ -516,7 +517,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

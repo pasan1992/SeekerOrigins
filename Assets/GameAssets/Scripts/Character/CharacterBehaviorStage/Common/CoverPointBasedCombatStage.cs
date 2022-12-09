@@ -357,7 +357,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     getCover();
                 }
 
-                if(damageAlert)
+                if(damageAlert && m_selfAgent.GetAgentData().use_cover)
                 {
                     damageAlert = false;
 
