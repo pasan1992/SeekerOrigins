@@ -58029,28 +58029,6 @@ MonoBehaviour:
   - sound:
     - {fileID: 8300000, guid: 513a4a5f91196144bb0a7dfdcf46bfc7, type: 3}
     soundName: BulletHitBody
-  - sound:
-    - {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-    - {fileID: 8300000, guid: a7bfb1cb6f269014b9ce9c6c0a105f9b, type: 3}
-    soundName: DroidExplosion
-  - sound:
-    - {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-    - {fileID: 8300000, guid: a7bfb1cb6f269014b9ce9c6c0a105f9b, type: 3}
-    soundName: GrenadeExplosion
-  - sound:
-    - {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-    - {fileID: 8300000, guid: a7bfb1cb6f269014b9ce9c6c0a105f9b, type: 3}
-    soundName: DroneExplosion
-  - sound:
-    - {fileID: 8300000, guid: 3f0810adaaaef1048bdd3ff762e962c5, type: 3}
-    - {fileID: 8300000, guid: 513a4a5f91196144bb0a7dfdcf46bfc7, type: 3}
-    soundName: BodyHit
-  - sound:
-    - {fileID: 8300000, guid: eb1c64b25d148824e9686d4afa025632, type: 3}
-    soundName: EmptyGun
-  - sound:
-    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
-    soundName: Electric
 --- !u!114 &3209784683429458911
 MonoBehaviour:
   m_ObjectHideFlags: 0
