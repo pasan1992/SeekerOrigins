@@ -32,8 +32,7 @@ public class AgentData : AgentBasicData
     public AgentBehaviorStatus behaviorStatus = AgentBehaviorStatus.Suspicious;
     public List<AmmoPack> WeaponAmmo = new List<AmmoPack>();
 
-    public bool immuneToStunn = false
-    ;
+    public bool immuneToStunn = false;
 
     public bool drop_reward = true;
 
