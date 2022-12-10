@@ -27,8 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SE01/EP02/EP02.unity
     guid: 4707cf103e0bb1242a4e41bdd762a5f5
   - enabled: 1
+    path: Assets/Scenes/SE01/EP03/ep3_improved_updated.unity
+    guid: f342edb785eb0964c8231e06369c5310
+  - enabled: 0
     path: Assets/Scenes/SE01/EP03/EP03.unity
-    guid: e3aacd8c0c3f6b8479d768d85a3ee8d7
+    guid: 55853a6387959e849a49040fa76a0c7c
+  - enabled: 0
+    path: Assets/Scenes/SE01/EP03/EP03 Checkpoints Tests/EP03_Broken_Com_Checkpoint_works.unity
+    guid: c8ae929815730624dac1a59949379b67
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d1402d80e3406b845af683f00ed26b2a,
       type: 2}

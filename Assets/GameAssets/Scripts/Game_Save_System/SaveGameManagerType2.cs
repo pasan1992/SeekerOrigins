@@ -10,15 +10,9 @@ using UnityEngine.SceneManagement;
 public class SaveGameManagerType2 : MonoBehaviour
 {
     [SerializeField] TMP_Text _Message;
-    [SerializeField] GameObject _playerStart;
     [SerializeField] GameObject _player;
     [SerializeField] List<GameObject> _checkpoints;
-
-    [SerializeField] bool isTesting = false;
-
     public int activeCheckPoint;
-
-    
     //int _previousScence;
 
     SaveGame CreateSaveGameObject()
@@ -26,7 +20,7 @@ public class SaveGameManagerType2 : MonoBehaviour
         SaveGame saveGame = new SaveGame();
         saveGame.curentScence = SceneManager.GetActiveScene().buildIndex;
         saveGame.curentCheckPoint = activeCheckPoint;
-        saveGame.curentDirecton = _checkpoints[activeCheckPoint].transform.rotation.eulerAngles;
+        saveGame.curentDirecton = _checkpoints[activeCheckPoint - 1].transform.rotation.eulerAngles;
 
         //saveGame.playerPos = _player.transform.position;
         //saveGame.playerRotaion = _player.transform.rotation.eulerAngles;
@@ -37,7 +31,7 @@ public class SaveGameManagerType2 : MonoBehaviour
     {
         if (!File.Exists(Application.streamingAssetsPath + "/gameSave.save"))
         {
-            SaveGame(0);
+            SaveGame(1);
         }
     }
 
@@ -84,7 +78,7 @@ public class SaveGameManagerType2 : MonoBehaviour
     {
         SaveGame saveGame = new SaveGame();
         saveGame.curentScence = SceneManager.GetActiveScene().buildIndex;
-        saveGame.curentCheckPoint = 0;
+        saveGame.curentCheckPoint = 1;
         saveGame.curentDirecton = _checkpoints[0].transform.rotation.eulerAngles;
 
         //saveGame.latestCheckPoint = 0;
@@ -112,13 +106,10 @@ public class SaveGameManagerType2 : MonoBehaviour
         SaveGame saveGame = (SaveGame)binaryFormatter.Deserialize(file);
         file.Close();
 
-        if (!isTesting)
-        {
-            activeCheckPoint = saveGame.curentCheckPoint;
-        }
+        activeCheckPoint = saveGame.curentCheckPoint;
+        _player.transform.localPosition = _checkpoints[activeCheckPoint].transform.position;
+        _player.transform.rotation = _checkpoints[activeCheckPoint].transform.rotation;
 
-        _playerStart.transform.localPosition = _checkpoints[activeCheckPoint].transform.position;
-        _playerStart.transform.rotation = _checkpoints[activeCheckPoint].transform.rotation;
         //_player.transform.position = saveGame.playerPos;
         //_player.transform.rotation = Quaternion.Euler(saveGame.playerRotaion);
 
