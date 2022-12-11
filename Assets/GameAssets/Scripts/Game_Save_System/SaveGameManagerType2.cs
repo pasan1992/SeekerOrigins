@@ -58,7 +58,7 @@ public class SaveGameManagerType2 : MonoBehaviour
 
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
-        _Message.text = "CheckPoint " + activeCheckPoint + "  Saved!";
+        _Message.text = "CheckPoint " + activeCheckPoint + " is saved!";
         print("SGM SAVE CheckPoint " + activeCheckPoint + "  Saved!");
     }
 
@@ -127,7 +127,7 @@ public class SaveGameManagerType2 : MonoBehaviour
 
         //_player.transform.position = saveGame.playerPos;
         //_player.GetComponent<AgentData>().grenade.count = 20;
-        _Message.text = "CheckPoint " + activeCheckPoint + " Load Success!";
+        _Message.text = "CheckPoint " + activeCheckPoint + " is loaded";
 
         print("SGM LOAD _previousScence " + saveGame.curentScence + " CheckPoint " + activeCheckPoint + " Load Success!");
 
