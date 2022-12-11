@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using System;
 
 public class SaveGameManagerType2 : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class SaveGameManagerType2 : MonoBehaviour
         binaryFormatter.Serialize(file, saveGame);
         file.Close();
         _Message.text = "CheckPoint " + activeCheckPoint + " is saved!";
-        print("SGM SAVE CheckPoint " + activeCheckPoint + "  Saved!");
+        print("CheckPoint " + activeCheckPoint + " is saved!");
     }
 
     public void ResetGame(int val)
@@ -129,13 +130,18 @@ public class SaveGameManagerType2 : MonoBehaviour
         //_player.GetComponent<AgentData>().grenade.count = 20;
         _Message.text = "CheckPoint " + activeCheckPoint + " is loaded";
 
-        print("SGM LOAD _previousScence " + saveGame.curentScence + " CheckPoint " + activeCheckPoint + " Load Success!");
+        int intVal = saveGame.curentScence - 4;
+        print("Season 01 | Episode 0" + intVal + " | CheckPoint " + activeCheckPoint + " is loaded");
 
     }
 
     public void ActivateCheckpont(int val)
     {
         _checkpoints[val].SetActive(true);
+    }
+
+    public void EnableNavMesh()
+    {
         _player.enabled = true;
     }
 }
