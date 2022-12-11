@@ -13,8 +13,8 @@ public class SaveGameManagerType2 : MonoBehaviour
     [SerializeField] GameObject _playerStart;
     [SerializeField] GameObject _player;
     [SerializeField] List<GameObject> _checkpoints;
-
     [SerializeField] bool isTesting = false;
+
 
     public int activeCheckPoint;
 
@@ -98,7 +98,7 @@ public class SaveGameManagerType2 : MonoBehaviour
     {
         if (!File.Exists(Application.streamingAssetsPath + "/gameSave.save"))
         {
-            SaveGame(1);
+            SaveGame(0);
         }
 
         SurrogateSelector surrogateSelector = new SurrogateSelector();
@@ -128,5 +128,10 @@ public class SaveGameManagerType2 : MonoBehaviour
 
         print("SGM LOAD _previousScence " + saveGame.curentScence + " CheckPoint " + activeCheckPoint + " Load Success!");
 
+    }
+
+    public void ActivateCheckpont(int val)
+    {
+        _checkpoints[val].SetActive(true);
     }
 }

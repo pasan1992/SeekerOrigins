@@ -110806,6 +110806,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DF_SaveGameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7781373653867093020, guid: 70402b3e0177ff44499199279d4b0edd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7781373653867093022, guid: 70402b3e0177ff44499199279d4b0edd,
         type: 3}
       propertyPath: m_RootOrder
