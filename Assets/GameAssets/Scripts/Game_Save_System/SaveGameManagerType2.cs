@@ -6,12 +6,13 @@ using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class SaveGameManagerType2 : MonoBehaviour
 {
     [SerializeField] TMP_Text _Message;
     [SerializeField] GameObject _playerStart;
-    [SerializeField] GameObject _player;
+    [SerializeField] NavMeshAgent _player;
     [SerializeField] List<GameObject> _checkpoints;
     [SerializeField] bool isTesting = false;
 
@@ -35,6 +36,8 @@ public class SaveGameManagerType2 : MonoBehaviour
     }
     private void Start()
     {
+        _player.enabled = false;
+
         if (!File.Exists(Application.streamingAssetsPath + "/gameSave.save"))
         {
             SaveGame(0);
@@ -133,5 +136,6 @@ public class SaveGameManagerType2 : MonoBehaviour
     public void ActivateCheckpont(int val)
     {
         _checkpoints[val].SetActive(true);
+        _player.enabled = true;
     }
 }

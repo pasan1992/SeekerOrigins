@@ -110795,12 +110795,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 4607712558531728580}
+      objectReference: {fileID: 2488987911679735501}
     - target: {fileID: 7781373653867093011, guid: 70402b3e0177ff44499199279d4b0edd,
         type: 3}
       propertyPath: _Message
       value: 
       objectReference: {fileID: 8766484429382706001}
+    - target: {fileID: 7781373653867093011, guid: 70402b3e0177ff44499199279d4b0edd,
+        type: 3}
+      propertyPath: _playerStart
+      value: 
+      objectReference: {fileID: 4607712558531728580}
     - target: {fileID: 7781373653867093020, guid: 70402b3e0177ff44499199279d4b0edd,
         type: 3}
       propertyPath: m_Name
@@ -110809,7 +110814,7 @@ PrefabInstance:
     - target: {fileID: 7781373653867093020, guid: 70402b3e0177ff44499199279d4b0edd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781373653867093022, guid: 70402b3e0177ff44499199279d4b0edd,
         type: 3}
