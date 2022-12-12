@@ -89,6 +89,7 @@ public class DamagableItem : MonoBehaviour,DamagableObject
                 
                 if(removeOnDestory)
                 {
+                    CommonFunctions.ResetParticles(this.gameObject);
                     Destroy(this.gameObject);
                 }
                 else

@@ -35,6 +35,15 @@ public class CommonFunctions
             this.damageFrom = damageFrom;
         }
     }
+
+    public static void ResetParticles(GameObject paranetObject)
+    {
+        BasicParticleEffect[] all_child_particles = paranetObject.GetComponentsInChildren<BasicParticleEffect>();
+        foreach(BasicParticleEffect pf in all_child_particles)
+        {
+            pf.resetAll();
+        }
+    }
     
     private static LayerMask floor_mask = -1;
     public static LayerMask getFloorLayerMask()

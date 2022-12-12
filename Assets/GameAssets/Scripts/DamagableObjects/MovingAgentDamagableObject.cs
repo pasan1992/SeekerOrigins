@@ -214,7 +214,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         if(!KeepOnDestory)
         {
             yield return new WaitForSeconds(time);
-            
+            CommonFunctions.ResetParticles(this.gameObject);
             SetFireEffect(false,null);
             Destroy(this.gameObject);
 

@@ -246,7 +246,10 @@ public class AutoHumanoidAgentController :  AgentController
 
     // TODO - This sound component must be a another sensor. need to convert it
     public void onSoundAlert(Vector3 position, AgentBasicData.AgentFaction faction, float maxDistance)
-    {
+    {   if(this.transform == null)
+        {
+            return;
+        }
         var dis = Vector3.Distance(this.transform.position, position);
 
         // if max distance of the sound is less than the distance from the sound to unit. return
