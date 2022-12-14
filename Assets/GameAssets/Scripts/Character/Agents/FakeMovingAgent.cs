@@ -235,5 +235,9 @@ public class FakeMovingAgent : ICyberAgent
     public void MeleteAttack(float duration,Vector3 direction)
     {
     }
+
+    public void SetAgentData(AgentData ad)
+    {
+    }
 }
 

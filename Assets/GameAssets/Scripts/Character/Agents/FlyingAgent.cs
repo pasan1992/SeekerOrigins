@@ -528,6 +528,11 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
         
     }
+    public void SetAgentData(AgentData ad)
+    {
+        m_agentData = ad;
+        m_agentData.InitalizeAmmo();
+    }
 
     #endregion
 }

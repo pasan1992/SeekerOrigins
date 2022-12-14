@@ -963,6 +963,12 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         setEffectState(CharacterMainStates.Point,duration,direction);
     }
 
+    public void SetAgentData(AgentData ad)
+    {
+         AgentData = ad;
+         AgentData.InitalizeAmmo();
+    }
+
     IEnumerator waitAndRemoveStun(float waitDuration,CharacterMainStates state)
     {
         yield return new WaitForSeconds(waitDuration);

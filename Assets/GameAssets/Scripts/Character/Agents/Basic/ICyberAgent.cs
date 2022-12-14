@@ -39,6 +39,9 @@ public interface ICyberAgent
     bool isHidden();
     GameObject getGameObject();
     AgentData GetAgentData();
+
+    void SetAgentData(AgentData ad);
+
     bool isInteracting();
     bool interactWith(Interactable interactableObj,Interactable.InteractableProperties.InteractableType type);
     void setOnDamagedCallback(GameEvents.BasicNotifactionEvent callback);
