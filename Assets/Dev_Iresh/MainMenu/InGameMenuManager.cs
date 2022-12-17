@@ -54,14 +54,24 @@ public class InGameMenuManager : MonoBehaviour
         Time.timeScale = 1;
         if (index == -3)
         {
-            if (_btnNo == -2)
+            if (_btnNo == -2) // to Reset
             {
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
             }
-            else if (_btnNo == -3)
+            else if (_btnNo == -3) // to Reset checkpoint to 0
             {
                 //TODO: set checkpoint to 0
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
+            }
+            else if (_btnNo == 2) // to MainMenu
+            {
+                PlayerPrefs.SetInt("LoadScene", 2);
+
+            }
+            else if ( _btnNo == 3) //to TUtorials
+            {
+                PlayerPrefs.SetInt("LoadScene", 3);
+
             }
             else
             {

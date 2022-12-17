@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -15,8 +13,8 @@ public class UIInstanceHUD : MonoBehaviour
 
     // In game Fields
     [Header("In Game Fields (IGF)")]
-    [SerializeField] List<Sprite> _pistolImgList;
-    [SerializeField] List<Sprite> _rifleImgList;
+    public List<Sprite> pistolImgList;
+    public List<Sprite> rifleImgList;
 
     [SerializeField] GameObject _missileTypeObj_IGF;
     [SerializeField] TMP_Text _missileTypeCount_IGF;
@@ -27,10 +25,10 @@ public class UIInstanceHUD : MonoBehaviour
     [SerializeField] GameObject _healthPackTypeObj_IGF;
     [SerializeField] TMP_Text _healthPackTypeCount_IGF;
 
-    [SerializeField] GameObject _pistolTypeObj_IGF;
+    public GameObject pistolTypeObj_IGF;
     [SerializeField] TMP_Text _pistolTypeCount_IGF;
 
-    [SerializeField] GameObject _rifleTypeObj_IGF;
+    public GameObject rifleTypeObj_IGF;
     [SerializeField] TMP_Text _rifleTypeCount_IGF;
 
     // Tab Menu Feilds
@@ -351,8 +349,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            //_pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolImgList[0];
+                            //pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo];
+                            pistolTypeObj_IGF.GetComponent<Image>().sprite = pistolImgList[0];
                         }
                     }
 
@@ -374,8 +372,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            //_pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolImgList[1];
+                            //pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Energy_PistolAmmo];
+                            pistolTypeObj_IGF.GetComponent<Image>().sprite = pistolImgList[1];
 
                         }
                     }
@@ -398,8 +396,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedPistolAmmo)
                         {
-                            //_pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
-                            _pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolImgList[2];
+                            //pistolTypeObj_IGF.GetComponent<Image>().sprite = _pistolsSpriteList[(int)AmmoTypeEnums.PistolAmmo.Charge_PistolAmmo];
+                            pistolTypeObj_IGF.GetComponent<Image>().sprite = pistolImgList[2];
 
                         }
                     }
@@ -427,8 +425,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo];
-                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[0];
+                            //rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo];
+                            rifleTypeObj_IGF.GetComponent<Image>().sprite = rifleImgList[0];
 
                         }
                     }
@@ -451,8 +449,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo];
-                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[1];
+                            //rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Energy_RifleAmmo];
+                            rifleTypeObj_IGF.GetComponent<Image>().sprite = rifleImgList[1];
 
                         }
 
@@ -475,8 +473,8 @@ public class UIInstanceHUD : MonoBehaviour
 
                         if (weaponAmmo.AmmoType == _selectedRifleAmmo)
                         {
-                            //_rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo];
-                            _rifleTypeObj_IGF.GetComponent<Image>().sprite = _rifleImgList[2];
+                            //rifleTypeObj_IGF.GetComponent<Image>().sprite = _riflesSpriteList[(int)AmmoTypeEnums.RifleAmmo.Highcaliber_RifleAmmo];
+                            rifleTypeObj_IGF.GetComponent<Image>().sprite = rifleImgList[2];
 
                         }
                     }

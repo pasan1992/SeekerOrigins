@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class UICanvasHandler : MonoBehaviour
@@ -10,6 +11,13 @@ public class UICanvasHandler : MonoBehaviour
     [SerializeField] CanvasGroup _weponeMenuCanvas;
     [SerializeField] CanvasGroup _instantVideoPlayerCanvas;
     [SerializeField] CanvasGroup _videoPlayerCanvas;
+
+    [SerializeField] UIInstanceHUD _uIInstanceHUD;
+
+    //Testing
+    [SerializeField] int _mainType = 0;
+    [SerializeField] int _subType = 0;
+    //-----
 
     bool _isAvailaleEscape = true;
     bool _isAvailaleTab = true;
@@ -34,6 +42,11 @@ public class UICanvasHandler : MonoBehaviour
     {
         if (!_isOpenInstantVideo)
         {
+            //if (Input.GetKey(KeyCode.F))
+            //{
+            //    pressFKey();
+            //}
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (_isAvailaleEscape && _isAvailaleTab)
@@ -94,6 +107,31 @@ public class UICanvasHandler : MonoBehaviour
 
         _isAvailaleEscape = true;
     }
+
+    //void pressFKey()
+    //{
+    //    if (_mainType == 0)
+    //    {
+    //        _uIInstanceHUD.pistolTypeObj_IGF.GetComponent<Image>().sprite = _uIInstanceHUD.pistolImgList[_subType];
+    //    }
+    //    else if (_mainType == 1)
+    //    {
+    //        _uIInstanceHUD.rifleTypeObj_IGF.GetComponent<Image>().sprite = _uIInstanceHUD.rifleImgList[_subType];
+    //    }
+    //    //InstantChange(_mainType,_subType);
+    //}
+
+    //public void InstantChange(int mainType, int subType)
+    //{
+    //    if (mainType == 0)
+    //    {
+    //        _uIInstanceHUD.pistolTypeObj_IGF.GetComponent<Image>().sprite = _uIInstanceHUD.pistolImgList[subType];
+    //    }
+    //    else if (mainType == 1)
+    //    {
+    //        _uIInstanceHUD.rifleTypeObj_IGF.GetComponent<Image>().sprite = _uIInstanceHUD.rifleImgList[subType];
+    //    }
+    //}
 
     public void OpenInstantVideoPlayerHome()
     {

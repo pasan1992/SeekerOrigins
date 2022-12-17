@@ -50,6 +50,7 @@ public class UILevelsHandler : MonoBehaviour
         //print("imagePath: " + loadedPlayerData.imagePath);
 
         string jsonData = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "levelData.json"));
+        //string jsonData = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "levelData"));
         //string jsonData = File.ReadAllText(Path.Combine(Application.persistentDataPath, "levelData.json"));
 
         //string jsonData = File.ReadAllText(Application.streamingAssetsPath + "levelData.json");
