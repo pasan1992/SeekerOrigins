@@ -967,6 +967,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     {
          AgentData = ad;
          AgentData.InitalizeAmmo();
+         m_equipmentModule.updateAgentData(ad);
     }
 
     IEnumerator waitAndRemoveStun(float waitDuration,CharacterMainStates state)

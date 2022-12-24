@@ -6,6 +6,7 @@ public class AmmoPack : Interactable
 {
     // Start is called before the first frame update
     public List<AgentData.AmmoPack> AmmoPackData;
+    
     //public int GrenadeCount = 0;
 
     public int HealthInjectionCount = 0;
@@ -45,5 +46,6 @@ public class AmmoPack : Interactable
     public override void OnInteractionStart()
     {
         m_anim.SetTrigger("open");
+        m_outLine.enabled = false;
     }
 }

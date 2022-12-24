@@ -73,6 +73,7 @@ public class AgentData : AgentBasicData
         //use a given amount of ammo and return the used amount
         int rocketAmmo = 0;
         weaponAmmoCount.TryGetValue(ammo_type,out rocketAmmo);
+        Debug.Log(rocketAmmo);
 
         if(rocketAmmo > count)
         {
@@ -104,6 +105,19 @@ public class AgentData : AgentBasicData
             loaded = secondaryWeapon.getLoadedAmmoCount();
         }
         return unloaded + loaded;
+    }
+
+    public AgentData getSaveAgentData()
+    {     
+        WeaponAmmo = new List<AmmoPack>();
+        foreach(var entry in weaponAmmoCount)
+        {
+            var newAmmoPack = new AmmoPack();
+            newAmmoPack.AmmoCount = entry.Value;
+            newAmmoPack.AmmoType = entry.Key;
+            WeaponAmmo.Add(newAmmoPack);
+        }
+        return this;
     }
 
     public int checkUnloadAvaialbleAmmo(string ammoName)

@@ -62,7 +62,7 @@ public class Interactable : MonoBehaviour
 
     private bool interacting;
     
-    private Outline m_outLine;
+    protected Outline m_outLine;
 
     // To Reset the actual object loaction after interaction
     private Vector3 m_relativePosition;

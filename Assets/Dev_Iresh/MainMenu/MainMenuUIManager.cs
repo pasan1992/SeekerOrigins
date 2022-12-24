@@ -15,33 +15,13 @@ public class MainMenuUIManager : MonoBehaviour
 
     [SerializeField] GameObject _newGameWarningPanel;
     [SerializeField] GameObject _continueBtn;
-    public int checkPoint = -1;
     int _previousScence = -1;
 
     private void Start()
     {
-        //_saveGameManager.GetComponent<SaveGameManager>().LoadGame();
+        var _previousScence = SaveData.GetLatestSceneID();
 
-        if (File.Exists(Application.streamingAssetsPath + "/gameSave.save"))
-        {
-            SurrogateSelector surrogateSelector = new SurrogateSelector();
-            surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new Vector3SerializationSurrogate());
-
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-
-            binaryFormatter.SurrogateSelector = surrogateSelector;
-
-            FileStream file = File.Open(Application.streamingAssetsPath + "/gameSave.save", FileMode.Open);
-            SaveGame saveGame = (SaveGame)binaryFormatter.Deserialize(file);
-            file.Close();
-
-            checkPoint = saveGame.latestCheckPoint;
-            _previousScence = saveGame.curentScence;
-
-            print("_previousScence "+ _previousScence + " CheckPoint " + checkPoint + " Load Success!");
-        }
-
-        if (_previousScence >= 0 && checkPoint > 0)
+        if (_previousScence >= 0)
         {
             _continueBtn.SetActive(true);
         }
@@ -49,7 +29,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void CheckPlayBtnState()
     {
-        if (checkPoint == -1 || checkPoint == 0)
+        if (_previousScence == -1)
         {
             PlayGame();
         }

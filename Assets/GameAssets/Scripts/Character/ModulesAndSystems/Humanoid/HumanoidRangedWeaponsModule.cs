@@ -60,6 +60,11 @@ public class HumanoidRangedWeaponsModule
         getAllWeapons(props);
     }
 
+    public void updateAgentData(AgentData agentData)
+    {
+        m_agentData = agentData;
+    }
+
     private void UpdateWeaponSubStage()
     {
         if(m_animationSystem.checkCurrentAnimationTag("Armed"))
