@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198550842798287166}
   - component: {fileID: 199579541260942072}
   m_Layer: 0
-  m_Name: FX_WarpTunnel_01
+  m_Name: FX_WarpTunnel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
