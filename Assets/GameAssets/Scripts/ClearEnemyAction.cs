@@ -31,6 +31,10 @@ public class ClearEnemyAction : FsmStateAction
                 agent_cont.RemoveRestrictions();
             }
         }
+        if(fullEnemyCount == 0)
+        {
+            Finish();
+        }
         m_started = true;
     }
 

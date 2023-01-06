@@ -38,6 +38,8 @@ public class PlayerController : AgentController
 
     private bool is_slowmo = false;
 
+    private static PlayerController this_instance;
+
     #region Initialize
     private void Start()
     {
@@ -58,6 +60,16 @@ public class PlayerController : AgentController
         m_rocket_pack = GetComponentInChildren<RocketPack>();
         camplayer = GameObject.FindObjectOfType<GamePlayCam>();
         m_movingAgent.setOnHealCallback(OnDamage);
+    }
+
+    public static PlayerController getInstance()
+    {
+        if(this_instance ==null)
+        {
+            this_instance = GameObject.FindObjectOfType<PlayerController>();
+        }
+
+        return this_instance;
     }
 
     private void createTargetPlane()

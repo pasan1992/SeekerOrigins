@@ -649,6 +649,12 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     }
 
     // Return true if weapon is already hosted or actualy wepon is husted from this command
+
+    public void AHosterWeapon()
+    {
+        hosterWeapon();
+    }
+
     public bool hosterWeapon()
     {
         if(isEffectState())

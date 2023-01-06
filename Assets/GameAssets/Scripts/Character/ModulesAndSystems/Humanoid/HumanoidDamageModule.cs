@@ -46,9 +46,14 @@ public class HumanoidDamageModule : DamageModule
     {
         m_ragdoll.EnableRagdoll();
         m_ragdollEnabled = true;
-        GameObject explosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.ElectricParticleEffect);
-        explosion.SetActive(true);
-        explosion.transform.position = m_headTransform.position;
+        if(m_basicData.AgentNature == AgentBasicData.AGENT_NATURE.DROID)
+        {
+            GameObject explosion = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.ElectricParticleEffect);
+            explosion.SetActive(true);
+            explosion.transform.position = m_headTransform.position;
+        }
+        
+
     }
 
     public void emitSmoke()

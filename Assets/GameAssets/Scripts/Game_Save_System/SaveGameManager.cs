@@ -70,8 +70,8 @@ public class SaveGameManager : MonoBehaviour
         levelData.scene_ID = SceneManager.GetActiveScene().buildIndex;
         levelData.currentCheckpoint = checkpointID;
         levelData.playerData.agentData = m_playerController.getICyberAgent().GetAgentData().getSaveAgentData();
-        levelData.playerData.playerLookDirection = m_playerController.gameObject.transform.eulerAngles;
-        levelData.playerData.playerPosition = m_playerController.gameObject.transform.position;
+        levelData.playerData.playerLookDirection = m_playerController.gameObject.transform.localEulerAngles;
+        levelData.playerData.playerPosition = m_playerController.gameObject.transform.localPosition;
         SaveEquipmentBoxes(levelData);
         SaveData.SaveLevelData(SceneManager.GetActiveScene().buildIndex,levelData);
     }
@@ -113,8 +113,10 @@ public class SaveGameManager : MonoBehaviour
     private void LoadGame(SaveData.LevelData lvlData)
     {
         m_playerController.getICyberAgent().SetAgentData(lvlData.playerData.agentData);
-        m_playerController.transform.position = lvlData.playerData.playerPosition;
-        m_playerController.transform.rotation = Quaternion.Euler(lvlData.playerData.playerLookDirection);
+        m_playerController.GetComponent<NavMeshAgent>().enabled = false;
+        m_playerController.transform.localPosition = lvlData.playerData.playerPosition;
+        m_playerController.transform.localRotation = Quaternion.Euler(lvlData.playerData.playerLookDirection);
+        m_playerController.GetComponent<NavMeshAgent>().enabled = true;
         LoadEquipmentBoxes(lvlData);
         ActivateCheckpont(lvlData.currentCheckpoint);
     }

@@ -9,6 +9,10 @@ public class PlayerInteractAction : FsmStateAction
     public Interactable Interactable;
     public override void OnEnter()
     {
+        if(m_playerController == null)
+        {
+            m_playerController = PlayerController.getInstance();
+        }
         m_agent = m_playerController.GetComponent<HumanoidMovingAgent>();
     }
 

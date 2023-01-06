@@ -28,7 +28,7 @@ public class SaveGameAction : FsmStateAction
             break;
         }
 
-        
+        Finish();
     }
 }
 }

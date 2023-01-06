@@ -8,6 +8,11 @@ public class CanclePlayerIntaraction : FsmStateAction
     private bool interactionStarted = false;
     public override void OnEnter()
     {
+        if(m_playerController == null)
+        {
+            m_playerController = PlayerController.getInstance();
+        }
+        
         m_agent = m_playerController.GetComponent<HumanoidMovingAgent>();
         m_playerController.ControlDisabled = false;
         m_agent.cancleInteraction();

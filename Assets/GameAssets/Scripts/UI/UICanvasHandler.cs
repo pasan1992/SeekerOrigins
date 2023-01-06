@@ -14,6 +14,8 @@ public class UICanvasHandler : MonoBehaviour
 
     [SerializeField] UIInstanceHUD _uIInstanceHUD;
 
+    public GameObject ActionHud;
+
     //Testing
     [SerializeField] int _mainType = 0;
     [SerializeField] int _subType = 0;
@@ -35,6 +37,11 @@ public class UICanvasHandler : MonoBehaviour
         }
 
         return this_instance;
+    }
+
+    public void setActionHudStatus(bool enabled)
+    {
+        ActionHud.SetActive(enabled);
     }
 
     // Update is called once per frame

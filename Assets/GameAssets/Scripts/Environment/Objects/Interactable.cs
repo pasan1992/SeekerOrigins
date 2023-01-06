@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
         private bool _interactionEnabled = true;
 
         public bool ObjectiveInteratable = false;
+        public bool showIndicatorOnOBjActive = true;
 
         public bool interactionEnabled {
                     get
@@ -242,10 +243,14 @@ public class Interactable : MonoBehaviour
     {
         if(int_enabled)
         {
-            m_indicator = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.Obj_Indicator);
-            m_indicator.SetActive(true);
-            m_indicator.transform.position = this.transform.position;
-            setOutLineState(outLineState.white);
+            if(properties.ObjectiveInteratable && properties.showIndicatorOnOBjActive)
+            {
+                m_indicator = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.Obj_Indicator);
+                m_indicator.SetActive(true);
+                m_indicator.transform.position = this.transform.position;
+                setOutLineState(outLineState.white);
+            }
+
             return;
         }
         if(m_indicator!=null)
