@@ -32,7 +32,7 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
 
     private float MINIMUM_CLOSE_SENSTIVITY_DISTANCE = 0.2f;
 
-    private bool normalUpdate = false;
+    private bool normalUpdate = true;
 
     private Color m_temp_color = Color.red;
     private VISUAL_STATUS m_currentVisualStatus;
