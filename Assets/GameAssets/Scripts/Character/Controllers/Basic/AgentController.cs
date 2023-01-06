@@ -10,6 +10,8 @@ public abstract class AgentController : MonoBehaviour
     public enum AGENT_AI_RESTRICTIONS { NO_RESTRICTIONS,NO_COMBAT,DISABLED };
     public AGENT_AI_RESTRICTIONS m_restrictions = AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
 
+    public GameEvents.BasicNotifactionEvent onSwitchToCombat;
+
     public bool ControlDisabled = false;
 
     protected void intializeAgentCallbacks(ICyberAgent cyberAgent)
@@ -72,6 +74,18 @@ public abstract class AgentController : MonoBehaviour
             return;
         }       
     }
+
+    public virtual void UpdateSensorData()
+    {
+
+    }
+
+    public void setOnSwitchToCombat(GameEvents.BasicNotifactionEvent onSwitchToCombat)
+    {
+        this.onSwitchToCombat += onSwitchToCombat;
+    }
+
+
 
     private void OnDisable()
     {

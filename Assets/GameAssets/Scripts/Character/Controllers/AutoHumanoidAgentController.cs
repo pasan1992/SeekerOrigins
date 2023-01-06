@@ -112,6 +112,12 @@ public class AutoHumanoidAgentController :  AgentController
 
     }
 
+    public override void UpdateSensorData()
+    {
+        base.UpdateSensorData();
+        m_visualSensor.updateVisualData();
+    }
+
     public override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -320,6 +326,12 @@ public class AutoHumanoidAgentController :  AgentController
         {
             return;
         }
+
+        if(onSwitchToCombat !=null)
+        {
+            onSwitchToCombat();
+        }
+
         switch(m_combatBehavior)
         {
             case COMBAT_BEHAVIOR.COVERA_BASED_SHOOTER:

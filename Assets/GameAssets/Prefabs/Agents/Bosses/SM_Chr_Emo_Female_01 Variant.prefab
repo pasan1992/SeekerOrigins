@@ -4945,6 +4945,7 @@ MonoBehaviour:
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 6645611110936337857}
     grenade: {fileID: 5929898277288241398}
+    use_cover: 1
     HealInjectionCount: 1
     HealPerInjection: 20
     inventryItems: []
@@ -4954,7 +4955,9 @@ MonoBehaviour:
       AmmoCount: 100
     - AmmoType: Regular_PistolAmmo
       AmmoCount: 299
+    immuneToStunn: 0
     drop_reward: 0
+    unbalanced: 0
   AgentComponents:
     weaponAimTransform: {fileID: 6645611109749800461}
     lookAimTransform: {fileID: 6645611110370677441}
@@ -4973,10 +4976,12 @@ MonoBehaviour:
   m_inUse: 1
   m_timeToReset: 2
   m_restrictions: 0
+  ControlDisabled: 0
   target: {fileID: 0}
   preferedWeapon: 1
   PetrolArmed: 0
   rutine: {fileID: 467369143335228805}
+  m_combatBehavior: 0
 --- !u!114 &467369143335228805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18472,6 +18477,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: Rifle
     interactionTime: 0
     InteractionAnim: -99
@@ -18481,10 +18487,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 6645611109789266592}
@@ -18496,7 +18504,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 6645611110334231541}
   gunFireLight: {fileID: 6645611109567402767}
   targetPointTransfrom: {fileID: 0}
@@ -35294,6 +35302,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: Pistol
     interactionTime: 0
     InteractionAnim: -99
@@ -35303,10 +35312,12 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 6645611109856997099}
@@ -35318,7 +35329,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 6645611110229277190}
   gunFireLight: {fileID: 6645611110229277190}
   targetPointTransfrom: {fileID: 0}
@@ -35327,7 +35338,7 @@ MonoBehaviour:
   m_enableLine: 1
   m_magazineSize: 12
   full_auto: 0
-  SoundMaxDistance: 3
+  SoundMaxDistance: 20
   m_weaponLight: {fileID: 0}
 --- !u!82 &6645611110936337856
 AudioSource:

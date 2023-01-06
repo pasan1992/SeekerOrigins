@@ -175,6 +175,11 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
     protected override void onSensorUpdate()
     {
         onVisualSensorUpdate();
+        if(normalUpdate)
+        {
+            VISUAL_DISTANCE = m_agent.GetAgentData().VisualDistance;
+            VISUAL_CONE_ANGLE = m_agent.GetAgentData().VisualAngle;
+        }
     }
 
 
@@ -429,6 +434,12 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
             // Turn off depth writes
             lineMaterial.SetInt("_ZWrite", 0);
         }
+    }
+
+    public void updateVisualData()
+    {
+        VISUAL_CONE_ANGLE = m_agent.GetAgentData().VisualAngle;
+        VISUAL_DISTANCE = m_agent.GetAgentData().VisualDistance;
     }
 
     public void OnPostRender()
