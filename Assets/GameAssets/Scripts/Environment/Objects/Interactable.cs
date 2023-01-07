@@ -53,6 +53,7 @@ public class Interactable : MonoBehaviour
         public Vector3 nameTagOffset;
         public Vector3 holdingPositionOffset;
         public Vector3 holdingRotationOffset;
+        public InGameInidactor.IndicatorTypes indicatorType = InGameInidactor.IndicatorTypes.Arrow;
     }
 
    [SerializeField]
@@ -69,7 +70,7 @@ public class Interactable : MonoBehaviour
     private Vector3 m_relativePosition;
     private Vector3 m_relativeRotation;
 
-    private GameObject m_indicator;
+    protected GameObject m_indicator;
 
     
     private GameEvents.BasicNotifactionEvent onInteractionStartCallback;
@@ -245,10 +246,15 @@ public class Interactable : MonoBehaviour
         {
             if(properties.ObjectiveInteratable && properties.showIndicatorOnOBjActive)
             {
-                m_indicator = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.Obj_Indicator);
+                if(m_indicator == null)
+                {
+                    m_indicator = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.Obj_Indicator);
+                }
+                
                 m_indicator.SetActive(true);
-                m_indicator.transform.position = this.transform.position;
+                m_indicator.transform.position = this.transform.position + Vector3.up * 1;
                 setOutLineState(outLineState.white);
+                m_indicator.GetComponent<InGameInidactor>().IndicatorType = visualProperties.indicatorType;
             }
 
             return;

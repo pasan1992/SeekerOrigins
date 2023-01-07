@@ -12,11 +12,21 @@ public class AmmoPack : Interactable
     public int HealthInjectionCount = 0;
 
     private Animator m_anim;
+    public InGameInidactor ammoIndiactor;
+
+
 
     void Start()
     {
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         m_anim = this.GetComponent<Animator>();
+
+        if(ammoIndiactor == null)
+        {
+            ammoIndiactor.gameObject.SetActive(true);
+            ammoIndiactor.GetComponent<InGameInidactor>().IndicatorType = InGameInidactor.IndicatorTypes.Ammo;
+        }
+
     }
 
     public override void OnPickUpAction()
@@ -32,6 +42,7 @@ public class AmmoPack : Interactable
     void ResetAmmoPack()
     {
         properties.interactionEnabled = false;
+        ammoIndiactor.gameObject.SetActive(false);
     }
 
     void AmmoPackAnimation()
@@ -47,5 +58,6 @@ public class AmmoPack : Interactable
     {
         m_anim.SetTrigger("open");
         m_outLine.enabled = false;
+        ammoIndiactor.gameObject.SetActive(false);
     }
 }

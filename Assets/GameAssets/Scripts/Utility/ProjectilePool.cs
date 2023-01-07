@@ -64,11 +64,11 @@ public class ProjectilePool : MonoBehaviour
     public int maxExplosions = 10;
     public int donreExplosions = 10;
 
-    public int GameIndicatorCount = 5;
+    public int GameIndicatorCount = 20;
 
     private static ProjectilePool thisProjectilePool;
 
-    public int ammoCount = 5;
+    public int ammoCount = 10;
     private List<GameObject> pistolAmmoList;
     private List<GameObject> rifleAmmoList;
 
