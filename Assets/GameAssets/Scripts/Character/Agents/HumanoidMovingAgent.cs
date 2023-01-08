@@ -25,9 +25,9 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     protected HumanoidInteractionModule m_interactionModule;
 
     // Attributes
-    public enum CharacterMainStates { Aimed, Armed_not_Aimed, Dodge, Idle,Interaction,Stunned,MeeleAttack,Shock,Point }
+    public enum CharacterMainStates { Aimed, Armed_not_Aimed, Dodge, Idle,Interaction,Stunned,MeeleAttack,Shock,Point,GunJammed }
     private HashSet<CharacterMainStates> effectStates = new HashSet<CharacterMainStates>{CharacterMainStates.Stunned,CharacterMainStates.MeeleAttack,CharacterMainStates.Shock,
-    CharacterMainStates.Point};
+    CharacterMainStates.Point,CharacterMainStates.GunJammed};
     public CharacterMainStates m_characterState = CharacterMainStates.Idle;
     private CharacterMainStates m_previousTempState = CharacterMainStates.Idle;
     protected GameObject m_target;
@@ -244,6 +244,14 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         if(isEffectState())
             return;
         m_equipmentModule.reloadCurretnWeapon();
+    }
+
+    public void clearCurrentWeaponLoadedAmmo()
+    {
+        if(m_equipmentModule.getCurrentWeapon() != null)
+        {
+            ((RangedWeapon)m_equipmentModule.getCurrentWeapon()).setWeaponLoadedAmmoList(new Dictionary<string,int>());
+        }
     }
 
     // Aim Current Weapon 
@@ -969,13 +977,18 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         setEffectState(CharacterMainStates.Point,duration,direction);
     }
 
+    public void setGunJammed()
+    {
+        Debug.Log("working");
+        setEffectState(CharacterMainStates.GunJammed,0.5f,Vector3.forward);
+    }
+
     public void SetAgentData(AgentData ad)
     {
          AgentData = ad;
          AgentData.InitalizeAmmo();
          m_equipmentModule.updateAgentData(ad);
     }
-
 
 
     IEnumerator waitAndRemoveStun(float waitDuration,CharacterMainStates state)

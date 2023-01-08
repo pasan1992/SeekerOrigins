@@ -149,6 +149,11 @@ public abstract class RangedWeapon : Weapon
         }
     }
 
+    public void setWeaponLoadedAmmoList(IDictionary<string,int> ammoCount)
+    {
+        this.m_ammoCount = ammoCount;
+    }
+
     public void update_single_Fire()
     {
         base.updateWeapon();

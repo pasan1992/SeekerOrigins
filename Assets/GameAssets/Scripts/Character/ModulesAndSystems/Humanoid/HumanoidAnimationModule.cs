@@ -14,7 +14,8 @@ public partial class HumanoidAnimationModule : AnimationModule
         {HumanoidMovingAgent.CharacterMainStates.MeeleAttack,"meleeAttack"},
         {HumanoidMovingAgent.CharacterMainStates.Stunned,"stun"},
         {HumanoidMovingAgent.CharacterMainStates.Shock,"shock"},
-        {HumanoidMovingAgent.CharacterMainStates.Point,"point"}
+        {HumanoidMovingAgent.CharacterMainStates.Point,"point"},
+        {HumanoidMovingAgent.CharacterMainStates.GunJammed,"gun_jammed"}
     };
 
     protected AgentFunctionalComponents m_functionalComponents;
