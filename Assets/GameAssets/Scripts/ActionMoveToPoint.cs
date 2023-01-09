@@ -17,6 +17,7 @@ public class ActionMoveToPoint : FsmStateAction
     public bool m_enableHide;
     private NavMeshAgent m_navMeshAgent;
     private bool startMoving = false;
+    public bool disableController = false;
 
     public override void OnEnter()
     {
@@ -34,6 +35,11 @@ public class ActionMoveToPoint : FsmStateAction
         if(humanAgent !=null)
         {
             humanAgent.hosterWeapon();
+        }
+
+        if(disableController)
+        {
+            agentControl.enabled = false;
         }
     }   
     public override void OnUpdate()
@@ -76,6 +82,12 @@ public class ActionMoveToPoint : FsmStateAction
             
             m_navMeshAgent.velocity = Vector3.zero;
             agent.moveCharacter(Vector3.zero);
+
+            if(disableController)
+            {
+                agentControl.enabled = true;
+            }
+
             Finish();
         }
     }

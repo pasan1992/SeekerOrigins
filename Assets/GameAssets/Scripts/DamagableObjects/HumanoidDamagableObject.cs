@@ -9,6 +9,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
 
     private int postDestroyDamage = 0;
 
+    public void damgeHead(float dmg)
+    {
+        damage(new CommonFunctions.Damage(dmg,dmg),m_movingAgent.getHeadTransfrom().GetComponentInChildren<Collider>(),-m_movingAgent.getHeadTransfrom().forward,m_movingAgent.getHeadTransfrom().position,
+        AgentData.AgentFaction.Player,0);
+    }
 
     public override bool damage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction ,float stunPrecentage = 0)
     {

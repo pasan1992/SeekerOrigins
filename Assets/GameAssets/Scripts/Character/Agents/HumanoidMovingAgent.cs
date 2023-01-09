@@ -980,7 +980,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void setGunJammed()
     {
         Debug.Log("working");
-        setEffectState(CharacterMainStates.GunJammed,0.5f,Vector3.forward);
+        setEffectState(CharacterMainStates.GunJammed,10f,Vector3.forward);
     }
 
     public void SetAgentData(AgentData ad)
