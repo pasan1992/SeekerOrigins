@@ -419,7 +419,7 @@ public abstract class RangedWeapon : Weapon
         setAimed(true);
         if(m_rigidbody ==null)
         {
-            //m_rigidbody = this.GetComponent<Rigidbody>();
+            m_rigidbody = this.GetComponent<Rigidbody>();
         }
         m_rigidbody.isKinematic = true;
 

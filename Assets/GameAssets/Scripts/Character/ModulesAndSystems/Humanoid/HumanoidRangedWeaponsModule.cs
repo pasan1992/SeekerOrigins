@@ -845,6 +845,46 @@ public class HumanoidRangedWeaponsModule
         return m_animationSystem.isEquiped();
     }
 
+    public void initalizeWeapons()
+    {
+        if(m_agentData.primaryWeapon)
+        {
+            /*
+            m_rifle = m_agentData.primaryWeapon;
+            m_rifle.setAimed(false);   
+            m_rifle.setOwnerFaction(m_agentData.m_agentFaction);
+            m_rifle.setGunTarget(m_target);
+            m_rifle.addOnWeaponFireEvent(OnWeaponFire);
+            m_rifle.targetPointTransfrom = m_agentComponents.weaponAimTransform;
+            placeWeaponinHosterLocation(m_rifle);
+            */
+            equipWeapon(m_agentData.primaryWeapon);
+            m_agentData.primaryWeapon.OnEquipAction(); 
+        }
+
+        if(m_agentData.secondaryWeapon)
+        {
+            
+            //m_pistol = m_agentData.secondaryWeapon;
+            //m_pistol.setAimed(false);
+            //m_pistol.setOwnerFaction(m_agentData.m_agentFaction);
+            //m_pistol.setGunTarget(m_target);
+            //m_pistol.addOnWeaponFireEvent(OnWeaponFire);
+           // m_pistol.targetPointTransfrom = m_agentComponents.weaponAimTransform;
+            //placeWeaponinHosterLocation(m_pistol);
+            
+            equipWeapon(m_agentData.secondaryWeapon);
+            m_agentData.secondaryWeapon.OnEquipAction();
+        }
+
+        if(m_agentData.grenade)
+        {
+            m_grenede = m_agentData.grenade;
+            m_grenede.setGunTarget(m_target);
+            m_grenede.OnEquipAction();
+        }
+    }
+
     private void getAllWeapons(WeaponProp[] props)
     {       
         foreach (WeaponProp prop in props)

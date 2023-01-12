@@ -136,6 +136,13 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         return effectStates.Contains(state);
     }
 
+
+    public void setPrimaryWeapon(PrimaryWeapon wp)
+    {
+        GetAgentData().primaryWeapon = wp;
+        m_equipmentModule.initalizeWeapons();
+    }
+
     /**
      Interact with given interatable object
      - Interaction type can be different from the interaction type of the interatable object given.
