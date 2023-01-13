@@ -37,11 +37,26 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000026077032
       objectReference: {fileID: 0}
+    - target: {fileID: 467369143335228802, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: preferedWeapon
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: AgentData.health
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: AgentData.maxHealth
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: AgentData.primaryWeapon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7907044959131160461}
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: AgentData.WeaponAmmo.Array.data[0].AmmoCount
@@ -202,12 +217,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6504601645616206421, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6504774399072452185, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_Name
       value: SF
       objectReference: {fileID: 0}
+    - target: {fileID: 6504834068431127695, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6505268452144171251, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505329801702095821, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -267,6 +297,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6645611109819191356, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6645611110275773976, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -277,5 +312,27 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6645611110526463849, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110526463862, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1.91
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5612e68f1021d7c40b36d54599eef8ff, type: 3}
+--- !u!114 &7907044959131160461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6645611109819191352, guid: 5612e68f1021d7c40b36d54599eef8ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 3567558333506772917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a813352f60d8c0a4086adf8a99d69cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
