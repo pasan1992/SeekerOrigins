@@ -38,6 +38,11 @@ public class HumanoidDamageModule : DamageModule
         }
     }
 
+    public void updateAgentData(AgentData agentData)
+    {
+        m_basicData = agentData;
+    }
+
     #endregion
 
     #region Commands

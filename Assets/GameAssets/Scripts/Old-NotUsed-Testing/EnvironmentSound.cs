@@ -14,7 +14,7 @@ public class EnvironmentSound : MonoBehaviour
         {
             if(_environmentSound == null)
             {
-                Debug.LogError("No env sound");
+                //Debug.LogError("No env sound");
             }
             return _environmentSound;
         }

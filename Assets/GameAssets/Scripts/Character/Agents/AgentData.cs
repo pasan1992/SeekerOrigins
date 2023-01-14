@@ -73,7 +73,6 @@ public class AgentData : AgentBasicData
         //use a given amount of ammo and return the used amount
         int rocketAmmo = 0;
         weaponAmmoCount.TryGetValue(ammo_type,out rocketAmmo);
-        Debug.Log(rocketAmmo);
 
         if(rocketAmmo > count)
         {

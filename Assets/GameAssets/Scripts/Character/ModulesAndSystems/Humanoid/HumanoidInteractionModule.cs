@@ -53,7 +53,10 @@ public class HumanoidInteractionModule
         m_agent = mov_agent;
         m_handTransfrom = handTransfrom;
     }
-
+    public void updateAgentData(AgentData agentData)
+    {
+        m_agentData = agentData;
+    }
     public void setPreviousWeapon()
     {
             var current_weapon = m_agent.getCurrentWeapon();
@@ -321,6 +324,7 @@ public class HumanoidInteractionModule
             onAmmoPickupEvent(ammo_pck);
         }
         ammo_pck.OnPickUpAction();
+        m_equipmentModule.updateAgentData(m_agentData);
     }
 
     /**

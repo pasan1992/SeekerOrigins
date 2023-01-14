@@ -995,6 +995,8 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
          AgentData = ad;
          AgentData.InitalizeAmmo();
          m_equipmentModule.updateAgentData(ad);
+         m_interactionModule.updateAgentData(ad);
+         m_damageModule.updateAgentData(ad);
     }
 
 

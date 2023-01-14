@@ -60,6 +60,36 @@ public class AutoHumanoidAgentController :  AgentController
         }
     }
 
+
+    void OnDisable()
+    {
+        var ins = EnvironmentSound.Instance;
+        if(ins !=null)
+        {
+            EnvironmentSound.Instance.removeListen(onSoundAlert);
+        }
+        
+    }
+
+    void OnEnable()
+    {
+        var ins = EnvironmentSound.Instance;
+        if(ins !=null)
+        {
+            EnvironmentSound.Instance.listenToSound(onSoundAlert);
+        }
+    }
+
+    void OnDestroy()
+    {
+        var ins = EnvironmentSound.Instance;
+        if(ins !=null)
+        {
+            EnvironmentSound.Instance.listenToSound(onSoundAlert);
+        }
+    }
+
+
     public void setAttackMode(COMBAT_BEHAVIOR behavior)
     {
         m_combatBehavior = behavior;
@@ -252,7 +282,7 @@ public class AutoHumanoidAgentController :  AgentController
 
     // TODO - This sound component must be a another sensor. need to convert it
     public void onSoundAlert(Vector3 position, AgentBasicData.AgentFaction faction, float maxDistance)
-    {   if(this.transform == null)
+    {   if(this == null || this.transform == null)
         {
             return;
         }
