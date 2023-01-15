@@ -109,6 +109,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        _agentData = m_movingAgent.GetAgentData();
         updateLootText();
         update_ammo_count();
         updateAmmo();
