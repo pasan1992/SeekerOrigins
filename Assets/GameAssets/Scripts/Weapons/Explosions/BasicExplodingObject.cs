@@ -48,7 +48,7 @@ public class BasicExplodingObject : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, m_range);
          
 
-        for(int i =0; i<5 ;i++)
+        for(int i =0; i<1 ;i++)
         {
             foreach (Collider hitCollider in hitColliders)
             {
