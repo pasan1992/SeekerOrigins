@@ -18,6 +18,7 @@ public class ActionMoveToPoint : FsmStateAction
     private NavMeshAgent m_navMeshAgent;
     private bool startMoving = false;
     public bool disableController = false;
+    public bool armed = false;
 
     public override void OnEnter()
     {
@@ -32,9 +33,21 @@ public class ActionMoveToPoint : FsmStateAction
         }
 
         var humanAgent = (HumanoidMovingAgent)agent;
-        if(humanAgent !=null)
+        if(humanAgent !=null && !armed)
         {
             humanAgent.hosterWeapon();
+        }
+        else if(armed & !humanAgent.isArmed())
+        {
+            if(humanAgent.GetPrimaryWeapon() !=null)
+            {
+                humanAgent.togglePrimaryWeapon();
+            }
+            else
+            {
+                humanAgent.togglepSecondaryWeapon();
+            }
+            
         }
 
         if(disableController)

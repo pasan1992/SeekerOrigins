@@ -887,7 +887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1667225960305913528
 Transform:
   m_ObjectHideFlags: 0
@@ -3728,7 +3728,7 @@ GameObject:
   - component: {fileID: 4755411007322791203}
   - component: {fileID: 4755411007322791200}
   m_Layer: 12
-  m_Name: SM_Chr_ScifiWorlds_Scavenger_01 Variant
+  m_Name: SM_Chr_ScifiWorlds_Scavenger_01 Variant 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3822,6 +3822,7 @@ MonoBehaviour:
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 6253737013079025819}
     grenade: {fileID: 6393831249706189396}
+    use_cover: 1
     HealInjectionCount: 1
     HealPerInjection: 20
     inventryItems: []
@@ -3831,7 +3832,9 @@ MonoBehaviour:
       AmmoCount: 299
     - AmmoType: Regular_PistolAmmo
       AmmoCount: 100
+    immuneToStunn: 0
     drop_reward: 0
+    unbalanced: 0
   AgentComponents:
     weaponAimTransform: {fileID: 6253737012751384947}
     lookAimTransform: {fileID: 6253737011542406634}
@@ -3850,10 +3853,12 @@ MonoBehaviour:
   m_inUse: 1
   m_timeToReset: 2
   m_restrictions: 0
+  ControlDisabled: 0
   target: {fileID: 0}
   preferedWeapon: 1
   PetrolArmed: 0
   rutine: {fileID: 4755411007322791189}
+  m_combatBehavior: 0
 --- !u!114 &4755411007322791189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5364,7 +5369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1674333180002889074
 Transform:
   m_ObjectHideFlags: 0
@@ -32791,6 +32796,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: Rifle
     interactionTime: 0
     InteractionAnim: -99
@@ -32800,10 +32806,13 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 6253737012128291817}
@@ -32815,7 +32824,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 6253737011383729708}
   gunFireLight: {fileID: 6253737012249961362}
   targetPointTransfrom: {fileID: 0}
@@ -33231,6 +33240,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: Pistol
     interactionTime: 0
     InteractionAnim: -99
@@ -33240,10 +33250,13 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 6253737012068381710}
@@ -33255,7 +33268,7 @@ MonoBehaviour:
   energyDamage: 0
   m_weaponAmmunitionName: BasicMag
   projectile: 4
-  dotTime: 0
+  stunPrecentage: 0
   gunMuzzle: {fileID: 6253737011982051890}
   gunFireLight: {fileID: 6253737011982051890}
   targetPointTransfrom: {fileID: 0}
