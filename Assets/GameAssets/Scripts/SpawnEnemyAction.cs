@@ -16,7 +16,7 @@ public class SpawnEnemyAction : FsmStateAction
     public bool waitTillEnd = true;
 
     private int agentCount = 0;
-    
+    public GameObject distance_target;
 
     public override void OnEnter()
     {
@@ -28,12 +28,18 @@ public class SpawnEnemyAction : FsmStateAction
                     agentCount += 1;
                 }
             }
+
+
+
             StartCoroutine(waitAndSpawn());
+
+
 
         if (!waitTillEnd)
         {
             Finish();
         }
+
     }
 
     private IEnumerator waitAndSpawn()
@@ -42,11 +48,24 @@ public class SpawnEnemyAction : FsmStateAction
             {
                 for(int i=0; i< agent.agentCount; i++) 
                 {
+
+                    var sp = agent.spawnPoint;
+
+                    if(distance_target != null && agent.alternateSpawnPoint !=null)
+                    {
+                        var distance = Vector3.Distance(distance_target.transform.position,agent.spawnPoint.transform.position);
+                        var alt_distance = Vector3.Distance(distance_target.transform.position,agent.alternateSpawnPoint.transform.position);
+                        if(alt_distance > distance)
+                        {
+                            sp = agent.alternateSpawnPoint;
+                        }
+                    }
+
                     yield return new WaitForSeconds(agent.wait);
                     var enemey = GameObject.Instantiate(agent.agentController);
                     var navMesh = enemey.GetComponent<NavMeshAgent>();
 
-                    navMesh.Warp(agent.spawnPoint.transform.position);
+                    navMesh.Warp(sp.transform.position);
                     navMesh.enabled = false;
                     navMesh.enabled = true;
 

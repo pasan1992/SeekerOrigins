@@ -12,6 +12,7 @@ public class CommonFunctions
         public GameObject agentController;
         public int agentCount;
         public GameObject spawnPoint;
+        public GameObject alternateSpawnPoint;
 
         public float wait = 0;
     }
