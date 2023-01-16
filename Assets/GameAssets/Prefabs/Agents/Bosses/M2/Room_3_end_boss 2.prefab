@@ -50,7 +50,7 @@ PrefabInstance:
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: AgentData.health
-      value: 150
+      value: 399
       objectReference: {fileID: 0}
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
@@ -60,12 +60,12 @@ PrefabInstance:
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: AgentData.maxHealth
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: AgentData.HealthRegen
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: AgentData.HealthRegenWait
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 467369143335228803, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 6504774399072452185, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_Name
-      value: MINI_BOSS_M2
+      value: Room_3_end_boss 2
       objectReference: {fileID: 0}
     - target: {fileID: 6504834068431127695, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
@@ -360,7 +360,7 @@ PrefabInstance:
     - target: {fileID: 6645611109819191352, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: damage
-      value: 8
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6645611109819191352, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
@@ -375,12 +375,12 @@ PrefabInstance:
     - target: {fileID: 6645611109819191352, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: m_magazineSize
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6645611109819191352, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
       propertyPath: accuracy_rating
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6645611109819191356, guid: 5612e68f1021d7c40b36d54599eef8ff,
         type: 3}
@@ -406,6 +406,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110936337857, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: damage
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110936337857, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: fireRate
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110936337857, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: full_auto
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110936337857, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: weaponRecoil
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110936337857, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: m_magazineSize
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645611110936337857, guid: 5612e68f1021d7c40b36d54599eef8ff,
+        type: 3}
+      propertyPath: accuracy_rating
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5612e68f1021d7c40b36d54599eef8ff, type: 3}
