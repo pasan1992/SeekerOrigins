@@ -148,6 +148,7 @@ MonoBehaviour:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
@@ -735,6 +736,7 @@ MonoBehaviour:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0.1, z: 0}
@@ -17218,6 +17220,7 @@ MonoBehaviour:
     nameTagOffset: {x: 20, y: 20, z: 20}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
@@ -42470,6 +42473,7 @@ MonoBehaviour:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
@@ -46211,6 +46215,7 @@ MonoBehaviour:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
@@ -65003,6 +65008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1825537298197841957}
+  playercont: {fileID: 7818650055470316555}
   rotationSpeed: 1
   roataionEnabled: 1
   maintainAimedOffset: 1
@@ -109556,6 +109562,7 @@ MonoBehaviour:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}

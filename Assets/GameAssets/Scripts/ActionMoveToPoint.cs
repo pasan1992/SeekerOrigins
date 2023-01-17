@@ -20,6 +20,8 @@ public class ActionMoveToPoint : FsmStateAction
     public bool disableController = false;
     public bool armed = false;
 
+    private HumanoidMovingAgent humanAgent;
+
     public override void OnEnter()
     {
         agent = agentControl.getICyberAgent();
@@ -32,7 +34,7 @@ public class ActionMoveToPoint : FsmStateAction
             agent.toggleHide();
         }
 
-        var humanAgent = (HumanoidMovingAgent)agent;
+        humanAgent = (HumanoidMovingAgent)agent;
         if(humanAgent !=null && !armed)
         {
             humanAgent.hosterWeapon();
@@ -47,7 +49,7 @@ public class ActionMoveToPoint : FsmStateAction
             {
                 humanAgent.togglepSecondaryWeapon();
             }
-            
+            humanAgent.stopAiming();
         }
 
         if(disableController)
@@ -57,6 +59,11 @@ public class ActionMoveToPoint : FsmStateAction
     }   
     public override void OnUpdate()
     {
+        if(humanAgent !=null)
+        {
+            humanAgent.stopAiming();
+        }
+        
         if (!m_navMeshAgent.pathPending)
         {
             startMoving = true;

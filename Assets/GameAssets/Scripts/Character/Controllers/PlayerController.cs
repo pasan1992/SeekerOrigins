@@ -40,6 +40,9 @@ public class PlayerController : AgentController
 
     private static PlayerController this_instance;
 
+    private bool fireReady = false;
+    private float fireReadyTime =0 ;
+
     #region Initialize
     private void Start()
     {
@@ -159,7 +162,9 @@ public class PlayerController : AgentController
         // Setting Character Aiming.
         if ( /*Input.GetMouseButton(1) &&*/!crouch_pressed && !Input.GetKey(KeyCode.LeftShift) && !m_movingAgent.isEquipingWeapon() 
             && m_movingAgent.isReadyToAim()
-            && !m_movingAgent.isInteracting())
+            && !m_movingAgent.isInteracting()
+            
+            && (!incover || fireReady))
         {
             m_movingAgent.aimWeapon();
         }
@@ -305,7 +310,7 @@ public class PlayerController : AgentController
 
         if(Input.GetKeyDown(KeyCode.G))
         {
-            if(m_movingAgent.isAimed() & m_movingAgent.isReadyToAim())
+            if(m_movingAgent.isReadyToAim())
             {
                 m_movingAgent.Throw();
             }
@@ -416,6 +421,40 @@ public class PlayerController : AgentController
             //m_healthBar.setHealthPercentage(m_movingAgent.AgentData.Health/m_movingAgent.AgentData.MaxHealth);
             m_healthBar.setHealthPercentage(m_movingAgent.AgentData);
         }
+
+
+
+        if(Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) || Input.GetKey(KeyCode.G))
+        {
+            fireReady = true;
+            fireReadyTime = 0;
+            if(!m_movingAgent.isArmed())
+            {
+                if(m_movingAgent.GetPrimaryWeapon()!=null)
+                {
+                    m_movingAgent.togglePrimaryWeapon();
+                }
+                else
+                {
+                    m_movingAgent.togglepSecondaryWeapon();
+                }
+            }
+        }
+
+        if(fireReady && !Input.GetMouseButton(0))
+        {
+            fireReadyTime += Time.deltaTime;
+            if(fireReadyTime >1f)
+            {
+                fireReady =false;
+                fireReadyTime = 0;
+            }
+        }
+    }
+
+    public bool IsInCover()
+    {
+        return incover;
     }
 
     public override void FixedUpdate()

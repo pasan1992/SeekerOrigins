@@ -8,6 +8,7 @@ public class GamePlayCam : MonoBehaviour
     // Start is called before the first frame update
 
     public HumanoidMovingAgent target;
+    public PlayerController playercont;
     public float rotationSpeed = 1;
     public bool roataionEnabled = true;
     private Vector3 offset;
@@ -74,7 +75,9 @@ public class GamePlayCam : MonoBehaviour
 
     private Vector3 calcualteCameraAimPositon()
     {
-        if(target.isAimed() 
+        if( 
+            
+            target.isAimed() || playercont.IsInCover()
         // To Avoid unplesent behavior of the camera when dodging + aimed 
         || (HumanoidMovingAgent.CharacterMainStates.Dodge.Equals(target.getCharacterMainStates()) && target.isArmed() && Input.GetMouseButton(1) ) )
         {
