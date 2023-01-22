@@ -1063,6 +1063,7 @@ MonoBehaviour:
   m_inUse: 1
   m_timeToReset: 2
   m_restrictions: 0
+  ControlDisabled: 0
   target: {fileID: 0}
   preferedWeapon: 0
   PetrolArmed: 0
@@ -17610,6 +17611,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: Rifle
     interactionTime: 0
     InteractionAnim: -99
@@ -17624,6 +17626,7 @@ MonoBehaviour:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
@@ -29688,6 +29691,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: Pistol
     interactionTime: 0
     InteractionAnim: -99
@@ -29702,6 +29706,7 @@ MonoBehaviour:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
   m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}

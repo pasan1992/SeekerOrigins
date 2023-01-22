@@ -33,6 +33,7 @@ public class InGameMenuManager : MonoBehaviour
 
     public void btnNoChange(int btnNo)
     {
+        Debug.Log(btnNo);
         _btnNo = btnNo;
 
         if (btnNo == 2 || btnNo == 3)
@@ -52,16 +53,40 @@ public class InGameMenuManager : MonoBehaviour
     public void LoadScene(int index)
     {
         Time.timeScale = 1;
+
+        if(_btnNo == -2)
+        {
+                SaveGameManager.getInstance().ResetLevel();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+                return;
+        }
+
+        if(_btnNo == -3)
+        {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+                return;
+        }
+
+        if (_btnNo == 2 || _btnNo == 3)
+        {
+            Application.Quit();
+        }
+
+        /*
         if (index == -3)
         {
             if (_btnNo == -2) // to Reset
             {
+                SaveGameManager.getInstance().ResetLevel();
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(index, LoadSceneMode.Single);
             }
             else if (_btnNo == -3) // to Reset checkpoint to 0
             {
                 //TODO: set checkpoint to 0
+                
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(index, LoadSceneMode.Single);
             }
             else if (_btnNo == 2) // to MainMenu
             {
@@ -77,13 +102,15 @@ public class InGameMenuManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("LoadScene", _btnNo);
             }
+            
         }
         else
         {
             PlayerPrefs.SetInt("LoadScene", index);
         }
+        */
 
-        SceneManager.LoadScene(1, LoadSceneMode.Single); //LOAD
+        SceneManager.LoadScene(index, LoadSceneMode.Single); //LOAD
 
 
         //SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt("CurrentScene"));

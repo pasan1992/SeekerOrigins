@@ -444,7 +444,7 @@ public class PlayerController : AgentController
         if(fireReady && !Input.GetMouseButton(0))
         {
             fireReadyTime += Time.deltaTime;
-            if(fireReadyTime >1f)
+            if(fireReadyTime >0.5f)
             {
                 fireReady =false;
                 fireReadyTime = 0;
