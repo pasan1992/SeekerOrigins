@@ -81,7 +81,7 @@ public class SaveGameManager : MonoBehaviour
         var eboxes = FindObjectsOfType<AmmoPack>();
         foreach(var box in eboxes)
         {
-            levelData.equipmentBoxes.Add(box.GetInstanceID().ToString(),box.properties.interactionEnabled.ToString());
+            levelData.equipmentBoxes.Add(box.name,box.properties.interactionEnabled.ToString());
         }
     }
 
@@ -92,16 +92,16 @@ public class SaveGameManager : MonoBehaviour
         var true_value = true.ToString();
         foreach(var box in eboxes)
         {
-            if(levelData.equipmentBoxes.ContainsKey(box.GetInstanceID().ToString()))
+            if(levelData.equipmentBoxes.ContainsKey(box.name))
             {
                 box.properties.interactionEnabled = true;
-                if(levelData.equipmentBoxes[box.GetInstanceID().ToString()] != true_value)
+                if(levelData.equipmentBoxes[box.name] != true_value)
                 {
                     box.properties.interactionEnabled = false;
                     box.OnInteractionStart();
                 }
             }
-            levelData.equipmentBoxes[box.GetInstanceID().ToString()] =box.properties.interactionEnabled.ToString();
+            levelData.equipmentBoxes[box.name] =box.properties.interactionEnabled.ToString();
         }
     }
 

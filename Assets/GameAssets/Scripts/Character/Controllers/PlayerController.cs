@@ -332,6 +332,12 @@ public class PlayerController : AgentController
             MouseCurserSystem.getInstance().onBullet_Fire();
 
             m_trigger_pulled = true;
+
+            // incase not properly aimed, fire after a delay
+            if(!m_movingAgent.isAimed())
+            {
+                StartCoroutine(waitAndFire());
+            }
         }
 
         if(Input.GetMouseButtonUp(0) /* && Input.GetMouseButton(1) */ || crouch_pressed || Input.GetKey(KeyCode.LeftShift))
@@ -339,6 +345,17 @@ public class PlayerController : AgentController
             m_movingAgent.releaseTrigger();
             m_trigger_pulled = false;
         }
+    }
+
+    IEnumerator waitAndFire()
+    {
+
+        while(!m_movingAgent.isAimed())
+        {    
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        m_movingAgent.pullTrigger();
     }
 
     private void UpdateTargetPoint()
