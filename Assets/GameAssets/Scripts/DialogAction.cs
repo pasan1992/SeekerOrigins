@@ -15,10 +15,13 @@ public class DialogAction : FsmStateAction
 
     public bool WaitTillDialog = true;
 
+    public bool cannotSkip = false;
+
     public override void OnEnter()
     {
         totalDialogs = dialogStatments.Length;
         DialogManager.instance.StartDialog(dialogStatments,onDialogEnd);
+        DialogManager.instance.setNoSkip(cannotSkip);
         dialogEnded =  false;
         
         if (!WaitTillDialog)

@@ -42,6 +42,13 @@ public class DialogManager : MonoBehaviour
 
     private SoundManager soundManager;
 
+    private bool noSkip = false;
+
+    public void setNoSkip(bool noSkip)
+    {
+        this.noSkip = noSkip;
+    }
+
     void Awake()
     {
         if(instance == null)
@@ -141,6 +148,11 @@ public class DialogManager : MonoBehaviour
 
     public void SkipDialog()
     {
+        if(noSkip)
+        {
+            return;
+        }
+        
         m_audioSource.Stop();
         //DialogText.text = "";
         NextDialog();

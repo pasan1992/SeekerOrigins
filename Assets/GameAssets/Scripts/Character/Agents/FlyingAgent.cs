@@ -191,7 +191,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public void weaponFireForAI()
     {
         //.getBasicProjectie();
-        GameObject Tempprojectile = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.BasicProjectile);
+        GameObject Tempprojectile = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile);
         Vector3 firePos = getFirePoint();
         Tempprojectile.transform.position = firePos;
         Tempprojectile.transform.rotation = m_droneRigitBody.transform.rotation;

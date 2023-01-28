@@ -30,7 +30,7 @@ public class Grenade : Weapon
     {
         base.Awake();
         GrenadeTypes = new Dictionary<string,GrenadeType>();
-        GrenadeTypes.Add(AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,3,AmmoTypeEnums.Grenade.Regular_Grenade.ToString()));
+        GrenadeTypes.Add(AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),new GrenadeType(ProjectilePool.POOL_OBJECT_TYPE.Grenade,40,AmmoTypeEnums.Grenade.Regular_Grenade.ToString()));
         currentGrenadeType = GrenadeTypes[AmmoTypeEnums.Grenade.Regular_Grenade.ToString()];
     }
 
