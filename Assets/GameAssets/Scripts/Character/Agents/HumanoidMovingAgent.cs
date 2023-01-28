@@ -527,7 +527,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public Vector3 getCurrentPosition()
     {
-        if(this.transform !=null)
+        if(this != null && this.transform !=null)
         {
             return this.transform.position;
         }

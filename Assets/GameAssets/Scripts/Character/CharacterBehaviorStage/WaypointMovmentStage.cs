@@ -61,7 +61,11 @@ public class WaypontMovementStage : BasicMovmentStage
         {
             return;
         }
-        m_navMeshAgent.SetDestination(waypoint.getPosition()); 
+        if(m_navMeshAgent.isOnNavMesh)
+        {
+            m_navMeshAgent.SetDestination(waypoint.getPosition()); 
+        }
+        
     }
 
     public void SetNewWaypoints(BasicWaypoint[] newWaypoints)

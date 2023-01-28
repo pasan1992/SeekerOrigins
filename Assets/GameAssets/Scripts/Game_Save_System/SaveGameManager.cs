@@ -73,6 +73,7 @@ public class SaveGameManager : MonoBehaviour
         levelData.playerData.playerLookDirection = m_playerController.gameObject.transform.localEulerAngles;
         levelData.playerData.playerPosition = m_playerController.gameObject.transform.localPosition;
         SaveEquipmentBoxes(levelData);
+        SaveObjetiveStates(levelData);
         SaveData.SaveLevelData(SceneManager.GetActiveScene().buildIndex,levelData);
     }
 
@@ -82,6 +83,24 @@ public class SaveGameManager : MonoBehaviour
         foreach(var box in eboxes)
         {
             levelData.equipmentBoxes.Add(box.name,box.properties.interactionEnabled.ToString());
+        }
+    }
+
+    private void SaveObjetiveStates(SaveData.LevelData levelData)
+    {
+        var obj_manager = OptionalObjective.Instance;
+        foreach(var obj in obj_manager.GetObjectiveNames())
+        {
+            levelData.optionalObjectives.Add(obj,obj_manager.getObjectiveValue(obj));
+        }
+    }
+
+    private void LoadObjetiveStates(SaveData.LevelData levelData)
+    {
+        var obj_manager = OptionalObjective.Instance;
+        foreach (var obj in levelData.optionaObjList)
+        {
+            obj_manager.setObjective(obj.key,obj.value);
         }
     }
 
@@ -118,6 +137,7 @@ public class SaveGameManager : MonoBehaviour
         m_playerController.transform.localRotation = Quaternion.Euler(lvlData.playerData.playerLookDirection);
         m_playerController.GetComponent<NavMeshAgent>().enabled = true;
         LoadEquipmentBoxes(lvlData);
+        LoadObjetiveStates(lvlData);
         ActivateCheckpont(lvlData.currentCheckpoint);
     }
 

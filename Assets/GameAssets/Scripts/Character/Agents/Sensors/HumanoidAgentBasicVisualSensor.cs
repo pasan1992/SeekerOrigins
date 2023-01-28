@@ -325,13 +325,13 @@ public class HumanoidAgentBasicVisualSensor : AgentBasicSensor
 
     public bool IsKnownEnemy(HumanoidMovingAgent detectedAgent)
     {
-        foreach(HumanoidMovingAgent mv in m_rememberEnemyList)
-        {
-            if(mv == detectedAgent)
-            {
-                return true;
-            }
-        }
+        // foreach(HumanoidMovingAgent mv in m_rememberEnemyList)
+        // {
+        //     if(mv == detectedAgent)
+        //     {
+        //         return true;
+        //     }
+        // }
 
         return false;
     }

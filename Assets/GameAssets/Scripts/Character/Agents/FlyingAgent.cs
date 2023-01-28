@@ -247,6 +247,11 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     {
     }
 
+    public void forceDamage(float damageValue)
+    {
+        damageAgent(new CommonFunctions.Damage(damageValue,damageValue));
+    }
+
     public void damageAgent(CommonFunctions.Damage amount)
     {
         m_damageModule.DamageByAmount(amount);

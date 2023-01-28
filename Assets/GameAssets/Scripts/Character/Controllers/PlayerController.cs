@@ -492,6 +492,11 @@ public class PlayerController : AgentController
         bool found_cover = false;
         foreach(CoverPoint cp in coverpoints)
         {
+            if(cp.playerRestricted)
+            {
+                continue;
+            }
+            
             cp.setCoverHighlightStatus(false);
             if (Vector3.Distance(cp.transform.position,this.transform.position)<2f && m_movingAgent.getMovmentDirection() == Vector3.zero)
             {

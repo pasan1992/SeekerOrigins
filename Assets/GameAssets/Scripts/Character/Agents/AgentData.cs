@@ -38,6 +38,10 @@ public class AgentData : AgentBasicData
 
     public bool unbalanced = false;
 
+    public bool dodgeAll = false;
+
+    public bool grenader = false;
+
     public AgentData()
     {
         InitalizeAmmo();

@@ -54,6 +54,9 @@ public class Interactable : MonoBehaviour
         public Vector3 holdingPositionOffset;
         public Vector3 holdingRotationOffset;
         public InGameInidactor.IndicatorTypes indicatorType = InGameInidactor.IndicatorTypes.Arrow;
+
+        public Vector3 indicator_offset = Vector3.zero;
+        public Transform objectTransfrom;
     }
 
    [SerializeField]
@@ -95,11 +98,20 @@ public class Interactable : MonoBehaviour
 
     public virtual void Awake()
     {
-        m_outLine = this.GetComponent<Outline>();
-        if(m_outLine ==null)
+        if(visualProperties.objectTransfrom !=null)
         {
-            m_outLine = this.GetComponentInChildren<Outline>();
+            m_outLine = visualProperties.objectTransfrom.GetComponent<Outline>();
         }
+
+        if(m_outLine == null)
+        {
+            m_outLine = this.GetComponent<Outline>();
+            if(m_outLine ==null)
+            {
+                m_outLine = this.GetComponentInChildren<Outline>();
+            }
+        }
+
         setOutLineState(outLineState.white);
         
         if(properties.actualObject != null)
@@ -252,7 +264,7 @@ public class Interactable : MonoBehaviour
                 }
                 
                 m_indicator.SetActive(true);
-                m_indicator.transform.position = this.transform.position + Vector3.up * 1;
+                m_indicator.transform.position = this.transform.position + Vector3.up * 1 +visualProperties.indicator_offset;
                 setOutLineState(outLineState.white);
                 m_indicator.GetComponent<InGameInidactor>().IndicatorType = visualProperties.indicatorType;
             }
@@ -271,4 +283,20 @@ public class Interactable : MonoBehaviour
     {
         properties.interactionEnabled = int_enabled;
     }
+
+    #region editor
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Vector3 finalPosition = this.transform.position + ( Quaternion.Euler(properties.rotation) * Vector3.forward) * 1;
+        Gizmos.DrawLine(transform.position+ properties.offset,finalPosition);
+        Gizmos.DrawSphere(finalPosition,0.2f);
+
+        //Gizmos.DrawCube(transform.position + new Vector3(0, 0.3f, 0), new Vector3(0.6f, 0.6f, 0.6f));
+
+        var indiPosition = this.transform.position + Vector3.up * 1 +visualProperties.indicator_offset;
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(indiPosition,0.5f);
+    }
+    #endregion
 }

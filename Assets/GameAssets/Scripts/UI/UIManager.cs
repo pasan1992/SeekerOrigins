@@ -600,7 +600,15 @@ public class UIManager : MonoBehaviour
             //lootText.text = m_currentInteractable.name + ": Press E to Interact";
 
             FloatingGameUI onInteractiveUI = _InteractImg.GetComponent<FloatingGameUI>();
-            onInteractiveUI.target = m_currentInteractable.gameObject.transform;
+            if(m_currentInteractable.visualProperties.objectTransfrom == null)
+            {
+                onInteractiveUI.target = m_currentInteractable.gameObject.transform;
+            }
+            else
+            {
+                onInteractiveUI.target = m_currentInteractable.visualProperties.objectTransfrom;
+            }
+            
 
             _InteractImg.gameObject.SetActive(true);
             //updateWeaponStat(m_currentInteractable);

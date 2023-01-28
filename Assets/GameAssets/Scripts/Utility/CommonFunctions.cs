@@ -57,13 +57,33 @@ public class CommonFunctions
     }
     public static bool isAllies(ICyberAgent detectedAgent, ICyberAgent selfAgent)
     {
+        if(detectedAgent.getFaction() == AgentBasicData.AgentFaction.Neutral || detectedAgent.getFaction() == AgentBasicData.AgentFaction.Allies)
+        {
+            return true;
+        }
+
+        if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Neutral)
+        {
+            return true;
+        }
+
+        if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Player && detectedAgent.getFaction() == AgentBasicData.AgentFaction.Neutral)
+        {
+            return true;
+        }
+
+        if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Player && detectedAgent.getFaction() == AgentBasicData.AgentFaction.Allies)
+        {
+            return true;
+        }
+
         if(detectedAgent == selfAgent)
         {
             return true;
         }
         if(detectedAgent.getFaction()==AgentBasicData.AgentFaction.Player)
         {
-            if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Allies)
+            if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Allies || selfAgent.getFaction() == AgentBasicData.AgentFaction.Player)
             {
                 return true;
             }

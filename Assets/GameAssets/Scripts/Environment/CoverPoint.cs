@@ -11,6 +11,8 @@ public class CoverPoint : MonoBehaviour, IPoints
     private Outline cover_outline;
     public bool m_isSelfCP = false;
 
+    public bool playerRestricted = false;
+
     #region Getters and Setters
     public void Awake()
     {

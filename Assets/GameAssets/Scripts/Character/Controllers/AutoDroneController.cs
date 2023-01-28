@@ -141,6 +141,7 @@ public class AutoDroneController :  AgentController
     {
         if (!CommonFunctions.isAllies(opponent,m_selfAgent))
         {
+            Debug.Log(opponent);
          m_combatState.setTargets(opponent);
          switchToCombatStage();
         }

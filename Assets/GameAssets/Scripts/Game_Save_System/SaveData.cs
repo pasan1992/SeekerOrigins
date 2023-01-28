@@ -33,17 +33,22 @@ public class SaveData
         public Dictionary<string,string> equipmentBoxes = new Dictionary<string, string>();
         public List<SavableDictElement> equipmentBoxesList = new List<SavableDictElement>();
 
+        public Dictionary<string,string> optionalObjectives = new Dictionary<string, string>();
+        public List<SavableDictElement> optionaObjList = new List<SavableDictElement>();
+
 
         public PlayerData playerData = new PlayerData();
 
         public void deserialize()
         {
             equipmentBoxes = ListToDict(equipmentBoxesList);
+            optionalObjectives = ListToDict(optionaObjList);
         }
 
         public void serialize()
         {
             equipmentBoxesList = DistToList(equipmentBoxes);
+            optionaObjList = DistToList(optionalObjectives);
         }
     }
 

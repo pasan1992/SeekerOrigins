@@ -268,7 +268,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     getUpFromCover();
                 }
 
-                if(damageAlert && Random.value <  m_selfAgent.getSkill())
+                if(m_selfAgent.GetAgentData().dodgeAll || damageAlert && Random.value <  m_selfAgent.getSkill())
                 {
                     if(m_selfAgent.GetAgentData().CanDodge)
                     {
@@ -399,8 +399,12 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
             //CoverPoint tempCurrentCoverPoint = CoverPointsManager.getNextCoverPoint(m_currentCoverPoint,m_target,m_selfAgent.getCurrentPosition());
 
             //Stop the moving agent in case status change from moving - calculate next point
-            m_navMeshAgent.velocity = Vector3.zero;
-            m_navMeshAgent.isStopped = true;
+            if(m_navMeshAgent.isOnNavMesh)
+            {
+                m_navMeshAgent.velocity = Vector3.zero;
+                m_navMeshAgent.isStopped = true;
+            }
+
 
             if(tempCurrentCoverPoint != null)
             {
@@ -419,7 +423,8 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
                     // Get up and move
                     getUpFromCover();
                     m_currentMovmentBehaviorStage = GameEnums.MovmentBehaviorStage.MOVING_TO_POINT;
-                    m_navMeshAgent.isStopped = false;
+                    if(m_navMeshAgent.isOnNavMesh)
+                        m_navMeshAgent.isStopped = false;
                 }
                 else
                 {
@@ -536,7 +541,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
 
     private void ThrowGrenade()
     {
-        bool can_throw_grenade = false;
+        bool can_throw_grenade = m_selfAgent.GetAgentData().grenader;
         if (m_target !=null)
         {
             HumanoidMovingAgent humanoidOpponent = m_target as HumanoidMovingAgent;
@@ -568,7 +573,7 @@ public class CoverPointBasedCombatStage : BasicMovmentCombatStage
             }
         }
 
-        if(can_throw_grenade && targetLocation & Random.value < m_selfAgent.getSkill() & m_selfAgent.GetAgentData().ThrowGrenade)
+        if(can_throw_grenade && targetLocation & (Random.value < m_selfAgent.getSkill()|| m_selfAgent.GetAgentData().grenader) & m_selfAgent.GetAgentData().ThrowGrenade)
         {
             ((HumanoidMovingAgent)m_selfAgent).Throw();
         }
