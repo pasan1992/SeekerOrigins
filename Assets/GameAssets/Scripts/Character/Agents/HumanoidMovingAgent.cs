@@ -971,11 +971,20 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     public void setStunned(float duration, Vector3 direction)
     {
+        if(GetAgentData().immuneToStunn)
+        {
+            return;
+        }
         setEffectState(CharacterMainStates.Stunned,duration,direction);
     }
 
     public void setShocked(float duration, Vector3 direction)
     {
+        if(GetAgentData().immuneToStunn)
+        {
+            return;
+        }
+
         setEffectState(CharacterMainStates.Shock,duration,direction);
     }
 
