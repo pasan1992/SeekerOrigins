@@ -145,12 +145,12 @@ PrefabInstance:
     - target: {fileID: 8851718178877291366, guid: 9934d631196d9ce4dbe48b49d07347ab,
         type: 3}
       propertyPath: AgentData.Sheild
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 8851718178877291366, guid: 9934d631196d9ce4dbe48b49d07347ab,
         type: 3}
       propertyPath: AgentData.MaxSheild
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 8851718178877291366, guid: 9934d631196d9ce4dbe48b49d07347ab,
         type: 3}

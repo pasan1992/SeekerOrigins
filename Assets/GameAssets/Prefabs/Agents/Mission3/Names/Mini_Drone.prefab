@@ -616,6 +616,7 @@ MonoBehaviour:
   m_inUse: 1
   m_timeToReset: 2
   m_restrictions: 0
+  ControlDisabled: 0
   enemyTag: 
 --- !u!114 &1059070430782895662
 MonoBehaviour:
@@ -641,16 +642,17 @@ MonoBehaviour:
     FireRocket: 0
     RocketPack: {fileID: 0}
     maxHealth: 2
-    MaxSheild: 3
+    MaxSheild: 20
     Regen: 0
     HealthRegen: 0
     HealthRegenWait: 10
     m_agentFaction: 1
     health: 2
-    Sheild: 3
+    Sheild: 20
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 0}
     grenade: {fileID: 0}
+    use_cover: 1
     HealInjectionCount: 1
     HealPerInjection: 20
     inventryItems: []
@@ -658,6 +660,9 @@ MonoBehaviour:
     WeaponAmmo: []
     immuneToStunn: 0
     drop_reward: 1
+    unbalanced: 0
+    dodgeAll: 0
+    grenader: 0
   landingPad: {fileID: 0}
   firePoints:
   - firePoint: {fileID: 5036315815920316073}
@@ -809,6 +814,7 @@ MonoBehaviour:
   m_inUse: 0
   m_timeToReset: 2
   m_restrictions: 0
+  ControlDisabled: 0
   m_followingTarget: {fileID: 0}
   EnableFollow: 1
   FollowOffset: {x: -1, y: 0, z: 0}
