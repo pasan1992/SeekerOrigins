@@ -23864,8 +23864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7f221ee36f44e4499b75861528e937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 5
-  m_energyDaamge: 10
+  m_baseDamage: 90
+  m_energyDaamge: 90
   m_range: 2
   explosionType: 0
 --- !u!1 &1845159935159752248
@@ -28578,8 +28578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7f221ee36f44e4499b75861528e937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 5
-  m_energyDaamge: 10
+  m_baseDamage: 90
+  m_energyDaamge: 90
   m_range: 2
   explosionType: 0
 --- !u!1 &1845159935431806989
@@ -28644,8 +28644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7f221ee36f44e4499b75861528e937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 5
-  m_energyDaamge: 10
+  m_baseDamage: 90
+  m_energyDaamge: 90
   m_range: 2
   explosionType: 0
 --- !u!1 &1845159935499045659
@@ -28986,6 +28986,7 @@ GameObject:
   - component: {fileID: 1845681632455879168}
   - component: {fileID: 1845681632455879170}
   - component: {fileID: 1845681632455879171}
+  - component: {fileID: 2000067440462211566}
   m_Layer: 9
   m_Name: MissleRack
   m_TagString: Item
@@ -29135,8 +29136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16604d5b2a590374dadac487c9973355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 2
-  m_energyDaamge: 2
+  m_baseDamage: 90
+  m_energyDaamge: 90
   m_range: 7
   explosionType: 0
   faction: 0
@@ -29236,6 +29237,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2000067440462211566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845681632455879172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 0.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1846157176165537556
 GameObject:
   m_ObjectHideFlags: 0
@@ -29535,8 +29554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7f221ee36f44e4499b75861528e937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 5
-  m_energyDaamge: 10
+  m_baseDamage: 90
+  m_energyDaamge: 90
   m_range: 2
   explosionType: 0
 --- !u!1 &7784808836414634173
@@ -38905,6 +38924,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4147673121654566, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -38976,6 +38999,10 @@ PrefabInstance:
     - target: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147673121654566, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
       propertyPath: m_RootOrder
@@ -39130,6 +39157,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4147673121654566, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -39201,6 +39232,10 @@ PrefabInstance:
     - target: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267369252621254, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4147673121654566, guid: f6d201bc8595a5b4f92f70df92d33aed, type: 3}
       propertyPath: m_RootOrder

@@ -29,7 +29,6 @@ public class RocketPackExplosionObject : BasicExplodingObject
     private void fireAllRockets()
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, m_range);
-         
             foreach (Collider hitCollider in hitColliders)
             {
                 // var explodingObj = hitCollider.GetComponentInParent<BasicExplodingObject>();
@@ -60,9 +59,12 @@ public class RocketPackExplosionObject : BasicExplodingObject
                 }
             }
         
-        foreach(BasicRocket rocket in rockets)
+        for(int i =0;i<rockets.Count ;i++)
         {
-            rocket.fireRocketLocation(Random.insideUnitCircle*100);
+            var random_location = new Vector3(Random.Range(5,-5),Random.Range(0,2),Random.Range(-5,5));
+            var rocket = rockets.Dequeue();
+            rocket.transform.parent = null;
+            rocket.fireRocketLocation(random_location+ this.transform.position);
         }
 
     }

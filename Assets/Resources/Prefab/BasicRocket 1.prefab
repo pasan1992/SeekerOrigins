@@ -9398,6 +9398,7 @@ MonoBehaviour:
   Speed: 15
   explosionTimeout: 20
   rocketScale: 0.6
+  upTime: 1
 --- !u!114 &2945950702818715400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9410,8 +9411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7f221ee36f44e4499b75861528e937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 2
-  m_range: 2
+  m_baseDamage: 45
+  m_energyDaamge: 45
+  m_range: 4
   explosionType: 0
 --- !u!1 &5846384505091715392
 GameObject:
