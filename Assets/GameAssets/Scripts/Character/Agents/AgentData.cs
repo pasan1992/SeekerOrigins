@@ -32,6 +32,9 @@ public class AgentData : AgentBasicData
     public AgentBehaviorStatus behaviorStatus = AgentBehaviorStatus.Suspicious;
     public List<AmmoPack> WeaponAmmo = new List<AmmoPack>();
 
+    public AmmoTypeEnums.RifleAmmo SelectedPrimaryAmmoType = AmmoTypeEnums.RifleAmmo.Regular_RifleAmmo;
+    public AmmoTypeEnums.PistolAmmo SelectedSecondayAmmoType = AmmoTypeEnums.PistolAmmo.Regular_PistolAmmo;
+
     public bool immuneToStunn = false;
 
     public bool drop_reward = true;

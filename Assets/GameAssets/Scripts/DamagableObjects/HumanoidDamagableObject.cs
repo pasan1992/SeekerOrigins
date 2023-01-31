@@ -9,6 +9,8 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
 
     private int postDestroyDamage = 0;
 
+    public bool DontTakeDamage = false;
+
     public void damgeHead(float dmg)
     {
         damage(new CommonFunctions.Damage(dmg,dmg),m_movingAgent.getHeadTransfrom().GetComponentInChildren<Collider>(),-m_movingAgent.getHeadTransfrom().forward,m_movingAgent.getHeadTransfrom().position,
@@ -26,6 +28,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             return false;
         }
         */
+        if(DontTakeDamage)
+        {
+            return false;
+        }
+        
         if ( (stunPrecentage > Random.value && !m_movingAgent.isDisabled()) || (m_movingAgent.GetAgentData().unbalanced && Random.value > 0.5f))
         {
             //StartCoroutine(DotDamage(damageValue,collider,force,point,fromFaction,(int)stunPrecentage));

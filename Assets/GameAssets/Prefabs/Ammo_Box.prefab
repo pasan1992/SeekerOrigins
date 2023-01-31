@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineColor: {r: 0.5377358, g: 0.5199804, b: 0.5199804, a: 0.5882353}
+  outlineWidth: 1
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -731,6 +731,8 @@ MonoBehaviour:
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
     indicatorType: 6
+    indicator_offset: {x: 0, y: 0, z: 0}
+    objectTransfrom: {fileID: 0}
   m_baseAudioSource: {fileID: 0}
   AmmoPackData:
   - AmmoType: Regular_Grenade

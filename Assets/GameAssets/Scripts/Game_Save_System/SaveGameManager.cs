@@ -139,6 +139,8 @@ public class SaveGameManager : MonoBehaviour
         LoadEquipmentBoxes(lvlData);
         LoadObjetiveStates(lvlData);
         ActivateCheckpont(lvlData.currentCheckpoint);
+        m_playerController.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Pistol,lvlData.playerData.agentData.SelectedSecondayAmmoType.ToString());
+        m_playerController.SwitchAmmoType(AmmoTypeEnums.WeaponTypes.Rifle,lvlData.playerData.agentData.SelectedPrimaryAmmoType.ToString());
     }
 
     private void ActivateCheckpont(int val)

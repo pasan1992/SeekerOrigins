@@ -46,7 +46,6 @@ public class PrimaryWeapon : RangedWeapon
         base.updateWeapon();
     }
 
-
     #endregion
 
     #region getters and setters

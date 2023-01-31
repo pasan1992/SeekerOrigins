@@ -191,9 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506d8bbf7f7a19047bfaf0422a8798a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseDamage: 90
-  m_energyDaamge: 90
-  m_range: 4
+  m_baseDamage: 35
+  m_energyDaamge: 35
+  m_range: 3
   explosionType: 0
 --- !u!208 &159165512
 NavMeshObstacle:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineColor: {r: 0.3773585, g: 0.051619805, b: 0.051619805, a: 0.65882355}
   outlineWidth: 0.5
   precomputeOutline: 0
   bakeKeys: []

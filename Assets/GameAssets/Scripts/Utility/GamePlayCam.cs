@@ -31,13 +31,8 @@ public class GamePlayCam : MonoBehaviour
     {
         offset = target.transform.position - this.transform.position;
         m_cameraAimOffset = Vector3.zero;
-        var outlines = FindObjectsOfType<Outline>();
         m_camera = Camera.main;
         cam_fov = m_camera.fieldOfView;
-        // foreach(Outline outline in outlines)
-        // {
-        //     outline.OutlineMode = Outline.Mode.SilhouetteOnly;
-        // }
     }
 
     // Update is called once per frame

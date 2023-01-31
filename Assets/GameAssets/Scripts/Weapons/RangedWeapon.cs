@@ -112,16 +112,26 @@ public abstract class RangedWeapon : Weapon
         }
     }
 
-    public void SwitchAmmoType(string ammoTypeName)
+    public virtual void SwitchAmmoType(string ammoTypeName)
     {
-        var ammoType =  posibleAmmoTypes[ammoTypeName];
-        this.damage = ammoType.damage;
-        this.fireRate = ammoType.fireRate;
-        this.stunPrecentage = ammoType.stun_precentage;
-        this.projectile = ammoType.particleType;
-        this.energyDamage = ammoType.energyDamage;
-        this.m_weaponAmmunitionName = ammoTypeName;
-        this.m_fireSoundName = ammoType.SoundName;
+
+
+        if(posibleAmmoTypes.ContainsKey(ammoTypeName))
+        {
+            var ammoType =  posibleAmmoTypes[ammoTypeName];
+            this.damage = ammoType.damage;
+            this.fireRate = ammoType.fireRate;
+            this.stunPrecentage = ammoType.stun_precentage;
+            this.projectile = ammoType.particleType;
+            this.energyDamage = ammoType.energyDamage;
+            this.m_weaponAmmunitionName = ammoTypeName;
+            this.m_fireSoundName = ammoType.SoundName;
+        }
+        else
+        {
+            Debug.LogError("Given Ammo type " + ammoTypeName + " Does not exist in weapon" + this.name);
+        }
+
     }
 
     public string getCurrentAmmoType()

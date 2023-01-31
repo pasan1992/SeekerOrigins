@@ -192,12 +192,12 @@ public class Interactable : MonoBehaviour
                     m_outLine.OutlineWidth = 0;
                 break;
                 case outLineState.white:
-                        m_outLine.OutlineWidth = 0.9f;
-                        m_outLine.OutlineColor = Color.white;
+                        m_outLine.OutlineWidth = 0.5f;
+                        m_outLine.OutlineColor = Color.gray;
                 break;
                 case outLineState.Blue:
-                        m_outLine.OutlineWidth = 0.9f;
-                        m_outLine.OutlineColor = Color.blue;
+                        m_outLine.OutlineWidth = 0.5f;
+                        m_outLine.OutlineColor = Color.white;
                 break;
             }
             

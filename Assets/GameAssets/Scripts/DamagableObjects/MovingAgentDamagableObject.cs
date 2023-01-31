@@ -33,16 +33,22 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         m_soundManager = GameObject.FindObjectOfType<SoundManager>();
         m_objectUI = this.GetComponent<ObjectUI>();
         m_outline = this.GetComponentInChildren<Outline>();
-        StartCoroutine(waitAndEnable());
+        
+    }
+
+    public void Start()
+    {
+            StartCoroutine(waitAndEnable());
     }
 
     IEnumerator waitAndEnable()
     {
         if(m_outline)
         {
-            m_outline.enabled = false;
-            yield return new WaitForSeconds(6);
-            m_outline.enabled = true;
+            m_outline.OutlineWidth = 0.3f;
+            yield return new WaitForSeconds(5);
+            m_outline.OutlineWidth = 0.3f;
+            Debug.Log("HERE");
         }
         
 

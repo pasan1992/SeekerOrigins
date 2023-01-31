@@ -745,6 +745,7 @@ public class HumanoidRangedWeaponsModule
                     var ammo_count = m_rifle.getLoadedAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
 
+                    m_agentData.SelectedPrimaryAmmoType = AmmoTypeEnums.getRifleAmmoType(ammo_name);
                     m_rifle.SwitchAmmoType(ammo_name);
                     ammo_count = m_rifle.getLoadedAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
@@ -765,7 +766,7 @@ public class HumanoidRangedWeaponsModule
                        // put ammo already in type back                 
                     var ammo_count = m_pistol.getLoadedAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
-
+                    m_agentData.SelectedSecondayAmmoType = AmmoTypeEnums.getPistolAmmoType(ammo_name);
                     m_pistol.SwitchAmmoType(ammo_name);
                     ammo_count = m_pistol.getLoadedAmmoCount();
                     m_agentData.AddAmmo(ammo_name,ammo_count);
@@ -1129,6 +1130,7 @@ public class HumanoidRangedWeaponsModule
                 }
                 
                 m_rifle.onWeaponEquip();
+                m_rifle.SwitchAmmoType(m_agentData.SelectedPrimaryAmmoType.ToString());
                 ((RangedWeapon)weapon).addOnWeaponFireEvent(OnWeaponFire);
                 m_rifle.targetPointTransfrom = m_agentComponents.weaponAimTransform;
             break;
@@ -1163,6 +1165,7 @@ public class HumanoidRangedWeaponsModule
 
 
                 m_pistol.onWeaponEquip();
+                m_pistol.SwitchAmmoType(m_agentData.SelectedSecondayAmmoType.ToString());
                 ((RangedWeapon)weapon).addOnWeaponFireEvent(OnWeaponFire);
                 m_pistol.targetPointTransfrom = m_agentComponents.weaponAimTransform;
             break;
