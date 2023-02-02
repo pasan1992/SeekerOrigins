@@ -26,7 +26,7 @@ public class AutoDroneController :  AgentController
         m_selfAgent = this.GetComponent<FlyingAgent>();
 
         m_itearationState = new IteractionStage(m_selfAgent,m_navMeshAgent,m_selfAgent.getGameObject().GetComponent<WaypointRutine>().m_wayPoints.ToArray());
-        m_combatState = new DroneCombatStage(m_selfAgent,m_navMeshAgent,FindObjectOfType<PlayerController>().GetComponent<HumanoidMovingAgent>());
+        m_combatState = new DroneCombatStage(m_selfAgent,m_navMeshAgent,null);
         m_currentBehaviorState  = m_itearationState;
 
         m_visualSensor = new HumanoidAgentBasicVisualSensor(m_selfAgent);

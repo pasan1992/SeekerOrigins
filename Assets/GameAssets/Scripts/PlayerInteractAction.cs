@@ -28,7 +28,7 @@ public class PlayerInteractAction : FsmStateAction
         m_agent.stopAiming();
         if(interactionStarted)
         {
-            
+            m_playerController.ControlDisabled = false;
             Finish();
         }
     }

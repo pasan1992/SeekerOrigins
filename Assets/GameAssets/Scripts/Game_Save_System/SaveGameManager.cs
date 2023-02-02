@@ -57,7 +57,7 @@ public class SaveGameManager : MonoBehaviour
                 var lvl_data = SaveData.LoadLevelData(lvl_index);
                 if (lvl_data == null)
                 {
-                    Debug.Log("No Level Data Found");
+                    ActivateCheckpont(0);
                     return;
                 }
                 LoadGame(lvl_data);

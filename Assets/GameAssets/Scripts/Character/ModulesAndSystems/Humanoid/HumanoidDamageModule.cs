@@ -98,7 +98,7 @@ public class HumanoidDamageModule : DamageModule
 
     public void reactOnHit(Collider collider, Vector3 force, Vector3 point)
     {
-        m_hitReaction.Hit(collider, force, point);
+        m_hitReaction.Hit(collider, force*3, point);
     }
 
     public Transform getHeadTransfrom()

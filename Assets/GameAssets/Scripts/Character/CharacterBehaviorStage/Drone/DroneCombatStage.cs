@@ -85,10 +85,14 @@ public class DroneCombatStage : BasicMovmentCombatStage
                     m_currentCombatStage = DRONE_COMBAT_STAGES.Fire;
                 }
 
-                if (Vector3.Distance(m_selfAgent.getCurrentPosition(), m_opponent.getCurrentPosition()) > 10)
+                if(m_opponent !=null)
                 {
-                    m_currentCombatStage = DRONE_COMBAT_STAGES.DecidingToMove;
+                    if (Vector3.Distance(m_selfAgent.getCurrentPosition(), m_opponent.getCurrentPosition()) > 10)
+                    {
+                        m_currentCombatStage = DRONE_COMBAT_STAGES.DecidingToMove;
+                    }
                 }
+
 
                 break;
         }

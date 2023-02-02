@@ -122,6 +122,7 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
                 onDamagedEvent();
             }
         }
+        StartCoroutine(onDamageEffect());
         
         return !m_movingAgent.IsFunctional();
     }

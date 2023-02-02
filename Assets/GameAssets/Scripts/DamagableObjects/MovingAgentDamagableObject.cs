@@ -19,12 +19,13 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
     public bool KeepOnDestory = false;
 
 
-    private Outline m_outline;
+    public Outline m_outline;
 
     private GameObject fireEffect;
     private int dotCount = 0;
 
     public UnityEvent m_onDestroyEvent;
+    private Color m_original_outline;
 
     public void Awake()
     {
@@ -32,7 +33,13 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         m_audioSource = this.GetComponent<AudioSource>();
         m_soundManager = GameObject.FindObjectOfType<SoundManager>();
         m_objectUI = this.GetComponent<ObjectUI>();
-        m_outline = this.GetComponentInChildren<Outline>();
+        if(m_outline == null)
+        {
+            m_outline = this.GetComponentInChildren<Outline>();
+        }
+        
+        if(m_outline)
+        m_original_outline = m_outline.OutlineColor;
         
     }
 
@@ -52,6 +59,16 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         }
         
 
+    }
+
+    protected IEnumerator onDamageEffect()
+    {
+        if(m_outline)
+        {
+            m_outline.OutlineColor = Color.red;
+            yield return new WaitForSeconds(0.5f);
+            m_outline.OutlineColor = m_original_outline;
+        }
     }
 
     public IEnumerator DotDamage(CommonFunctions.Damage damageValue,Collider collider, Vector3 force, Vector3 point, AgentBasicData.AgentFaction fromFaction,int duration)
@@ -99,6 +116,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         // }
 
         m_movingAgent.damageAgent(damageValue);
+        StartCoroutine(onDamageEffect());
         
         // If functional after damaged, then retrun false and fire on damaged event
         if(m_movingAgent.IsFunctional())

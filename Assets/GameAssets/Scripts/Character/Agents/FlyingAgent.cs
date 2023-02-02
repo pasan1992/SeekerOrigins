@@ -43,7 +43,6 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
     public struct FireLocation
     {
         public Transform firePoint;
-        public ParticleSystem fireParticle;
     } 
 
     public FireLocation[] firePoints;
@@ -193,6 +192,7 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         //.getBasicProjectie();
         GameObject Tempprojectile = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.ElectricProjectile);
         Vector3 firePos = getFirePoint();
+        Tempprojectile.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
         Tempprojectile.transform.position = firePos;
         Tempprojectile.transform.rotation = m_droneRigitBody.transform.rotation;
         Tempprojectile.SetActive(true);
@@ -213,7 +213,8 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
          
         if(hitPos.point != Vector3.zero)
         {
-            Tempprojectile.transform.forward = (hitPos.point -firePos).normalized;        
+            Tempprojectile.transform.forward = (hitPos.point -firePos).normalized;      
+              
         }
         proj.StartFire(hitPos);
 
@@ -226,7 +227,6 @@ public class FlyingAgent : MonoBehaviour ,ICyberAgent
         {
             int val = Random.Range(0,firePoints.Length);
             var fp = firePoints[val];
-            fp.fireParticle.Play();
             return fp.firePoint.position;
         }
 

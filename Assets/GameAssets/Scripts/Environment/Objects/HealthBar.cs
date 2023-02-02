@@ -120,18 +120,30 @@ public class HealthBar : MonoBehaviour
 
     public void set_full_cover()
     {
+        if(Sheild_icon==null)
+        {
+            return;
+        }
         Sheild_icon.enabled = true;
         Sheild_icon.sprite = sheild_image;
     }
 
     public void set_half_cover()
     {
+        if(Sheild_icon==null)
+        {
+            return;
+        }
         Sheild_icon.enabled = true;
         Sheild_icon.sprite = half_sheild_image;
     }
 
     public void set_no_cover()
-    {
+    {        
+    if(Sheild_icon==null)
+        {
+            return;
+        }
         Sheild_icon.enabled = false;
     }
 

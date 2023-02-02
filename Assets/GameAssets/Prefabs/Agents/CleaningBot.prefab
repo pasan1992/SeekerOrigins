@@ -87,6 +87,7 @@ MonoBehaviour:
   m_inUse: 1
   m_timeToReset: 2
   m_restrictions: 1
+  ControlDisabled: 0
   enemyTag: 
 --- !u!114 &3459857772104897927
 MonoBehaviour:
@@ -122,19 +123,23 @@ MonoBehaviour:
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 0}
     grenade: {fileID: 0}
+    use_cover: 1
     HealInjectionCount: 1
     HealPerInjection: 20
     inventryItems: []
     behaviorStatus: 1
     WeaponAmmo: []
+    SelectedPrimaryAmmoType: 0
+    SelectedSecondayAmmoType: 0
     immuneToStunn: 0
     drop_reward: 1
+    unbalanced: 0
+    dodgeAll: 0
+    grenader: 0
   landingPad: {fileID: 0}
   firePoints:
   - firePoint: {fileID: 8887262529321716992}
-    fireParticle: {fileID: 3657399022845495270}
   - firePoint: {fileID: 7703271266690222521}
-    fireParticle: {fileID: 3657399022555628886}
   WeaponDamage: 0.1
   WeaponEneryDamge: 0.1
   m_DroneModel: {fileID: 8147630718373848111}
@@ -40143,6 +40148,24 @@ MonoBehaviour:
   m_energyDaamge: 5
   m_range: 2
   explosionType: 0
+--- !u!114 &4096990059431361122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144641794737474751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.42352942, g: 0.41960785, b: 0.41960785, a: 1}
+  outlineWidth: 0.5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8257208630353704677
 GameObject:
   m_ObjectHideFlags: 0
