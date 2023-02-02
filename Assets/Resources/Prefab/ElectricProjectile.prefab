@@ -4896,11 +4896,12 @@ MonoBehaviour:
   hitOffset: 0.1
   UseFirePointRotation: 0
   rotationOffset: {x: 0, y: 0, z: 0}
-  hit: {fileID: 1065618375357958, guid: 6f8068e2c99ffb04b932ec74e5773db5, type: 3}
+  hit: {fileID: 1065618375357958, guid: 667b21a8e947d0847a5fb3b0d8b1897d, type: 3}
   flash: {fileID: 1347307786625236, guid: 5b0ac738fb141244d96b28bbd07be221, type: 3}
   Detached:
   - {fileID: 4102515554723996589}
   m_particleSystem: {fileID: 4191198871699160327}
+  disableHitEffect: 0
 --- !u!54 &4059179417763221671
 Rigidbody:
   m_ObjectHideFlags: 0
