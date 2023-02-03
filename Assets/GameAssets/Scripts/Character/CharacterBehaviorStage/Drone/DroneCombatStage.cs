@@ -98,6 +98,11 @@ public class DroneCombatStage : BasicMovmentCombatStage
         }
     }
 
+    public void setOpponent(ICyberAgent agent)
+    {
+        m_opponent = agent;
+    }
+
     private void logState()
     {
         if(!m_loggingState.Equals(m_currentCombatStage))

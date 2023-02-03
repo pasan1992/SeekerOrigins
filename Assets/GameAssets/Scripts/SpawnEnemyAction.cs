@@ -18,6 +18,8 @@ public class SpawnEnemyAction : FsmStateAction
     private int agentCount = 0;
     public GameObject distance_target;
 
+    private List<AgentController> m_agents = new List<AgentController>();
+
     public override void OnEnter()
     {
      
@@ -40,6 +42,17 @@ public class SpawnEnemyAction : FsmStateAction
             Finish();
         }
 
+    }
+
+    public override void OnUpdate()
+    {
+        foreach(var agent in m_agents)
+        {
+            if(agent !=null)
+            {
+                agent.ForceCombatMode(Target);
+            }
+        }
     }
 
     private IEnumerator waitAndSpawn()
@@ -70,6 +83,7 @@ public class SpawnEnemyAction : FsmStateAction
                     navMesh.enabled = true;
 
                     AgentController agentCont = enemey.GetComponent<AgentController>();
+                    m_agents.Add(agentCont);
                     enemey.GetComponent<DamagableObject>().setOnDestroyed(OnDestroyed);
                     StartCoroutine(waitAndAttack(agentCont, Target));
                     

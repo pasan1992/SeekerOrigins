@@ -242,6 +242,7 @@ public class AutoDroneController :  AgentController
     {
         switchToCombatStage();
         m_visualSensor.forceCombatMode(position.position);
+        ((DroneCombatStage)m_combatState).setOpponent(position.GetComponent<ICyberAgent>());
     }
 
     #endregion

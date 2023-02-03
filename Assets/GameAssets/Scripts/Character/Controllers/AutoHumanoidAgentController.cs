@@ -456,18 +456,17 @@ public class AutoHumanoidAgentController :  AgentController
     {
         m_restrictions =  AGENT_AI_RESTRICTIONS.NO_RESTRICTIONS;
         m_force_transfrom = position;
-        CoverPointBasedCombatStage combat_stage = ((CoverPointBasedCombatStage)m_combatStage);
-        // set self cover point
-        //GameObject coverpointprefab = Resources.Load<GameObject>("Prefab/SelfCoverPoint");
-        //var selfCoverPoint = GameObject.Instantiate(coverpointprefab);
-        //combat_stage.OwnedCoverPoint = selfCoverPoint.GetComponent<CoverPoint>();
-        //combat_stage.MaxDistnaceFromCenteredPoint = 20;
-        //combat_stage.CurrentMovmentType = GameEnums.MovmentBehaviorType.FREE;
 
         switchToCombatStage();
         m_visualSensor.forceCombatMode(position.position);
         m_forced_attack = true;
         m_visualSensor.disableLook();
+
+        var agent = position.GetComponent<ICyberAgent>();
+        if(agent !=null && m_combatStage !=null)
+        {
+            m_combatStage.setTargets(agent);
+        }
 
     }
 
