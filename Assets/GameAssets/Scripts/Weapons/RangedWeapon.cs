@@ -264,7 +264,7 @@ public abstract class RangedWeapon : Weapon
 
     protected virtual void playWeaponFireSound()
     {
-        CommonFunctions.PlaySound(m_fireSoundName,m_audioScource);
+        CommonFunctions.PlaySound(m_fireSoundName,m_audioScource,m_ownersFaction != AgentBasicData.AgentFaction.Player);
     }
 
     protected virtual void fireWeapon()

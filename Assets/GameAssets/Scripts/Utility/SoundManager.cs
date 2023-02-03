@@ -42,15 +42,19 @@ public class SoundManager : MonoBehaviour
 
         return this_ins;
     }
-    public void setAudioVolume(AudioSource audioSource)
+    public void setAudioVolume(AudioSource audioSource, bool lower_volume)
     {
         if(dialogPlaying)
         {
             audioSource.volume = 0.1f;
         }
+        else if(lower_volume)
+        {
+            audioSource.volume = 0.1f;
+        }
         else
         {
-            audioSource.volume = 0.8f;
+            audioSource.volume = 0.4f;
         }
     }
 

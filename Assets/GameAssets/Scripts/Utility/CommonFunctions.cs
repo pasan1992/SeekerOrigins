@@ -122,13 +122,13 @@ public class CommonFunctions
         }
     }
 
-    public static void PlaySound(string soundName, AudioSource audioSource)
+    public static void PlaySound(string soundName, AudioSource audioSource, bool lower_volume = false)
     {
         if(soundName!="")
         {
             var sm = SoundManager.getInstance();
             var sound_clip = sm.getSound(soundName);
-            sm.setAudioVolume(audioSource);
+            sm.setAudioVolume(audioSource,lower_volume);
             if(sound_clip)
             {
                 audioSource.PlayOneShot(sound_clip);
