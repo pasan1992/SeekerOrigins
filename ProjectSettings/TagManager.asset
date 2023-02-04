@@ -45,7 +45,7 @@ TagManager:
   - IgnoreNavMesh
   - Minimap
   - FloorEnemy
-  - 
+  - NavFloor
   - 
   - 
   - 
