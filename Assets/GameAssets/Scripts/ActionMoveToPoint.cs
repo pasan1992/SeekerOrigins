@@ -22,11 +22,14 @@ public class ActionMoveToPoint : FsmStateAction
 
     private HumanoidMovingAgent humanAgent;
 
+    public Vector3 offset;
+    
+
     public override void OnEnter()
     {
         agent = agentControl.getICyberAgent();
         m_navMeshAgent = agentControl.GetComponent<NavMeshAgent>();
-        m_navMeshAgent.SetDestination(location.position);
+        m_navMeshAgent.SetDestination(location.position + offset);
         m_navMeshAgent.isStopped = false;
 
         if(!agent.isHidden() && m_enableHide)
