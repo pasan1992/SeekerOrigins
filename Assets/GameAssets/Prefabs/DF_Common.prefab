@@ -58110,6 +58110,14 @@ MonoBehaviour:
   - sound:
     - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
     soundName: Electric
+  - sound:
+    - {fileID: 8300000, guid: 81731b8790a648d4a86a71aa89e26b6e, type: 3}
+    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
+    soundName: DoorOpen
+  - sound:
+    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
+    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
+    soundName: Footstep
 --- !u!114 &3209784683429458911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67928,6 +67936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 16
   KeepOnDestory: 1
+  m_outline: {fileID: 0}
   m_onDestroyEvent:
     m_PersistentCalls:
       m_Calls: []
