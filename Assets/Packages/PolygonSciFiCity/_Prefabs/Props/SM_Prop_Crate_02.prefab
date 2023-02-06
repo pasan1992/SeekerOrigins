@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 33735818610612660}
   - component: {fileID: 23413757310427710}
   - component: {fileID: 993400556317447722}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SM_Prop_Crate_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4816704882195432
 Transform:
