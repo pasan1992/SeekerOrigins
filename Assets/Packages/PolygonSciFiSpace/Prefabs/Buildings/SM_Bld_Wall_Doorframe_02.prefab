@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33012278642300620}
   - component: {fileID: 23755734973451154}
   - component: {fileID: 1765046723}
+  - component: {fileID: 1212181775871709093}
   m_Layer: 21
   m_Name: SM_Bld_Wall_Door_01
   m_TagString: Wall
@@ -93,6 +94,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6098664, y: 3.058591, z: 0.18863678}
   m_Center: {x: 0, y: 1.4423761, z: -0.00000071525574}
+--- !u!208 &1212181775871709093
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182285933139604}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.3050001, y: 1.529, z: 0.53}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.442, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1543695114780030
 GameObject:
   m_ObjectHideFlags: 0
