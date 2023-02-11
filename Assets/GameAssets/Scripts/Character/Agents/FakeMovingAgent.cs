@@ -38,7 +38,7 @@ public class FakeMovingAgent : ICyberAgent
 
     public AgentData GetAgentData()
     {
-        throw new System.NotImplementedException();
+        return null;
     }
 
     public Vector3 getCurrentPosition()

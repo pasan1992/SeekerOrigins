@@ -141,7 +141,6 @@ public class AutoDroneController :  AgentController
     {
         if (!CommonFunctions.isAllies(opponent,m_selfAgent))
         {
-            Debug.Log(opponent);
          m_combatState.setTargets(opponent);
          switchToCombatStage();
         }
@@ -241,8 +240,17 @@ public class AutoDroneController :  AgentController
     public override void ForceCombatMode(Transform position)
     {
         switchToCombatStage();
-        m_visualSensor.forceCombatMode(position.position);
-        ((DroneCombatStage)m_combatState).setOpponent(position.GetComponent<ICyberAgent>());
+        var agent = position.GetComponent<ICyberAgent>();
+        
+        if(agent !=null && m_combatState !=null)
+        {
+            ((DroneCombatStage)m_combatState).setOpponent(agent);
+        }
+        else
+        {
+            m_visualSensor.forceCombatMode(position.position);
+        }
+        
     }
 
     #endregion

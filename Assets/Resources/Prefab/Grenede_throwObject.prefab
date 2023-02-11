@@ -202,9 +202,11 @@ GameObject:
   - component: {fileID: 5772138172694253918}
   - component: {fileID: 5772138172694253892}
   - component: {fileID: -8638748116538538869}
+  - component: {fileID: 3701215469603020298}
+  - component: {fileID: 532220974735700170}
   m_Layer: 18
   m_Name: Grenede_throwObject
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,6 +436,53 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &3701215469603020298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772673718618338984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4486f39dd5fd6ef4d8e10a78be989456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  properties:
+    Type: 6
+    ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 0
+    itemName: 
+    interactionTime: 0
+    InteractionAnim: -99
+    offset: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    enablePositionRequirment: 0
+    placeObjectInHand: 0
+    actualObject: {fileID: 0}
+    PlayerRestricted: 0
+    InteractionSoundName: 
+  visualProperties:
+    nameTagOffset: {x: 0, y: 0, z: 0}
+    holdingPositionOffset: {x: 0, y: 0, z: 0}
+    holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
+    indicator_offset: {x: 0, y: 0, z: 0}
+    objectTransfrom: {fileID: 0}
+  m_baseAudioSource: {fileID: 0}
+--- !u!65 &532220974735700170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772673718618338984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.102149926, y: 0.18532325, z: 0.10214965}
+  m_Center: {x: 0, y: 0.006008379, z: 0.00000007636845}
 --- !u!1 &5773269469634759610
 GameObject:
   m_ObjectHideFlags: 0

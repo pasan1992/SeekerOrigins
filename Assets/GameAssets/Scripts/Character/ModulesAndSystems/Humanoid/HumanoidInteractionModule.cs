@@ -151,6 +151,12 @@ public class HumanoidInteractionModule
                     yield return DialogInteraction(interactable);
                     
                     break;
+                case Interactable.InteractableProperties.InteractableType.ThrowBack:
+                    
+                    m_agent.AgentData.AddAmmo(AmmoTypeEnums.Grenade.Regular_Grenade.ToString(),1);
+                    m_agent.Throw();
+                    interactable.gameObject.SetActive(false);
+                    break;
             }
 
             // Make sure the character state return to previous state.

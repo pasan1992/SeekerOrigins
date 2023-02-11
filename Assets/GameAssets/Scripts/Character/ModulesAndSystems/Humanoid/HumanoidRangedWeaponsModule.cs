@@ -30,6 +30,8 @@ public class HumanoidRangedWeaponsModule
     private bool m_inEquipingAction = false;
     private bool m_inWeaponAction = false;
 
+    private RocketPack m_rocketPack;
+
     private enum WeaponSystemSubStages {
         Armed 
         ,Equiping 
@@ -886,6 +888,11 @@ public class HumanoidRangedWeaponsModule
         }
     }
 
+    public RocketPack getRocketPack()
+    {
+        return m_rocketPack;
+    }
+
     private void getAllWeapons(WeaponProp[] props)
     {       
         foreach (WeaponProp prop in props)
@@ -923,6 +930,11 @@ public class HumanoidRangedWeaponsModule
             */
             equipWeapon(m_agentData.primaryWeapon);
             m_agentData.primaryWeapon.OnEquipAction(); 
+        }
+
+        if(m_agentData.RocketPack)
+        {
+            m_rocketPack = m_agentData.RocketPack;
         }
 
         if(m_agentData.secondaryWeapon)

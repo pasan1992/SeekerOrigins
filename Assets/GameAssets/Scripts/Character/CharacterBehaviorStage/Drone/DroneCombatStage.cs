@@ -141,8 +141,13 @@ public class DroneCombatStage : BasicMovmentCombatStage
         NavMesh.SamplePosition(m_movePoint, out hit, 10, 1);
 
         Vector3 finalPosition = m_movePoint;
-        m_navMeshAgent.SetDestination(finalPosition);
-        m_navMeshAgent.isStopped = false;
+
+        if(m_navMeshAgent.isOnNavMesh)
+        {
+            m_navMeshAgent.SetDestination(finalPosition);
+            m_navMeshAgent.isStopped = false;
+        }
+
     }
 
     public void findTargetLocationToFire()

@@ -270,11 +270,12 @@ public class PlayerController : AgentController
         RaycastHit m_raycastHit;
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            m_rocket_pack.fireAllRockets(m_movingAgent.GetAgentData());
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out m_raycastHit, 100, LayerMask.GetMask("Enemy")))
             {
                 if(m_rocket_pack)
                 {
-                    m_rocket_pack.FireMissleTransfrom(m_raycastHit.transform,m_movingAgent.GetAgentData());
+                    //m_rocket_pack.FireMissleTransfrom(m_raycastHit.transform,m_movingAgent.GetAgentData());
                 }
             }
         }

@@ -55,46 +55,56 @@ public class CommonFunctions
         }
         return floor_mask;
     }
-    public static bool isAllies(ICyberAgent detectedAgent, ICyberAgent selfAgent)
+
+    public static bool isAllies(AgentData detectedData, AgentData selfData)
     {
-        if(detectedAgent.getFaction() == AgentBasicData.AgentFaction.Neutral || detectedAgent.getFaction() == AgentBasicData.AgentFaction.Allies)
-        {
-            return true;
-        }
-
-        if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Neutral)
-        {
-            return true;
-        }
-
-        if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Player && detectedAgent.getFaction() == AgentBasicData.AgentFaction.Neutral)
-        {
-            return true;
-        }
-
-        if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Player && detectedAgent.getFaction() == AgentBasicData.AgentFaction.Allies)
-        {
-            return true;
-        }
-
-        if(detectedAgent == selfAgent)
-        {
-            return true;
-        }
-        if(detectedAgent.getFaction()==AgentBasicData.AgentFaction.Player)
-        {
-            if(selfAgent.getFaction() == AgentBasicData.AgentFaction.Allies || selfAgent.getFaction() == AgentBasicData.AgentFaction.Player)
-            {
-                return true;
-            }
-            if(detectedAgent.GetAgentData().behaviorStatus == AgentBasicData.AgentBehaviorStatus.Suspicious)
+            if (detectedData == null)
             {
                 return false;
             }
-            return true;
-        }
+        
+            if(detectedData.m_agentFaction == AgentBasicData.AgentFaction.Neutral || detectedData.m_agentFaction == AgentBasicData.AgentFaction.Allies)
+            {
+                return true;
+            }
 
-        return detectedAgent.getFaction().Equals(selfAgent.getFaction());
+            if(selfData.m_agentFaction == AgentBasicData.AgentFaction.Neutral)
+            {
+                return true;
+            }
+
+            if(selfData.m_agentFaction == AgentBasicData.AgentFaction.Player && detectedData.m_agentFaction == AgentBasicData.AgentFaction.Neutral)
+            {
+                return true;
+            }
+
+            if(selfData.m_agentFaction == AgentBasicData.AgentFaction.Player && detectedData.m_agentFaction == AgentBasicData.AgentFaction.Allies)
+            {
+                return true;
+            }
+
+            if(detectedData.m_agentFaction == selfData.m_agentFaction)
+            {
+                return true;
+            }
+            if(detectedData.m_agentFaction==AgentBasicData.AgentFaction.Player)
+            {
+                if(selfData.m_agentFaction == AgentBasicData.AgentFaction.Allies || selfData.m_agentFaction == AgentBasicData.AgentFaction.Player)
+                {
+                    return true;
+                }
+                if(detectedData.behaviorStatus == AgentBasicData.AgentBehaviorStatus.Suspicious)
+                {
+                    return false;
+                }
+                return true;
+            }
+
+            return detectedData.m_agentFaction.Equals(selfData.m_agentFaction);        
+    }
+    public static bool isAllies(ICyberAgent detectedAgent, ICyberAgent selfAgent)
+    {
+        return isAllies(detectedAgent.GetAgentData(),selfAgent.GetAgentData());
     }
 
     public static bool isTargetVisibleToAgent(ICyberAgent agent, ICyberAgent target)

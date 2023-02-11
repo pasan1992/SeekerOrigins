@@ -412,9 +412,9 @@ public class UIManager : MonoBehaviour
 
         #region Missile
         int missile_count = 0;
-        if(m_movingAgent.GetAgentData().RocketPack)
+        if(m_movingAgent.getRocketPack())
         {
-            missile_count = m_movingAgent.GetAgentData().checkUnloadAvaialbleAmmo(m_movingAgent.GetAgentData().RocketPack.getCurrentRokectName());
+            missile_count = m_movingAgent.GetAgentData().checkUnloadAvaialbleAmmo(m_movingAgent.getRocketPack().getCurrentRokectName());
         }
         
         _missileCountTxt.text = missile_count.ToString();

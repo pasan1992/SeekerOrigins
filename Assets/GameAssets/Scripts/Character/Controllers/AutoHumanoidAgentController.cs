@@ -458,14 +458,19 @@ public class AutoHumanoidAgentController :  AgentController
         m_force_transfrom = position;
 
         switchToCombatStage();
-        m_visualSensor.forceCombatMode(position.position);
+        
         m_forced_attack = true;
         m_visualSensor.disableLook();
 
         var agent = position.GetComponent<ICyberAgent>();
+        
         if(agent !=null && m_combatStage !=null)
         {
             m_combatStage.setTargets(agent);
+        }
+        else
+        {
+            m_visualSensor.forceCombatMode(position.position);
         }
 
     }

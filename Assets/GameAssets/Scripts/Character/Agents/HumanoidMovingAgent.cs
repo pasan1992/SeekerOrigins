@@ -1028,6 +1028,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         setEffectState(CharacterMainStates.MeeleAttack,duration,direction);
     }
 
+    public RocketPack getRocketPack()
+    {
+        return m_equipmentModule.getRocketPack();
+    }
+
 
     public void setBasicCallbacks(
         GameEvents.BasicNotifactionEvent onEquip,
