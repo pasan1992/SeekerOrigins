@@ -1760,6 +1760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleEffectOnDamage: 8
   KeepOnDestory: 0
+  m_outline: {fileID: 0}
   m_onDestroyEvent:
     m_PersistentCalls:
       m_Calls: []
