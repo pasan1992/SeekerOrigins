@@ -110658,6 +110658,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7902688871048879372}
     m_Modifications:
+    - target: {fileID: 1427346406564140653, guid: 16bf3c435282bb6459501ff140134fe4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 5983350662757100942}
+    - target: {fileID: 1427346406564140653, guid: 16bf3c435282bb6459501ff140134fe4,
+        type: 3}
+      propertyPath: m_offset.x
+      value: 86.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427346406564140653, guid: 16bf3c435282bb6459501ff140134fe4,
+        type: 3}
+      propertyPath: m_offset.y
+      value: 55.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1427346406564140654, guid: 16bf3c435282bb6459501ff140134fe4,
         type: 3}
       propertyPath: m_Pivot.x
