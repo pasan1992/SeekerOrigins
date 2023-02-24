@@ -21,7 +21,7 @@ public class AmmoPack : Interactable
         properties.Type = InteractableProperties.InteractableType.PickupInteraction;
         m_anim = this.GetComponent<Animator>();
 
-        if(ammoIndiactor == null)
+        if(ammoIndiactor != null)
         {
             ammoIndiactor.gameObject.SetActive(true);
             ammoIndiactor.GetComponent<InGameInidactor>().IndicatorType = InGameInidactor.IndicatorTypes.Ammo;
@@ -42,6 +42,7 @@ public class AmmoPack : Interactable
     void ResetAmmoPack()
     {
         properties.interactionEnabled = false;
+        if(ammoIndiactor !=null)
         ammoIndiactor.gameObject.SetActive(false);
     }
 
@@ -56,8 +57,12 @@ public class AmmoPack : Interactable
 
     public override void OnInteractionStart()
     {
-        m_anim.SetTrigger("open");
-        m_outLine.enabled = false;
-        ammoIndiactor.gameObject.SetActive(false);
+        if(m_anim)
+        {
+            m_anim.SetTrigger("open");
+            m_outLine.enabled = false;
+            ammoIndiactor.gameObject.SetActive(false);
+        }
+
     }
 }

@@ -98,7 +98,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void Awake()
     {
-        if(visualProperties.objectTransfrom !=null)
+        if(visualProperties !=null && visualProperties.objectTransfrom !=null)
         {
             m_outLine = visualProperties.objectTransfrom.GetComponent<Outline>();
         }
@@ -114,7 +114,7 @@ public class Interactable : MonoBehaviour
 
         setOutLineState(outLineState.white);
         
-        if(properties.actualObject != null)
+        if(properties != null && properties.actualObject != null)
         {
             m_relativePosition = properties.actualObject.localPosition;
             m_relativeRotation = properties.actualObject.localRotation.eulerAngles;
@@ -126,6 +126,7 @@ public class Interactable : MonoBehaviour
         // }
 
         // set event on interatability change
+        if(visualProperties != null)
         properties.interatabilityChange +=setInteratableIndicator;
         
         m_baseAudioSource = this.GetComponent<AudioSource>();
@@ -179,7 +180,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void setOutLineState(outLineState state)
     {
-        if(!properties.interactionEnabled)
+        if(properties !=null && !properties.interactionEnabled)
         {
             state = outLineState.Disabled;
         }   

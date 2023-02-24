@@ -143,7 +143,7 @@ public class DialogManager : MonoBehaviour
         {
             onDialogEndCallback();
         }
-        onDialogEndCallback = endCallback;
+        onDialogEndCallback += endCallback;
     }
 
     public void SkipDialog()
@@ -155,6 +155,7 @@ public class DialogManager : MonoBehaviour
         
         m_audioSource.Stop();
         //DialogText.text = "";
+        currentDialogStatments = new Queue<DialogStatment>();
         NextDialog();
     }
     private void NextDialog()
