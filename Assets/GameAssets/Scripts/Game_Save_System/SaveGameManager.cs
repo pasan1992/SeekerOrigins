@@ -82,6 +82,11 @@ public class SaveGameManager : MonoBehaviour
         var eboxes = FindObjectsOfType<AmmoPack>();
         foreach(var box in eboxes)
         {
+            if(levelData.equipmentBoxes.ContainsKey(box.name))
+            {
+                Debug.LogError("Cannot Save object " + box.name);
+                continue;
+            }
             levelData.equipmentBoxes.Add(box.name,box.properties.interactionEnabled.ToString());
         }
     }
