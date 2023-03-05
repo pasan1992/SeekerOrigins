@@ -501,13 +501,17 @@ public class PlayerController : AgentController
             cp.setCoverHighlightStatus(false);
             if (Vector3.Distance(cp.transform.position,this.transform.position)<2f && m_movingAgent.getMovmentDirection() == Vector3.zero)
             {
-                if(!m_movingAgent.isHidden() & !m_movingAgent.isInteracting())
+                if(m_movingAgent.isArmed())
                 {
-                    m_movingAgent.toggleHide();
+                    if(!m_movingAgent.isHidden() & !m_movingAgent.isInteracting() )
+                    {
+                        m_movingAgent.toggleHide();
+                    }
+                    incover = true;
+                    cp.setCoverHighlightStatus(true);
+                    found_cover = true;
                 }
-                incover = true;
-                cp.setCoverHighlightStatus(true);
-                found_cover = true;
+
                 break;
             }
         }
