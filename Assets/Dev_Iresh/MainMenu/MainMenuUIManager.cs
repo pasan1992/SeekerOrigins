@@ -52,11 +52,11 @@ public class MainMenuUIManager : MonoBehaviour
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {
-            SceneLoad(6);
+            SceneLoad(5);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 2)
         {
-            SceneLoad(7);
+            SceneLoad(6);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 3)
         {

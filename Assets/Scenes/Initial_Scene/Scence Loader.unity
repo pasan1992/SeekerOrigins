@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.058333334
+  m_VoxelSize: 0.036666665
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
 --- !u!4 &68027815
@@ -1280,6 +1280,7 @@ MonoBehaviour:
     primaryWeapon: {fileID: 0}
     secondaryWeapon: {fileID: 0}
     grenade: {fileID: 0}
+    use_cover: 1
     HealInjectionCount: 0
     HealPerInjection: 30
     inventryItems: []
@@ -1309,8 +1310,13 @@ MonoBehaviour:
       AmmoCount: 0
     - AmmoType: Highcaliber_RifleAmmo
       AmmoCount: 0
+    SelectedPrimaryAmmoType: 0
+    SelectedSecondayAmmoType: 0
     immuneToStunn: 0
     drop_reward: 0
+    unbalanced: 0
+    dodgeAll: 0
+    grenader: 0
   AgentComponents:
     weaponAimTransform: {fileID: 1567266866}
     lookAimTransform: {fileID: 716067909}
@@ -7559,6 +7565,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: 
     interactionTime: 0
     InteractionAnim: -99
@@ -7568,10 +7575,15 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
+    indicator_offset: {x: 0, y: 0, z: 0}
+    objectTransfrom: {fileID: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 0}
@@ -50954,6 +50966,133 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488184266}
   m_Mesh: {fileID: 4300002, guid: d70c8b2902d25e04d8ecbafee23aeeaa, type: 3}
+--- !u!1 &1488476384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488476386}
+  - component: {fileID: 1488476385}
+  m_Layer: 0
+  m_Name: BG_Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1488476385
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488476384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4e2ff6c33f0f1744e8790c31507d67af, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1488476386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488476384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 458.221, y: 473.0102, z: 104.53992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502451123
 GameObject:
   m_ObjectHideFlags: 0
@@ -54584,6 +54723,7 @@ MonoBehaviour:
   properties:
     Type: 0
     ObjectiveInteratable: 0
+    showIndicatorOnOBjActive: 1
     itemName: 
     interactionTime: 0
     InteractionAnim: -99
@@ -54593,10 +54733,15 @@ MonoBehaviour:
     placeObjectInHand: 0
     actualObject: {fileID: 0}
     PlayerRestricted: 0
+    InteractionSoundName: 
   visualProperties:
     nameTagOffset: {x: 0, y: 0, z: 0}
     holdingPositionOffset: {x: 0, y: 0, z: 0}
     holdingRotationOffset: {x: 0, y: 0, z: 0}
+    indicatorType: 6
+    indicator_offset: {x: 0, y: 0, z: 0}
+    objectTransfrom: {fileID: 0}
+  m_baseAudioSource: {fileID: 0}
   nonFunctionalProperties:
     magazinePositionOffset: {x: 0, y: 0, z: 0}
     magazineObjProp: {fileID: 0}
@@ -61347,7 +61492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63328b127c0e25f4b99439d0cf05f484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _alphaValue: 0
+  _alphaValueSpeed: 0
   _speed: -1
+  _camSpeed: 0
+  _cam: {fileID: 0}
+  _canvasGroup: {fileID: 0}
 --- !u!1 &2005642280
 GameObject:
   m_ObjectHideFlags: 0

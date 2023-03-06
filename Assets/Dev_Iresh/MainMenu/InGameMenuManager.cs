@@ -14,7 +14,6 @@ public class InGameMenuManager : MonoBehaviour
 
     [SerializeField] Text _message;
 
-
     bool _isOpenMenu = false;
 
     public void GamePaused()
@@ -52,6 +51,7 @@ public class InGameMenuManager : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        print("LoadScene");
         Time.timeScale = 1;
 
         if(_btnNo == -2)
@@ -61,56 +61,52 @@ public class InGameMenuManager : MonoBehaviour
                 return;
         }
 
-        if(_btnNo == -3)
+        else if(_btnNo == -3)
         {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
                 return;
         }
 
-        if (_btnNo == 2 || _btnNo == 3)
+        else if (_btnNo == 2 || _btnNo == 3)
         {
+            print("Application.Quit");
+
             Application.Quit();
         }
-
-        /*
+        
         if (index == -3)
         {
             if (_btnNo == -2) // to Reset
             {
                 SaveGameManager.getInstance().ResetLevel();
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
-                SceneManager.LoadScene(index, LoadSceneMode.Single);
             }
             else if (_btnNo == -3) // to Reset checkpoint to 0
             {
                 //TODO: set checkpoint to 0
-                
                 PlayerPrefs.SetInt("LoadScene", SceneManager.GetActiveScene().buildIndex);
-                SceneManager.LoadScene(index, LoadSceneMode.Single);
             }
             else if (_btnNo == 2) // to MainMenu
             {
-                PlayerPrefs.SetInt("LoadScene", 2);
-
+                PlayerPrefs.SetInt("LoadScene", _btnNo);
             }
             else if ( _btnNo == 3) //to TUtorials
             {
-                PlayerPrefs.SetInt("LoadScene", 3);
-
+                PlayerPrefs.SetInt("LoadScene", _btnNo);
             }
             else
             {
                 PlayerPrefs.SetInt("LoadScene", _btnNo);
             }
-            
         }
         else
         {
             PlayerPrefs.SetInt("LoadScene", index);
         }
-        */
 
-        SceneManager.LoadScene(index, LoadSceneMode.Single); //LOAD
+        SceneManager.LoadScene(1, LoadSceneMode.Single); //LOAD
+
+        //SceneManager.LoadScene(index, LoadSceneMode.Single); //LOAD
 
 
         //SceneManager.UnloadSceneAsync(PlayerPrefs.GetInt("CurrentScene"));
