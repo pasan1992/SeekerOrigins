@@ -15,6 +15,7 @@ public class AgentGroup : MonoBehaviour
     public float end_sound_distace = 0;
     private bool alert_done = false;
 
+
     void Awake()
     {
         m_agentControllers = new List<AgentController>(this.GetComponentsInChildren<AgentController>());
@@ -61,6 +62,23 @@ public class AgentGroup : MonoBehaviour
         {
             agent.m_restrictions = restriction;
         }
+    }
+
+    public void SetCustomStats(float visual_distance,float visual_angle, float sound_distance)
+    {
+         foreach(AgentController agentCont in m_agentControllers)
+        {
+            if(agentCont !=null)
+            {
+                if(setGroupBehavior)
+                {
+                    agentCont.getICyberAgent().GetAgentData().VisualAngle = visual_angle;
+                    agentCont.getICyberAgent().GetAgentData().VisualDistance = visual_distance;
+                    agentCont.getICyberAgent().GetAgentData().max_Sound_hearing_distance = sound_distance;
+                }
+            }
+        
+        }       
     }
 
     public void OnDamage()
