@@ -212,6 +212,7 @@ public class CompanionController : AgentController
             m_companionAgent.cancleInteraction();
             m_combatStage.initalizeStage();
             m_currentState = m_combatStage;
+            m_companionAgent.aimWeapon();
         }
     }
 

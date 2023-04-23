@@ -16,6 +16,7 @@ public class DialogManager : MonoBehaviour
         public float time;
 
         public DialogManager.Characters character;
+        public Transform characterTransfrom;
     }
 
     // Start is called before the first frame update
@@ -35,6 +36,8 @@ public class DialogManager : MonoBehaviour
 
     private bool pause = false;
 
+    public UIFloatingDialog m_dialogBox;
+
 
     public enum Characters {Alex_afraid,Alex_angry,Alex_happy,Alex_normal,Govnor_Happy,Govnor_Disapointed,Govnor_Normal,Govnor_Angry
                             ,Kangarian_Angry,Kangarian_Normal,Fang_normal};
@@ -49,6 +52,15 @@ public class DialogManager : MonoBehaviour
         this.noSkip = noSkip;
     }
 
+    public GameObject profileImage;
+    public GameObject onlineIcon;
+
+    public Image bottomArrow;
+
+    private PlayerController m_playercont;
+
+    public GameObject m_animation;
+
     void Awake()
     {
         if(instance == null)
@@ -60,6 +72,14 @@ public class DialogManager : MonoBehaviour
             Destroy(gameObject);
         }
         initalizeImages();
+    }
+
+    public void Start()
+    {
+        m_audioSource = this.GetComponent<AudioSource>();
+        currentDialogStatments = new Queue<DialogStatment>();
+        dialogUI.SetActive(false);
+        m_playercont = PlayerController.getInstance();
     }
 
     private void initalizeImages()
@@ -106,12 +126,6 @@ public class DialogManager : MonoBehaviour
             }
             imageDict.Add(type,Resources.Load<Sprite>(rp_path));
         }
-    }
-    void Start()
-    {
-        m_audioSource = this.GetComponent<AudioSource>();
-        currentDialogStatments = new Queue<DialogStatment>();
-        dialogUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -203,8 +217,35 @@ public class DialogManager : MonoBehaviour
         m_audioSource.PlayOneShot(statement.audio);
         //DialogText.text = statement.charName + " : " + statement.text + " (ENTER:SKIP)";
         DialogText.text = statement.text;
-        CharacterImage.sprite = imageDict[statement.character];
 
+        if(statement.character == Characters.Govnor_Happy || statement.character == Characters.Govnor_Disapointed
+        || statement.character == Characters.Govnor_Angry || statement.character == Characters.Govnor_Normal)
+        {
+            CharacterImage.enabled = true;
+             profileImage.SetActive(true);
+            onlineIcon.SetActive(true);    
+            bottomArrow.enabled = false;       
+            CharacterImage.sprite = imageDict[statement.character];
+            m_animation.SetActive(true);
+        }
+        else
+        {
+            bottomArrow.enabled = true;
+            profileImage.SetActive(false);
+            onlineIcon.SetActive(false);
+            m_animation.SetActive(false);
+            CharacterImage.enabled = false;
+        }
+        
+
+        if(statement.characterTransfrom !=null)
+        {
+            m_dialogBox.target = statement.characterTransfrom;
+        }
+        else
+        {
+            m_dialogBox.target = m_playercont.gameObject.transform;
+        }
     }
 
     public int getRemaningLines()
