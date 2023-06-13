@@ -21,6 +21,7 @@ public class InteractionAction : FsmStateAction
         m_interactable.properties.interactionEnabled = true;
         m_interactable.OnInteractionStartCallback = OnInteractionStart;
         m_interactable.OnInteractionStopCallback = OnInteractionEnd;
+        finished = false;
     }
 
 
@@ -34,6 +35,7 @@ public class InteractionAction : FsmStateAction
 
     public void OnInteractionEnd()
     {
+        Debug.Log("Interaction Complete");
         if(FinishOnState == InteractObjectObjective.InteractionState.OnComplete && !finished)
         {
             EndIntAction(finishEvent);     

@@ -112,7 +112,7 @@ public class BasicExplodingObject : MonoBehaviour
                 var mvdamage = (MovingAgentDamagableObject)damagableObject;
                 if(mvdamage !=null)
                 {
-                    mvdamage.Stun(damage,3f,other.transform.position - this.transform.position);
+                    mvdamage.Stun(damage,5f,other.transform.position - this.transform.position);
                 }
 
             }           

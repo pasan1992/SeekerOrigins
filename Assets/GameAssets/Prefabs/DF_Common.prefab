@@ -58334,7 +58334,6 @@ MonoBehaviour:
   donreExplosions: 50
   GameIndicatorCount: 5
   ammoCount: 50
-  grenadeList: []
   minorPartilceCount: 5
 --- !u!114 &3209784683429458909
 MonoBehaviour:

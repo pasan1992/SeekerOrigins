@@ -11,6 +11,5 @@ public class PoolObject : MonoBehaviour
     void OnDestroy()
     {
         poolObjectList.Remove(this.gameObject);
-        Debug.Log("Removing" + this.gameObject.name);
     }
 }
