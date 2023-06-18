@@ -227,7 +227,7 @@ public class MovingAgentDamagableObject : MonoBehaviour,DamagableObject
         if(damage.energyDamage > damage.healthDamage && m_movingAgent.GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID &&
         Random.value > 0.5f)
         {
-            m_movingAgent.setShocked(4,direction);
+            m_movingAgent.setShocked(3.5f,direction);
             return;
         }
         m_movingAgent.setStunned(duration,direction);

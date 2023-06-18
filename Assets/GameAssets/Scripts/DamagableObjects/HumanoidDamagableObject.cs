@@ -40,11 +40,11 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
             //m_movingAgent.GetAgentData().AgentNature == AgentBasicData.AGENT_NATURE.DROID
             if(damageValue.energyDamage > damageValue.healthDamage)
             {
-                m_movingAgent.setShocked(5f,force);
+                m_movingAgent.setShocked(3.5f,force);
             }
             else
             {
-                m_movingAgent.setStunned(5f,force);
+                m_movingAgent.setStunned(3f,force);
             }
             
         }

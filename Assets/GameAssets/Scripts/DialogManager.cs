@@ -36,7 +36,7 @@ public class DialogManager : MonoBehaviour
 
     private bool pause = false;
 
-    public UIFloatingDialog m_dialogBox;
+    public FloatingGameUI m_dialogIcon;
 
 
     public enum Characters {Alex_afraid,Alex_angry,Alex_happy,Alex_normal,Govnor_Happy,Govnor_Disapointed,Govnor_Normal,Govnor_Angry
@@ -52,14 +52,7 @@ public class DialogManager : MonoBehaviour
         this.noSkip = noSkip;
     }
 
-    public GameObject profileImage;
-    public GameObject onlineIcon;
-
-    public Image bottomArrow;
-
     private PlayerController m_playercont;
-
-    public GameObject m_animation;
 
     void Awake()
     {
@@ -190,6 +183,7 @@ public class DialogManager : MonoBehaviour
 
             }
             dialogUI.SetActive(false);
+            m_dialogIcon.gameObject.SetActive(false);
             return;
         }
         soundManager.setDialogPlaying(true);
@@ -218,33 +212,22 @@ public class DialogManager : MonoBehaviour
         //DialogText.text = statement.charName + " : " + statement.text + " (ENTER:SKIP)";
         DialogText.text = statement.text;
 
-        if(statement.character == Characters.Govnor_Happy || statement.character == Characters.Govnor_Disapointed
-        || statement.character == Characters.Govnor_Angry || statement.character == Characters.Govnor_Normal)
-        {
-            CharacterImage.enabled = true;
-             profileImage.SetActive(true);
-            onlineIcon.SetActive(true);    
-            bottomArrow.enabled = false;       
-            CharacterImage.sprite = imageDict[statement.character];
-            m_animation.SetActive(true);
-        }
-        else
-        {
-            bottomArrow.enabled = true;
-            profileImage.SetActive(false);
-            onlineIcon.SetActive(false);
-            m_animation.SetActive(false);
-            CharacterImage.enabled = false;
-        }
+        CharacterImage.enabled = true;   
+        CharacterImage.sprite = imageDict[statement.character];
         
-
         if(statement.characterTransfrom !=null)
         {
-            m_dialogBox.target = statement.characterTransfrom;
+            m_dialogIcon.gameObject.SetActive(true);
+            m_dialogIcon.target = statement.characterTransfrom;
         }
-        else
+        else if(statement.character == Characters.Alex_afraid || statement.character == Characters.Alex_angry || statement.character == Characters.Alex_happy ||
+        statement.character == Characters.Alex_normal)
         {
-            m_dialogBox.target = m_playercont.gameObject.transform;
+            m_dialogIcon.gameObject.SetActive(true);
+            m_dialogIcon.target = m_playercont.getICyberAgent().getHeadTransfrom();
+        }
+        else{
+            m_dialogIcon.gameObject.SetActive(false);
         }
     }
 

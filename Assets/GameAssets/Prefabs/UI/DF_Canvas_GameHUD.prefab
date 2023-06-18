@@ -5670,6 +5670,7 @@ MonoBehaviour:
   target: {fileID: 0}
   m_offset: {x: 0, y: 75, z: 0}
   m_image: {fileID: 0}
+  smoothness: 0
 --- !u!114 &3414340496331326519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6604,7 +6605,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39
+  m_fontSize: 37.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

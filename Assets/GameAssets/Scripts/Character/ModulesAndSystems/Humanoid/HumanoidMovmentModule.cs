@@ -195,8 +195,10 @@ public class HumanoidMovmentModule : MovmentModule
         if (m_navMeshAgent.isActiveAndEnabled & m_navMeshAgent.isOnNavMesh)
         {
             m_navMeshAgent.isStopped = !movmentEnabled;  
-            m_navMeshAgent.velocity = Vector3.zero;          
+            m_navMeshAgent.velocity = Vector3.zero;  
+                
         }
+        m_navMeshAgent.enabled = movmentEnabled;    
 
     }
 
