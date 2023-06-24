@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AgentGroup : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class AgentGroup : MonoBehaviour
     public float end_sound_distace = 0;
     private bool alert_done = false;
 
+    public UnityEvent onDamageEvent;
 
     void Awake()
     {
@@ -88,6 +90,11 @@ public class AgentGroup : MonoBehaviour
             return;
         }
         alert_done = true;
+
+        if(onDamageEvent!=null)
+         onDamageEvent.Invoke();
+
+
         foreach(AgentController agentCont in m_agentControllers)
         {
             if(agentCont !=null)

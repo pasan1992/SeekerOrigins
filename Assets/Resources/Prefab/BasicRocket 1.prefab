@@ -9413,7 +9413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_baseDamage: 45
   m_energyDaamge: 45
-  m_range: 4
+  m_range: 2
   explosionType: 0
 --- !u!1 &5846384505091715392
 GameObject:
