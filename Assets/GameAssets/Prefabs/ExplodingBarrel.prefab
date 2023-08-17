@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Scav_Barrel_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1877180036892300, guid: 1d9d852396b3f9147ad4e1e7a1e5f5af, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 4437740822758378, guid: 1d9d852396b3f9147ad4e1e7a1e5f5af, type: 3}
       propertyPath: m_RootOrder
       value: 0
