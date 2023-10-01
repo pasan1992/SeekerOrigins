@@ -35299,7 +35299,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1829162582}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999286
+  m_Size: 0.9999991
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -54170,7 +54170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2022 / Gov-Nor Session 01"
+  m_text: "\xA9 2023 / Gov-Nor Session 01"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f64120cc15485a45b388319a6fcba22, type: 2}
   m_sharedMaterial: {fileID: 2895282618440061290, guid: 9f64120cc15485a45b388319a6fcba22,
@@ -70040,7 +70040,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GOV-NOR .inc
+  m_text: NAVATA.inc
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f64120cc15485a45b388319a6fcba22, type: 2}
   m_sharedMaterial: {fileID: 2895282618440061290, guid: 9f64120cc15485a45b388319a6fcba22,
@@ -71495,7 +71495,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.9999286}
+  m_AnchorMax: {x: 1, y: 0.9999991}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
