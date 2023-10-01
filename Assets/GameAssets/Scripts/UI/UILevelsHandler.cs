@@ -85,10 +85,10 @@ public class UILevelsHandler : MonoBehaviour
         //print("daa2: " + loadedlevelDataList.levelList[0].levelMainText);
     }
 
-    private void Update()
-    {
+    //private void Update()
+    //{
 
-    }
+    //}
 
     void LoadLevelDataToThumb()
     {

@@ -24,9 +24,6 @@ public class OptionsManager : MonoBehaviour
     void Start()
     {
         //StartCoroutine(OpenSplash());
-
-
-
         if (SceneManager.GetActiveScene().name.ToString() == GameEnums.Scence.Main_Menu.ToString())
         {
             dontDistroyManager = GameObject.FindGameObjectWithTag("DontDistroyManager").GetComponent<DontDistroyManager>();
