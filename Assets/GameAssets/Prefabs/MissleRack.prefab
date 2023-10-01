@@ -28987,6 +28987,7 @@ GameObject:
   - component: {fileID: 1845681632455879170}
   - component: {fileID: 1845681632455879171}
   - component: {fileID: 2000067440462211566}
+  - component: {fileID: 5136238032938489673}
   m_Layer: 9
   m_Name: MissleRack
   m_TagString: Item
@@ -29001,7 +29002,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845681632455879172}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.77, y: 0.04045833, z: 26.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -29138,7 +29139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_baseDamage: 90
   m_energyDaamge: 90
-  m_range: 7
+  m_range: 20
   explosionType: 0
   faction: 0
 --- !u!82 &1845681632455879171
@@ -29255,6 +29256,22 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!208 &5136238032938489673
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845681632455879172}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.3, y: 0.285, z: 0.495}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.26, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1846157176165537556
 GameObject:
   m_ObjectHideFlags: 0
