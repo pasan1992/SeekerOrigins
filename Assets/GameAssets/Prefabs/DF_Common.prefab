@@ -10824,7 +10824,7 @@ RectTransform:
   m_Children:
   - {fileID: 4676046642933556310}
   m_Father: {fileID: 7902688871048879372}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -58503,11 +58503,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48aa692bc555bd42b635f5eebc3dd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogText: {fileID: 7035964460771711804}
+  DialogText: {fileID: 5678182578629825467}
   ObjectiveText: {fileID: 8766484429382706001}
-  CharacterImage: {fileID: 4021429976527012157}
-  dialogUI: {fileID: 8517184668400327212}
-  m_dialogIcon: {fileID: 0}
+  CharacterImage: {fileID: 5678182579250653252}
+  dialogUI: {fileID: 5678182578468850091}
+  m_dialogIcon: {fileID: 5806180716877398039}
 --- !u!82 &4548465470531181705
 AudioSource:
   m_ObjectHideFlags: 0
@@ -112496,6 +112496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3076570286959257907}
     m_Modifications:
+    - target: {fileID: 392446001, guid: d19a08c9c6de3cc45b0902baf5f5acbf, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 171183570486579774, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
       propertyPath: m_RootOrder
@@ -112652,6 +112656,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4081510513475073707}
+    - target: {fileID: 4107259413506642871, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4254437813840188907, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5517284087066537450, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -112671,6 +112685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179171067511350127, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8589686969487235882, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
@@ -112751,9 +112770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4021429976527012157 stripped
+--- !u!114 &5678182579250653252 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8719542519925754022, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+  m_CorrespondingSourceObject: {fileID: 639443423, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
     type: 3}
   m_PrefabInstance: {fileID: 5678182578613832091}
   m_PrefabAsset: {fileID: 0}
@@ -112763,9 +112782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7035964460771711804 stripped
+--- !u!114 &5678182578629825467 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3416033775484981927, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+  m_CorrespondingSourceObject: {fileID: 18618912, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
     type: 3}
   m_PrefabInstance: {fileID: 5678182578613832091}
   m_PrefabAsset: {fileID: 0}
@@ -112775,9 +112794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8517184668400327212 stripped
+--- !u!1 &5678182578468850091 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4107259413506642871, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
+  m_CorrespondingSourceObject: {fileID: 392446000, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
     type: 3}
   m_PrefabInstance: {fileID: 5678182578613832091}
   m_PrefabAsset: {fileID: 0}
