@@ -20,6 +20,10 @@ public class FloatingGameUI : MonoBehaviour
         {
             m_image.enabled = false;
         }
+        if (smoothness ==0)
+        {
+            smoothness = 1;
+        }
         
     }
 
@@ -35,7 +39,6 @@ public class FloatingGameUI : MonoBehaviour
 
             var target_screen_pos = Camera.main.WorldToScreenPoint(m_targetPosition) + m_offset;
             transform.position= Vector3.Lerp(transform.position, target_screen_pos, smoothness);
-
         }
     }
 
