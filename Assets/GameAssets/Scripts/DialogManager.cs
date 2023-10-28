@@ -13,7 +13,7 @@ public class DialogManager : MonoBehaviour
         public string text;
         public AudioClip audio;
         public string charName;
-        public float time;
+        public float time = 0.2f;
 
         public DialogManager.Characters character;
         public Transform characterTransfrom;
@@ -205,6 +205,10 @@ public class DialogManager : MonoBehaviour
 
         if (currentDialog !=null)
         {
+            if (currentDialog.time == 0)
+            {
+                currentDialog.time = 0.2f;
+            }
             yield return new WaitForSeconds(currentDialog.time);
         }
         currentDialog = currentDialogStatments.Dequeue();
