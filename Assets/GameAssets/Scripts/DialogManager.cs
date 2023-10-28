@@ -207,7 +207,7 @@ public class DialogManager : MonoBehaviour
         {
             if (currentDialog.time == 0)
             {
-                currentDialog.time = 0.2f;
+                currentDialog.time = Random.Range (0.1f, 0.3f);
             }
             yield return new WaitForSeconds(currentDialog.time);
         }
