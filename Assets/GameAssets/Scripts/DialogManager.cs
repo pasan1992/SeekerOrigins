@@ -38,6 +38,8 @@ public class DialogManager : MonoBehaviour
 
     public FloatingGameUI m_dialogIcon;
 
+    [SerializeField] GameObject _waitingImg;
+
 
     public enum Characters {Alex_afraid,Alex_angry,Alex_happy,Alex_normal,Govnor_Happy,Govnor_Disapointed,Govnor_Normal,Govnor_Angry
                             ,Kangarian_Angry,Kangarian_Normal,Fang_normal};
@@ -178,6 +180,8 @@ public class DialogManager : MonoBehaviour
             {
                 onDialogEndCallback();
                 DialogText.text = "";
+                _waitingImg.SetActive(true);
+
                 onDialogEndCallback = null;
                 soundManager.setDialogPlaying(false);
 
@@ -190,13 +194,16 @@ public class DialogManager : MonoBehaviour
         dialogUI.SetActive(true);
         pause=true;
         DialogText.text = "";
+        _waitingImg.SetActive(true);
+
         StopAllCoroutines();
         StartCoroutine(waitAndPlay());
     }
 
     private IEnumerator waitAndPlay()
     {
-        if(currentDialog !=null)
+
+        if (currentDialog !=null)
         {
             yield return new WaitForSeconds(currentDialog.time);
         }
@@ -207,6 +214,8 @@ public class DialogManager : MonoBehaviour
 
     private void playDialog(DialogStatment statement)
     {
+        _waitingImg.SetActive(false);
+
         m_audioSource.Stop();
         m_audioSource.PlayOneShot(statement.audio);
         //DialogText.text = statement.charName + " : " + statement.text + " (ENTER:SKIP)";
