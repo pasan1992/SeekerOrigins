@@ -2433,6 +2433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 593519646}
   - component: {fileID: 593519645}
+  - component: {fileID: 593519647}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -2572,7 +2573,7 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.CallMethod
-        - HutongGames.PlayMaker.Actions.DialogAction
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.AnimatorPlay
         - HutongGames.PlayMaker.Actions.Wait
         - HutongGames.PlayMaker.Actions.DialogAction
@@ -2588,11 +2589,9 @@ MonoBehaviour:
         - 
         actionEnabled: 01010101000101
         actionIsOpen: 01010101010101
-        actionStartIndex: 000000000700000012000000170000001a000000250000002b000000
-        actionHashCodes: ca51e900a1ce6404c34b410548c01101a1ce6404ca51e9009c512400
+        actionStartIndex: 00000000070000000c00000011000000140000001f00000025000000
+        actionHashCodes: ca51e90081294e04c34b410548c01101a1ce6404ca51e9009c512400
         unityObjectParams:
-        - {fileID: 8300000, guid: 0fe46259c6d139442890937529a780e9, type: 3}
-        - {fileID: 0}
         - {fileID: 8300000, guid: 0fe46259c6d139442890937529a780e9, type: 3}
         - {fileID: 0}
         fsmGameObjectParams:
@@ -2603,6 +2602,14 @@ MonoBehaviour:
           networkSync: 0
           value: {fileID: 0}
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -2658,6 +2665,13 @@ MonoBehaviour:
           networkSync: 0
           typeName: HumanoidMovingAgent
           value: {fileID: 1385064647}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: 1c9e16ff2cbf7244b882e4c1bb7f5b45, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -2741,6 +2755,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         - useVariable: 1
           name: 
           tooltip: 
@@ -2760,33 +2780,35 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: 0
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
-        - Child! Come into the light.
-        - Unknown
         - 
         - 
         - Child! Come into the light.
         - 
         - 
         - Done
-        byteData: 0000000000000a000000010100000000803f000000000100000000000000
-        arrayParamSizes: 01000000010000000100000000000000
+        byteData: 000000000000803f000000000100000000000000
+        arrayParamSizes: 010000000100000000000000
         arrayParamTypes:
         - HutongGames.PlayMaker.FsmVar
         - DialogManager+DialogStatment
-        - DialogManager+DialogStatment
         - HutongGames.PlayMaker.FsmVar
-        customTypeSizes: 0600000006000000
+        customTypeSizes: 06000000
         customTypeNames:
         - DialogManager+DialogStatment
-        - DialogManager+DialogStatment
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000c000000280000000300000005000000030000000200000007000000050000001700000001000000010000001400000012000000100000000f000000010000000f00000017000000010000000c0000002800000003000000050000000300000002000000070000000500000017000000010000000100000018000000120000000c0000002700000001000000010000001400000007000000120000001700000013000000
+        paramDataType: 18000000120000000c00000027000000270000000100000001000000140000000f0000001800000011000000170000001400000012000000100000000f000000010000000f00000017000000010000000c0000002800000003000000050000000300000002000000070000000500000017000000010000000100000018000000120000000c0000002700000001000000010000001400000007000000120000001700000013000000
         paramName:
         - behaviour
         - methodName
@@ -2795,17 +2817,11 @@ MonoBehaviour:
         - storeResult
         - everyFrame
         - manualUI
-        - dialogStatments
-        - 
-        - text
-        - audio
-        - charName
-        - time
-        - character
-        - characterTransfrom
-        - finishEvent
-        - WaitTillDialog
-        - cannotSkip
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - gameObject
         - stateName
         - layer
@@ -2836,15 +2852,15 @@ MonoBehaviour:
         - collideTag
         - sendEvent
         - storeCollider
-        paramDataPos: 000000000000000000000000000000000100000000000000010000000100000000000000000000000000000001000000020000000600000001000000020000000a0000000b000000000000000100000000000000000000000c00000001000000030000000d00000002000000010000000400000002000000050000000e0000001200000003000000060000001600000017000000010000000200000003000000020000001800000019000000010000001a000000030000000700000000000000
-        paramByteDataSize: 000000000000000000000000000000000000000001000000010000000000000000000000000000000000000000000000040000000400000000000000000000000100000001000000000000000000000000000000000000000100000000000000000000000100000000000000000000000000000000000000000000000400000004000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000004000000000000000000000000000000
+        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000001000000000000000000000001000000010000000000000001000000020000000200000001000000030000000100000000000000020000000000000003000000040000000800000001000000040000000c0000000d000000020000000200000002000000020000000e0000000f0000000200000010000000030000000500000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000001000000010000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000100000000000000000000000000000000000000000000000400000004000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000004000000000000000000000000000000
     - name: State 3
       description: 
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 354
-        y: 219
+        x: 356.89844
+        y: 219.29688
         width: 100
         height: 16
       isBreakpoint: 0
@@ -2869,14 +2885,14 @@ MonoBehaviour:
         actionStartIndex: 00000000070000000d0000001200000017000000
         actionHashCodes: ca51e900ca51e900b2cf1000c34b4105a1ce6404
         unityObjectParams:
-        - {fileID: 0}
+        - {fileID: 8300000, guid: 0fe46259c6d139442890937529a780e9, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 0159a91d48195d8419af37dd806e0919, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: ef1c21a4d9bb457458328ea0571384cf, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: eea9f06c6847a05418d865b294cc7bba, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: 418f71deb6fe16d4496969070b57082a, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 41a7691b06ceba94dbdcec01d9216b99, type: 3}
@@ -2884,35 +2900,35 @@ MonoBehaviour:
         - {fileID: 8300000, guid: b06055de10058224e8a2858a5193cc9e, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: d2b3a6f52decbba4795a5f2fe8ccae36, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: 281f3bc36a4e67b48bd1011d06a1c09a, type: 3}
         - {fileID: 4871597323616203}
         - {fileID: 8300000, guid: 95d374ea48f7f9a489079510ccf73a1d, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: a08ae912a51e5744a9c91cee6a875e6c, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: d3e77959102e41947a510ec52698cb3e, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: 7a5c7cf8feb08cb4fb4fdfe30f62fe60, type: 3}
         - {fileID: 4871597323616203}
         - {fileID: 8300000, guid: ac4bd6a5eff592b42b07961ca152862a, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: e695e2acaacc02046810fcc782365e41, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: a20aec6b0618a9d489927e1421a68fb0, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 8cb1782e367d2fd47b93a892c60eaff4, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 952b39c176d67d1418060a89d63dd97f, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: 06a7cb32db35f75488b27ac6dd2091f4, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: 29ac61cc26691f64ea7eb8ee95984f1d, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: 066c6686d6d5ee94fab9306a1926ad15, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 6f4ff04a9de6f5248ab20595db12bab3, type: 3}
-        - {fileID: 4871597323616203}
+        - {fileID: 0}
         - {fileID: 8300000, guid: e5623d525da2df249b35f416524c1cfd, type: 3}
         - {fileID: 0}
         fsmGameObjectParams: []
@@ -3081,61 +3097,64 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - Child! Come into the light.
         - 
-        - 
-        - Where am I ??
+        - Errr...Where am I ??
         - Axel
-        - Every thing is just fine, You are where you are supposed to be. This is
-          the after life
+        - Everything is just fine. You are where you are supposed to be. This is
+          the after lifeosed to be. This is the after life.
         - Unknown
-        - It is time for you to go, Axel airnoff
+        - It is time for you to go! Axel airnoff.
         - Unkbown
         - Go where ? Heaven or Hell ?
         - Axel
-        - Oh, Those are childish concepts of misunderstanding
+        - Oh, Those are childish concepts of misunderstanding.
         - Unkbown
         - There is life and there is lack there of..
         - Unknown
         - I am not going to belive a bottle of alchole man!
         - 
-        - What did you just say bottle of alchole ?
+        - What!! Did you just say bottle of alchole ?
         - Unknown
         - Ya, That is what you are..
         - 
-        - I have no real form, I am supposed to look like combination of your father
-          figures, or your best friend
+        - I have no real form. I am supposed to look like combination of your father
+          figures, or your best friend.
         - Unknown
-        - Not a god damn bottle of alchole
+        - Not a god damn bottle of alcohol! Oh damn! I really messed up with you
+          haven't I ?
         - Unknown
-        - My bad bro!
+        - Ya, My bad bro!
         - Unknown
         - So, you are a GOD !
         - 
-        - Closes thing to that, I suppose
+        - Closes thing to that, I suppose.
         - Unknown
-        - That changes nothing, you could one of those kidny scamers man! Already
-          lost one, I don't have an extra
+        - That changes nothing, you could one of those kidney scammers man! Already
+          lost one, I don't have an extra.
         - 
         - Can't trust you, Next thing you know you could be asking me to follow you
-          to a allay of something.
+          to an alleyway or something.
         - 
-        - What about that endless unmoving reiver made you think that I am same as
+        - What about that endless unmoving river made you think that I am same as
           a some street criminal ?
         - Unknown
-        - Never mind, I don't have time for this! Actually I do!, I have all the
-          time in the uniervers. But still prefer not to have time for this
+        - Never mind, I don't have time for this! Actually No, I do!, I have all
+          the time in the uniervers. But still prefer not to have time for this.
         - Unknown
         - So, if you would follow me into the tunnle where there is light at the
           end..
         - Unknown
-        - Bro! Bro! This what I am talking about bro!
+        - Bro! Bro! This what I am talking about bro! I was worried about an alleyway
+          . Now you want me to crawl into some tunnel ?l
         - 
-        - Ohh, Ok, I can't deal with you right now
+        - Ohh, Ok, That is it!. I can't deal with you right now! You go back! Grow
+          some more! So we can process you properly.
         - Unknown
         - Ahhh
         - 
         - 
-        byteData: 00000000000000000000000600000000000000000000000000000005000000000000400a0000000000000000000000000000000a000000000000000400000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101
+        byteData: 00000000000000000000000c0000000000000000000000000000000b000000000000000b0000000000000000000000000000000b000000000000000b0000000000000000000000000000000b0000000000000000000000000000000b000000000000000b000000000000000b0000000000000000000000000000000b00000000000000000000000000000000000000000000000b000000000000000b000000000000000b0000000000000000000000000000000b00000000000000000000000101
         arrayParamSizes: 010000000000000017000000
         arrayParamTypes:
         - HutongGames.PlayMaker.FsmVar
@@ -3443,6 +3462,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &593519647
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593519644}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &627037703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1243545293042042, guid: baf9ca1f9402f3a468d2b813a3edc64a,

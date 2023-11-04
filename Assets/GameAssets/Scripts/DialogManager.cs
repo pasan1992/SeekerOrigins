@@ -42,7 +42,7 @@ public class DialogManager : MonoBehaviour
 
 
     public enum Characters {Alex_afraid,Alex_angry,Alex_happy,Alex_normal,Govnor_Happy,Govnor_Disapointed,Govnor_Normal,Govnor_Angry
-                            ,Kangarian_Angry,Kangarian_Normal,Fang_normal};
+                            ,Kangarian_Angry,Kangarian_Normal,Fang_normal,Unknown,Unknown2};
     public Dictionary<DialogManager.Characters,Sprite> imageDict;
 
     private SoundManager soundManager;
@@ -117,6 +117,12 @@ public class DialogManager : MonoBehaviour
                 break;
                 case Characters.Govnor_Angry:
                 rp_path = "Images/Gavnor_angry";
+                break;
+                case Characters.Unknown:
+                rp_path = "Images/Unknown";
+                break;
+                case Characters.Unknown2:
+                rp_path = "Images/Unknown2";
                 break;
             }
             imageDict.Add(type,Resources.Load<Sprite>(rp_path));
