@@ -41,8 +41,8 @@ public class DialogManager : MonoBehaviour
     [SerializeField] GameObject _waitingImg;
 
 
-    public enum Characters {Alex_afraid,Alex_angry,Alex_happy,Alex_normal,Govnor_Happy,Govnor_Disapointed,Govnor_Normal,Govnor_Angry
-                            ,Kangarian_Angry,Kangarian_Normal,Fang_normal,Unknown,Unknown2};
+    public enum Characters {Alex_afraid,Alex_angry, Alex_disapointed,Alex_happy, Alex_normal, Govnor_happy, Govnor_disapointed,Govnor_normal,Govnor_angry
+                            ,Kangarian_angry,Kangarian_normal,Fang_normal, Fang_angry, Unknown, Unknown2,Girl1,Enemy1, Enemy2, Boss1, Boss2, Dessy   };
     public Dictionary<DialogManager.Characters,Sprite> imageDict;
 
     private SoundManager soundManager;
@@ -88,11 +88,14 @@ public class DialogManager : MonoBehaviour
                 case Characters.Fang_normal:
                 rp_path = "Images/Fang_normal";
                 break;
-                case Characters.Kangarian_Angry:
-                rp_path = "Images/Kangarian_Angry";
+                case Characters.Fang_angry:
+                rp_path = "Images/Fang_angry";
                 break;
-                case Characters.Kangarian_Normal:
-                rp_path = "Images/Kangarian_Normal";
+                case Characters.Kangarian_angry:
+                rp_path = "Images/Kangarian_normal";
+                break;
+                case Characters.Kangarian_normal:
+                rp_path = "Images/Kangarian_normal";
                 break;
                 case Characters.Alex_afraid:
                 rp_path = "Images/Alex_afraid";
@@ -106,16 +109,19 @@ public class DialogManager : MonoBehaviour
                 case Characters.Alex_normal:
                 rp_path = "Images/Alex_normal";
                 break;
-                case Characters.Govnor_Disapointed:
+                case Characters.Alex_disapointed:
+                rp_path = "Images/Alex_disapointed";
+                break;
+                case Characters.Govnor_disapointed:
                 rp_path = "Images/Govnor_disapointed";
                 break;
-                case Characters.Govnor_Happy:
+                case Characters.Govnor_happy:
                 rp_path = "Images/Govnor_happy";
                 break;
-                case Characters.Govnor_Normal:
+                case Characters.Govnor_normal:
                 rp_path = "Images/Govnor_normal";
                 break;
-                case Characters.Govnor_Angry:
+                case Characters.Govnor_angry:
                 rp_path = "Images/Gavnor_angry";
                 break;
                 case Characters.Unknown:
@@ -123,6 +129,24 @@ public class DialogManager : MonoBehaviour
                 break;
                 case Characters.Unknown2:
                 rp_path = "Images/Unknown2";
+                break;
+                case Characters.Girl1:
+                rp_path = "Images/Girl1";
+                break;
+                case Characters.Boss1:
+                rp_path = "Images/Boss1";
+                break;
+                case Characters.Boss2:
+                rp_path = "Images/Boss2";
+                break;
+                case Characters.Enemy1:
+                rp_path = "Images/Enemy1";
+                break;
+                case Characters.Enemy2:
+                rp_path = "Images/Enemy2";
+                break;
+                case Characters.Dessy:
+                rp_path = "Images/Dessy";
                 break;
             }
             imageDict.Add(type,Resources.Load<Sprite>(rp_path));
