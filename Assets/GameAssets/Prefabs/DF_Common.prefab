@@ -58498,9 +58498,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
     soundName: DoorOpen
   - sound:
-    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
-    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
-    soundName: Footstep
+    - {fileID: 8300000, guid: 37a8b2ab89a81da438dae8d779a146e6, type: 3}
+    - {fileID: 8300000, guid: 37a8b2ab89a81da438dae8d779a146e6, type: 3}
+    soundName: FootStep
 --- !u!114 &3209784683429458911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112988,7 +112988,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 392446001, guid: d19a08c9c6de3cc45b0902baf5f5acbf, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 529386683, guid: d19a08c9c6de3cc45b0902baf5f5acbf, type: 3}
       propertyPath: m_ChildForceExpandWidth
@@ -113197,7 +113197,7 @@ PrefabInstance:
     - target: {fileID: 7179171067511350127, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8589686969487235882, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
