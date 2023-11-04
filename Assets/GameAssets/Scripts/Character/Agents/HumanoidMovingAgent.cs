@@ -186,6 +186,15 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         }
     }
 
+    public void Effort()
+    {
+        var sound_clip = SoundManager.getInstance().getSound("Effort");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }        
+    }
+
     public void consume_ammo_pack(AmmoPack ammo_pack)
     {
         m_interactionModule.ConsumeAmmoPack(ammo_pack);

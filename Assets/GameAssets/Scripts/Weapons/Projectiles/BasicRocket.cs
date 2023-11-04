@@ -24,6 +24,8 @@ public class BasicRocket : MonoBehaviour
 
     public float upTime = 1;
 
+    private AudioSource m_audioSource;
+
     public void Awake()
     {
         m_explodingObject = this.GetComponent<BasicExplodingObject>();
@@ -34,6 +36,7 @@ public class BasicRocket : MonoBehaviour
         {
             tf.localScale = tf.localScale * rocketScale;   
         }
+        m_audioSource = this.GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -56,6 +59,12 @@ public class BasicRocket : MonoBehaviour
         armed = true;
         Invoke("selfDestoryOnTimeOut",explosionTimeout);
         Vector3 relativePosition = m_targetLocation - this.transform.position;
+
+        var sound_clip = SoundManager.getInstance().getSound("Rocket");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }
     }
 
     [ContextMenu("Fire")]
