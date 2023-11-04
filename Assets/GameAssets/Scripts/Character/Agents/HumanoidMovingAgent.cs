@@ -55,7 +55,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
 
     private Renderer m_renderer;
     private IEnumerator m_previousCorutine;
-
+    private AudioSource m_audioSource;
 
     #endregion
 
@@ -105,6 +105,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_equipmentModule.getWeaponHoldTransfrom()
         );
         m_renderer = this.GetComponentInChildren<Renderer>();
+        m_audioSource = this.GetComponent<AudioSource>();
         
     }
     #endregion
@@ -174,6 +175,15 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
             }
         }     
         return interactCondition; 
+    }
+
+    public void FootStep()
+    {
+        var sound_clip = SoundManager.getInstance().getSound("FootStep");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }
     }
 
     public void consume_ammo_pack(AmmoPack ammo_pack)
