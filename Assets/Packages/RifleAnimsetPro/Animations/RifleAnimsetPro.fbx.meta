@@ -7,229 +7,665 @@ labels:
 - Rifle
 - Soldier
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: DummyMESH
-    100002: Head
-    100004: Hips
-    100006: LeftArm
-    100008: LeftArmRoll
-    100010: LeftFoot
-    100012: LeftForeArm
-    100014: LeftForeArmRoll
-    100016: LeftHand
-    100018: LeftHandIndex1
-    100020: LeftHandIndex2
-    100022: LeftHandIndex3
-    100024: LeftHandIndex4
-    100026: LeftHandMiddle1
-    100028: LeftHandMiddle2
-    100030: LeftHandMiddle3
-    100032: LeftHandMiddle4
-    100034: LeftHandPinky1
-    100036: LeftHandPinky2
-    100038: LeftHandPinky3
-    100040: LeftHandPinky4
-    100042: LeftHandProp
-    100044: LeftHandRing1
-    100046: LeftHandRing2
-    100048: LeftHandRing3
-    100050: LeftHandRing4
-    100052: LeftHandThumb1
-    100054: LeftHandThumb2
-    100056: LeftHandThumb3
-    100058: LeftHandThumb4
-    100060: LeftLeg
-    100062: LeftLegRoll
-    100064: LeftShoulder
-    100066: LeftToeBase
-    100068: LeftToeBase_END
-    100070: LeftUpLeg
-    100072: LeftUpLegRoll
-    100074: Neck
-    100076: //RootNode
-    100078: RightArm
-    100080: RightArmRoll
-    100082: RightFoot
-    100084: RightForeArm
-    100086: RightForeArmRoll
-    100088: RightHand
-    100090: RightHandIndex1
-    100092: RightHandIndex2
-    100094: RightHandIndex3
-    100096: RightHandIndex4
-    100098: RightHandMiddle1
-    100100: RightHandMiddle2
-    100102: RightHandMiddle3
-    100104: RightHandMiddle4
-    100106: RightHandPinky1
-    100108: RightHandPinky2
-    100110: RightHandPinky3
-    100112: RightHandPinky4
-    100114: RightHandProp
-    100116: RightHandRing1
-    100118: RightHandRing2
-    100120: RightHandRing3
-    100122: RightHandRing4
-    100124: RightHandThumb1
-    100126: RightHandThumb2
-    100128: RightHandThumb3
-    100130: RightHandThumb4
-    100132: RightLeg
-    100134: RightLegRoll
-    100136: RightShoulder
-    100138: RightToeBase
-    100140: RightToeBase_END
-    100142: RightUpLeg
-    100144: RightUpLegRoll
-    100146: Root
-    100148: Spine
-    100150: Spine1
-    400000: DummyMESH
-    400002: Head
-    400004: Hips
-    400006: LeftArm
-    400008: LeftArmRoll
-    400010: LeftFoot
-    400012: LeftForeArm
-    400014: LeftForeArmRoll
-    400016: LeftHand
-    400018: LeftHandIndex1
-    400020: LeftHandIndex2
-    400022: LeftHandIndex3
-    400024: LeftHandIndex4
-    400026: LeftHandMiddle1
-    400028: LeftHandMiddle2
-    400030: LeftHandMiddle3
-    400032: LeftHandMiddle4
-    400034: LeftHandPinky1
-    400036: LeftHandPinky2
-    400038: LeftHandPinky3
-    400040: LeftHandPinky4
-    400042: LeftHandProp
-    400044: LeftHandRing1
-    400046: LeftHandRing2
-    400048: LeftHandRing3
-    400050: LeftHandRing4
-    400052: LeftHandThumb1
-    400054: LeftHandThumb2
-    400056: LeftHandThumb3
-    400058: LeftHandThumb4
-    400060: LeftLeg
-    400062: LeftLegRoll
-    400064: LeftShoulder
-    400066: LeftToeBase
-    400068: LeftToeBase_END
-    400070: LeftUpLeg
-    400072: LeftUpLegRoll
-    400074: Neck
-    400076: //RootNode
-    400078: RightArm
-    400080: RightArmRoll
-    400082: RightFoot
-    400084: RightForeArm
-    400086: RightForeArmRoll
-    400088: RightHand
-    400090: RightHandIndex1
-    400092: RightHandIndex2
-    400094: RightHandIndex3
-    400096: RightHandIndex4
-    400098: RightHandMiddle1
-    400100: RightHandMiddle2
-    400102: RightHandMiddle3
-    400104: RightHandMiddle4
-    400106: RightHandPinky1
-    400108: RightHandPinky2
-    400110: RightHandPinky3
-    400112: RightHandPinky4
-    400114: RightHandProp
-    400116: RightHandRing1
-    400118: RightHandRing2
-    400120: RightHandRing3
-    400122: RightHandRing4
-    400124: RightHandThumb1
-    400126: RightHandThumb2
-    400128: RightHandThumb3
-    400130: RightHandThumb4
-    400132: RightLeg
-    400134: RightLegRoll
-    400136: RightShoulder
-    400138: RightToeBase
-    400140: RightToeBase_END
-    400142: RightUpLeg
-    400144: RightUpLegRoll
-    400146: Root
-    400148: Spine
-    400150: Spine1
-    4300000: DummyMESH
-    7400000: BindPose
-    7400002: Rifle_WalkFwdStart90_L
-    7400004: Rifle_Idle
-    7400006: Rifle_TurnR_90
-    7400008: Rifle_TurnL_90
-    7400010: Rifle_TurnR_180
-    7400012: Rifle_TurnL_180
-    7400014: Rifle_WalkFwdStart
-    7400016: Rifle_WalkFwdLoop
-    7400018: Rifle_WalkFwdStop_LU
-    7400020: Rifle_WalkFwdStop_RU
-    7400022: Rifle_WalkBwdStart
-    7400024: Rifle_WalkBwdLoop
-    7400026: Rifle_WalkBwdStop_RU
-    7400028: Rifle_WalkBwdStop_LU
-    7400030: Rifle_StrafeRightStart
-    7400032: Rifle_StrafeRightLoop
-    7400034: Rifle_StrafeRightStop_LU
-    7400036: Rifle_StrafeRightStop_RU
-    7400038: Rifle_StrafeLeftStart
-    7400040: Rifle_StrafeLeftLoop
-    7400042: Rifle_StrafeLeftStop_RU
-    7400044: Rifle_StrafeLeftStop_LU
-    7400046: Rifle_StrafeLeft45Loop
-    7400048: Rifle_StrafeRight135Loop
-    7400050: Rifle_ShootOnce
-    7400052: Rifle_ShootGrenade
-    7400054: Rifle_ShootBurst
-    7400056: Rifle_Reload_2
-    7400058: Rifle_ShootBurstLong
-    7400060: Rifle_ShootLoop_Additive
-    7400062: Rifle_Look_45L_Additive
-    7400064: Rifle_Look_45R_Additive
-    7400066: Rifle_Look_45U_Additive
-    7400068: Rifle_Look_45D_Additive
-    7400070: Rifle_Look_CC_Additive
-    7400072: Rifle_Look_90L_Additive
-    7400074: Rifle_Look_90R_Additive
-    7400076: Rifle_Look_90U_Additive
-    7400078: Rifle_Look_90D_Additive
-    7400080: Rifle_Look_45LU_Additive
-    7400082: Rifle_Look_45RU_Additive
-    7400084: Rifle_Look_45LD_Additive
-    7400086: Rifle_Look_45RD_Additive
-    7400088: Rifle_TurnR_90Loop
-    7400090: Rifle_TurnL_90Loop
-    7400092: Rifle_Hit_L_1
-    7400094: Rifle_Hit_L_2
-    7400096: Rifle_Hit_R_2
-    7400098: Rifle_Hit_C_1
-    7400100: Rifle_Melee_Hard
-    7400102: Rifle_Melee_Kick
-    7400104: Rifle_Grenade_Throw_Single
-    7400106: Rifle_Grenade_Throw_Start
-    7400108: Rifle_Grenade_Throw_Loop
-    7400110: Rifle_Grenade_Throw_Cancel
-    7400112: Rifle_Grenade_Throw_Far
-    7400114: Rifle_Grenade_Throw_Close
-    7400116: Rifle_WalkFwdStart180_R
-    7400118: Rifle_WalkFwdStart180_L
-    7400120: Rifle_WalkFwdStart90_R
-    7400122: Rifle_Death_L
-    7400124: Rifle_Death_R
-    9500000: //RootNode
-    13700000: DummyMESH
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: DummyMESH
+  - first:
+      1: 100002
+    second: Head
+  - first:
+      1: 100004
+    second: Hips
+  - first:
+      1: 100006
+    second: LeftArm
+  - first:
+      1: 100008
+    second: LeftArmRoll
+  - first:
+      1: 100010
+    second: LeftFoot
+  - first:
+      1: 100012
+    second: LeftForeArm
+  - first:
+      1: 100014
+    second: LeftForeArmRoll
+  - first:
+      1: 100016
+    second: LeftHand
+  - first:
+      1: 100018
+    second: LeftHandIndex1
+  - first:
+      1: 100020
+    second: LeftHandIndex2
+  - first:
+      1: 100022
+    second: LeftHandIndex3
+  - first:
+      1: 100024
+    second: LeftHandIndex4
+  - first:
+      1: 100026
+    second: LeftHandMiddle1
+  - first:
+      1: 100028
+    second: LeftHandMiddle2
+  - first:
+      1: 100030
+    second: LeftHandMiddle3
+  - first:
+      1: 100032
+    second: LeftHandMiddle4
+  - first:
+      1: 100034
+    second: LeftHandPinky1
+  - first:
+      1: 100036
+    second: LeftHandPinky2
+  - first:
+      1: 100038
+    second: LeftHandPinky3
+  - first:
+      1: 100040
+    second: LeftHandPinky4
+  - first:
+      1: 100042
+    second: LeftHandProp
+  - first:
+      1: 100044
+    second: LeftHandRing1
+  - first:
+      1: 100046
+    second: LeftHandRing2
+  - first:
+      1: 100048
+    second: LeftHandRing3
+  - first:
+      1: 100050
+    second: LeftHandRing4
+  - first:
+      1: 100052
+    second: LeftHandThumb1
+  - first:
+      1: 100054
+    second: LeftHandThumb2
+  - first:
+      1: 100056
+    second: LeftHandThumb3
+  - first:
+      1: 100058
+    second: LeftHandThumb4
+  - first:
+      1: 100060
+    second: LeftLeg
+  - first:
+      1: 100062
+    second: LeftLegRoll
+  - first:
+      1: 100064
+    second: LeftShoulder
+  - first:
+      1: 100066
+    second: LeftToeBase
+  - first:
+      1: 100068
+    second: LeftToeBase_END
+  - first:
+      1: 100070
+    second: LeftUpLeg
+  - first:
+      1: 100072
+    second: LeftUpLegRoll
+  - first:
+      1: 100074
+    second: Neck
+  - first:
+      1: 100076
+    second: //RootNode
+  - first:
+      1: 100078
+    second: RightArm
+  - first:
+      1: 100080
+    second: RightArmRoll
+  - first:
+      1: 100082
+    second: RightFoot
+  - first:
+      1: 100084
+    second: RightForeArm
+  - first:
+      1: 100086
+    second: RightForeArmRoll
+  - first:
+      1: 100088
+    second: RightHand
+  - first:
+      1: 100090
+    second: RightHandIndex1
+  - first:
+      1: 100092
+    second: RightHandIndex2
+  - first:
+      1: 100094
+    second: RightHandIndex3
+  - first:
+      1: 100096
+    second: RightHandIndex4
+  - first:
+      1: 100098
+    second: RightHandMiddle1
+  - first:
+      1: 100100
+    second: RightHandMiddle2
+  - first:
+      1: 100102
+    second: RightHandMiddle3
+  - first:
+      1: 100104
+    second: RightHandMiddle4
+  - first:
+      1: 100106
+    second: RightHandPinky1
+  - first:
+      1: 100108
+    second: RightHandPinky2
+  - first:
+      1: 100110
+    second: RightHandPinky3
+  - first:
+      1: 100112
+    second: RightHandPinky4
+  - first:
+      1: 100114
+    second: RightHandProp
+  - first:
+      1: 100116
+    second: RightHandRing1
+  - first:
+      1: 100118
+    second: RightHandRing2
+  - first:
+      1: 100120
+    second: RightHandRing3
+  - first:
+      1: 100122
+    second: RightHandRing4
+  - first:
+      1: 100124
+    second: RightHandThumb1
+  - first:
+      1: 100126
+    second: RightHandThumb2
+  - first:
+      1: 100128
+    second: RightHandThumb3
+  - first:
+      1: 100130
+    second: RightHandThumb4
+  - first:
+      1: 100132
+    second: RightLeg
+  - first:
+      1: 100134
+    second: RightLegRoll
+  - first:
+      1: 100136
+    second: RightShoulder
+  - first:
+      1: 100138
+    second: RightToeBase
+  - first:
+      1: 100140
+    second: RightToeBase_END
+  - first:
+      1: 100142
+    second: RightUpLeg
+  - first:
+      1: 100144
+    second: RightUpLegRoll
+  - first:
+      1: 100146
+    second: Root
+  - first:
+      1: 100148
+    second: Spine
+  - first:
+      1: 100150
+    second: Spine1
+  - first:
+      4: 400000
+    second: DummyMESH
+  - first:
+      4: 400002
+    second: Head
+  - first:
+      4: 400004
+    second: Hips
+  - first:
+      4: 400006
+    second: LeftArm
+  - first:
+      4: 400008
+    second: LeftArmRoll
+  - first:
+      4: 400010
+    second: LeftFoot
+  - first:
+      4: 400012
+    second: LeftForeArm
+  - first:
+      4: 400014
+    second: LeftForeArmRoll
+  - first:
+      4: 400016
+    second: LeftHand
+  - first:
+      4: 400018
+    second: LeftHandIndex1
+  - first:
+      4: 400020
+    second: LeftHandIndex2
+  - first:
+      4: 400022
+    second: LeftHandIndex3
+  - first:
+      4: 400024
+    second: LeftHandIndex4
+  - first:
+      4: 400026
+    second: LeftHandMiddle1
+  - first:
+      4: 400028
+    second: LeftHandMiddle2
+  - first:
+      4: 400030
+    second: LeftHandMiddle3
+  - first:
+      4: 400032
+    second: LeftHandMiddle4
+  - first:
+      4: 400034
+    second: LeftHandPinky1
+  - first:
+      4: 400036
+    second: LeftHandPinky2
+  - first:
+      4: 400038
+    second: LeftHandPinky3
+  - first:
+      4: 400040
+    second: LeftHandPinky4
+  - first:
+      4: 400042
+    second: LeftHandProp
+  - first:
+      4: 400044
+    second: LeftHandRing1
+  - first:
+      4: 400046
+    second: LeftHandRing2
+  - first:
+      4: 400048
+    second: LeftHandRing3
+  - first:
+      4: 400050
+    second: LeftHandRing4
+  - first:
+      4: 400052
+    second: LeftHandThumb1
+  - first:
+      4: 400054
+    second: LeftHandThumb2
+  - first:
+      4: 400056
+    second: LeftHandThumb3
+  - first:
+      4: 400058
+    second: LeftHandThumb4
+  - first:
+      4: 400060
+    second: LeftLeg
+  - first:
+      4: 400062
+    second: LeftLegRoll
+  - first:
+      4: 400064
+    second: LeftShoulder
+  - first:
+      4: 400066
+    second: LeftToeBase
+  - first:
+      4: 400068
+    second: LeftToeBase_END
+  - first:
+      4: 400070
+    second: LeftUpLeg
+  - first:
+      4: 400072
+    second: LeftUpLegRoll
+  - first:
+      4: 400074
+    second: Neck
+  - first:
+      4: 400076
+    second: //RootNode
+  - first:
+      4: 400078
+    second: RightArm
+  - first:
+      4: 400080
+    second: RightArmRoll
+  - first:
+      4: 400082
+    second: RightFoot
+  - first:
+      4: 400084
+    second: RightForeArm
+  - first:
+      4: 400086
+    second: RightForeArmRoll
+  - first:
+      4: 400088
+    second: RightHand
+  - first:
+      4: 400090
+    second: RightHandIndex1
+  - first:
+      4: 400092
+    second: RightHandIndex2
+  - first:
+      4: 400094
+    second: RightHandIndex3
+  - first:
+      4: 400096
+    second: RightHandIndex4
+  - first:
+      4: 400098
+    second: RightHandMiddle1
+  - first:
+      4: 400100
+    second: RightHandMiddle2
+  - first:
+      4: 400102
+    second: RightHandMiddle3
+  - first:
+      4: 400104
+    second: RightHandMiddle4
+  - first:
+      4: 400106
+    second: RightHandPinky1
+  - first:
+      4: 400108
+    second: RightHandPinky2
+  - first:
+      4: 400110
+    second: RightHandPinky3
+  - first:
+      4: 400112
+    second: RightHandPinky4
+  - first:
+      4: 400114
+    second: RightHandProp
+  - first:
+      4: 400116
+    second: RightHandRing1
+  - first:
+      4: 400118
+    second: RightHandRing2
+  - first:
+      4: 400120
+    second: RightHandRing3
+  - first:
+      4: 400122
+    second: RightHandRing4
+  - first:
+      4: 400124
+    second: RightHandThumb1
+  - first:
+      4: 400126
+    second: RightHandThumb2
+  - first:
+      4: 400128
+    second: RightHandThumb3
+  - first:
+      4: 400130
+    second: RightHandThumb4
+  - first:
+      4: 400132
+    second: RightLeg
+  - first:
+      4: 400134
+    second: RightLegRoll
+  - first:
+      4: 400136
+    second: RightShoulder
+  - first:
+      4: 400138
+    second: RightToeBase
+  - first:
+      4: 400140
+    second: RightToeBase_END
+  - first:
+      4: 400142
+    second: RightUpLeg
+  - first:
+      4: 400144
+    second: RightUpLegRoll
+  - first:
+      4: 400146
+    second: Root
+  - first:
+      4: 400148
+    second: Spine
+  - first:
+      4: 400150
+    second: Spine1
+  - first:
+      43: 4300000
+    second: DummyMESH
+  - first:
+      74: 7400000
+    second: BindPose
+  - first:
+      74: 7400002
+    second: Rifle_WalkFwdStart90_L
+  - first:
+      74: 7400004
+    second: Rifle_Idle
+  - first:
+      74: 7400006
+    second: Rifle_TurnR_90
+  - first:
+      74: 7400008
+    second: Rifle_TurnL_90
+  - first:
+      74: 7400010
+    second: Rifle_TurnR_180
+  - first:
+      74: 7400012
+    second: Rifle_TurnL_180
+  - first:
+      74: 7400014
+    second: Rifle_WalkFwdStart
+  - first:
+      74: 7400016
+    second: Rifle_WalkFwdLoop
+  - first:
+      74: 7400018
+    second: Rifle_WalkFwdStop_LU
+  - first:
+      74: 7400020
+    second: Rifle_WalkFwdStop_RU
+  - first:
+      74: 7400022
+    second: Rifle_WalkBwdStart
+  - first:
+      74: 7400024
+    second: Rifle_WalkBwdLoop
+  - first:
+      74: 7400026
+    second: Rifle_WalkBwdStop_RU
+  - first:
+      74: 7400028
+    second: Rifle_WalkBwdStop_LU
+  - first:
+      74: 7400030
+    second: Rifle_StrafeRightStart
+  - first:
+      74: 7400032
+    second: Rifle_StrafeRightLoop
+  - first:
+      74: 7400034
+    second: Rifle_StrafeRightStop_LU
+  - first:
+      74: 7400036
+    second: Rifle_StrafeRightStop_RU
+  - first:
+      74: 7400038
+    second: Rifle_StrafeLeftStart
+  - first:
+      74: 7400040
+    second: Rifle_StrafeLeftLoop
+  - first:
+      74: 7400042
+    second: Rifle_StrafeLeftStop_RU
+  - first:
+      74: 7400044
+    second: Rifle_StrafeLeftStop_LU
+  - first:
+      74: 7400046
+    second: Rifle_StrafeLeft45Loop
+  - first:
+      74: 7400048
+    second: Rifle_StrafeRight135Loop
+  - first:
+      74: 7400050
+    second: Rifle_ShootOnce
+  - first:
+      74: 7400052
+    second: Rifle_ShootGrenade
+  - first:
+      74: 7400054
+    second: Rifle_ShootBurst
+  - first:
+      74: 7400056
+    second: Rifle_Reload_2
+  - first:
+      74: 7400058
+    second: Rifle_ShootBurstLong
+  - first:
+      74: 7400060
+    second: Rifle_ShootLoop_Additive
+  - first:
+      74: 7400062
+    second: Rifle_Look_45L_Additive
+  - first:
+      74: 7400064
+    second: Rifle_Look_45R_Additive
+  - first:
+      74: 7400066
+    second: Rifle_Look_45U_Additive
+  - first:
+      74: 7400068
+    second: Rifle_Look_45D_Additive
+  - first:
+      74: 7400070
+    second: Rifle_Look_CC_Additive
+  - first:
+      74: 7400072
+    second: Rifle_Look_90L_Additive
+  - first:
+      74: 7400074
+    second: Rifle_Look_90R_Additive
+  - first:
+      74: 7400076
+    second: Rifle_Look_90U_Additive
+  - first:
+      74: 7400078
+    second: Rifle_Look_90D_Additive
+  - first:
+      74: 7400080
+    second: Rifle_Look_45LU_Additive
+  - first:
+      74: 7400082
+    second: Rifle_Look_45RU_Additive
+  - first:
+      74: 7400084
+    second: Rifle_Look_45LD_Additive
+  - first:
+      74: 7400086
+    second: Rifle_Look_45RD_Additive
+  - first:
+      74: 7400088
+    second: Rifle_TurnR_90Loop
+  - first:
+      74: 7400090
+    second: Rifle_TurnL_90Loop
+  - first:
+      74: 7400092
+    second: Rifle_Hit_L_1
+  - first:
+      74: 7400094
+    second: Rifle_Hit_L_2
+  - first:
+      74: 7400096
+    second: Rifle_Hit_R_2
+  - first:
+      74: 7400098
+    second: Rifle_Hit_C_1
+  - first:
+      74: 7400100
+    second: Rifle_Melee_Hard
+  - first:
+      74: 7400102
+    second: Rifle_Melee_Kick
+  - first:
+      74: 7400104
+    second: Rifle_Grenade_Throw_Single
+  - first:
+      74: 7400106
+    second: Rifle_Grenade_Throw_Start
+  - first:
+      74: 7400108
+    second: Rifle_Grenade_Throw_Loop
+  - first:
+      74: 7400110
+    second: Rifle_Grenade_Throw_Cancel
+  - first:
+      74: 7400112
+    second: Rifle_Grenade_Throw_Far
+  - first:
+      74: 7400114
+    second: Rifle_Grenade_Throw_Close
+  - first:
+      74: 7400116
+    second: Rifle_WalkFwdStart180_R
+  - first:
+      74: 7400118
+    second: Rifle_WalkFwdStart180_L
+  - first:
+      74: 7400120
+    second: Rifle_WalkFwdStart90_R
+  - first:
+      74: 7400122
+    second: Rifle_Death_L
+  - first:
+      74: 7400124
+    second: Rifle_Death_R
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: DummyMESH
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -258,6 +694,7 @@ ModelImporter:
     - serializedVersion: 16
       name: BindPose
       takeName: BindPose
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -438,6 +875,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Idle
       takeName: Rifle_Idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 194
       wrapMode: 0
@@ -618,6 +1056,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_TurnR_90
       takeName: Rifle_TurnR_90
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -798,6 +1237,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_TurnL_90
       takeName: Rifle_TurnL_90
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -978,6 +1418,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_TurnR_180
       takeName: Rifle_TurnR_180
+      internalID: 0
       firstFrame: 0
       lastFrame: 19.7
       wrapMode: 0
@@ -1158,6 +1599,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_TurnL_180
       takeName: Rifle_TurnL_180
+      internalID: 0
       firstFrame: 0
       lastFrame: 19.7
       wrapMode: 0
@@ -1338,6 +1780,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStart
       takeName: Rifle_WalkFwdStart
+      internalID: 0
       firstFrame: 0
       lastFrame: 22
       wrapMode: 0
@@ -1561,6 +2004,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdLoop
       takeName: Rifle_WalkFwdLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 29
       wrapMode: 0
@@ -1642,7 +2086,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.28794643
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7611607
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1802,6 +2260,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStop_LU
       takeName: Rifle_WalkFwdStop_LU
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -1982,6 +2441,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStop_RU
       takeName: Rifle_WalkFwdStop_RU
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -2162,6 +2622,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkBwdStart
       takeName: Rifle_WalkBwdStart
+      internalID: 0
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -2421,6 +2882,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkBwdLoop
       takeName: Rifle_WalkBwdLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 26
       wrapMode: 0
@@ -2502,7 +2964,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.28348213
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.77232146
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -2662,6 +3138,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkBwdStop_RU
       takeName: Rifle_WalkBwdStop_RU
+      internalID: 0
       firstFrame: 0
       lastFrame: 33
       wrapMode: 0
@@ -2842,6 +3319,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkBwdStop_LU
       takeName: Rifle_WalkBwdStop_LU
+      internalID: 0
       firstFrame: 0
       lastFrame: 36
       wrapMode: 0
@@ -3022,6 +3500,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeRightStart
       takeName: Rifle_StrafeRightStart
+      internalID: 0
       firstFrame: 0
       lastFrame: 35
       wrapMode: 0
@@ -3281,6 +3760,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeRightLoop
       takeName: Rifle_StrafeRightLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -3362,7 +3842,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.3816964
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8013393
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -3522,6 +4016,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeRightStop_LU
       takeName: Rifle_StrafeRightStop_LU
+      internalID: 0
       firstFrame: 0
       lastFrame: 31
       wrapMode: 0
@@ -3702,6 +4197,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeRightStop_RU
       takeName: Rifle_StrafeRightStop_RU
+      internalID: 0
       firstFrame: 0
       lastFrame: 21
       wrapMode: 0
@@ -3882,6 +4378,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeLeftStart
       takeName: Rifle_StrafeLeftStart
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -4105,6 +4602,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeLeftLoop
       takeName: Rifle_StrafeLeftLoop
+      internalID: 0
       firstFrame: 0
       lastFrame: 28
       wrapMode: 0
@@ -4186,7 +4684,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.28125
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.75892854
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -4346,6 +4858,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeLeftStop_RU
       takeName: Rifle_StrafeLeftStop_RU
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -4526,6 +5039,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeLeftStop_LU
       takeName: Rifle_StrafeLeftStop_LU
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -4706,6 +5220,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeLeft45Loop
       takeName: Rifle_StrafeLeft45Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 27
       wrapMode: 0
@@ -4787,7 +5302,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.23214287
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.765625
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -4947,6 +5476,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_StrafeRight135Loop
       takeName: Rifle_StrafeRight135Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 27
       wrapMode: 0
@@ -5028,7 +5558,21 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      events: []
+      events:
+      - time: 0.31473213
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.76116073
+        functionName: FootStep
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -5188,6 +5732,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_ShootOnce
       takeName: Rifle_ShootOnce
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -5368,6 +5913,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_ShootGrenade
       takeName: Rifle_ShootGrenade
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -5548,6 +6094,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_ShootBurst
       takeName: Rifle_ShootBurst
+      internalID: 0
       firstFrame: 0
       lastFrame: 51
       wrapMode: 0
@@ -5728,6 +6275,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Reload_2
       takeName: Rifle_Reload_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 65
       wrapMode: 0
@@ -5915,6 +6463,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_ShootBurstLong
       takeName: Rifle_ShootBurstLong
+      internalID: 0
       firstFrame: 0
       lastFrame: 83
       wrapMode: 0
@@ -6095,6 +6644,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_ShootLoop_Additive
       takeName: Rifle_ShootLoop_Additive
+      internalID: 0
       firstFrame: 28
       lastFrame: 47
       wrapMode: 0
@@ -6275,6 +6825,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45L_Additive
       takeName: Rifle_Look_45L_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -6455,6 +7006,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45R_Additive
       takeName: Rifle_Look_45R_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -6635,6 +7187,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45U_Additive
       takeName: Rifle_Look_45U_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -6815,6 +7368,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45D_Additive
       takeName: Rifle_Look_45D_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -6995,6 +7549,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_CC_Additive
       takeName: Rifle_Look_CC_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -7175,6 +7730,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_90L_Additive
       takeName: Rifle_Look_90L_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -7355,6 +7911,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_90R_Additive
       takeName: Rifle_Look_90R_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -7535,6 +8092,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_90U_Additive
       takeName: Rifle_Look_90U_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -7715,6 +8273,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_90D_Additive
       takeName: Rifle_Look_90D_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -7895,6 +8454,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45LU_Additive
       takeName: Rifle_Look_45LU_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -8075,6 +8635,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45RU_Additive
       takeName: Rifle_Look_45RU_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -8255,6 +8816,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45LD_Additive
       takeName: Rifle_Look_45LD_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -8435,6 +8997,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Look_45RD_Additive
       takeName: Rifle_Look_45RD_Additive
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -8615,6 +9178,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_TurnR_90Loop
       takeName: Rifle_TurnR_90Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 24.1
       wrapMode: 0
@@ -8795,6 +9359,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_TurnL_90Loop
       takeName: Rifle_TurnL_90Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 24.1
       wrapMode: 0
@@ -8975,6 +9540,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Hit_L_1
       takeName: Rifle_Hit_L_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -9155,6 +9721,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Hit_L_2
       takeName: Rifle_Hit_L_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 52
       wrapMode: 0
@@ -9335,6 +9902,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Hit_R_2
       takeName: Rifle_Hit_R_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 42
       wrapMode: 0
@@ -9515,6 +10083,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Hit_C_1
       takeName: Rifle_Hit_C_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 49
       wrapMode: 0
@@ -9695,6 +10264,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Melee_Hard
       takeName: Rifle_Melee_Hard
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -9875,6 +10445,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Melee_Kick
       takeName: Rifle_Melee_Kick
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -10055,6 +10626,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Grenade_Throw_Single
       takeName: Rifle_Grenade_Throw_Single
+      internalID: 0
       firstFrame: 0
       lastFrame: 54
       wrapMode: 0
@@ -10235,6 +10807,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Grenade_Throw_Start
       takeName: Rifle_Grenade_Throw_Start
+      internalID: 0
       firstFrame: 0
       lastFrame: 23
       wrapMode: 0
@@ -10415,6 +10988,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Grenade_Throw_Loop
       takeName: Rifle_Grenade_Throw_Loop
+      internalID: 0
       firstFrame: 0
       lastFrame: 37
       wrapMode: 0
@@ -10595,6 +11169,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Grenade_Throw_Cancel
       takeName: Rifle_Grenade_Throw_Cancel
+      internalID: 0
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0
@@ -10775,6 +11350,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Grenade_Throw_Far
       takeName: Rifle_Grenade_Throw_Far
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -10955,6 +11531,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Grenade_Throw_Close
       takeName: Rifle_Grenade_Throw_Close
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -11135,6 +11712,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStart180_R
       takeName: Rifle_WalkFwdStart180_R
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -11315,6 +11893,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStart180_L
       takeName: Rifle_WalkFwdStart180_L
+      internalID: 0
       firstFrame: 0
       lastFrame: 30
       wrapMode: 0
@@ -11495,6 +12074,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStart90_R
       takeName: Rifle_WalkFwdStart90_R
+      internalID: 0
       firstFrame: 0
       lastFrame: 38
       wrapMode: 0
@@ -11675,6 +12255,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_WalkFwdStart90_L
       takeName: Rifle_WalkFwdStart90_L
+      internalID: 0
       firstFrame: 0
       lastFrame: 25
       wrapMode: 0
@@ -11855,6 +12436,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Death_L
       takeName: Rifle_Death_L
+      internalID: 0
       firstFrame: 0
       lastFrame: 66
       wrapMode: 0
@@ -12035,6 +12617,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Rifle_Death_R
       takeName: Rifle_Death_R
+      internalID: 0
       firstFrame: 0
       lastFrame: 71
       wrapMode: 0
@@ -12219,25 +12802,28 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -12246,10 +12832,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Hips
       humanName: Hips
@@ -13049,13 +13635,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: Root
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

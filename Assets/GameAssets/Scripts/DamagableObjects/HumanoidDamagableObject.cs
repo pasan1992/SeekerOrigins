@@ -147,6 +147,12 @@ public class HumanoidDamagableObject : MovingAgentDamagableObject
         GameObject smoke = ProjectilePool.getInstance().getPoolObject(ProjectilePool.POOL_OBJECT_TYPE.HumanoidExplosion);
         smoke.SetActive(true);
         smoke.transform.position = collider.transform.position;
+        var sound_clip = SoundManager.getInstance().getSound("Hdestory");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }
+        
 
         SetFireEffect(false,null);
     }

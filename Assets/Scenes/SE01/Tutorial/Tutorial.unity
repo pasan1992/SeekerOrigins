@@ -3952,7 +3952,7 @@ MonoBehaviour:
         - Pick up the gun from the table
         - Ava
         - 
-        byteData: 000000000006000000000000000400000000000000010000000000000004000000010000000000000000000000000000000100
+        byteData: 000000000005000000000000000500000000000000020000000000000005000000010000000000000000000000000000000100
         arrayParamSizes: 040000000000000001000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -4155,7 +4155,7 @@ MonoBehaviour:
         - Ok, ok, geeze, I'll do it.
         - Axel
         - 
-        byteData: 0000000000000000030000000000000006000000000000000400000000000000000000000100
+        byteData: 0000000000000000000000000000000007000000000000000800000000000000000000000100
         arrayParamSizes: 04000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -4442,7 +4442,7 @@ MonoBehaviour:
         - 
         - 'Fire at both enemy units. Move curser to the targets and press (LMB) to
           fire. '
-        byteData: 0000000000000003000000000000000600000000000000040000000000000001000000000000000000000000000000040000000100
+        byteData: 0000000000000003000000000000000500000000000000050000000000000000000000000000000100000000000000050000000100
         arrayParamSizes: 06000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -4809,7 +4809,7 @@ MonoBehaviour:
         - GovNor
         - 
         - Enemis in cover are indicated by a red sheild icon on top of their head.
-        byteData: 000000000006000000010000000000000000000000000000000008000000000000000400000000000000060000000100
+        byteData: 000000000005000000010000000000000000000000000000000008000000000000000400000000000000060000000100
         arrayParamSizes: 01000000010000000100000003000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -5104,7 +5104,7 @@ MonoBehaviour:
         - GovNor
         - 
         - Move to the indicated location and shoot at the second enemy unit
-        byteData: 0000000000000800000001000000000004000000000000000700000001000000000000000000
+        byteData: 0000000000001100000001000000000006000000000000000500000001000000000000000000
         arrayParamSizes: 010000000200000000000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -5410,7 +5410,7 @@ MonoBehaviour:
         - Ava
         - 
         - Move to the indicated location and hold (RMB) to stay in cover
-        byteData: 0000000002000000000000000600000000000000000000000000000004000000010000000000000000000000000000000000000000000100
+        byteData: 0000000003000000000000000800000000000000030000000000000005000000010000000000000000000000000000000000000000000100
         arrayParamSizes: 040000000000000001000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -6005,7 +6005,7 @@ MonoBehaviour:
         - 
         - Your weapons are disable. Try to survive from enmy fire by hiding in cover.
           ( Hold [RMP] to hind behind cover )
-        byteData: 00000000000200000000000000040000000000000001000000000000000400000000000000000000000100000000000000000000
+        byteData: 00000000000200000000000000060000000000000001000000000000000500000000000000000000000100000000000000000000
         arrayParamSizes: 05000000000000000000000000000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -6645,7 +6645,7 @@ MonoBehaviour:
         - 
         - 
         - 
-        byteData: 000000000400000001000000000000
+        byteData: 000000000700000001000000000000
         arrayParamSizes: 010000000100000001000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -7223,7 +7223,7 @@ MonoBehaviour:
         - 
         - Clear enemy units using grenade ( Press G )
         - 
-        byteData: 000000000100000000000000060000000000000000000000000000000600000000000000000000000000000000000600000000000000040000000000000002000000000000000500000000000000000000000000
+        byteData: 000000000100000000000000060000000000000003000000000000000700000000000000000000000000000000000300000000000000070000000000000002000000000000000600000000000000000000000000
         arrayParamSizes: 0400000004000000000000000000000000000000
         arrayParamTypes:
         - DialogManager+DialogStatment
@@ -7452,11 +7452,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f5ca9c11b38327b4d86266659fe7be33, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -19629,6 +19629,133 @@ Transform:
   m_Father: {fileID: 448461255}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1159609544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159609546}
+  - component: {fileID: 1159609545}
+  m_Layer: 0
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1159609545
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159609544}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1159609546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159609544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -35.093002, y: -4.4257765, z: -63.224453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1161381365
 GameObject:
   m_ObjectHideFlags: 0
@@ -25118,6 +25245,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -8.491211
       objectReference: {fileID: 0}
+    - target: {fileID: 3209784683429458905, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: SoundList.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209784683429458905, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: SoundList.Array.data[17].soundName
+      value: Hdestory
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209784683429458905, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: SoundList.Array.data[17].sound.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3209784683429458905, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: SoundList.Array.data[17].sound.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 60979dd4d98d68a4a913d9c45d31ce1c, type: 3}
+    - target: {fileID: 3209784683429458905, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: SoundList.Array.data[17].sound.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 60fc93e44b65689449fa3665c112e5ae, type: 3}
+    - target: {fileID: 3209784683429458905, guid: c2bbcbdf8110fed41b7f9e37812fd796,
+        type: 3}
+      propertyPath: SoundList.Array.data[17].sound.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 60918a14a93a1f04e8c0933ce7684179, type: 3}
     - target: {fileID: 3209784683816412337, guid: c2bbcbdf8110fed41b7f9e37812fd796,
         type: 3}
       propertyPath: m_LocalPosition.z
