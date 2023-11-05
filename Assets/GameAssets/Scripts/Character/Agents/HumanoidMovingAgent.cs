@@ -290,7 +290,7 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
             
             m_characterState = CharacterMainStates.Aimed;
             m_equipmentModule.getCurrentWeapon().setAimed(true);
-        }
+            }
     }
 
     // Stop Aiming current Weapon.
@@ -773,6 +773,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void ReloadEnd()
     {
         m_equipmentModule.ReloadEnd();
+        var sound_clip = SoundManager.getInstance().getSound("WeaponEquip");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }
 
         if(m_onReloadEndCallback != null)
         {
@@ -784,6 +789,12 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
     public void EquipAnimationEvent()
     {
         m_equipmentModule.EquipAnimationEvent();
+
+        var sound_clip = SoundManager.getInstance().getSound("WeaponEquip");
+        if(sound_clip)
+        {
+            m_audioSource.PlayOneShot(sound_clip);
+        }
 
         if(m_onWeaponEquipCallback != null)
         {

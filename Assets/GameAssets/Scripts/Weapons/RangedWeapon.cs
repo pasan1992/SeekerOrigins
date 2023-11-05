@@ -372,6 +372,11 @@ public abstract class RangedWeapon : Weapon
         obj.SetActive(true);
         obj.transform.rotation = Quaternion.Euler(Random.insideUnitSphere*90);
         */
+        var sound_clip = SoundManager.getInstance().getSound("Reload");
+        if(sound_clip)
+        {
+            m_audioScource.PlayOneShot(sound_clip);
+        }
         nonFunctionalProperties.magazineObjProp.SetActive(false);
     }
 
