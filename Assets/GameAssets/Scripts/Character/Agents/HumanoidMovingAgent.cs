@@ -107,6 +107,11 @@ public class HumanoidMovingAgent : MonoBehaviour, ICyberAgent
         m_renderer = this.GetComponentInChildren<Renderer>();
         m_audioSource = this.GetComponent<AudioSource>();
         
+        if(AgentData.m_agentFaction != AgentData.AgentFaction.Player)
+        {
+            m_audioSource.volume = 0.3f;
+        }
+        
     }
     #endregion
 
