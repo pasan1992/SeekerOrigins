@@ -44936,6 +44936,12 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000888519, y: 0.08900423, z: -0.0069657164}
     m_Extent: {x: 0.10254504, y: 0.09990603, z: 0.03104018}
   m_DirtyAABB: 0
+--- !u!1 &1224650003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3964176259534381221, guid: bbb85bc2e43674b49a8bb486234dc2b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6604667878620552431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1226823752
 GameObject:
   m_ObjectHideFlags: 0
@@ -68621,7 +68627,7 @@ PrefabInstance:
     - target: {fileID: 3964176259534381221, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5830184181480423188, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
@@ -68738,6 +68744,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8454227861061450317, guid: bbb85bc2e43674b49a8bb486234dc2b5,
+        type: 3}
+      propertyPath: _sceneLoader
+      value: 
+      objectReference: {fileID: 1224650003}
     - target: {fileID: 8454227861061450317, guid: bbb85bc2e43674b49a8bb486234dc2b5,
         type: 3}
       propertyPath: _videoPlayer

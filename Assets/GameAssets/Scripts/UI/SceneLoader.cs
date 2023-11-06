@@ -11,6 +11,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] Slider _slider;
     [SerializeField] Text _percentageTxt;
     [SerializeField] GameObject _videoPlayer;
+    [SerializeField] GameObject _sceneLoader;
     [SerializeField] GameObject _bGMusic;
 
     void Start()
@@ -27,6 +28,7 @@ public class SceneLoader : MonoBehaviour
     void CloseSplash()
     {
         _videoPlayer.SetActive(false);
+        _sceneLoader.SetActive(true);
         _bGMusic.SetActive(true);
         Invoke("InitiateCall", 5);
     }
