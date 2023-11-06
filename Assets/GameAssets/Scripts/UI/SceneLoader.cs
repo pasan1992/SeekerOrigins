@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] GameObject _loadingScreen;
     [SerializeField] Slider _slider;
     [SerializeField] Text _percentageTxt;
+    [SerializeField] GameObject _videoPlayer;
+    [SerializeField] GameObject _bGMusic;
 
     void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0) 
         {
-            Invoke("InitiateCall", 7);
+            Invoke("CloseSplash", 10);
         }
         else
         {
             Invoke("SceneLoad", 3); //LOAD
         }
+    }
+    void CloseSplash()
+    {
+        _videoPlayer.SetActive(false);
+        _bGMusic.SetActive(true);
+        Invoke("InitiateCall", 5);
     }
 
     void InitiateCall()
