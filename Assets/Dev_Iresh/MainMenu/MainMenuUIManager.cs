@@ -19,11 +19,15 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Start()
     {
-        var _previousScence = SaveData.GetLatestSceneID();
-
-        if (_previousScence >= 0)
+        //var _previousScence = SaveData.GetLatestSceneID();
+        var latest_scene = PlayerPrefs.GetInt("LatestLevel",-1);
+        if (latest_scene >= 0)
         {
             _continueBtn.SetActive(true);
+        }
+        else
+        {
+            _continueBtn.SetActive(false);
         }
     }
 
@@ -41,14 +45,19 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        SceneLoad(_previousScence);
+        var latest_scene = PlayerPrefs.GetInt("LatestLevel",-1);
+        if (latest_scene >= 0)
+        {
+            SceneLoad(latest_scene);
+        }
+        
     }
 
     public void PlayGame()
     {
         if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 0)
         {
-            SceneLoad(4);
+            SceneLoad(8);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {

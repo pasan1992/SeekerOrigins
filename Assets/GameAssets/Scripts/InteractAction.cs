@@ -16,11 +16,16 @@ public class InteractionAction : FsmStateAction
 
     public override void OnEnter()
     {
-        m_interactable.properties.PlayerRestricted = false;
-        m_interactable.properties.ObjectiveInteratable = true;
-        m_interactable.properties.interactionEnabled = true;
-        m_interactable.OnInteractionStartCallback = OnInteractionStart;
-        m_interactable.OnInteractionStopCallback = OnInteractionEnd;
+        if(m_interactable !=null)
+        {
+            m_interactable.properties.PlayerRestricted = false;
+            m_interactable.properties.ObjectiveInteratable = true;
+            m_interactable.properties.interactionEnabled = true;
+            m_interactable.OnInteractionStartCallback = OnInteractionStart;
+            m_interactable.OnInteractionStopCallback = OnInteractionEnd;
+        }
+
+
         finished = false;
     }
 
