@@ -24,7 +24,7 @@ public class SaveGameAction : FsmStateAction
                 //svm.StartLevel();
             break;
             case Action.REST:
-                //svm.ResetLevel();
+                svm.ResetLevel(checkpointID);
             break;
         }
 

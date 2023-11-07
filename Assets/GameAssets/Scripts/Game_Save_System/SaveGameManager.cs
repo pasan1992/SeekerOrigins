@@ -134,6 +134,11 @@ public class SaveGameManager : MonoBehaviour
         SaveData.RemoveSaveData(lvl_index);
     }
 
+    public void ResetLevel(int lvlid)
+    {
+        SaveData.RemoveSaveData(lvlid);
+    }
+
     private void LoadGame(SaveData.LevelData lvlData)
     {
         m_playerController.getICyberAgent().SetAgentData(lvlData.playerData.agentData);
