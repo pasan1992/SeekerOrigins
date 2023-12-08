@@ -58438,16 +58438,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundList:
   - sound:
-    - {fileID: 8300000, guid: 754c5878e1fdbbd49b14f7b9b8bab45a, type: 3}
+    - {fileID: 8300000, guid: 2cfd731b2f4919c4286e1aaddc8911c6, type: 3}
+    - {fileID: 8300000, guid: 66ca7caf9c918e74eafca28abcf8d33c, type: 3}
+    - {fileID: 8300000, guid: 2e42a60383afee143bce5007893f7719, type: 3}
     soundName: Explode
   - sound:
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
     - {fileID: 8300000, guid: 9ca13ca363cfb654c8b7ed4bbdef482d, type: 3}
     soundName: DroneFire
   - sound:
-    - {fileID: 8300000, guid: 04fca4419730df14394082c2388d8146, type: 3}
-    - {fileID: 8300000, guid: 108671952e7bb984d8770ed412f7f7b2, type: 3}
-    - {fileID: 8300000, guid: f00e67f221f06264595b276790c7fa31, type: 3}
+    - {fileID: 8300000, guid: 230d59294c9857140b63dd308ea4bd63, type: 3}
+    - {fileID: 8300000, guid: 31f5f9d19376b964da72874480ad63ea, type: 3}
+    - {fileID: 8300000, guid: 74079e3b043b8a549a28e1350566b7e0, type: 3}
     soundName: Regular_PistolAmmo
   - sound:
     - {fileID: 8300000, guid: 56973468e16ca264791364c2928cb653, type: 3}
@@ -58455,15 +58457,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 9f8efeb3fe0812046a1740255ae6aafe, type: 3}
     soundName: Energy_PistolAmmo
   - sound:
-    - {fileID: 8300000, guid: 6650fb561ccda9446960d41d5ece60a0, type: 3}
-    - {fileID: 8300000, guid: 922b414801006ac4c8547f7271fea839, type: 3}
+    - {fileID: 8300000, guid: 8581f806dddef8046b4942de05b897be, type: 3}
+    - {fileID: 8300000, guid: 30114844b380b88418785402b1e582c0, type: 3}
     soundName: Regular_RifleAmmo
   - sound:
-    - {fileID: 8300000, guid: 1285c5b5c63b7274a8047f4d29ea4595, type: 3}
-    - {fileID: 8300000, guid: 74fbb03c91ea5bc47a08f48800ff8253, type: 3}
+    - {fileID: 8300000, guid: 8581f806dddef8046b4942de05b897be, type: 3}
+    - {fileID: 8300000, guid: 30114844b380b88418785402b1e582c0, type: 3}
     soundName: Energy_RifleAmmo
   - sound:
     - {fileID: 8300000, guid: 7e089bf6b4ef0804bb037948fabb6a63, type: 3}
+    - {fileID: 8300000, guid: 2cfd731b2f4919c4286e1aaddc8911c6, type: 3}
     soundName: GranadeExplode
   - sound:
     - {fileID: 8300000, guid: b9ef8bc82e4577c4fa64a30171f3b797, type: 3}
@@ -58472,16 +58475,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 513a4a5f91196144bb0a7dfdcf46bfc7, type: 3}
     soundName: BulletHitBody
   - sound:
-    - {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-    - {fileID: 8300000, guid: a7bfb1cb6f269014b9ce9c6c0a105f9b, type: 3}
+    - {fileID: 8300000, guid: 66ca7caf9c918e74eafca28abcf8d33c, type: 3}
+    - {fileID: 8300000, guid: 2e42a60383afee143bce5007893f7719, type: 3}
     soundName: DroidExplosion
   - sound:
-    - {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-    - {fileID: 8300000, guid: a7bfb1cb6f269014b9ce9c6c0a105f9b, type: 3}
+    - {fileID: 8300000, guid: 2cfd731b2f4919c4286e1aaddc8911c6, type: 3}
+    - {fileID: 8300000, guid: 66ca7caf9c918e74eafca28abcf8d33c, type: 3}
     soundName: GrenadeExplosion
   - sound:
-    - {fileID: 8300000, guid: bdcc21e1cf70dfa4d9167134bef7cf22, type: 3}
-    - {fileID: 8300000, guid: a7bfb1cb6f269014b9ce9c6c0a105f9b, type: 3}
+    - {fileID: 8300000, guid: 2cfd731b2f4919c4286e1aaddc8911c6, type: 3}
+    - {fileID: 8300000, guid: 66ca7caf9c918e74eafca28abcf8d33c, type: 3}
     soundName: DroneExplosion
   - sound:
     - {fileID: 8300000, guid: 3f0810adaaaef1048bdd3ff762e962c5, type: 3}
@@ -58491,7 +58494,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: eb1c64b25d148824e9686d4afa025632, type: 3}
     soundName: EmptyGun
   - sound:
-    - {fileID: 8300000, guid: e8d5d367ccff0014cbc3306363caa441, type: 3}
+    - {fileID: 8300000, guid: 66ca7caf9c918e74eafca28abcf8d33c, type: 3}
     soundName: Electric
   - sound:
     - {fileID: 8300000, guid: 81731b8790a648d4a86a71aa89e26b6e, type: 3}
@@ -58501,6 +58504,18 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 37a8b2ab89a81da438dae8d779a146e6, type: 3}
     - {fileID: 8300000, guid: 37a8b2ab89a81da438dae8d779a146e6, type: 3}
     soundName: FootStep
+  - sound:
+    - {fileID: 8300000, guid: 60979dd4d98d68a4a913d9c45d31ce1c, type: 3}
+    - {fileID: 8300000, guid: 60fc93e44b65689449fa3665c112e5ae, type: 3}
+    - {fileID: 8300000, guid: 0d51b3421ea7a72439d3c7d585cfc0fb, type: 3}
+    - {fileID: 8300000, guid: 60918a14a93a1f04e8c0933ce7684179, type: 3}
+    soundName: Hdestory
+  - sound:
+    - {fileID: 8300000, guid: ae19b96c3d9c0db4491c896456f025de, type: 3}
+    soundName: WeaponEquip
+  - sound:
+    - {fileID: 8300000, guid: 7da51043c8106764999bc28ff570a5fb, type: 3}
+    soundName: Reload
 --- !u!114 &3209784683429458911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113172,7 +113187,7 @@ PrefabInstance:
     - target: {fileID: 4254437813840188907, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5517284087066537450, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
@@ -113197,7 +113212,7 @@ PrefabInstance:
     - target: {fileID: 7179171067511350127, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8589686969487235882, guid: d19a08c9c6de3cc45b0902baf5f5acbf,
         type: 3}
