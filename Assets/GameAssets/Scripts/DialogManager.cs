@@ -122,7 +122,7 @@ public class DialogManager : MonoBehaviour
                 rp_path = "Images/Govnor_normal";
                 break;
                 case Characters.Govnor_angry:
-                rp_path = "Images/Gavnor_angry";
+                rp_path = "Images/Govnor_angry";
                 break;
                 case Characters.Unknown:
                 rp_path = "Images/Unknown";
