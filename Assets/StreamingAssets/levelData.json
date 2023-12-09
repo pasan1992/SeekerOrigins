@@ -20,6 +20,13 @@
       "LevelDescription": "See if you can be friends with a Space lizard monster.",
       "levelImagePath": "path",
       "levelIsPlayed": "false"
+    },
+    {
+      "levelMainText": "Episode 04",
+      "levelSubText": "Endless War:",
+      "LevelDescription": "See if you can be friends with a Space lizard monster.",
+      "levelImagePath": "path",
+      "levelIsPlayed": "false"
     }
   ]
 }
