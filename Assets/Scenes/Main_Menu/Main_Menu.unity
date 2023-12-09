@@ -77103,9 +77103,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "This build is solely for the purpose of the [Event name].\nUnauthorized
-    use, distribution, or reproduction of this build may violate applicable laws
-    and could result in legal consequences.\nThank you for your\_cooperation."
+  m_text: "This build is solely for the purpose of the Play Expo.\nUnauthorized use,
+    distribution, or reproduction of this build may violate applicable laws and could
+    result in legal consequences.\nThank you for your\_cooperation."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f64120cc15485a45b388319a6fcba22, type: 2}
   m_sharedMaterial: {fileID: 2895282618440061290, guid: 9f64120cc15485a45b388319a6fcba22,
@@ -77169,7 +77169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -112.718994, w: 0}
+  m_margin: {x: 0, y: 0, z: -297.47693, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

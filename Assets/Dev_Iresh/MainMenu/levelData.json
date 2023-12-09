@@ -2,6 +2,7 @@
   "levels": [
     {"levelMainText":"Level 01", "levelSubText": "Origins", "LevelDescription":"Level 01 description", "levelImagePath": "path"},
     {"levelMainText":"Level 02", "levelSubText": "Starlink", "LevelDescription":"Level 02 description", "levelImagePath": "path"},
-    {"levelMainText":"Level 03", "levelSubText": "GalaxyWar", "LevelDescription":"Level 03 description", "levelImagePath": "path"}
+	{"levelMainText":"Level 03", "levelSubText": "GalaxyWar", "LevelDescription":"Level 03 description", "levelImagePath": "path"},
+    {"levelMainText":"Level 04", "levelSubText": "EndlessWar", "LevelDescription":"Level 04 description", "levelImagePath": "path"}
   ]
 }

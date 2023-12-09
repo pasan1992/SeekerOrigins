@@ -57,7 +57,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 0)
         {
-            SceneLoad(8);
+            SceneLoad(9);
         }
         else if (transform.GetComponent<UILevelsHandler>()._currantLevelID == 1)
         {
