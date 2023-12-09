@@ -20,6 +20,8 @@ public class SpawnEnemyAction : FsmStateAction
 
     private List<AgentController> m_agents = new List<AgentController>();
 
+    public bool random_spawn = false;
+
     public override void OnEnter()
     {
      
@@ -68,7 +70,18 @@ public class SpawnEnemyAction : FsmStateAction
                     {
                         var distance = Vector3.Distance(distance_target.transform.position,agent.spawnPoint.transform.position);
                         var alt_distance = Vector3.Distance(distance_target.transform.position,agent.alternateSpawnPoint.transform.position);
-                        if(alt_distance > distance)
+                        if (random_spawn)
+                        {
+                            if (i % 2 != 0)
+                            {
+                                sp = agent.spawnPoint;
+                            }
+                            else
+                            {
+                                sp = agent.alternateSpawnPoint;
+                            }
+                        }
+                        else if(alt_distance > distance)
                         {
                             sp = agent.alternateSpawnPoint;
                         }
