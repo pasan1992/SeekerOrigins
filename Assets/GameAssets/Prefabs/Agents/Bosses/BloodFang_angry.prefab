@@ -1479,7 +1479,7 @@ MonoBehaviour:
     - AmmoType: Regular_PistolAmmo
       AmmoCount: 9999
     - AmmoType: DroneBusters_Missile
-      AmmoCount: 55
+      AmmoCount: 10
     - AmmoType: Regular_Grenade
       AmmoCount: 55
     SelectedPrimaryAmmoType: 1
