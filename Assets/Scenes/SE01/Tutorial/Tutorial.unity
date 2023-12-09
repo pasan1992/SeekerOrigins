@@ -3346,7 +3346,7 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 1597.3359
+        x: 1605.1484
         y: 256.82812
         width: 137
         height: 32
@@ -3810,7 +3810,7 @@ MonoBehaviour:
         - {fileID: 0}
         - {fileID: 8300000, guid: 7bb1ded1d800e584c85edad09621bf71, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: e045b610f548c1141bf3c35ee4bfcaf9, type: 3}
+        - {fileID: 8300000, guid: c91c01f6f8558f14495e586c0aed3e1e, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 2908c1c28d9c75b458ba65c0eb74fc9b, type: 3}
         - {fileID: 0}
@@ -3942,7 +3942,7 @@ MonoBehaviour:
         - GovNor
         - Pick up the rifle so we can start the training.
         - GovNor
-        - What do I get from this ?
+        - What is this for? What do I  get out of this simulation ?
         - Axel
         - You don't get anything, I get to see if you are suitable for my errands.
           Otherwise you will end up like the friend here.
@@ -4073,13 +4073,13 @@ MonoBehaviour:
         actionStartIndex: 00000000050000000a0000000b000000
         actionHashCodes: b2cf1000b2cf100078c53001a1ce6404
         unityObjectParams:
-        - {fileID: 8300000, guid: 17a9ffa680db3e24b8a249322c4e203a, type: 3}
+        - {fileID: 8300000, guid: 1ae8c64bd0eab2a4dba62546e94c9c4a, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: ec046838063a8fe47a0b8df5ca3ca24f, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 0a386c72e1f361643b286c36e4e12336, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: 63a3322c5b0325641a410087198f13da, type: 3}
+        - {fileID: 8300000, guid: ea6d558ba87efc14f8a9d28d0f8efe66, type: 3}
         - {fileID: 0}
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -4144,15 +4144,15 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - Equip the weapon by pressing (2)
-        - I don't like this. This is a terrible deal. I don't think my memories worth
-          all this trouble
+        - Hey AI! Incase you didn't notice my sarcasm earlier, This is not a great
+          deal for me. How do i know my memories are worth all this trouble.
         - Axel
         - Like I said before you don't have any option. Equip the weapon and fire
           at the target.
         - GovNor
         - Or you will be a target for the next person come here.
         - GovNor
-        - Ok, ok, geeze, I'll do it.
+        - Err..OK!
         - Axel
         - 
         byteData: 0000000000000000000000000000000007000000000000000800000000000000000000000100
@@ -4361,20 +4361,22 @@ MonoBehaviour:
         - 
         actionEnabled: 0101010101
         actionIsOpen: 0101010101
-        actionStartIndex: 0000000003000000040000000900000037000000
+        actionStartIndex: 000000000300000004000000090000003e000000
         actionHashCodes: 48c0110178c53001b2cf1000a1ce640478c53001
         unityObjectParams:
-        - {fileID: 8300000, guid: 7ac06952b456bba4daa35133ccd8772d, type: 3}
+        - {fileID: 8300000, guid: 693845f5bce47e849afd4f3b51d8c3bb, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 78202aa2d89ff2e459f8e18af10ee76e, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 9887c3ccba5e82e4b9b8457475ae7f90, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: 1759509e3bb9d3c44808bf4de4bd8c1c, type: 3}
+        - {fileID: 8300000, guid: 9dae78aee54c92948affb0c0a1760f81, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: 8967a085d03ccfa4d9fac50cc97e9dee, type: 3}
+        - {fileID: 8300000, guid: d6e1e775d7b9d3842842808f601b4ac0, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 36bcd898d523ea24a9f46fd755d42ca3, type: 3}
+        - {fileID: 0}
+        - {fileID: 8300000, guid: 5f952b2ab2a95904db65d66d25192676, type: 3}
         - {fileID: 0}
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -4426,27 +4428,29 @@ MonoBehaviour:
         stringParams:
         - 
         - Nice shooting! Now lets try some active targets.
-        - Bamb! Bam! Bam! All Done!
+        - Bamb! Bamb! Bamb! That is how you do it.
         - Axel
-        - You are 0.21% over the average. Nothing to celibrate about
+        - You are 0.21% over the average. Nothing to celibrate about.
         - GovNor
         - Next task, Shoot the scavengers I captured. They want to take Nexus apart.
-          You take them apart
+          You take them apart.
         - GovNor
-        - I don't like this. I don't like this at all!
+        - Wait a second!
         - Alex
-        - So all your errands are about killing people ?
+        - When you said errands, Did you mean MURDER ??
         - Axel
-        - That is the most simplest solution for most of my problems
+        - That is the most simplest solution for most of my problems.
         - GovNor
+        - Oh boy! I don not like this at all!
+        - 
         - 
         - 'Fire at both enemy units. Move curser to the targets and press (LMB) to
           fire. '
-        byteData: 0000000000000003000000000000000500000000000000050000000000000000000000000000000100000000000000050000000100
-        arrayParamSizes: 06000000
+        byteData: 000000000000000300000000000000050000000000000005000000000000000000000000000000000000000000000005000000cdcc4c3e000000000100
+        arrayParamSizes: 07000000
         arrayParamTypes:
         - DialogManager+DialogStatment
-        customTypeSizes: 060000000600000006000000060000000600000006000000
+        customTypeSizes: 06000000060000000600000006000000060000000600000006000000
         customTypeNames:
         - DialogManager+DialogStatment
         - DialogManager+DialogStatment
@@ -4454,7 +4458,8 @@ MonoBehaviour:
         - DialogManager+DialogStatment
         - DialogManager+DialogStatment
         - DialogManager+DialogStatment
-        paramDataType: 0f00000017000000010000000300000014000000110000001100000001000000010000000c00000028000000030000000500000003000000020000000700000005000000280000000300000005000000030000000200000007000000050000002800000003000000050000000300000002000000070000000500000028000000030000000500000003000000020000000700000005000000280000000300000005000000030000000200000007000000050000002800000003000000050000000300000002000000070000000500000017000000010000000100000003000000
+        - DialogManager+DialogStatment
+        paramDataType: 0f00000017000000010000000300000014000000110000001100000001000000010000000c0000002800000003000000050000000300000002000000070000000500000028000000030000000500000003000000020000000700000005000000280000000300000005000000030000000200000007000000050000002800000003000000050000000300000002000000070000000500000028000000030000000500000003000000020000000700000005000000280000000300000005000000030000000200000007000000050000002800000003000000050000000300000002000000070000000500000017000000010000000100000003000000
         paramName:
         - time
         - finishEvent
@@ -4508,12 +4513,19 @@ MonoBehaviour:
         - time
         - character
         - characterTransfrom
+        - 
+        - text
+        - audio
+        - charName
+        - time
+        - character
+        - characterTransfrom
         - finishEvent
         - WaitTillDialog
         - cannotSkip
         - ObjectiveMessage
-        paramDataPos: 0000000000000000000000000100000000000000000000000100000001000000020000000000000000000000020000000000000003000000030000000700000001000000010000000400000002000000050000000b0000000f0000000300000002000000060000000400000007000000130000001700000005000000030000000800000006000000090000001b0000001f00000007000000040000000a000000080000000b000000230000002700000009000000050000000c0000000a0000000d0000002b0000002f0000000b0000000e00000033000000340000000f000000
-        paramByteDataSize: 0000000000000000010000000000000000000000000000000000000001000000010000000000000000000000000000000000000000000000040000000400000000000000000000000000000000000000000000000400000004000000000000000000000000000000000000000000000004000000040000000000000000000000000000000000000000000000040000000400000000000000000000000000000000000000000000000400000004000000000000000000000000000000000000000000000004000000040000000000000000000000010000000100000000000000
+        paramDataPos: 0000000000000000000000000100000000000000000000000100000001000000020000000000000000000000020000000000000003000000030000000700000001000000010000000400000002000000050000000b0000000f0000000300000002000000060000000400000007000000130000001700000005000000030000000800000006000000090000001b0000001f00000007000000040000000a000000080000000b000000230000002700000009000000050000000c0000000a0000000d0000002b0000002f0000000b000000060000000e0000000c0000000f00000033000000370000000d000000100000003b0000003c00000011000000
+        paramByteDataSize: 000000000000000001000000000000000000000000000000000000000100000001000000000000000000000000000000000000000000000004000000040000000000000000000000000000000000000000000000040000000400000000000000000000000000000000000000000000000400000004000000000000000000000000000000000000000000000004000000040000000000000000000000000000000000000000000000040000000400000000000000000000000000000000000000000000000400000004000000000000000000000000000000000000000000000004000000040000000000000000000000010000000100000000000000
     - name: 'OBJ3: Cover shooting'
       description: 
       colorIndex: 0
@@ -5092,7 +5104,7 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
-        - oh fuck. You shot him, you shot Derek. Oh god oh fuck. I'm not coming out
+        - Oh fuck. You shot him, you shot Derek. Oh god oh fuck. I'm not coming out
           of here. You better stay there too! I'm warning you man.
         - Ava
         - 
@@ -5226,11 +5238,11 @@ MonoBehaviour:
         actionStartIndex: 000000000100000021000000260000002b00000030000000350000003a000000400000004b000000
         actionHashCodes: 78c53001a1ce6404b2cf1000b2cf1000b2cf1000b2cf1000b2cf1000ca51e900a1ce640478c53001
         unityObjectParams:
-        - {fileID: 8300000, guid: 233e79a4b707d134f945b4c3e5f0524f, type: 3}
+        - {fileID: 8300000, guid: 2b6ae22021a74bc45b222e2a9ebac370, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 184a276f86ace4c4b91fef10a9dfad26, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: d5450b8157550644b9430ad6ed597041, type: 3}
+        - {fileID: 8300000, guid: cdefc489b8254d24aa6e080de603d93f, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 78bbfc6d4e41cf44db146f63b7545dea, type: 3}
         - {fileID: 0}
@@ -5396,11 +5408,11 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - Nice! Now your chance to take cover
-        - That is acually, helpful.
+        - Oh, Wow you are actually helpful that time!
         - Axel
-        - More shooting,, less talking
+        - More shooting. Less talking.
         - GovNor
-        - Why don't these people shoot back ?
+        - Hey! Why arn't these people shooting back at me ?
         - Axel
         - Interesting question, go to the next location. There is a red obsticle.
           Take cover there. They will fire back this time.
@@ -5551,11 +5563,11 @@ MonoBehaviour:
         actionStartIndex: 0000000002000000040000002b00000030000000360000003c0000004200000044000000
         actionHashCodes: e8ea39025ac85204a1ce6404b2cf1000ca51e900ca51e900ca51e9005ac8520478c53001
         unityObjectParams:
-        - {fileID: 8300000, guid: cd28e48b325a2ee44888040410aae7b1, type: 3}
+        - {fileID: 8300000, guid: 51fe553da7b608a4bba0ebe316a99282, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: e0af393bd147d9e4c87ce2a1ed7485d0, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: f781fe6e2d8940640a9603696ab2d8eb, type: 3}
+        - {fileID: 8300000, guid: c8e9e9de97bc47f439937ad6b70238d6, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 9b71a264f3f74254b88563dc81d6b1e9, type: 3}
         - {fileID: 0}
@@ -5992,11 +6004,11 @@ MonoBehaviour:
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
-        - I am in cover
+        - Ok! I am in cover.
         - Alex
-        - I have disabled your weapon
+        - I have disabled your weapon.
         - Govnor
-        - Hell, Why did you do that for ?
+        - WHAT! WHY ?
         - Alex
         - Learn to defend, aleast 5 seconds.
         - Govnor
@@ -6404,7 +6416,7 @@ MonoBehaviour:
         - GovNor
         - 
         - 'Return fire at the enemy units. Destroy all enemy units. '
-        - Okay this is underwhelming. Weapon reactivated. Finish them.
+        - Okay this is underwhelming. Weapon reactivated. Finish them!
         - Ava
         - 
         - 
@@ -6742,20 +6754,20 @@ MonoBehaviour:
         actionStartIndex: 000000000100000021000000260000002a0000002b0000002d0000002f0000004f000000540000005a000000600000006600000067000000
         actionHashCodes: 78c53001a1ce6404b2cf10005e48d10378c530015ac852045ac85204a1ce6404b2cf1000ca51e900ca51e900ca51e90078c530016f0d6e01
         unityObjectParams:
-        - {fileID: 8300000, guid: 85c093851192c32499a4c130aeba7c8f, type: 3}
+        - {fileID: 8300000, guid: 7c3b0e1d4c35a2f4bbdefce899d01550, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 18458eb68c00fa344bbc32528d04663a, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: d70aa3beb53fe6b4f88bf854eafe9af2, type: 3}
+        - {fileID: 8300000, guid: 6967fa39f6e92ea46aa0b33a06208ada, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: e47324487d8e23a4e94978e8462c1fa6, type: 3}
         - {fileID: 0}
         - {fileID: 651367732}
-        - {fileID: 8300000, guid: 5c1920c72ce88674284e50254d888a8a, type: 3}
+        - {fileID: 8300000, guid: 7cbc8de4ac6a074449a4905acaedfcf8, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: 258fc380ff8c6cb4c9e602634940a3e4, type: 3}
         - {fileID: 0}
-        - {fileID: 8300000, guid: 8cb998ac981d9e242bfdfaa5446d8f44, type: 3}
+        - {fileID: 8300000, guid: d8b2a698e531529439c8d32338b19087, type: 3}
         - {fileID: 0}
         - {fileID: 8300000, guid: be4827d160b599b4d9218ff61792f728, type: 3}
         - {fileID: 0}
@@ -7198,25 +7210,26 @@ MonoBehaviour:
         fsmQuaternionParams: []
         stringParams:
         - Pick up the grenade from the ammo box ( Press E near the box)
-        - How many of these guys are here?
+        - How many scavengers are there ?
         - Axel
         - I have plenty of scavengers, I want to keep some to train the next guy
           once you get your head blown up.
         - GovNor
-        - Smart! , So, What is next ?
+        - Oh, that is real Sweet!
         - Axel
-        - The box next to you have grenades. Pick them up. Lets see some fireworks
+        - The box next to you have grenades. Pick them up. Lets see some fireworks.
         - Govnor
         - 
         - 
         - 
         - 'Press "G" to throw grenade at enemy. '
-        - Oh, nice. Can I keep few. Who knows if I need these after I get my memories
-          back
+        - Oh, nice grenades! Hey Can I keep a few I might need these. After I get
+          my memories  back of course!
         - Axel
-        - Your weapon is disabled again
+        - Your weapon is disabled again!
         - Govnor
-        - Oh, Come on man. Please reactivate the gun.
+        - Again! Oh man fine, I keep my mouth shut, Just activate the gun, Come on
+          man!
         - Axel
         - You the grenades you just picked up. Blow them to pices.
         - Govnor
@@ -9669,7 +9682,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh70768
+  m_Name: pb_Mesh274334
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
