@@ -61496,7 +61496,7 @@ MonoBehaviour:
   _alphaValueSpeed: 0
   _speed: -1
   _camSpeed: 0
-  _cam: {fileID: 0}
+  _cam: {fileID: 1831790817}
   _canvasGroup: {fileID: 0}
 --- !u!1 &2005642280
 GameObject:

@@ -67,13 +67,12 @@ public class InGameMenuManager : MonoBehaviour
                 return;
         }
 
-        else if (_btnNo == 2 || _btnNo == 3)
-        {
-            print("Application.Quit");
+        //else if (_btnNo == 2 || _btnNo == 3)
+        //{
+        //    print("Application.Quit");
 
-            Application.Quit();
-        }
-        
+        //    Application.Quit();
+        //}
         if (index == -3)
         {
             if (_btnNo == -2) // to Reset
