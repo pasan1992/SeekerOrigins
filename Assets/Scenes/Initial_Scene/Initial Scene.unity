@@ -14244,7 +14244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -61246,7 +61246,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -1108.3208, y: -623.4304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &1930145588
 VideoPlayer:
@@ -61256,7 +61256,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930145586}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1aa4b10e34c5d7341b544c6b5c871578, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 82bcaba921bdff74cac8171b968a5c67, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
