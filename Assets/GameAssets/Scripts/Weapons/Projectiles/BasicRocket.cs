@@ -61,7 +61,7 @@ public class BasicRocket : MonoBehaviour
         Vector3 relativePosition = m_targetLocation - this.transform.position;
 
         var sound_clip = SoundManager.getInstance().getSound("Rocket");
-        if(sound_clip)
+        if(sound_clip && m_audioSource)
         {
             m_audioSource.PlayOneShot(sound_clip);
         }
