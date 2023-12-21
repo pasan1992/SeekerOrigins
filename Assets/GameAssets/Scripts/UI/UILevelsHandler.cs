@@ -19,6 +19,9 @@ public class UILevelsHandler : MonoBehaviour
     [SerializeField] Text _descriptionMain;
     [SerializeField] GameObject _nextBtnMain;
     [SerializeField] GameObject _prevBtnMain;
+    [SerializeField] GameObject _goBtn;
+    [SerializeField] GameObject _lockedBtn;
+    [SerializeField] GameObject _lockedTxt;
 
 
     levelDataList _loadedlevelDataList = new levelDataList();
@@ -28,6 +31,7 @@ public class UILevelsHandler : MonoBehaviour
 
     void Start()
     {
+        //PlayerPrefs.SetInt("LatestLevel", -1);
         //LevelData levelData = new LevelData();
         //levelData.name = "l1";
         //levelData.description = "aaaaa";
@@ -128,6 +132,8 @@ public class UILevelsHandler : MonoBehaviour
         {
             LoadLevelDataToMain(_currantLevelID);
         }
+
+        LockLevel();
     }
 
     public void LoadLevelDataToMain(int level)
@@ -155,6 +161,50 @@ public class UILevelsHandler : MonoBehaviour
         _LevelNoMain.text = _loadedlevelDataList.levelList[level].levelMainText;
         _titleMain.text = _loadedlevelDataList.levelList[level].levelSubText;
         _descriptionMain.text = _loadedlevelDataList.levelList[level].LevelDescription;
+
+        LockLevel();
+    }
+
+    void LockLevel()
+    {
+        var latest_scene = PlayerPrefs.GetInt("LatestLevel", -1);
+
+        print("_currantLevelID = " + _currantLevelID);
+        print("latest_scene = " + latest_scene);
+
+        if (latest_scene == 3 || latest_scene == 4 || latest_scene == 7)
+        {
+            latest_scene = 0;
+        }
+        else if (latest_scene == 5)
+        {
+            latest_scene = 1;
+        }
+        else if (latest_scene == 6)
+        {
+            latest_scene = 2;
+        }
+        else if (latest_scene == 8)
+        {
+            latest_scene = 3;
+        }
+        else
+        {
+            latest_scene = 0;
+        }
+
+        if (_currantLevelID <= latest_scene)
+        {
+            _goBtn.SetActive(true);
+            _lockedBtn.SetActive(false);
+            _lockedTxt.SetActive(false);
+        }
+        else
+        {
+            _goBtn.SetActive(false);
+            _lockedBtn.SetActive(true);
+            _lockedTxt.SetActive(true);
+        }
     }
 
 

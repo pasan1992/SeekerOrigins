@@ -20,7 +20,7 @@ public class PressedBtn : MonoBehaviour , IPointerDownHandler ,IPointerClickHand
     }
  
 
-    public  void OnClick () {
+    public void OnClick () {
 
         if(myIcon!=null)
         myIcon.localScale = Vector3.one ;
