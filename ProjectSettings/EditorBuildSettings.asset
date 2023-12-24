@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SE01/Start.unity
     guid: 08f4dc86c98c181438e88d0de10913fc
+  - enabled: 1
+    path: Assets/Scenes/SE01/End.unity
+    guid: e95447203c8b1d9478042abb39f9cd75
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d1402d80e3406b845af683f00ed26b2a,
       type: 2}
