@@ -9,7 +9,7 @@ public class AmmoPack : Interactable
     
     //public int GrenadeCount = 0;
 
-    public int HealthInjectionCount = 0;
+    //public int HealthInjectionCount = 0;
 
     private Animator m_anim;
     public InGameInidactor ammoIndiactor;

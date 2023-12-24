@@ -324,7 +324,7 @@ public class HumanoidInteractionModule
         //ammo_pck.AmmoPackData = new List<AgentData.AmmoPack>();
 
         //m_agent.SetGrenateCount(ammo_pck.GrenadeCount);
-        m_agent.GetAgentData().HealInjectionCount += ammo_pck.HealthInjectionCount;
+        //m_agent.GetAgentData().HealInjectionCount += ammo_pck.HealthInjectionCount;
         if (onAmmoPickupEvent != null)
         {
             onAmmoPickupEvent(ammo_pck);

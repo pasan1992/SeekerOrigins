@@ -58555,18 +58555,20 @@ MonoBehaviour:
   _pickupMsgTxtParant: {fileID: 6209246207580896675}
   _pickupMsgPanel: {fileID: 2881417797801577934}
   _pickupIcons:
-  - PickupName: HealthInjection
-    PickupImage: {fileID: 21300000, guid: b64eea0c3c0b61341a265018d28a3fb5, type: 3}
-  - PickupName: Grenade
-    PickupImage: {fileID: 21300000, guid: 9a71ff5284d7fbb4283ad503dcc28457, type: 3}
-  - PickupName: PistolAmmo
+  - PickupName: DroneBusters_Missile
+    PickupImage: {fileID: 21300000, guid: 2c9e3593a9c59064aa6b2d4204607ca0, type: 3}
+  - PickupName: Regular_Grenade
+    PickupImage: {fileID: 21300000, guid: 3f20d2c7158394840acfbb00c2837026, type: 3}
+  - PickupName: Regular_PistolAmmo
     PickupImage: {fileID: 21300000, guid: adb548411a44a91498609cf54e88d485, type: 3}
-  - PickupName: RifleAmmo
-    PickupImage: {fileID: 21300000, guid: 1036d8fd580900b49bfb22280fb01e14, type: 3}
-  - PickupName: Missile
-    PickupImage: {fileID: 21300000, guid: dfc95b8040468f04699092cb1a07aad6, type: 3}
+  - PickupName: Energy_PistolAmmo
+    PickupImage: {fileID: 21300000, guid: b2b04424d7edde34c9a3a502098ef67c, type: 3}
+  - PickupName: Regular_RifleAmmo
+    PickupImage: {fileID: 21300000, guid: ec98d8667c22a524eb177b4ef58dea5c, type: 3}
+  - PickupName: Energy_RifleAmmo
+    PickupImage: {fileID: 21300000, guid: 02a9e754020385f4591cd405429f9505, type: 3}
   - PickupName: Default
-    PickupImage: {fileID: 21300000, guid: f2314ea0360577646b1a1f479de231af, type: 3}
+    PickupImage: {fileID: 21300000, guid: 02a9e754020385f4591cd405429f9505, type: 3}
 --- !u!114 &3209784683429458910
 MonoBehaviour:
   m_ObjectHideFlags: 0

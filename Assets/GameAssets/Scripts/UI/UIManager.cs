@@ -160,13 +160,13 @@ public class UIManager : MonoBehaviour
         //     yield return new WaitForSeconds(0.5f);
         // }
 
-        if (ammoPack.HealthInjectionCount > 0)
-        {
+        // if (ammoPack.HealthInjectionCount > 0)
+        // {
             
-            //var msg = "HealthInjection X" + ammoPack.HealthInjectionCount;
-            CreatePickupMsg("HealthInjection",ammoPack.HealthInjectionCount,_pickupMsgTxtQueue);
-            yield return new WaitForSeconds(0.5f);
-        }
+        //     //var msg = "HealthInjection X" + ammoPack.HealthInjectionCount;
+        //     CreatePickupMsg("HealthInjection",ammoPack.HealthInjectionCount,_pickupMsgTxtQueue);
+        //     yield return new WaitForSeconds(0.5f);
+        // }
 
 
         
