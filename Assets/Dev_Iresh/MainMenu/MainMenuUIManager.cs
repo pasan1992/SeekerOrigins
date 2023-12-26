@@ -15,12 +15,15 @@ public class MainMenuUIManager : MonoBehaviour
 
     [SerializeField] GameObject _newGameWarningPanel;
     [SerializeField] GameObject _continueBtn;
+    [SerializeField] GameObject _endlessBtn;
     int _previousScence = -1;
 
     private void Start()
     {
         //var _previousScence = SaveData.GetLatestSceneID();
         var latest_scene = PlayerPrefs.GetInt("LatestLevel",-1);
+        var isEndlessActiveted = PlayerPrefs.GetInt("isEndlessActiveted", 0);
+
         if (latest_scene >= 0)
         {
             _continueBtn.SetActive(true);
@@ -28,6 +31,10 @@ public class MainMenuUIManager : MonoBehaviour
         else
         {
             _continueBtn.SetActive(false);
+        }
+        if (isEndlessActiveted == 1)
+        {
+            _endlessBtn.SetActive(true);
         }
     }
 
@@ -50,7 +57,11 @@ public class MainMenuUIManager : MonoBehaviour
         {
             SceneLoad(latest_scene);
         }
-        
+    }
+
+    public void PlayEndless()
+    {
+        SceneLoad(8);
     }
 
     public void PlayGame()
