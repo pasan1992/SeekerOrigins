@@ -486,7 +486,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20230100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -54504,7 +54504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2024 | Gov-Nor - Session 01"
+  m_text: "\xA9 2024 | Gov-Nor - Session 01\nEarly Access Release"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f64120cc15485a45b388319a6fcba22, type: 2}
   m_sharedMaterial: {fileID: 2895282618440061290, guid: 9f64120cc15485a45b388319a6fcba22,
