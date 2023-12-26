@@ -54504,7 +54504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2024 | Gov-Nor - Session 01"
+  m_text: "\xA9 2024 | Gov-Nor - Session 01\nEarly Access Release"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f64120cc15485a45b388319a6fcba22, type: 2}
   m_sharedMaterial: {fileID: 2895282618440061290, guid: 9f64120cc15485a45b388319a6fcba22,
@@ -70570,7 +70570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -16.300049, y: 45.853027}
+  m_AnchoredPosition: {x: -16.300049, y: 53.4}
   m_SizeDelta: {x: 294.61792, y: 33.701614}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1732596775
@@ -87824,7 +87824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8443396, g: 0.93590456, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
