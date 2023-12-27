@@ -174,19 +174,18 @@ public class UILevelsHandler : MonoBehaviour
         //var latest_scene = PlayerPrefs.GetInt("LatestLevel", -1);
         var latest_scene = 0;
 
-        if (PlayerPrefs.GetInt("EP02Unlocked", 0) == 1)
-        {
-            latest_scene = 1;
-        }
-        if (PlayerPrefs.GetInt("EP03Unlocked", 0) == 1)
-        {
-            latest_scene = 2;
-        }
         if (PlayerPrefs.GetInt("EP04Unlocked", 0) == 1)
         {
             latest_scene = 3;
         }
-
+        else if (PlayerPrefs.GetInt("EP03Unlocked", 0) == 1)
+        {
+            latest_scene = 2;
+        }
+        else if (PlayerPrefs.GetInt("EP02Unlocked", 0) == 1)
+        {
+            latest_scene = 1;
+        }
 
         if (_currantLevelID <= latest_scene)
         {
