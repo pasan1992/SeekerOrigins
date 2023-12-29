@@ -22030,7 +22030,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Pasan Nadeera Udawattalead game developer and designer,\_project\_Manage"
+  m_Text: "Pasan lead game developer and designer,\_project\_Manage"
 --- !u!222 &308369127
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78651,10 +78651,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pasan Nadeera Udawatta\nLead Software Engineer /\_Project\_Manager\n\nIresh
-    Sampath \nSenior Software Engineer / UI\_Specialist\n\nTharindu ( Tara ) Rankoth\nArt
-    Director / Level\_Designer\n\nSandakth Mahagamarachchi\nNarrative Designer /
-    Voice\_artist\n"
+  m_text: "Pasan\nLead Software Engineer /\_Project\_Manager\n\nIresh Sampath \nSenior
+    Software Engineer / UI\_Specialist\n\nTharindu ( Tara ) Rankoth\nArt Director
+    / Level\_Designer\n\nSandakth Mahagamarachchi\nNarrative Designer / Voice\_artist\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
